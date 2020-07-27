@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.Feature;
 import top.theillusivec4.curios.api.SlotTypePreset;
 
 public class Artifacts implements ModInitializer {
@@ -24,16 +23,10 @@ public class Artifacts implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
+        Features.registerFeatures();
     }
 
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
-
-        @SubscribeEvent
-        public static void commonSetup(FMLCommonSetupEvent event) {
-            Features.addFeatures();
-        }
 
         @SubscribeEvent
         public static void enqueueIMC(final InterModEnqueueEvent event) {
@@ -63,11 +56,6 @@ public class Artifacts implements ModInitializer {
         @SubscribeEvent
         public static void registerLootModifiers(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
             LootModifiers.register(event.getRegistry());
-        }
-
-        @SubscribeEvent
-        public static void registerFeatures(RegistryEvent.Register<Feature<?>> event) {
-            Features.registerFeatures(event.getRegistry());
         }
     }
 }

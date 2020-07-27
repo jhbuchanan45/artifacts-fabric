@@ -18,7 +18,6 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import net.minecraftforge.common.Tags;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +70,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
     }
 
     @Override
-    public boolean func_230362_a_(ServerWorldAccess world, StructureAccessor manager, ChunkGenerator generator, Random random, BlockPos pos, DefaultFeatureConfig config) {
+    public boolean generate(ServerWorldAccess world, StructureAccessor manager, ChunkGenerator generator, Random random, BlockPos pos, DefaultFeatureConfig config) {
         List<BlockPos> positions = new ArrayList<>();
         BlockPos.stream(pos.add(-3, 0, -3), pos.add(3, 0, 3)).forEach((blockPos -> positions.add(blockPos.toImmutable())));
         positions.remove(pos);
@@ -129,6 +128,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
                     world.setBlockState(pos, Blocks.TRAPPED_CHEST.getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)), 2);
                     world.setBlockState(pos.down(), Blocks.TNT.getDefaultState(), 0);
                 }
+                // TODO: Tags
                 world.setBlockState(pos, Tags.Blocks.CHESTS_WOODEN.getRandom(random).getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)), 2);
             } else {
                 world.setBlockState(pos, Blocks.BARREL.getDefaultState().with(BarrelBlock.FACING, Direction.random(random)), 2);
