@@ -30,7 +30,7 @@ import java.util.List;
 
 public class LuckyScarfItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/lucky_scarf.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/lucky_scarf.png");
 
     public LuckyScarfItem() {
         super(new Settings(), "lucky_scarf");

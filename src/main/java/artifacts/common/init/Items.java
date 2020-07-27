@@ -11,7 +11,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class Items {
 
-    public static final Item MIMIC_SPAWN_EGG = new SpawnEggItem(Entities.MIMIC, 0x805113, 0x212121, new Item.Settings().group(ItemGroup.MISC)).setRegistryName(new Identifier(Artifacts.MODID, "mimic_spawn_egg"));
+    public static final Item MIMIC_SPAWN_EGG = new SpawnEggItem(Entities.MIMIC, 0x805113, 0x212121, new Item.Settings().group(ItemGroup.MISC)).setRegistryName(new Identifier(Artifacts.MOD_ID, "mimic_spawn_egg"));
     public static final Item PLASTIC_DRINKING_HAT = new DrinkingHatItem("plastic_drinking_hat", false);
     public static final Item NOVELTY_DRINKING_HAT = new DrinkingHatItem("novelty_drinking_hat", true);
     public static final Item SNORKEL = new SnorkelItem();

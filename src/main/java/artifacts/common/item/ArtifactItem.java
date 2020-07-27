@@ -23,7 +23,7 @@ public class ArtifactItem extends Item {
 
     public ArtifactItem(Settings properties, String name) {
         super(properties.maxCount(1).group(Artifacts.CREATIVE_TAB));
-        setRegistryName(new Identifier(Artifacts.MODID, name));
+        setRegistryName(new Identifier(Artifacts.MOD_ID, name));
         this.name = name;
     }
 

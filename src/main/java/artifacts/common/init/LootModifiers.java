@@ -10,7 +10,7 @@ public class LootModifiers {
 
     public static void register(IForgeRegistry<GlobalLootModifierSerializer<?>> registry) {
         registry.registerAll(
-                new LuckyScarfItem.FortuneBonusModifier.Serializer().setRegistryName(new Identifier(Artifacts.MODID, "fortune_bonus"))
+                new LuckyScarfItem.FortuneBonusModifier.Serializer().setRegistryName(new Identifier(Artifacts.MOD_ID, "fortune_bonus"))
         );
     }
 }

@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class RunningShoesItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/running_shoes.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/running_shoes.png");
 
     private static final EntityAttributeModifier RUNNING_SHOES_SPEED_BOOST = new EntityAttributeModifier(UUID.fromString("ac7ab816-2b08-46b6-879d-e5dea34ff305"), "artifacts:running_shoes_movement_speed", 0.4, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 

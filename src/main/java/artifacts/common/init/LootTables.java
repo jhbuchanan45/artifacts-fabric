@@ -14,10 +14,10 @@ import java.util.List;
 
 public class LootTables {
 
-    public static final Identifier MIMIC = new Identifier(Artifacts.MODID, "entities/mimic");
-    public static final Identifier CAMPSITE_CHEST = new Identifier(Artifacts.MODID, "chests/campsite_chest");
+    public static final Identifier MIMIC = new Identifier(Artifacts.MOD_ID, "entities/mimic");
+    public static final Identifier CAMPSITE_CHEST = new Identifier(Artifacts.MOD_ID, "chests/campsite_chest");
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     public static class LootTableEvents {
 
         public static final List<String> LOOT_TABLE_LOCATIONS = Arrays.asList(
@@ -67,7 +67,7 @@ public class LootTables {
         }
 
         private static LootPoolEntry.Builder<?> getInjectEntry(String name) {
-            Identifier table = new Identifier(Artifacts.MODID, "inject/" + name);
+            Identifier table = new Identifier(Artifacts.MOD_ID, "inject/" + name);
             return LootTableEntry.builder(table).weight(1);
         }
     }

@@ -17,7 +17,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class ScarfOfInvisibilityItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/scarf_of_invisibility.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/scarf_of_invisibility.png");
 
     public ScarfOfInvisibilityItem() {
         super(new Settings(), "scarf_of_invisibility");

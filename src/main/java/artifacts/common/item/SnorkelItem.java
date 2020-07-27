@@ -16,7 +16,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class SnorkelItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/snorkel.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/snorkel.png");
 
     public SnorkelItem() {
         super(new Settings(), "snorkel");

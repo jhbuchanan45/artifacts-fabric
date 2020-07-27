@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class AntidoteVesselItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/antidote_vessel.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/antidote_vessel.png");
 
     public AntidoteVesselItem() {
         super(new Settings(), "antidote_vessel");

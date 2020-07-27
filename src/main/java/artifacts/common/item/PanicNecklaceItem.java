@@ -22,7 +22,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class PanicNecklaceItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/panic_necklace.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/panic_necklace.png");
 
     public PanicNecklaceItem() {
         super(new Settings(), "panic_necklace");
@@ -55,7 +55,7 @@ public class PanicNecklaceItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

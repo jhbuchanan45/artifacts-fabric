@@ -28,7 +28,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class KittySlippersItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/kitty_slippers.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/kitty_slippers.png");
 
     public KittySlippersItem() {
         super(new Settings(), "kitty_slippers");
@@ -56,7 +56,7 @@ public class KittySlippersItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

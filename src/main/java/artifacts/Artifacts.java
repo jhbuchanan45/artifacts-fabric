@@ -14,10 +14,10 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 
 public class Artifacts implements ModInitializer {
 
-    public static final String MODID = "artifacts";
+    public static final String MOD_ID = "artifacts";
 
     public static final ItemGroup CREATIVE_TAB = FabricItemGroupBuilder.build(
-            new Identifier(MODID, "item_group"),
+            new Identifier(MOD_ID, "item_group"),
             () -> new ItemStack(Items.PLASTIC_DRINKING_HAT)
     );
 

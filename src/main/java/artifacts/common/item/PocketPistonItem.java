@@ -19,8 +19,8 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class PocketPistonItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/pocket_piston_default.png");
-    private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/pocket_piston_slim.png");
+    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_default.png");
+    private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_slim.png");
 
     public PocketPistonItem() {
         super(new Settings(), "pocket_piston");
@@ -43,7 +43,7 @@ public class PocketPistonItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

@@ -55,7 +55,7 @@ public class UmbrellaItem extends ArtifactItem {
     }
 
     @SuppressWarnings("unused")
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     public static class Events {
         @SubscribeEvent
         public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
@@ -77,7 +77,7 @@ public class UmbrellaItem extends ArtifactItem {
     }
 
     @SuppressWarnings("unused")
-    @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Artifacts.MOD_ID)
     public static class ClientEvents {
 
         @SubscribeEvent

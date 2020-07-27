@@ -10,10 +10,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class Entities {
 
-    public static final EntityType<MimicEntity> MIMIC = EntityType.Builder.create(MimicEntity::new, SpawnGroup.MONSTER).setDimensions(14 / 16F, 14 / 16F).setTrackingRange(64).build(new Identifier(Artifacts.MODID, "mimic").toString());
+    public static final EntityType<MimicEntity> MIMIC = EntityType.Builder.create(MimicEntity::new, SpawnGroup.MONSTER).setDimensions(14 / 16F, 14 / 16F).setTrackingRange(64).build(new Identifier(Artifacts.MOD_ID, "mimic").toString());
 
     public static void register(IForgeRegistry<EntityType<?>> registry) {
-        MIMIC.setRegistryName(Artifacts.MODID, "mimic");
+        MIMIC.setRegistryName(Artifacts.MOD_ID, "mimic");
         registry.registerAll(MIMIC);
         DefaultAttributeRegistry.put(MIMIC, MimicEntity.getAttributes().build());
     }

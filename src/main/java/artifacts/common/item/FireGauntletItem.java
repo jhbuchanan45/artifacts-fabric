@@ -30,10 +30,10 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 public class FireGauntletItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_default.png");
-    private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_slim.png");
-    private static final Identifier TEXTURE_DEFAULT_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_default_glow.png");
-    private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_slim_glow.png");
+    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/fire_gauntlet_default.png");
+    private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/fire_gauntlet_slim.png");
+    private static final Identifier TEXTURE_DEFAULT_GLOW = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/fire_gauntlet_default_glow.png");
+    private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/fire_gauntlet_slim_glow.png");
 
     public FireGauntletItem() {
         super(new Settings(), "fire_gauntlet");
@@ -81,7 +81,7 @@ public class FireGauntletItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

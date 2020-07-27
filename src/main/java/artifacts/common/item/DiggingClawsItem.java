@@ -18,8 +18,8 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class DiggingClawsItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/digging_claws_default.png");
-    private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/digging_claws_default.png");
+    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
+    private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
 
     public DiggingClawsItem() {
         super(new Settings(), "digging_claws");
@@ -60,7 +60,7 @@ public class DiggingClawsItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

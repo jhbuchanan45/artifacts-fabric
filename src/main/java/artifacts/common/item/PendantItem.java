@@ -32,7 +32,7 @@ public class PendantItem extends ArtifactItem {
 
     public PendantItem(String name) {
         super(new Settings(), name);
-        texture = new Identifier(Artifacts.MODID, String.format("textures/entity/curio/%s.png", name));
+        texture = new Identifier(Artifacts.MOD_ID, String.format("textures/entity/curio/%s.png", name));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class PendantItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

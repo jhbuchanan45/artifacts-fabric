@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 
 public class SuperstitiousHatItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/superstitious_hat.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/superstitious_hat.png");
 
     public SuperstitiousHatItem() {
         super(new Settings(), "superstitious_hat");
@@ -51,7 +51,7 @@ public class SuperstitiousHatItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

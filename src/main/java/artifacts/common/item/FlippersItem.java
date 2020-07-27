@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class FlippersItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/flippers.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/flippers.png");
 
     private static final EntityAttributeModifier FLIPPER_SWIM_SPEED = new EntityAttributeModifier(UUID.fromString("63f1bb32-d301-419b-ab52-5d1af94eed1d"), "artifacts:flipper_swim_speed", 1, EntityAttributeModifier.Operation.ADDITION);
 

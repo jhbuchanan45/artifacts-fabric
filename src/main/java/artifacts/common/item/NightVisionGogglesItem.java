@@ -23,8 +23,8 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class NightVisionGogglesItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles.png");
-    private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles_glow.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/night_vision_goggles.png");
+    private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/night_vision_goggles_glow.png");
 
     public NightVisionGogglesItem() {
         super(new Item.Settings(), "night_vision_goggles");

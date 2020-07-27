@@ -26,7 +26,7 @@ import java.util.List;
 
 public class UniversalAttractorItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/universal_attractor.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/universal_attractor.png");
 
     public UniversalAttractorItem() {
         super(new Settings(), "universal_attractor");
@@ -95,7 +95,7 @@ public class UniversalAttractorItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 

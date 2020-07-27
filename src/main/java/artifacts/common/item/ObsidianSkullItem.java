@@ -22,7 +22,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class ObsidianSkullItem extends ArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/obsidian_skull.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/obsidian_skull.png");
 
     public ObsidianSkullItem() {
         super(new Settings(), "obsidian_skull");
@@ -50,7 +50,7 @@ public class ObsidianSkullItem extends ArtifactItem {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Artifacts.MODID)
+    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
 
