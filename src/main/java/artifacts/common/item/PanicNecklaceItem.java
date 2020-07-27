@@ -3,13 +3,15 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.PanicNecklaceModel;
 import artifacts.common.init.Items;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -20,14 +22,14 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class PanicNecklaceItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/panic_necklace.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/panic_necklace.png");
 
     public PanicNecklaceItem() {
-        super(new Properties(), "panic_necklace");
+        super(new Settings(), "panic_necklace");
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
@@ -37,7 +39,7 @@ public class PanicNecklaceItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected PanicNecklaceModel getModel() {
                 if (model == null) {
                     model = new PanicNecklaceModel();
@@ -46,8 +48,8 @@ public class PanicNecklaceItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });
@@ -59,9 +61,9 @@ public class PanicNecklaceItem extends ArtifactItem {
 
         @SubscribeEvent
         public static void onLivingHurt(LivingHurtEvent event) {
-            if (!event.getEntity().world.isRemote && event.getAmount() >= 1) {
+            if (!event.getEntity().world.isClient && event.getAmount() >= 1) {
                 if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.PANIC_NECKLACE, event.getEntityLiving()).isPresent()) {
-                    event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SPEED, 160, 0, false, false));
+                    event.getEntityLiving().addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 160, 0, false, false));
                 }
             }
         }

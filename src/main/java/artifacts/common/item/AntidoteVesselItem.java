@@ -2,14 +2,16 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.AntidoteVesselModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -20,15 +22,15 @@ import java.util.Map;
 
 public class AntidoteVesselItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/antidote_vessel.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/antidote_vessel.png");
 
     public AntidoteVesselItem() {
-        super(new Properties(), "antidote_vessel");
+        super(new Settings(), "antidote_vessel");
     }
 
     @Nullable
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
@@ -39,22 +41,22 @@ public class AntidoteVesselItem extends ArtifactItem {
 
             @Override
             public void curioTick(String identifier, int index, LivingEntity entity) {
-                Map<Effect, EffectInstance> effects = new HashMap<>();
+                Map<StatusEffect, StatusEffectInstance> effects = new HashMap<>();
 
-                entity.getActivePotionMap().forEach((effect, instance) -> {
+                entity.getActiveStatusEffects().forEach((effect, instance) -> {
                     if (!effect.isInstant() && !effect.isBeneficial() && instance.getDuration() > 80) {
                         effects.put(effect, instance);
                     }
                 });
 
                 effects.forEach((effect, instance) -> {
-                    entity.removeActivePotionEffect(effect);
-                    entity.addPotionEffect(new EffectInstance(effect, 80, instance.getAmplifier(), instance.isAmbient(), instance.doesShowParticles(), instance.isShowIcon()));
+                    entity.removeStatusEffectInternal(effect);
+                    entity.addStatusEffect(new StatusEffectInstance(effect, 80, instance.getAmplifier(), instance.isAmbient(), instance.shouldShowParticles(), instance.shouldShowIcon()));
                 });
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected AntidoteVesselModel getModel() {
                 if (model == null) {
                     model = new AntidoteVesselModel();
@@ -63,8 +65,8 @@ public class AntidoteVesselItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });

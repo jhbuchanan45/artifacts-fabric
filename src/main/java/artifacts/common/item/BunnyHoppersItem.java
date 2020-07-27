@@ -3,15 +3,17 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.BunnyHoppersModel;
 import artifacts.common.init.Items;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -22,26 +24,26 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class BunnyHoppersItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
 
     public BunnyHoppersItem() {
-        super(new Properties(), "bunny_hoppers");
+        super(new Settings(), "bunny_hoppers");
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-                if (!livingEntity.world.isRemote && livingEntity.ticksExisted % 15 == 0) {
-                    livingEntity.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 39, 1, true, false));
+                if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
+                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 39, 1, true, false));
                 }
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected BunnyHoppersModel getModel() {
                 if (model == null) {
                     model = new BunnyHoppersModel();
@@ -50,8 +52,8 @@ public class BunnyHoppersItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });
@@ -64,7 +66,7 @@ public class BunnyHoppersItem extends ArtifactItem {
         @SubscribeEvent
         public static void onLivingDamage(LivingDamageEvent event) {
             if (event.getEntityLiving() instanceof PlayerEntity && CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, event.getEntityLiving()).isPresent()) {
-                event.getEntity().world.playSound(null, event.getEntityLiving().getPosX(), event.getEntityLiving().getPosY(), event.getEntityLiving().getPosZ(), SoundEvents.ENTITY_RABBIT_HURT, SoundCategory.PLAYERS, 1, (event.getEntityLiving().getRNG().nextFloat() - event.getEntityLiving().getRNG().nextFloat()) * 0.2F + 1.0F);
+                event.getEntity().world.playSound(null, event.getEntityLiving().getX(), event.getEntityLiving().getY(), event.getEntityLiving().getZ(), SoundEvents.ENTITY_RABBIT_HURT, SoundCategory.PLAYERS, 1, (event.getEntityLiving().getRandom().nextFloat() - event.getEntityLiving().getRandom().nextFloat()) * 0.2F + 1.0F);
             }
         }
     }

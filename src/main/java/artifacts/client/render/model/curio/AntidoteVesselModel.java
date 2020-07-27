@@ -1,48 +1,48 @@
 package artifacts.client.render.model.curio;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 
-public class AntidoteVesselModel extends BipedModel<LivingEntity> {
+public class AntidoteVesselModel extends BipedEntityModel<LivingEntity> {
 
-    public final ModelRenderer belt;
-    public final ModelRenderer jar;
+    public final ModelPart belt;
+    public final ModelPart jar;
 
     public AntidoteVesselModel() {
         super(0.5F, 0, 64, 32);
 
         setVisible(false);
 
-        bipedBody = new ModelRenderer(this, 0, 0);
-        belt = new ModelRenderer(this, 0, 0);
-        jar = new ModelRenderer(this, 0, 16);
+        torso = new ModelPart(this, 0, 0);
+        belt = new ModelPart(this, 0, 0);
+        jar = new ModelPart(this, 0, 16);
 
-        ModelRenderer lid = new ModelRenderer(this, 24, 0);
+        ModelPart lid = new ModelPart(this, 24, 0);
 
-        belt.addBox(-4, 0, -2, 8, 12, 4, 0.5F);
+        belt.addCuboid(-4, 0, -2, 8, 12, 4, 0.5F);
 
-        jar.addBox(0, 0, 0, 6, 8, 6);
-        lid.addBox(1, -1, 1, 4, 1, 4);
+        jar.addCuboid(0, 0, 0, 6, 8, 6);
+        lid.addCuboid(1, -1, 1, 4, 1, 4);
 
-        jar.setRotationPoint(6, 18, -10);
-        jar.rotateAngleY = -0.5F;
+        jar.setPivot(6, 18, -10);
+        jar.yaw = -0.5F;
 
         jar.addChild(lid);
-        bipedBody.addChild(belt);
-        bipedBody.addChild(jar);
+        torso.addChild(belt);
+        torso.addChild(jar);
     }
 
     @Override
-    public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        jar.showModel = false;
-        bipedBody.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-        jar.showModel = true;
+    public void render(MatrixStack matrixStackIn, VertexConsumer bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
+        jar.visible = false;
+        torso.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+        jar.visible = true;
         matrixStackIn.scale(0.5F, 0.5F, 0.5F);
-        belt.showModel = false;
-        bipedBody.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-        belt.showModel = true;
+        belt.visible = false;
+        torso.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+        belt.visible = true;
     }
 }

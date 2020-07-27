@@ -1,42 +1,42 @@
 package artifacts.client.render.model.curio;
 
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 
-public class DrinkingHatModel extends BipedModel<LivingEntity> {
+public class DrinkingHatModel extends BipedEntityModel<LivingEntity> {
 
-    protected ModelRenderer hatShade;
+    protected ModelPart hatShade;
 
     public DrinkingHatModel() {
         super(0.5F, 0, 64, 64);
 
         setVisible(false);
-        bipedHead.showModel = true;
-        bipedHeadwear.showModel = true;
+        head.visible = true;
+        helmet.visible = true;
 
-        hatShade = new ModelRenderer(this, 0, 52);
-        ModelRenderer straw = new ModelRenderer(this, 0, 50);
-        ModelRenderer canLeft = new ModelRenderer(this, 0, 41);
-        ModelRenderer canRight = new ModelRenderer(this, 12, 41);
-        ModelRenderer strawLeft = new ModelRenderer(this, 0, 32);
-        ModelRenderer strawRight = new ModelRenderer(this, 17, 32);
+        hatShade = new ModelPart(this, 0, 52);
+        ModelPart straw = new ModelPart(this, 0, 50);
+        ModelPart canLeft = new ModelPart(this, 0, 41);
+        ModelPart canRight = new ModelPart(this, 12, 41);
+        ModelPart strawLeft = new ModelPart(this, 0, 32);
+        ModelPart strawRight = new ModelPart(this, 17, 32);
 
-        hatShade.addBox(-4, -6, -8, 8, 1, 4);
-        straw.addBox(-6, -1, -5, 12, 1, 1);
-        canLeft.addBox(4, -11, -1, 3, 6, 3);
-        canRight.addBox(-7, -11, -1, 3, 6, 3);
-        strawLeft.addBox(5, -4, -3, 1, 1, 8);
-        strawRight.addBox(-6, -4, -3, 1, 1, 8);
+        hatShade.addCuboid(-4, -6, -8, 8, 1, 4);
+        straw.addCuboid(-6, -1, -5, 12, 1, 1);
+        canLeft.addCuboid(4, -11, -1, 3, 6, 3);
+        canRight.addCuboid(-7, -11, -1, 3, 6, 3);
+        strawLeft.addCuboid(5, -4, -3, 1, 1, 8);
+        strawRight.addCuboid(-6, -4, -3, 1, 1, 8);
 
-        bipedHead.addChild(hatShade);
-        bipedHead.addChild(straw);
-        bipedHead.addChild(canLeft);
-        bipedHead.addChild(canRight);
-        bipedHead.addChild(strawLeft);
-        bipedHead.addChild(strawRight);
+        head.addChild(hatShade);
+        head.addChild(straw);
+        head.addChild(canLeft);
+        head.addChild(canRight);
+        head.addChild(strawLeft);
+        head.addChild(strawRight);
 
-        strawLeft.rotateAngleX = 0.7853F;
-        strawRight.rotateAngleX = 0.7853F;
+        strawLeft.pitch = 0.7853F;
+        strawRight.pitch = 0.7853F;
     }
 }

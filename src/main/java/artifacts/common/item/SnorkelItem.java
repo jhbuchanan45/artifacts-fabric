@@ -2,38 +2,40 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.SnorkelModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class SnorkelItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/snorkel.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/snorkel.png");
 
     public SnorkelItem() {
-        super(new Properties(), "snorkel");
+        super(new Settings(), "snorkel");
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-                if (!livingEntity.world.isRemote && livingEntity.ticksExisted % 15 == 0) {
-                    livingEntity.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 39, 0, true, false));
+                if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
+                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 39, 0, true, false));
                 }
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected SnorkelModel getModel() {
                 if (model == null) {
                     model = new SnorkelModel();
@@ -42,8 +44,8 @@ public class SnorkelItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });

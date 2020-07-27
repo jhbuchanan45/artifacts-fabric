@@ -3,14 +3,16 @@ package artifacts;
 import artifacts.client.render.MimicRenderer;
 import artifacts.common.config.Config;
 import artifacts.common.init.*;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.EntityType;
-import net.minecraft.inventory.container.PlayerContainer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.screen.PlayerScreenHandler;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -36,7 +38,7 @@ public class Artifacts {
 
     public static final ItemGroup CREATIVE_TAB = new ItemGroup(MODID) {
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @Environment(EnvType.CLIENT)
         public ItemStack createIcon() {
             return new ItemStack(Items.PLASTIC_DRINKING_HAT);
         }
@@ -57,7 +59,7 @@ public class Artifacts {
         @SubscribeEvent
         public static void setupClient(final FMLClientSetupEvent event) {
             RenderingRegistry.registerEntityRenderingHandler(Entities.MIMIC, MimicRenderer::new);
-            ItemModelsProperties.func_239418_a_(Items.UMBRELLA, new ResourceLocation("blocking"), (stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1 : 0);
+            ModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0);
         }
 
         @SubscribeEvent
@@ -67,7 +69,7 @@ public class Artifacts {
                 InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> type.getMessageBuilder().build());
             }
             InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.HANDS.getMessageBuilder().size(2).build());
-            InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("feet").priority(220).icon(PlayerContainer.EMPTY_ARMOR_SLOT_BOOTS).build());
+            InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("feet").priority(220).icon(PlayerScreenHandler.EMPTY_BOOTS_SLOT_TEXTURE).build());
         }
 
         @SubscribeEvent

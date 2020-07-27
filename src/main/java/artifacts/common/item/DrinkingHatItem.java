@@ -2,13 +2,15 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.DrinkingHatModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.UseAction;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
+import net.minecraft.util.UseAction;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -19,13 +21,13 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class DrinkingHatItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE_DEFAULT = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/plastic_drinking_hat.png");
-    private static final ResourceLocation TEXTURE_NOVELTY = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/novelty_drinking_hat.png");
+    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/plastic_drinking_hat.png");
+    private static final Identifier TEXTURE_NOVELTY = new Identifier(Artifacts.MODID, "textures/entity/curio/novelty_drinking_hat.png");
 
     private final boolean isNoveltyHat;
 
     public DrinkingHatItem(String name, boolean isNoveltyHat) {
-        super(new Properties(), name);
+        super(new Settings(), name);
         this.isNoveltyHat = isNoveltyHat;
     }
 
@@ -35,7 +37,7 @@ public class DrinkingHatItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
 
             private Object model;
@@ -46,7 +48,7 @@ public class DrinkingHatItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected DrinkingHatModel getModel() {
                 if (model == null) {
                     model = new DrinkingHatModel();
@@ -55,8 +57,8 @@ public class DrinkingHatItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return isNoveltyHat ? TEXTURE_NOVELTY : TEXTURE_DEFAULT;
             }
         });

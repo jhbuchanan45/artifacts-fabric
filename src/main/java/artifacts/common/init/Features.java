@@ -4,31 +4,31 @@ import artifacts.Artifacts;
 import artifacts.common.config.Config;
 import artifacts.common.world.CampsiteFeature;
 import artifacts.common.world.InCaveWithChance;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.placement.ChanceConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class Features {
 
-    public static final Feature<NoFeatureConfig> CAMPSITE_FEATURE = new CampsiteFeature();
+    public static final Feature<DefaultFeatureConfig> CAMPSITE_FEATURE = new CampsiteFeature();
 
     public static void registerFeatures(IForgeRegistry<Feature<?>> registry) {
-        registry.register(CAMPSITE_FEATURE.setRegistryName(new ResourceLocation(Artifacts.MODID, "campsite")));
+        registry.register(CAMPSITE_FEATURE.setRegistryName(new Identifier(Artifacts.MODID, "campsite")));
     }
 
     public static void addFeatures() {
-        Placement<ChanceConfig> placement = new InCaveWithChance(ChanceConfig.field_236950_a_);
+        Decorator<ChanceDecoratorConfig> placement = new InCaveWithChance(ChanceDecoratorConfig.field_24980);
 
         for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
             if (biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND) {
-                biome.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, CAMPSITE_FEATURE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(placement.configure(new ChanceConfig((int) (1 / Config.campsiteChance)))));
+                biome.addFeature(GenerationStep.Feature.UNDERGROUND_STRUCTURES, CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(placement.configure(new ChanceDecoratorConfig((int) (1 / Config.campsiteChance)))));
             }
         }
     }

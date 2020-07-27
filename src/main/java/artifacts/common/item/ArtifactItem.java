@@ -1,14 +1,16 @@
 package artifacts.common.item;
 
 import artifacts.Artifacts;
-import net.minecraft.client.util.ITooltipFlag;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -19,9 +21,9 @@ public class ArtifactItem extends Item {
 
     private final String name;
 
-    public ArtifactItem(Properties properties, String name) {
-        super(properties.maxStackSize(1).group(Artifacts.CREATIVE_TAB));
-        setRegistryName(new ResourceLocation(Artifacts.MODID, name));
+    public ArtifactItem(Settings properties, String name) {
+        super(properties.maxCount(1).group(Artifacts.CREATIVE_TAB));
+        setRegistryName(new Identifier(Artifacts.MODID, name));
         this.name = name;
     }
 
@@ -31,8 +33,8 @@ public class ArtifactItem extends Item {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flags) {
-        tooltip.add(new TranslationTextComponent("tooltip.artifacts." + name).func_240699_a_(TextFormatting.GRAY));
+    @Environment(EnvType.CLIENT)
+    public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
+        tooltip.add(new TranslatableText("tooltip.artifacts." + name).formatted(Formatting.GRAY));
     }
 }

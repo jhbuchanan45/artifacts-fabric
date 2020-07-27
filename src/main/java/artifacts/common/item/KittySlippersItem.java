@@ -3,16 +3,18 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.KittySlippersModel;
 import artifacts.common.init.Items;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.monster.CreeperEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.entity.ai.goal.FleeEntityGoal;
+import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -26,19 +28,19 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class KittySlippersItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/kitty_slippers.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/kitty_slippers.png");
 
     public KittySlippersItem() {
-        super(new Properties(), "kitty_slippers");
+        super(new Settings(), "kitty_slippers");
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected KittySlippersModel getModel() {
                 if (model == null) {
                     model = new KittySlippersModel();
@@ -47,8 +49,8 @@ public class KittySlippersItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });
@@ -61,7 +63,7 @@ public class KittySlippersItem extends ArtifactItem {
         @SubscribeEvent
         public static void onLivingDamage(LivingDamageEvent event) {
             if (event.getEntityLiving() instanceof PlayerEntity && CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, event.getEntityLiving()).isPresent()) {
-                event.getEntity().world.playSound(null, event.getEntityLiving().getPosX(), event.getEntityLiving().getPosY(), event.getEntityLiving().getPosZ(), SoundEvents.ENTITY_CAT_HURT, SoundCategory.PLAYERS, 1, (event.getEntityLiving().getRNG().nextFloat() - event.getEntityLiving().getRNG().nextFloat()) * 0.2F + 1.0F);
+                event.getEntity().world.playSound(null, event.getEntityLiving().getX(), event.getEntityLiving().getY(), event.getEntityLiving().getZ(), SoundEvents.ENTITY_CAT_HURT, SoundCategory.PLAYERS, 1, (event.getEntityLiving().getRandom().nextFloat() - event.getEntityLiving().getRandom().nextFloat()) * 0.2F + 1.0F);
             }
         }
 
@@ -69,16 +71,16 @@ public class KittySlippersItem extends ArtifactItem {
         public static void onSetAttackTarget(LivingSetAttackTargetEvent event) {
             if (event.getEntityLiving() instanceof CreeperEntity && event.getTarget() != null) {
                 if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, event.getTarget()).isPresent()) {
-                    ((MobEntity) event.getEntityLiving()).setAttackTarget(null);
+                    ((MobEntity) event.getEntityLiving()).setTarget(null);
                 }
             }
         }
 
         @SubscribeEvent
         public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-            if (event.getEntityLiving() instanceof CreeperEntity && event.getEntityLiving().getRevengeTarget() != null) {
-                if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, event.getEntityLiving().getRevengeTarget()).isPresent()) {
-                    event.getEntityLiving().setRevengeTarget(null);
+            if (event.getEntityLiving() instanceof CreeperEntity && event.getEntityLiving().getAttacker() != null) {
+                if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, event.getEntityLiving().getAttacker()).isPresent()) {
+                    event.getEntityLiving().setAttacker(null);
                 }
             }
         }
@@ -86,7 +88,7 @@ public class KittySlippersItem extends ArtifactItem {
         @SubscribeEvent
         public static void onJoinWorld(EntityJoinWorldEvent event) {
             if (event.getEntity() instanceof CreeperEntity) {
-                ((CreeperEntity) event.getEntity()).goalSelector.addGoal(3, new AvoidEntityGoal<>((CreeperEntity) event.getEntity(), PlayerEntity.class, (entity) -> entity != null && CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, entity).isPresent(), 6, 1, 1.3, EntityPredicates.CAN_AI_TARGET::test));
+                ((CreeperEntity) event.getEntity()).goalSelector.add(3, new FleeEntityGoal<>((CreeperEntity) event.getEntity(), PlayerEntity.class, (entity) -> entity != null && CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, entity).isPresent(), 6, 1, 1.3, EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR::test));
             }
         }
     }

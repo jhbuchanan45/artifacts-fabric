@@ -7,15 +7,15 @@ import net.minecraft.world.World;
 
 public class EverlastingFoodItem extends ArtifactItem {
 
-    public EverlastingFoodItem(Properties properties, String name) {
+    public EverlastingFoodItem(Settings properties, String name) {
         super(properties, name);
     }
 
-    public ItemStack onItemUseFinish(ItemStack stack, World world, LivingEntity entity) {
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
         if (isFood()) {
-            entity.onFoodEaten(world, stack.copy());
-            if (!world.isRemote && entity instanceof PlayerEntity) {
-                ((PlayerEntity) entity).getCooldownTracker().setCooldown(this, 800);
+            entity.eatFood(world, stack.copy());
+            if (!world.isClient && entity instanceof PlayerEntity) {
+                ((PlayerEntity) entity).getItemCooldownManager().set(this, 800);
             }
         }
         return stack;

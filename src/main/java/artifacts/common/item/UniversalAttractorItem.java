@@ -3,14 +3,16 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.UniversalAttractorModel;
 import artifacts.common.init.Items;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -24,10 +26,10 @@ import java.util.List;
 
 public class UniversalAttractorItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/universal_attractor.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/universal_attractor.png");
 
     public UniversalAttractorItem() {
-        super(new Properties(), "universal_attractor");
+        super(new Settings(), "universal_attractor");
     }
 
     public static int getCooldown(ItemStack stack) {
@@ -40,7 +42,7 @@ public class UniversalAttractorItem extends ArtifactItem {
 
     @Nullable
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
@@ -53,10 +55,10 @@ public class UniversalAttractorItem extends ArtifactItem {
 
                 int cooldown = getCooldown(stack);
                 if (cooldown <= 0) {
-                    Vector3d playerPos = entity.getPositionVec().add(0, 0.75, 0);
+                    Vec3d playerPos = entity.getPos().add(0, 0.75, 0);
 
                     int range = 5;
-                    List<ItemEntity> items = entity.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+                    List<ItemEntity> items = entity.world.getNonSpectatingEntities(ItemEntity.class, new Box(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
                     int pulled = 0;
                     for (ItemEntity item : items) {
                         if (item.isAlive() && !item.cannotPickup() && !item.getPersistentData().getBoolean("PreventRemoteMovement")) {
@@ -64,11 +66,11 @@ public class UniversalAttractorItem extends ArtifactItem {
                                 break;
                             }
 
-                            Vector3d motion = playerPos.subtract(item.getPositionVec().add(0, item.getHeight() / 2, 0));
+                            Vec3d motion = playerPos.subtract(item.getPos().add(0, item.getHeight() / 2, 0));
                             if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
                                 motion = motion.normalize();
                             }
-                            item.setMotion(motion.scale(0.6));
+                            item.setVelocity(motion.multiply(0.6));
                         }
                     }
                 } else {
@@ -77,7 +79,7 @@ public class UniversalAttractorItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected UniversalAttractorModel getModel() {
                 if (model == null) {
                     model = new UniversalAttractorModel();
@@ -86,8 +88,8 @@ public class UniversalAttractorItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });

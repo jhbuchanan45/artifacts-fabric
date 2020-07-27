@@ -2,19 +2,19 @@ package artifacts.common.init;
 
 import artifacts.Artifacts;
 import artifacts.common.entity.MimicEntity;
-import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.attribute.DefaultAttributeRegistry;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class Entities {
 
-    public static final EntityType<MimicEntity> MIMIC = EntityType.Builder.create(MimicEntity::new, EntityClassification.MONSTER).size(14 / 16F, 14 / 16F).setTrackingRange(64).build(new ResourceLocation(Artifacts.MODID, "mimic").toString());
+    public static final EntityType<MimicEntity> MIMIC = EntityType.Builder.create(MimicEntity::new, SpawnGroup.MONSTER).setDimensions(14 / 16F, 14 / 16F).setTrackingRange(64).build(new Identifier(Artifacts.MODID, "mimic").toString());
 
     public static void register(IForgeRegistry<EntityType<?>> registry) {
         MIMIC.setRegistryName(Artifacts.MODID, "mimic");
         registry.registerAll(MIMIC);
-        GlobalEntityTypeAttributes.put(MIMIC, MimicEntity.getAttributes().func_233813_a_());
+        DefaultAttributeRegistry.put(MIMIC, MimicEntity.getAttributes().build());
     }
 }

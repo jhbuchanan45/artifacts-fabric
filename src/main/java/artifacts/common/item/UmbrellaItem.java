@@ -3,19 +3,19 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.common.init.Items;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
+import net.minecraft.entity.attribute.EntityAttributeInstance;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.ActionResult;
+import net.minecraft.util.Arm;
 import net.minecraft.util.Hand;
-import net.minecraft.util.HandSide;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -28,11 +28,11 @@ import java.util.UUID;
 
 public class UmbrellaItem extends ArtifactItem {
 
-    private static final AttributeModifier UMBRELLA_SLOW_FALLING = new AttributeModifier(UUID.fromString("a7a25453-2065-4a96-bc83-df600e13f390"), "artifacts:umbrella_slow_falling", -0.875, AttributeModifier.Operation.MULTIPLY_TOTAL);
+    private static final EntityAttributeModifier UMBRELLA_SLOW_FALLING = new EntityAttributeModifier(UUID.fromString("a7a25453-2065-4a96-bc83-df600e13f390"), "artifacts:umbrella_slow_falling", -0.875, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
     public UmbrellaItem() {
-        super(new Properties(), "umbrella");
-        DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
+        super(new Settings(), "umbrella");
+        DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
     }
 
     @Override
@@ -44,14 +44,14 @@ public class UmbrellaItem extends ArtifactItem {
         return UseAction.BLOCK;
     }
 
-    public int getUseDuration(ItemStack stack) {
+    public int getMaxUseTime(ItemStack stack) {
         return 72000;
     }
 
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-        ItemStack itemstack = player.getHeldItem(hand);
-        player.setActiveHand(hand);
-        return ActionResult.resultConsume(itemstack);
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        ItemStack itemstack = player.getStackInHand(hand);
+        player.setCurrentHand(hand);
+        return TypedActionResult.consume(itemstack);
     }
 
     @SuppressWarnings("unused")
@@ -60,13 +60,13 @@ public class UmbrellaItem extends ArtifactItem {
         @SubscribeEvent
         public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
             LivingEntity entity = event.getEntityLiving();
-            ModifiableAttributeInstance gravity = entity.getAttribute(ForgeMod.ENTITY_GRAVITY.get());
+            EntityAttributeInstance gravity = entity.getAttributeInstance(ForgeMod.ENTITY_GRAVITY.get());
             if (gravity != null) {
-                if (!entity.func_233570_aj_() && !entity.isInWater() && event.getEntity().getMotion().y < 0 && !entity.isPotionActive(Effects.SLOW_FALLING)
-                        && (entity.getHeldItemOffhand().getItem() == Items.UMBRELLA
-                        || entity.getHeldItemMainhand().getItem() == Items.UMBRELLA) && !(entity.isHandActive() && !entity.getActiveItemStack().isEmpty() && entity.getActiveItemStack().getItem().getUseAction(entity.getActiveItemStack()) == UseAction.BLOCK)) {
+                if (!entity.isOnGround() && !entity.isTouchingWater() && event.getEntity().getVelocity().y < 0 && !entity.hasStatusEffect(StatusEffects.SLOW_FALLING)
+                        && (entity.getOffHandStack().getItem() == Items.UMBRELLA
+                        || entity.getMainHandStack().getItem() == Items.UMBRELLA) && !(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK)) {
                     if (!gravity.hasModifier(UMBRELLA_SLOW_FALLING)) {
-                        gravity.func_233767_b_(UMBRELLA_SLOW_FALLING);
+                        gravity.addTemporaryModifier(UMBRELLA_SLOW_FALLING);
                     }
                     entity.fallDistance = 0;
                 } else if (gravity.hasModifier(UMBRELLA_SLOW_FALLING)) {
@@ -81,15 +81,15 @@ public class UmbrellaItem extends ArtifactItem {
     public static class ClientEvents {
 
         @SubscribeEvent
-        public static void onLivingRender(RenderLivingEvent.Pre<?, BipedModel<?>> event) {
+        public static void onLivingRender(RenderLivingEvent.Pre<?, BipedEntityModel<?>> event) {
             LivingEntity entity = event.getEntity();
-            if (!(entity.isHandActive() && !entity.getActiveItemStack().isEmpty() && entity.getActiveItemStack().getItem().getUseAction(entity.getActiveItemStack()) == UseAction.BLOCK)) {
-                boolean isHoldingOffHand = entity.getHeldItemOffhand().getItem() == Items.UMBRELLA;
-                boolean isHoldingMainHand = entity.getHeldItemMainhand().getItem() == Items.UMBRELLA;
-                if ((isHoldingMainHand && Minecraft.getInstance().gameSettings.mainHand == HandSide.RIGHT) || (isHoldingOffHand && Minecraft.getInstance().gameSettings.mainHand == HandSide.LEFT)) {
-                    event.getRenderer().getEntityModel().rightArmPose = BipedModel.ArmPose.THROW_SPEAR;
-                } else if ((isHoldingMainHand && Minecraft.getInstance().gameSettings.mainHand == HandSide.LEFT) || (isHoldingOffHand && Minecraft.getInstance().gameSettings.mainHand == HandSide.RIGHT)) {
-                    event.getRenderer().getEntityModel().leftArmPose = BipedModel.ArmPose.THROW_SPEAR;
+            if (!(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK)) {
+                boolean isHoldingOffHand = entity.getOffHandStack().getItem() == Items.UMBRELLA;
+                boolean isHoldingMainHand = entity.getMainHandStack().getItem() == Items.UMBRELLA;
+                if ((isHoldingMainHand && MinecraftClient.getInstance().options.mainArm == Arm.RIGHT) || (isHoldingOffHand && MinecraftClient.getInstance().options.mainArm == Arm.LEFT)) {
+                    event.getRenderer().getModel().rightArmPose = BipedEntityModel.ArmPose.THROW_SPEAR;
+                } else if ((isHoldingMainHand && MinecraftClient.getInstance().options.mainArm == Arm.LEFT) || (isHoldingOffHand && MinecraftClient.getInstance().options.mainArm == Arm.RIGHT)) {
+                    event.getRenderer().getModel().leftArmPose = BipedEntityModel.ArmPose.THROW_SPEAR;
                 }
             }
         }

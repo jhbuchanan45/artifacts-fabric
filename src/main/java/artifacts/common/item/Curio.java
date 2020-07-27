@@ -1,15 +1,21 @@
 package artifacts.common.item;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.render.OverlayTexture;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
@@ -38,7 +44,7 @@ abstract class Curio implements ICurio {
 
     @Override
     public void playRightClickEquipSound(LivingEntity entity) {
-        entity.world.playSound(null, new BlockPos(entity.getPositionVec()), equipSound, SoundCategory.NEUTRAL, 1, 1);
+        entity.world.playSound(null, new BlockPos(entity.getPos()), equipSound, SoundCategory.NEUTRAL, 1, 1);
     }
 
     public boolean canRightClickEquip() {
@@ -51,28 +57,28 @@ abstract class Curio implements ICurio {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public boolean canRender(String identifier, int index, LivingEntity livingEntity) {
         return true;
     }
 
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void render(String identifier, int index, MatrixStack matrixStack, IRenderTypeBuffer renderTypeBuffer, int light, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        BipedModel<LivingEntity> model = getModel();
-        model.setRotationAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-        model.setLivingAnimations(entity, limbSwing, limbSwingAmount, partialTicks);
+    @Environment(EnvType.CLIENT)
+    public void render(String identifier, int index, MatrixStack matrixStack, VertexConsumerProvider renderTypeBuffer, int light, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+        BipedEntityModel<LivingEntity> model = getModel();
+        model.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+        model.animateModel(entity, limbSwing, limbSwingAmount, partialTicks);
         ICurio.RenderHelper.followBodyRotations(entity, model);
-        IVertexBuilder vertexBuilder = ItemRenderer.getBuffer(renderTypeBuffer, model.getRenderType(getTexture()), false, false);
-        model.render(matrixStack, vertexBuilder, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+        VertexConsumer vertexBuilder = ItemRenderer.getArmorVertexConsumer(renderTypeBuffer, model.getLayer(getTexture()), false, false);
+        model.render(matrixStack, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    protected abstract BipedModel<LivingEntity> getModel();
+    @Environment(EnvType.CLIENT)
+    protected abstract BipedEntityModel<LivingEntity> getModel();
 
-    @OnlyIn(Dist.CLIENT)
-    protected abstract ResourceLocation getTexture();
+    @Environment(EnvType.CLIENT)
+    protected abstract Identifier getTexture();
 
     protected static class Provider implements ICapabilityProvider {
 

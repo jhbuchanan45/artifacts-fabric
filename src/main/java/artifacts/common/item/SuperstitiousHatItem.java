@@ -3,11 +3,13 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.SuperstitiousHatModel;
 import artifacts.common.init.Items;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -20,20 +22,20 @@ import javax.annotation.Nullable;
 
 public class SuperstitiousHatItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/superstitious_hat.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/superstitious_hat.png");
 
     public SuperstitiousHatItem() {
-        super(new Properties(), "superstitious_hat");
+        super(new Settings(), "superstitious_hat");
     }
 
     @Nullable
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected SuperstitiousHatModel getModel() {
                 if (model == null) {
                     model = new SuperstitiousHatModel();
@@ -42,8 +44,8 @@ public class SuperstitiousHatItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });
@@ -55,7 +57,7 @@ public class SuperstitiousHatItem extends ArtifactItem {
 
         @SubscribeEvent
         public static void onLootingLevel(LootingLevelEvent event) {
-            Entity killerEntity = event.getDamageSource().getTrueSource();
+            Entity killerEntity = event.getDamageSource().getAttacker();
             if (killerEntity instanceof LivingEntity && CuriosApi.getCuriosHelper().findEquippedCurio(Items.SUPERSTITIOUS_HAT, (LivingEntity) killerEntity).isPresent()) {
                 event.setLootingLevel(event.getLootingLevel() + 1);
             }

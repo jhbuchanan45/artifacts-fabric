@@ -1,13 +1,13 @@
 package artifacts.client.render.model.curio;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.model.PlayerModel;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.PlayerEntityModel;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.HandSide;
+import net.minecraft.util.Arm;
 
-public class GloveModel extends PlayerModel<LivingEntity> {
+public class GloveModel extends PlayerEntityModel<LivingEntity> {
 
     public GloveModel(boolean smallArms) {
         super(0.5F, smallArms);
@@ -15,16 +15,16 @@ public class GloveModel extends PlayerModel<LivingEntity> {
         setVisible(false);
     }
 
-    public void renderHand(boolean mainHand, MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        if (Minecraft.getInstance().gameSettings.mainHand == HandSide.LEFT) {
+    public void renderHand(boolean mainHand, MatrixStack matrixStackIn, VertexConsumer bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
+        if (MinecraftClient.getInstance().options.mainArm == Arm.LEFT) {
             mainHand = !mainHand;
         }
-        bipedRightArmwear.copyModelAngles(bipedRightArm);
-        bipedLeftArmwear.copyModelAngles(bipedLeftArm);
-        bipedLeftArm.showModel = !mainHand;
-        bipedLeftArmwear.showModel = !mainHand;
-        bipedRightArm.showModel = mainHand;
-        bipedRightArmwear.showModel = mainHand;
+        rightSleeve.copyPositionAndRotation(rightArm);
+        leftSleeve.copyPositionAndRotation(leftArm);
+        leftArm.visible = !mainHand;
+        leftSleeve.visible = !mainHand;
+        rightArm.visible = mainHand;
+        rightSleeve.visible = mainHand;
         render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
     }
 }

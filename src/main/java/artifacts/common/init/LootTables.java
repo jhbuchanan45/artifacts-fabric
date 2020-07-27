@@ -1,10 +1,10 @@
 package artifacts.common.init;
 
 import artifacts.Artifacts;
-import net.minecraft.loot.LootEntry;
 import net.minecraft.loot.LootPool;
-import net.minecraft.loot.TableLootEntry;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.loot.entry.LootPoolEntry;
+import net.minecraft.loot.entry.LootTableEntry;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -14,8 +14,8 @@ import java.util.List;
 
 public class LootTables {
 
-    public static final ResourceLocation MIMIC = new ResourceLocation(Artifacts.MODID, "entities/mimic");
-    public static final ResourceLocation CAMPSITE_CHEST = new ResourceLocation(Artifacts.MODID, "chests/campsite_chest");
+    public static final Identifier MIMIC = new Identifier(Artifacts.MODID, "entities/mimic");
+    public static final Identifier CAMPSITE_CHEST = new Identifier(Artifacts.MODID, "chests/campsite_chest");
 
     @Mod.EventBusSubscriber(modid = Artifacts.MODID)
     public static class LootTableEvents {
@@ -61,14 +61,14 @@ public class LootTables {
 
         public static LootPool getInjectPool(String entryName) {
             return LootPool.builder()
-                    .addEntry(getInjectEntry(entryName))
+                    .with(getInjectEntry(entryName))
                     .name("artifacts_inject")
                     .build();
         }
 
-        private static LootEntry.Builder<?> getInjectEntry(String name) {
-            ResourceLocation table = new ResourceLocation(Artifacts.MODID, "inject/" + name);
-            return TableLootEntry.builder(table).weight(1);
+        private static LootPoolEntry.Builder<?> getInjectEntry(String name) {
+            Identifier table = new Identifier(Artifacts.MODID, "inject/" + name);
+            return LootTableEntry.builder(table).weight(1);
         }
     }
 }

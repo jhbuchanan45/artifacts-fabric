@@ -1,36 +1,36 @@
 package artifacts.client.render.model.curio;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 
-public class CrossNecklaceModel extends BipedModel<LivingEntity> {
+public class CrossNecklaceModel extends BipedEntityModel<LivingEntity> {
 
     public CrossNecklaceModel() {
         super(0, 0, 64, 64);
 
         setVisible(false);
 
-        bipedBody = new ModelRenderer(this, 0, 0);
-        ModelRenderer cross1 = new ModelRenderer(this, 52, 0);
-        ModelRenderer cross2 = new ModelRenderer(this, 56, 0);
-        ModelRenderer cross3 = new ModelRenderer(this, 60, 0);
+        torso = new ModelPart(this, 0, 0);
+        ModelPart cross1 = new ModelPart(this, 52, 0);
+        ModelPart cross2 = new ModelPart(this, 56, 0);
+        ModelPart cross3 = new ModelPart(this, 60, 0);
 
-        bipedBody.addBox(-(2 * 8 + 1) / 2F, -1 / 2F, -(2 * 4 + 1) / 2F, 2 * 8 + 1, 2 * 12 + 1, 2 * 4 + 1);
-        cross1.addBox(-0.5F, 4.5F, -5, 1, 4, 1);
-        cross2.addBox(-1.5F, 5.5F, -5, 1, 1, 1);
-        cross3.addBox(0.5F, 5.5F, -5, 1, 1, 1);
+        torso.addCuboid(-(2 * 8 + 1) / 2F, -1 / 2F, -(2 * 4 + 1) / 2F, 2 * 8 + 1, 2 * 12 + 1, 2 * 4 + 1);
+        cross1.addCuboid(-0.5F, 4.5F, -5, 1, 4, 1);
+        cross2.addCuboid(-1.5F, 5.5F, -5, 1, 1, 1);
+        cross3.addCuboid(0.5F, 5.5F, -5, 1, 1, 1);
 
-        bipedBody.addChild(cross1);
-        bipedBody.addChild(cross2);
-        bipedBody.addChild(cross3);
+        torso.addChild(cross1);
+        torso.addChild(cross2);
+        torso.addChild(cross3);
     }
 
     @Override
-    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int light, int overlay, float red, float green, float blue, float alpha) {
+    public void render(MatrixStack matrixStack, VertexConsumer buffer, int light, int overlay, float red, float green, float blue, float alpha) {
         matrixStack.scale(0.5F, 0.5F, 0.5F);
-        bipedBody.render(matrixStack, buffer, light, overlay, red, green, blue, alpha);
+        torso.render(matrixStack, buffer, light, overlay, red, green, blue, alpha);
     }
 }

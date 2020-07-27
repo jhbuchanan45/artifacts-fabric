@@ -3,13 +3,15 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ObsidianSkullModel;
 import artifacts.common.init.Items;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -20,19 +22,19 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class ObsidianSkullItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/obsidian_skull.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/obsidian_skull.png");
 
     public ObsidianSkullItem() {
-        super(new Properties(), "obsidian_skull");
+        super(new Settings(), "obsidian_skull");
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected ObsidianSkullModel getModel() {
                 if (model == null) {
                     model = new ObsidianSkullModel();
@@ -41,8 +43,8 @@ public class ObsidianSkullItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });
@@ -54,10 +56,10 @@ public class ObsidianSkullItem extends ArtifactItem {
 
         @SubscribeEvent
         public static void onLivingHurt(LivingHurtEvent event) {
-            if (!event.getEntity().world.isRemote && event.getAmount() >= 1 && (event.getSource() == DamageSource.ON_FIRE || event.getSource() == DamageSource.IN_FIRE || event.getSource() == DamageSource.LAVA) && event.getEntity() instanceof PlayerEntity) {
-                if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.OBSIDIAN_SKULL, event.getEntityLiving()).isPresent() && !((PlayerEntity) event.getEntity()).getCooldownTracker().hasCooldown(Items.OBSIDIAN_SKULL)) {
-                    event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600, 0, false, true));
-                    ((PlayerEntity) event.getEntity()).getCooldownTracker().setCooldown(Items.OBSIDIAN_SKULL, 1200);
+            if (!event.getEntity().world.isClient && event.getAmount() >= 1 && (event.getSource() == DamageSource.ON_FIRE || event.getSource() == DamageSource.IN_FIRE || event.getSource() == DamageSource.LAVA) && event.getEntity() instanceof PlayerEntity) {
+                if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.OBSIDIAN_SKULL, event.getEntityLiving()).isPresent() && !((PlayerEntity) event.getEntity()).getItemCooldownManager().isCoolingDown(Items.OBSIDIAN_SKULL)) {
+                    event.getEntityLiving().addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0, false, true));
+                    ((PlayerEntity) event.getEntity()).getItemCooldownManager().set(Items.OBSIDIAN_SKULL, 1200);
                 }
             }
         }

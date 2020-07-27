@@ -2,20 +2,22 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.CrossNecklaceModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class CrossNecklaceItem extends ArtifactItem {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Artifacts.MODID, "textures/entity/curio/cross_necklace.png");
+    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/cross_necklace.png");
 
     public CrossNecklaceItem() {
-        super(new Properties(), "cross_necklace");
+        super(new Settings(), "cross_necklace");
     }
 
     private static boolean canApplyBonus(ItemStack stack) {
@@ -27,24 +29,24 @@ public class CrossNecklaceItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {
             private Object model;
 
             @Override
             public void curioTick(String identifier, int index, LivingEntity entity) {
-                if (entity.hurtResistantTime <= 10) {
+                if (entity.timeUntilRegen <= 10) {
                     setCanApplyBonus(stack, true);
                 } else {
                     if (canApplyBonus(stack)) {
-                        entity.hurtResistantTime += 20;
+                        entity.timeUntilRegen += 20;
                         setCanApplyBonus(stack, false);
                     }
                 }
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
+            @Environment(EnvType.CLIENT)
             protected CrossNecklaceModel getModel() {
                 if (model == null) {
                     model = new CrossNecklaceModel();
@@ -53,8 +55,8 @@ public class CrossNecklaceItem extends ArtifactItem {
             }
 
             @Override
-            @OnlyIn(Dist.CLIENT)
-            protected ResourceLocation getTexture() {
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
                 return TEXTURE;
             }
         });
