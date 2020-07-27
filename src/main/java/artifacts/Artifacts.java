@@ -1,17 +1,17 @@
 package artifacts;
 
 // This will register everything
-import artifacts.common.init.*;
+import artifacts.common.init.Items;
+import artifacts.common.init.LootModifiers;
+import artifacts.common.init.SoundEvents;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-
 import top.theillusivec4.curios.api.SlotTypePreset;
 
 public class Artifacts implements ModInitializer {
@@ -36,11 +36,6 @@ public class Artifacts implements ModInitializer {
             }
             InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.HANDS.getMessageBuilder().size(2).build());
             InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("feet").priority(220).icon(PlayerScreenHandler.EMPTY_BOOTS_SLOT_TEXTURE).build());
-        }
-
-        @SubscribeEvent
-        public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
-            SoundEvents.register(event.getRegistry());
         }
 
         @SubscribeEvent
