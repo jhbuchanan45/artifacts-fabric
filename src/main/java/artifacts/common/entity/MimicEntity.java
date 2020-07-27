@@ -51,7 +51,7 @@ public class MimicEntity extends MobEntity implements Monster {
         return false;
     }
 
-    public static DefaultAttributeContainer.Builder getAttributes() {
+    public static DefaultAttributeContainer.Builder createMobAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 60)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16)

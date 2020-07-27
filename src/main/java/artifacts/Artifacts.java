@@ -39,11 +39,6 @@ public class Artifacts implements ModInitializer {
         }
 
         @SubscribeEvent
-        public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) {
-            Entities.register(event.getRegistry());
-        }
-
-        @SubscribeEvent
         public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
             SoundEvents.register(event.getRegistry());
         }

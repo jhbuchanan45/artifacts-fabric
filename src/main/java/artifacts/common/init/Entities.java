@@ -2,19 +2,27 @@ package artifacts.common.init;
 
 import artifacts.Artifacts;
 import artifacts.common.entity.MimicEntity;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.attribute.DefaultAttributeRegistry;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraft.util.registry.Registry;
 
 public class Entities {
 
-    public static final EntityType<MimicEntity> MIMIC = EntityType.Builder.create(MimicEntity::new, SpawnGroup.MONSTER).setDimensions(14 / 16F, 14 / 16F).setTrackingRange(64).build(new Identifier(Artifacts.MOD_ID, "mimic").toString());
+    public static final EntityType<MimicEntity> MIMIC = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(Artifacts.MOD_ID, "mimic"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MimicEntity::new)
+                    .dimensions(EntityDimensions.changing(14/16F, 14/16F))  // TODO: can this be fixed?
+                    .trackable(64, 1)  // TODO: what should this interval be?
+                    .build()
+    );
 
-    public static void register(IForgeRegistry<EntityType<?>> registry) {
-        MIMIC.setRegistryName(Artifacts.MOD_ID, "mimic");
-        registry.registerAll(MIMIC);
-        DefaultAttributeRegistry.put(MIMIC, MimicEntity.getAttributes().build());
+    static {
+        // Register mob attributes
+        FabricDefaultAttributeRegistry.register(MIMIC, MimicEntity.createMobAttributes());
     }
 }
