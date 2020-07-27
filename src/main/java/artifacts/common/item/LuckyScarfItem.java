@@ -53,43 +53,5 @@ public class LuckyScarfItem extends ArtifactItem {
         });
     }
 
-    public static class FortuneBonusModifier extends LootModifier {
-
-        protected FortuneBonusModifier(LootCondition[] conditions) {
-            super(conditions);
-        }
-
-        @Override
-        protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-            ItemStack tool = context.get(LootContextParameters.TOOL);
-
-            if (tool == null || tool.getOrCreateTag().getBoolean("HasAppliedFortuneBonus")) {
-                return generatedLoot;
-            }
-
-            Entity entity = context.get(LootContextParameters.THIS_ENTITY);
-            BlockState blockState = context.get(LootContextParameters.BLOCK_STATE);
-            if (blockState == null || !(entity instanceof LivingEntity) || !CuriosApi.getCuriosHelper().findEquippedCurio(artifacts.common.init.Items.LUCKY_SCARF, (LivingEntity) entity).isPresent()) {
-                return generatedLoot;
-            }
-
-            ItemStack fakeTool = tool.isEmpty() ? new ItemStack(Items.BARRIER) : tool.copy();
-            fakeTool.getOrCreateTag().putBoolean("HasAppliedFortuneBonus", true);
-
-            fakeTool.addEnchantment(Enchantments.FORTUNE, EnchantmentHelper.getLevel(Enchantments.FORTUNE, fakeTool) + 1);
-            LootContext.Builder builder = new LootContext.Builder(context);
-            builder.parameter(LootContextParameters.TOOL, fakeTool);
-            LootContext newContext = builder.build(LootContextTypes.BLOCK);
-            LootTable lootTable = context.getWorld().getServer().getLootManager().getTable(blockState.getBlock().getLootTableId());
-            return lootTable.generateLoot(newContext);
-        }
-
-        public static class Serializer extends GlobalLootModifierSerializer<FortuneBonusModifier> {
-
-            @Override
-            public FortuneBonusModifier read(Identifier location, JsonObject object, LootCondition[] conditions) {
-                return new FortuneBonusModifier(conditions);
-            }
-        }
-    }
+    // TODO: Mixin to add +1 fortune to loot table
 }
