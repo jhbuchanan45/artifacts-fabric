@@ -22,7 +22,7 @@ public class Features {
             new CampsiteFeature()
     );
 
-    public static void registerFeatures() {
+    public static void register() {
 
         Decorator<ChanceDecoratorConfig> placement = new InCaveWithChance(ChanceDecoratorConfig.field_24980);
 

@@ -23,7 +23,7 @@ public class Artifacts implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        Features.registerFeatures();
+        Features.register();
     }
 
     public static class RegistryEvents {
