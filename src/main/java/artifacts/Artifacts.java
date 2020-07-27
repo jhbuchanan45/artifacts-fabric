@@ -1,10 +1,8 @@
 package artifacts;
 
-import artifacts.client.render.MimicRenderer;
 import artifacts.common.init.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -35,12 +33,6 @@ public class Artifacts implements ModInitializer {
         @SubscribeEvent
         public static void commonSetup(FMLCommonSetupEvent event) {
             Features.addFeatures();
-        }
-
-        @SubscribeEvent
-        public static void setupClient(final FMLClientSetupEvent event) {
-            RenderingRegistry.registerEntityRenderingHandler(Entities.MIMIC, MimicRenderer::new);
-            ModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0);
         }
 
         @SubscribeEvent
