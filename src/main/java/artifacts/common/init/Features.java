@@ -22,8 +22,8 @@ public class Features {
             new CampsiteFeature()
     );
 
-    public static void register() {
-
+    static {
+        // Add feature to biomes
         Decorator<ChanceDecoratorConfig> placement = new InCaveWithChance(ChanceDecoratorConfig.field_24980);
 
         Registry.BIOME.forEach(biome -> {
