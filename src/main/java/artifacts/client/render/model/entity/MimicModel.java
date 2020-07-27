@@ -38,18 +38,16 @@ public class MimicModel extends EntityModel<MimicEntity> {
     }
 
     @Override
-    public void setRotationAngles(MimicEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
-    }
+    public void setAngles(MimicEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) { }
 
     @Override
-    public void setLivingAnimations(MimicEntity entity, float limbSwing, float limbSwingAmount, float partialTicks) {
+    public void animateModel(MimicEntity entity, float limbAngle, float limbDistance, float tickDelta) {
         if (entity.ticksInAir > 0) {
-            float angle = Math.min(60, (entity.ticksInAir - 1 + partialTicks) * 6);
+            float angle = Math.min(60, (entity.ticksInAir - 1 + tickDelta) * 6);
             lid.pitch = -angle * 0.0174533F;
             upperTeeth.pitch = -angle * 0.0174533F;
             knob.pitch = -angle * 0.0174533F;
-            angle = Math.max(-30, (entity.ticksInAir - 1 + partialTicks) * -3F);
+            angle = Math.max(-30, (entity.ticksInAir - 1 + tickDelta) * -3F);
             chest.pitch = -angle * 0.0174533F;
             lowerTeeth.pitch = -angle * 0.0174533F;
         } else {

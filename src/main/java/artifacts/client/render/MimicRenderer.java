@@ -16,7 +16,7 @@ public class MimicRenderer extends MobEntityRenderer<MimicEntity, MimicModel> {
     }
 
     @Override
-    public Identifier getEntityTexture(MimicEntity entity) {
+    public Identifier getTexture(MimicEntity entity) {
         return TEXTURE;
     }
 }
