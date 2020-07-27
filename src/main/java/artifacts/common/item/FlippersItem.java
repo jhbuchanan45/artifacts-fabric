@@ -11,10 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import java.util.UUID;
 
@@ -26,7 +22,7 @@ public class FlippersItem extends ArtifactItem {
 
 
     public FlippersItem() {
-        super(new Item.Settings(), "flippers");
+        super(new Item.Settings());
     }
 
     @Override

@@ -8,16 +8,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class CrossNecklaceItem extends ArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/cross_necklace.png");
 
     public CrossNecklaceItem() {
-        super(new Settings(), "cross_necklace");
+        super(new Settings());
     }
 
     private static boolean canApplyBonus(ItemStack stack) {

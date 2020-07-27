@@ -11,16 +11,13 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class ScarfOfInvisibilityItem extends ArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/scarf_of_invisibility.png");
 
     public ScarfOfInvisibilityItem() {
-        super(new Settings(), "scarf_of_invisibility");
+        super(new Settings());
     }
 
     @Override

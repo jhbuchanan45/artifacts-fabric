@@ -19,11 +19,6 @@ import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.common.loot.LootModifier;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.List;
@@ -33,7 +28,7 @@ public class LuckyScarfItem extends ArtifactItem {
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/lucky_scarf.png");
 
     public LuckyScarfItem() {
-        super(new Settings(), "lucky_scarf");
+        super(new Settings());
     }
 
     @Override

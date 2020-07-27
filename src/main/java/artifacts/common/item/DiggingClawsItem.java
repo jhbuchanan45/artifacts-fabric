@@ -8,12 +8,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class DiggingClawsItem extends ArtifactItem {
@@ -22,7 +16,7 @@ public class DiggingClawsItem extends ArtifactItem {
     private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
 
     public DiggingClawsItem() {
-        super(new Settings(), "digging_claws");
+        super(new Settings());
     }
 
     @Override

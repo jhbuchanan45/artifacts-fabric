@@ -18,21 +18,15 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class PendantItem extends ArtifactItem {
 
     private final Identifier texture;
 
-    public PendantItem(String name) {
-        super(new Settings(), name);
-        texture = new Identifier(Artifacts.MOD_ID, String.format("textures/entity/curio/%s.png", name));
+    public PendantItem(Identifier texture) {
+        super(new Settings());
+        this.texture = texture;
     }
 
     @Override

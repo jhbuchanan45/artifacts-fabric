@@ -17,12 +17,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.UUID;
 
@@ -31,7 +25,7 @@ public class UmbrellaItem extends ArtifactItem {
     private static final EntityAttributeModifier UMBRELLA_SLOW_FALLING = new EntityAttributeModifier(UUID.fromString("a7a25453-2065-4a96-bc83-df600e13f390"), "artifacts:umbrella_slow_falling", -0.875, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
     public UmbrellaItem() {
-        super(new Settings(), "umbrella");
+        super(new Settings());
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
     }
 

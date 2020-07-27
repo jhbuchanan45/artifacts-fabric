@@ -11,12 +11,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.UseAction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class DrinkingHatItem extends ArtifactItem {
@@ -26,8 +20,8 @@ public class DrinkingHatItem extends ArtifactItem {
 
     private final boolean isNoveltyHat;
 
-    public DrinkingHatItem(String name, boolean isNoveltyHat) {
-        super(new Settings(), name);
+    public DrinkingHatItem(boolean isNoveltyHat) {
+        super(new Settings());
         this.isNoveltyHat = isNoveltyHat;
     }
 

@@ -7,8 +7,8 @@ import net.minecraft.world.World;
 
 public class EverlastingFoodItem extends ArtifactItem {
 
-    public EverlastingFoodItem(Settings properties, String name) {
-        super(properties, name);
+    public EverlastingFoodItem(Settings properties) {
+        super(properties);
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {

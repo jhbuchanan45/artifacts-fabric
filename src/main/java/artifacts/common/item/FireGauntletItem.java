@@ -19,14 +19,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 public class FireGauntletItem extends ArtifactItem {
 
@@ -36,7 +29,7 @@ public class FireGauntletItem extends ArtifactItem {
     private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/fire_gauntlet_slim_glow.png");
 
     public FireGauntletItem() {
-        super(new Settings(), "fire_gauntlet");
+        super(new Settings());
     }
 
     @Override

@@ -12,11 +12,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,10 +21,9 @@ public class AntidoteVesselItem extends ArtifactItem {
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/antidote_vessel.png");
 
     public AntidoteVesselItem() {
-        super(new Settings(), "antidote_vessel");
+        super(new Settings());
     }
 
-    @Nullable
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {

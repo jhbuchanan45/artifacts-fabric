@@ -13,15 +13,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.entity.item.ItemTossEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class UniversalAttractorItem extends ArtifactItem {
@@ -29,7 +22,7 @@ public class UniversalAttractorItem extends ArtifactItem {
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/universal_attractor.png");
 
     public UniversalAttractorItem() {
-        super(new Settings(), "universal_attractor");
+        super(new Settings());
     }
 
     public static int getCooldown(ItemStack stack) {
@@ -40,7 +33,6 @@ public class UniversalAttractorItem extends ArtifactItem {
         stack.getOrCreateTag().putInt("Cooldown", cooldown);
     }
 
-    @Nullable
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return Curio.createProvider(new Curio(this) {

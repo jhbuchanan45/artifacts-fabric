@@ -14,12 +14,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class BunnyHoppersItem extends ArtifactItem {
@@ -27,7 +21,7 @@ public class BunnyHoppersItem extends ArtifactItem {
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/bunny_hoppers.png");
 
     public BunnyHoppersItem() {
-        super(new Settings(), "bunny_hoppers");
+        super(new Settings());
     }
 
     @Override

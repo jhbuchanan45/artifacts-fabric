@@ -10,16 +10,13 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class SnorkelItem extends ArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/snorkel.png");
 
     public SnorkelItem() {
-        super(new Settings(), "snorkel");
+        super(new Settings());
     }
 
     @Override

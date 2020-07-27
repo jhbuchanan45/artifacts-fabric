@@ -10,9 +10,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import java.util.UUID;
 
@@ -24,7 +21,7 @@ public class PowerGloveItem extends ArtifactItem {
     private static final EntityAttributeModifier POWER_GLOVE_ATTACK_DAMAGE = new EntityAttributeModifier(UUID.fromString("15fab7b9-5916-460b-a8e8-8434849a0662"), "artifacts:power_glove_attack_damage", 4, EntityAttributeModifier.Operation.ADDITION);
 
     public PowerGloveItem() {
-        super(new Settings(), "power_glove");
+        super(new Settings());
     }
 
     @Override

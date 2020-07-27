@@ -11,9 +11,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import java.util.UUID;
 
@@ -24,7 +21,7 @@ public class SteadfastSpikesItem extends ArtifactItem {
     private static final EntityAttributeModifier STEADFAST_SPIKES_KNOCKBACK_RESISTANCE = new EntityAttributeModifier(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttributeModifier.Operation.ADDITION);
 
     public SteadfastSpikesItem() {
-        super(new Settings(), "steadfast_spikes");
+        super(new Settings());
     }
 
     @Override

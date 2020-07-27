@@ -11,9 +11,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import java.util.UUID;
 
@@ -25,7 +22,7 @@ public class FeralClawsItem extends ArtifactItem {
     public static EntityAttributeModifier FERAL_CLAWS_ATTACK_SPEED = new EntityAttributeModifier(UUID.fromString("7a3367b2-0a38-491d-b5c7-338d5d0c1dd4"), "artifacts:feral_claws_attack_speed", 1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
     public FeralClawsItem() {
-        super(new Settings(), "feral_claws");
+        super(new Settings());
     }
 
     @Override

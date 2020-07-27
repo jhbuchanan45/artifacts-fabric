@@ -9,22 +9,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
 public class ArtifactItem extends Item {
 
-    private final String name;
-
-    public ArtifactItem(Settings properties, String name) {
+    public ArtifactItem(Settings properties) {
         super(properties.maxCount(1).group(Artifacts.CREATIVE_TAB));
-        setRegistryName(new Identifier(Artifacts.MOD_ID, name));
-        this.name = name;
     }
 
     @Override
@@ -35,6 +28,6 @@ public class ArtifactItem extends Item {
     @Override
     @Environment(EnvType.CLIENT)
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-        tooltip.add(new TranslatableText("tooltip.artifacts." + name).formatted(Formatting.GRAY));
+        tooltip.add(new TranslatableText(this.getTranslationKey() + ".tooltip").formatted(Formatting.GRAY));
     }
 }

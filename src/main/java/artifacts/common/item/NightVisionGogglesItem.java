@@ -17,9 +17,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class NightVisionGogglesItem extends ArtifactItem {
 
@@ -27,7 +24,7 @@ public class NightVisionGogglesItem extends ArtifactItem {
     private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/night_vision_goggles_glow.png");
 
     public NightVisionGogglesItem() {
-        super(new Item.Settings(), "night_vision_goggles");
+        super(new Item.Settings());
     }
 
     @Override
