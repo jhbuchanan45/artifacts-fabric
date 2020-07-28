@@ -29,10 +29,11 @@ public class UmbrellaItem extends ArtifactItem {
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
     }
 
+    /* TODO: reimplement, extend ShieldItem instead?
     @Override
     public boolean isShield(ItemStack stack, LivingEntity entity) {
         return true;
-    }
+    }*/
 
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BLOCK;
@@ -48,6 +49,7 @@ public class UmbrellaItem extends ArtifactItem {
         return TypedActionResult.consume(itemstack);
     }
 
+    /* TODO: reimplement
     @SuppressWarnings("unused")
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     public static class Events {
@@ -87,5 +89,5 @@ public class UmbrellaItem extends ArtifactItem {
                 }
             }
         }
-    }
+    }*/
 }

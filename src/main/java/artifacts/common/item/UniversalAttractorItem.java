@@ -14,10 +14,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 import java.util.List;
 
-public class UniversalAttractorItem extends ArtifactItem {
+public class UniversalAttractorItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/universal_attractor.png");
 
@@ -34,10 +36,8 @@ public class UniversalAttractorItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-            private Object model;
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             // magnet logic from Botania, see https://github.com/Vazkii/Botania
             @Override
             public void curioTick(String identifier, int index, LivingEntity entity) {
@@ -53,7 +53,8 @@ public class UniversalAttractorItem extends ArtifactItem {
                     List<ItemEntity> items = entity.world.getNonSpectatingEntities(ItemEntity.class, new Box(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
                     int pulled = 0;
                     for (ItemEntity item : items) {
-                        if (item.isAlive() && !item.cannotPickup() && !item.getPersistentData().getBoolean("PreventRemoteMovement")) {
+                        // TODO: fix this or wait for botania-fabric to do it for me
+                        if (item.isAlive() && !item.cannotPickup()) { // && !item.getPersistentData().getBoolean("PreventRemoteMovement")
                             if (pulled++ > 200) {
                                 break;
                             }
@@ -69,6 +70,13 @@ public class UniversalAttractorItem extends ArtifactItem {
                     setCooldown(stack, cooldown - 1);
                 }
             }
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
 
             @Override
             @Environment(EnvType.CLIENT)
@@ -84,9 +92,10 @@ public class UniversalAttractorItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -95,5 +104,5 @@ public class UniversalAttractorItem extends ArtifactItem {
         public static void onItemToss(ItemTossEvent event) {
             CuriosApi.getCuriosHelper().findEquippedCurio(Items.UNIVERSAL_ATTRACTOR, event.getPlayer()).ifPresent((triple) -> setCooldown(triple.right, 100));
         }
-    }
+    }*/
 }

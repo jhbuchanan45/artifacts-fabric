@@ -17,8 +17,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class NightVisionGogglesItem extends ArtifactItem {
+public class NightVisionGogglesItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/night_vision_goggles.png");
     private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/night_vision_goggles_glow.png");
@@ -28,16 +30,21 @@ public class NightVisionGogglesItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-            private Object model;
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity) {
                 if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
                     livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 319, 0, true, false));
                 }
             }
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
 
             @Override
             @Environment(EnvType.CLIENT)
@@ -61,6 +68,6 @@ public class NightVisionGogglesItem extends ArtifactItem {
                 VertexConsumer buffer = ItemRenderer.getArmorVertexConsumer(renderTypeBuffer, RenderTypes.unlit(TEXTURE_GLOW), false, false);
                 getModel().render(matrixStack, buffer, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
             }
-        });
+        };
     }
 }

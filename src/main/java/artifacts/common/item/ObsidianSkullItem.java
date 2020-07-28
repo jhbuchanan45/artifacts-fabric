@@ -13,8 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class ObsidianSkullItem extends ArtifactItem {
+public class ObsidianSkullItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/obsidian_skull.png");
 
@@ -23,8 +25,13 @@ public class ObsidianSkullItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this);
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
             private Object model;
 
             @Override
@@ -41,9 +48,10 @@ public class ObsidianSkullItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -57,5 +65,5 @@ public class ObsidianSkullItem extends ArtifactItem {
                 }
             }
         }
-    }
+    }*/
 }

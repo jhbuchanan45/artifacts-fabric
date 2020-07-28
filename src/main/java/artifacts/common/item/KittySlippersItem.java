@@ -16,8 +16,10 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class KittySlippersItem extends ArtifactItem {
+public class KittySlippersItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/kitty_slippers.png");
 
@@ -26,8 +28,13 @@ public class KittySlippersItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this);
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
             private Object model;
 
             @Override
@@ -44,9 +51,10 @@ public class KittySlippersItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -82,5 +90,5 @@ public class KittySlippersItem extends ArtifactItem {
                 ((CreeperEntity) event.getEntity()).goalSelector.add(3, new FleeEntityGoal<>((CreeperEntity) event.getEntity(), PlayerEntity.class, (entity) -> entity != null && CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, entity).isPresent(), 6, 1, 1.3, EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR::test));
             }
         }
-    }
+    }*/
 }

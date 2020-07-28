@@ -7,10 +7,11 @@ import net.minecraft.world.World;
 
 public class EverlastingFoodItem extends ArtifactItem {
 
-    public EverlastingFoodItem(Settings properties) {
-        super(properties);
+    public EverlastingFoodItem(Settings settings) {
+        super(settings);
     }
 
+    @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
         if (isFood()) {
             entity.eatFood(world, stack.copy());

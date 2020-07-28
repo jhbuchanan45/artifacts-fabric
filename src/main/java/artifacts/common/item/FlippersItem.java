@@ -11,10 +11,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 import java.util.UUID;
 
-public class FlippersItem extends ArtifactItem {
+public class FlippersItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/flippers.png");
 
@@ -26,16 +28,22 @@ public class FlippersItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-            private Object model;
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(String identifier) {
                 Multimap<EntityAttribute, EntityAttributeModifier> result = super.getAttributeModifiers(identifier);
-                result.put(ForgeMod.SWIM_SPEED.get(), FLIPPER_SWIM_SPEED);
+                // TODO: wots dis
+                //result.put(ForgeMod.SWIM_SPEED.get(), FLIPPER_SWIM_SPEED);
                 return result;
             }
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
 
             @Override
             @Environment(EnvType.CLIENT)
@@ -51,6 +59,6 @@ public class FlippersItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE;
             }
-        });
+        };
     }
 }

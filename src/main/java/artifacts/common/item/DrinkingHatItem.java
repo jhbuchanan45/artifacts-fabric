@@ -12,8 +12,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.UseAction;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class DrinkingHatItem extends ArtifactItem {
+public class DrinkingHatItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/plastic_drinking_hat.png");
     private static final Identifier TEXTURE_NOVELTY = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/novelty_drinking_hat.png");
@@ -31,15 +33,19 @@ public class DrinkingHatItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-
-            private Object model;
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             protected SoundEvent getEquipSound() {
                 return SoundEvents.ITEM_BOTTLE_FILL;
             }
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
 
             @Override
             @Environment(EnvType.CLIENT)
@@ -55,9 +61,10 @@ public class DrinkingHatItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return isNoveltyHat ? TEXTURE_NOVELTY : TEXTURE_DEFAULT;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -70,5 +77,5 @@ public class DrinkingHatItem extends ArtifactItem {
                 }
             }
         }
-    }
+    }*/
 }

@@ -10,8 +10,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class PocketPistonItem extends ArtifactItem {
+public class PocketPistonItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_default.png");
     private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_slim.png");
@@ -21,8 +23,13 @@ public class PocketPistonItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new GloveCurio(this) {
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this);
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableGloveCurio() {
             @Override
             @Environment(EnvType.CLIENT)
             protected Identifier getSlimTexture() {
@@ -34,9 +41,10 @@ public class PocketPistonItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE_DEFAULT;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -48,5 +56,5 @@ public class PocketPistonItem extends ArtifactItem {
                 event.getEntityLiving().takeKnockback(1.5F, MathHelper.sin((float) (attacker.yaw * (Math.PI / 180))), -MathHelper.cos((float) (attacker.yaw * (Math.PI / 180))));
             }
         }
-    }
+    }*/
 }

@@ -2,15 +2,14 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ClawsModel;
-import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class DiggingClawsItem extends ArtifactItem {
+public class DiggingClawsItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
     private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
@@ -20,9 +19,13 @@ public class DiggingClawsItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new GloveCurio(this) {
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this);
+    }
 
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableGloveCurio() {
             @Override
             @Environment(EnvType.CLIENT)
             protected Identifier getTexture() {
@@ -37,23 +40,24 @@ public class DiggingClawsItem extends ArtifactItem {
 
             @Environment(EnvType.CLIENT)
             protected ClawsModel getSlimModel() {
-                if (model_slim == null) {
-                    model_slim = new ClawsModel(true);
+                if (modelSlim == null) {
+                    modelSlim = new ClawsModel(true);
                 }
-                return (ClawsModel) model_slim;
+                return (ClawsModel) modelSlim;
             }
 
             @Override
             @Environment(EnvType.CLIENT)
             protected ClawsModel getModel() {
-                if (model_default == null) {
-                    model_default = new ClawsModel(false);
+                if (modelDefault == null) {
+                    modelDefault = new ClawsModel(false);
                 }
-                return (ClawsModel) model_default;
+                return (ClawsModel) modelDefault;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -71,5 +75,5 @@ public class DiggingClawsItem extends ArtifactItem {
                 event.setCanHarvest(event.canHarvest() || event.getTargetBlock().getHarvestLevel() <= 2);
             }
         }
-    }
+    }*/
 }

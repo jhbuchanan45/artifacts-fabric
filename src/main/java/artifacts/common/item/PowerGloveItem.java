@@ -10,10 +10,12 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 import java.util.UUID;
 
-public class PowerGloveItem extends ArtifactItem {
+public class PowerGloveItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/power_glove_default.png");
     private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/power_glove_slim.png");
@@ -25,15 +27,20 @@ public class PowerGloveItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new GloveCurio(this) {
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(String identifier) {
                 Multimap<EntityAttribute, EntityAttributeModifier> result = super.getAttributeModifiers(identifier);
                 result.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, POWER_GLOVE_ATTACK_DAMAGE);
                 return result;
             }
+        };
+    }
 
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableGloveCurio() {
             @Override
             @Environment(EnvType.CLIENT)
             protected Identifier getSlimTexture() {
@@ -45,6 +52,6 @@ public class PowerGloveItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE_DEFAULT;
             }
-        });
+        };
     }
 }

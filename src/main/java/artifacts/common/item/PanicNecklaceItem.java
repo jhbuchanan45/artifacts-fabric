@@ -2,19 +2,18 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.PanicNecklaceModel;
-import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class PanicNecklaceItem extends ArtifactItem {
+public class PanicNecklaceItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/panic_necklace.png");
 
@@ -23,18 +22,23 @@ public class PanicNecklaceItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-            private Object model;
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             protected SoundEvent getEquipSound() {
                 return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
             }
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
 
             @Override
             @Environment(EnvType.CLIENT)
-            protected PanicNecklaceModel getModel() {
+            protected BipedEntityModel<LivingEntity> getModel() {
                 if (model == null) {
                     model = new PanicNecklaceModel();
                 }
@@ -46,9 +50,10 @@ public class PanicNecklaceItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -61,5 +66,5 @@ public class PanicNecklaceItem extends ArtifactItem {
                 }
             }
         }
-    }
+    }*/
 }

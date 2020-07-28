@@ -19,8 +19,10 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class PendantItem extends ArtifactItem {
+public class PendantItem extends CurioArtifactItem {
 
     private final Identifier texture;
 
@@ -30,14 +32,19 @@ public class PendantItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-            private Object model;
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             protected SoundEvent getEquipSound() {
                 return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
             }
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
 
             @Override
             @Environment(EnvType.CLIENT)
@@ -53,9 +60,10 @@ public class PendantItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return texture;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -93,5 +101,5 @@ public class PendantItem extends ArtifactItem {
                 }
             }
         }
-    }
+    }*/
 }

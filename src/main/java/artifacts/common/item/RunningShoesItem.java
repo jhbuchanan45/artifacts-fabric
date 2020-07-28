@@ -10,13 +10,13 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class RunningShoesItem extends ArtifactItem {
+public class RunningShoesItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/running_shoes.png");
 
@@ -26,27 +26,9 @@ public class RunningShoesItem extends ArtifactItem {
         super(new Settings());
     }
 
-    @Nullable
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-            private Object model;
-
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected RunningShoesModel getModel() {
-                if (model == null) {
-                    model = new RunningShoesModel();
-                }
-                return (RunningShoesModel) model;
-            }
-
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             @SuppressWarnings("ConstantConditions")
             public void curioTick(String identifier, int index, LivingEntity livingEntity) {
@@ -73,6 +55,28 @@ public class RunningShoesItem extends ArtifactItem {
                     livingEntity.stepHeight = 0.6F;
                 }
             }
-        });
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
+
+            @Override
+            @Environment(EnvType.CLIENT)
+            protected RunningShoesModel getModel() {
+                if (model == null) {
+                    model = new RunningShoesModel();
+                }
+                return (RunningShoesModel) model;
+            }
+
+            @Override
+            @Environment(EnvType.CLIENT)
+            protected Identifier getTexture() {
+                return TEXTURE;
+            }
+        };
     }
 }

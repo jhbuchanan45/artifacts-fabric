@@ -23,7 +23,8 @@ public class InCaveWithChance extends Decorator<ChanceDecoratorConfig> {
             int z = random.nextInt(16);
             pos = new BlockPos(pos.getX() + x, Config.campsiteMinY, pos.getZ() + z);
             while (pos.getY() <= Config.campsiteMaxY) {
-                if (world.getBlockState(pos).isAir(world, pos) && world.getBlockState(pos.down()).getMaterial().blocksMovement()) {
+                // TODO: why is that isAir() deprecated in Forge?
+                if (world.getBlockState(pos).isAir() && world.getBlockState(pos.down()).getMaterial().blocksMovement()) {
                     return Stream.of(pos);
                 }
                 pos = pos.up();

@@ -20,8 +20,10 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.*;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class FireGauntletItem extends ArtifactItem {
+public class FireGauntletItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/fire_gauntlet_default.png");
     private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/fire_gauntlet_slim.png");
@@ -33,14 +35,18 @@ public class FireGauntletItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new GloveCurio(this) {
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             protected SoundEvent getEquipSound() {
                 return SoundEvents.ITEM_ARMOR_EQUIP_IRON;
             }
+        };
+    }
 
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableGloveCurio() {
             @Override
             @Environment(EnvType.CLIENT)
             public void render(String identifier, int index, MatrixStack matrixStack, VertexConsumerProvider renderTypeBuffer, int light, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -48,7 +54,7 @@ public class FireGauntletItem extends ArtifactItem {
                 GloveModel model = getModel(smallArms);
                 model.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
                 model.animateModel(entity, limbSwing, limbSwingAmount, partialTicks);
-                ICurio.RenderHelper.followBodyRotations(entity, model);
+                RenderHelper.followBodyRotations(entity, model);
                 VertexConsumer vertexBuilder = ItemRenderer.getArmorVertexConsumer(renderTypeBuffer, model.getLayer(getTexture(smallArms)), false, false);
                 model.renderHand(index == 0, matrixStack, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
                 vertexBuilder = ItemRenderer.getArmorVertexConsumer(renderTypeBuffer, RenderTypes.unlit(getGlowTexture(smallArms)), false, false);
@@ -71,9 +77,10 @@ public class FireGauntletItem extends ArtifactItem {
             protected Identifier getGlowTexture(boolean smallArms) {
                 return smallArms ? TEXTURE_SLIM_GLOW : TEXTURE_DEFAULT_GLOW;
             }
-        });
+        };
     }
 
+    /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
     @SuppressWarnings("unused")
     public static class Events {
@@ -91,5 +98,5 @@ public class FireGauntletItem extends ArtifactItem {
                 }
             }
         }
-    }
+    }*/
 }

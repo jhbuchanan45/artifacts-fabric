@@ -11,10 +11,12 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
+import top.theillusivec4.curios.api.type.component.ICurio;
+import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 import java.util.UUID;
 
-public class SteadfastSpikesItem extends ArtifactItem {
+public class SteadfastSpikesItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/steadfast_spikes.png");
 
@@ -25,16 +27,21 @@ public class SteadfastSpikesItem extends ArtifactItem {
     }
 
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return Curio.createProvider(new Curio(this) {
-            private Object model;
-
+    ICurio attachCurio(ItemStack stack) {
+        return new Curio(this) {
             @Override
             public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(String identifier) {
                 Multimap<EntityAttribute, EntityAttributeModifier> result = super.getAttributeModifiers(identifier);
                 result.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, STEADFAST_SPIKES_KNOCKBACK_RESISTANCE);
                 return result;
             }
+        };
+    }
+
+    @Override
+    IRenderableCurio attachRenderableCurio(ItemStack stack) {
+        return new RenderableCurio() {
+            private Object model;
 
             @Override
             @Environment(EnvType.CLIENT)
@@ -50,6 +57,6 @@ public class SteadfastSpikesItem extends ArtifactItem {
             protected Identifier getTexture() {
                 return TEXTURE;
             }
-        });
+        };
     }
 }
