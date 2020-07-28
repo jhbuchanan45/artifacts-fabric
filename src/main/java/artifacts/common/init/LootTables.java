@@ -13,7 +13,6 @@ import net.minecraft.util.Identifier;
 import java.util.Arrays;
 import java.util.List;
 
-// TODO: probably doesn't work
 public class LootTables {
     public static final Identifier MIMIC = new Identifier(Artifacts.MOD_ID, "entities/mimic");
     public static final Identifier CAMPSITE_CHEST = new Identifier(Artifacts.MOD_ID, "chests/campsite_chest");

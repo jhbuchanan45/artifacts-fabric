@@ -16,7 +16,7 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class Features {
 
-    private static final Feature<DefaultFeatureConfig> CAMPSITE_FEATURE = Registry.register(
+    public static final Feature<DefaultFeatureConfig> CAMPSITE_FEATURE = Registry.register(
             Registry.FEATURE,
             new Identifier(Artifacts.MOD_ID, "campsite"),
             new CampsiteFeature()

@@ -1,8 +1,9 @@
 package artifacts;
 
-// This will register everything
-import artifacts.common.init.*;
-
+import artifacts.common.init.Features;
+import artifacts.common.init.Items;
+import artifacts.common.init.LootTables;
+import artifacts.common.init.SoundEvents;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
@@ -24,6 +25,7 @@ public class Artifacts implements ModInitializer {
     );
 
     @Override
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void onInitialize() {
         // Curios setup
         SlotTypePreset[] types = {SlotTypePreset.HEAD, SlotTypePreset.NECKLACE, SlotTypePreset.BELT};
@@ -37,7 +39,9 @@ public class Artifacts implements ModInitializer {
         LootTableLoadingCallback.EVENT.register(LootTables::onLootTableLoad);
 
         // Force loading init classes
-        //noinspection ResultOfMethodCallIgnored
+        // Entities is loaded by items, loottables can load lazily (no registration)
         Items.ANTIDOTE_VESSEL.toString();
+        Features.CAMPSITE_FEATURE.toString();
+        SoundEvents.MIMIC_CLOSE.toString();
     }
 }
