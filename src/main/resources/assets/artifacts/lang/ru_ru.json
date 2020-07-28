@@ -1,7 +1,7 @@
 {
   "curios.identifier.feet": "Ноги",
   "curios.modifiers.feet": "Когда на ногах:",
-  "itemGroup.artifacts": "Артефакты",
+  "itemGroup.artifacts.item_group": "Артефакты",
   "entity.artifacts.mimic": "Мимик",
   "item.artifacts.mimic_spawn_egg": "Яйцо призыва Мимика",
   "item.artifacts.snorkel": "Дыхательная трубка",

@@ -1,5 +1,5 @@
 {
-  "itemGroup.artifacts": "Artifacts",
+  "itemGroup.artifacts.item_group": "Artifacts",
   "entity.artifacts.mimic": "Mimique",
   "item.artifacts.snorkel": "Tuba",
   "item.artifacts.plastic_drinking_hat": "Casque à bière",

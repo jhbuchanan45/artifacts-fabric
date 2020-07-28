@@ -1,5 +1,5 @@
 {
-  "itemGroup.artifacts": "아티팩트",
+  "itemGroup.artifacts.item_group": "아티팩트",
   "entity.artifacts.mimic": "미믹",
   "item.artifacts.snorkel": "스노클",
   "item.artifacts.plastic_drinking_hat": "음료 모자",
