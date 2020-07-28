@@ -14,10 +14,10 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ArtifactItem extends Item {
+public abstract class ArtifactItem extends Item {
 
-    public ArtifactItem(Settings properties) {
-        super(properties.maxCount(1).group(Artifacts.CREATIVE_TAB));
+    public ArtifactItem(Settings settings) {
+        super(settings.maxCount(1).group(Artifacts.CREATIVE_TAB));
     }
 
     @Override
