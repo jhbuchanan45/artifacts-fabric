@@ -8,6 +8,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -39,8 +40,7 @@ public class AntidoteVesselItem extends CurioArtifactItem {
                 Map<StatusEffect, StatusEffectInstance> effects = new HashMap<>();
 
                 entity.getActiveStatusEffects().forEach((effect, instance) -> {
-                    // TODO: this is very likely not going to work but I wanna try it anyways (use accessor instead)
-                    if (!effect.isInstant() && !((StatusEffectAccessor) effect).invokeIsBeneficial() && instance.getDuration() > 80) {
+                    if (!effect.isInstant() && ((StatusEffectAccessor) effect).getType() != StatusEffectType.BENEFICIAL && instance.getDuration() > 80) {
                         effects.put(effect, instance);
                     }
                 });

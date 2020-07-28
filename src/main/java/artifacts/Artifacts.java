@@ -35,5 +35,9 @@ public class Artifacts implements ModInitializer {
 
         // LootTable setup
         LootTableLoadingCallback.EVENT.register(LootTables::onLootTableLoad);
+
+        // Force loading init classes
+        //noinspection ResultOfMethodCallIgnored
+        Items.ANTIDOTE_VESSEL.toString();
     }
 }
