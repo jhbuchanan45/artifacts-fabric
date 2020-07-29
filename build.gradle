@@ -1,14 +1,12 @@
 plugins {
     id 'fabric-loom' version '0.4-SNAPSHOT'
-    id 'maven-publish'
 }
 
 repositories {
-    // Curios
+    maven { url = "https://jitpack.io" }
+    maven { url = "https://www.cursemaven.com" }
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://dl.bintray.com/ladysnake/libs"}
-
-    // Window Wonders
     maven { url = 'https://maven.dblsaiko.net' }
 }
 
@@ -34,12 +32,19 @@ dependencies {
     include "me.shedaniel.cloth:config-2:${project.cloth_config_version}"
     modImplementation "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
     include "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
-
-    // Dev runtime
     modImplementation ("io.github.prospector:modmenu:${project.mod_menu_version}") {
         transitive = false
     }
+
+    // Dev runtime
     modRuntime "net.dblsaiko:winwonders:${project.window_wonders_version}-+"
+    modRuntime ("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
+        exclude module: "fabric-loader"
+    }
+
+    modRuntime "curse.maven:sodium:${sodium_version}"
+    modRuntime "curse.maven:lithium:${lithium_version}"
+    modRuntime "curse.maven:phosphor:${phosphor_version}"
 }
 
 processResources {
@@ -72,25 +77,4 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 
 jar {
     from "LICENSE"
-}
-
-// configure the maven publication
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            // add all the jars that should be included when publishing to maven
-            artifact(remapJar) {
-                builtBy remapJar
-            }
-            artifact(sourcesJar) {
-                builtBy remapSourcesJar
-            }
-        }
-    }
-
-    // select the repositories you want to publish to
-    repositories {
-        // uncomment to publish to the local maven
-        // mavenLocal()
-    }
 }

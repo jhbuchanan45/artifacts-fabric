@@ -128,8 +128,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
                     world.setBlockState(pos, Blocks.TRAPPED_CHEST.getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)), 2);
                     world.setBlockState(pos.down(), Blocks.TNT.getDefaultState(), 0);
                 } else {
-                    // TODO: Tags
-                    //world.setBlockState(pos, Tags.Blocks.CHESTS_WOODEN.getRandom(random).getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)), 2);
+                    // TODO: random wooden chest with tag
                     world.setBlockState(pos, Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)), 2);
                 }
             } else {
