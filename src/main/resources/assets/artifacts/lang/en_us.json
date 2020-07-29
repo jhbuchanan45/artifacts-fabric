@@ -64,5 +64,13 @@
   "item.artifacts.universal_attractor.tooltip": "Attracts nearby items",
   "item.artifacts.kitty_slippers.tooltip": "Creepers avoid the wearer",
   "item.artifacts.running_shoes.tooltip": "Increases movement speed and step height while sprinting",
-  "item.artifacts.bunny_hoppers.tooltip": "Increases the wearer's jump height and slightly reduces fall damage"
+  "item.artifacts.bunny_hoppers.tooltip": "Increases the wearer's jump height and slightly reduces fall damage",
+  "text.autoconfig.artifacts.title": "Artifacts Configuration",
+  "text.autoconfig.artifacts.category.campsite": "Campsite",
+  "text.autoconfig.artifacts.category.module_b": "Category 2: Electric Boogaloo",
+  "text.autoconfig.artifacts.option.campsite.genChance": "Per-chunk chance a campsite is attempted to be generated",
+  "text.autoconfig.artifacts.option.campsite.mimicChance": "Chance for a container of a campsite to be replaced by a mimic",
+  "text.autoconfig.artifacts.option.campsite.oreChance": "Chance for an ore vein to generate underneath a campsite",
+  "text.autoconfig.artifacts.option.campsite.minY": "The minimum y-level at which a campsite can generate",
+  "text.autoconfig.artifacts.option.campsite.maxY": "The maximum y-level at which a campsite can generate"
 }

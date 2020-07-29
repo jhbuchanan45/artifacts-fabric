@@ -1,7 +1,7 @@
 package artifacts.common.init;
 
 import artifacts.Artifacts;
-import artifacts.common.config.Config;
+import artifacts.common.config.ModConfig;
 import artifacts.common.world.CampsiteFeature;
 import artifacts.common.world.InCaveWithChance;
 import net.minecraft.util.Identifier;
@@ -28,7 +28,7 @@ public class Features {
 
         Registry.BIOME.forEach(biome -> {
             if (biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND) {
-                biome.addFeature(GenerationStep.Feature.UNDERGROUND_STRUCTURES, CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(placement.configure(new ChanceDecoratorConfig((int) (1 / Config.campsiteChance)))));
+                biome.addFeature(GenerationStep.Feature.UNDERGROUND_STRUCTURES, CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(placement.configure(new ChanceDecoratorConfig((int) (1 / ModConfig.campsite.genChance)))));
             }
         });
     }

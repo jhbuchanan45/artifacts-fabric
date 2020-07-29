@@ -1,6 +1,6 @@
 package artifacts.common.world;
 
-import artifacts.common.config.Config;
+import artifacts.common.config.ModConfig;
 import artifacts.common.entity.MimicEntity;
 import artifacts.common.init.Entities;
 import artifacts.common.init.LootTables;
@@ -81,7 +81,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
         }
         Collections.shuffle(positions);
 
-        if (random.nextFloat() < Config.campsiteOreChance) {
+        if (random.nextFloat() < ModConfig.campsite.oreChance) {
             generateOreVein(world, pos.down(), random);
         }
 
@@ -115,7 +115,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
     }
 
     public void generateContainer(WorldAccess world, BlockPos pos, Random random) {
-        if (random.nextFloat() < Config.campsiteMimicChance) {
+        if (random.nextFloat() < ModConfig.campsite.mimicChance) {
             MimicEntity mimic = Entities.MIMIC.create(world.getWorld());
             if (mimic != null) {
                 mimic.setDormant();
