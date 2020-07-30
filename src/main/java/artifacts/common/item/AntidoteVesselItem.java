@@ -2,12 +2,11 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.AntidoteVesselModel;
-import artifacts.mixins.StatusEffectAccessor;
+import artifacts.mixins.item.antidotevessel.StatusEffectAccessor;
+import artifacts.common.extensions.StatusEffectInstanceExtension;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
@@ -15,9 +14,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AntidoteVesselItem extends CurioArtifactItem {
 
@@ -37,17 +33,11 @@ public class AntidoteVesselItem extends CurioArtifactItem {
 
             @Override
             public void curioTick(String identifier, int index, LivingEntity entity) {
-                Map<StatusEffect, StatusEffectInstance> effects = new HashMap<>();
-
+                // Reduce duration of all negative status effects to 80
                 entity.getActiveStatusEffects().forEach((effect, instance) -> {
                     if (!effect.isInstant() && ((StatusEffectAccessor) effect).getType() != StatusEffectType.BENEFICIAL && instance.getDuration() > 80) {
-                        effects.put(effect, instance);
+                        ((StatusEffectInstanceExtension)instance).artifacts$setDuration(80);
                     }
-                });
-
-                effects.forEach((effect, instance) -> {
-                    entity.removeStatusEffectInternal(effect);
-                    entity.addStatusEffect(new StatusEffectInstance(effect, 80, instance.getAmplifier(), instance.isAmbient(), instance.shouldShowParticles(), instance.shouldShowIcon()));
                 });
             }
         };

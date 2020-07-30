@@ -4,10 +4,11 @@
   "package": "artifacts.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "StatusEffectAccessor"
+    "item.antidotevessel.MixinStatusEffectInstance",
+    "item.antidotevessel.StatusEffectAccessor"
   ],
   "client": [
-    "MixinMinecraftClient"
+    "dev.MixinMinecraftClient"
   ],
   "injectors": {
     "defaultRequire": 1

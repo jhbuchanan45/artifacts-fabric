@@ -1,4 +1,4 @@
-package artifacts.mixins;
+package artifacts.mixins.dev;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
@@ -21,8 +21,8 @@ public abstract class MixinMinecraftClient {
 
     @Shadow @Final private LevelStorage levelStorage;
 
-    @Inject(method = "<init>(Lnet/minecraft/client/RunArgs;)V", at = @At("RETURN"))
-    private void yeet(RunArgs runArgs, CallbackInfo info) {
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void autoStartLevel(RunArgs runArgs, CallbackInfo info) {
         if (FabricLoader.getInstance().isDevelopmentEnvironment() && levelStorage.levelExists("autostart")) {
             startIntegratedServer("autostart");
         }
