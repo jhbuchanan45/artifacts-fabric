@@ -45,6 +45,7 @@ dependencies {
     modRuntime "curse.maven:sodium:${sodium_version}"
     modRuntime "curse.maven:lithium:${lithium_version}"
     modRuntime "curse.maven:phosphor:${phosphor_version}"
+    modRuntime "curse.maven:iamverysmart:${iamverysmart_version}"
 }
 
 processResources {
