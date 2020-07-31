@@ -13,34 +13,15 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 public class CrossNecklaceItem extends CurioArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/cross_necklace.png");
+    public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
 
     public CrossNecklaceItem() {
         super(new Settings());
     }
 
-    private static boolean canApplyBonus(ItemStack stack) {
-        return stack.getOrCreateTag().getBoolean("CanApplyBonus");
-    }
-
-    private static void setCanApplyBonus(ItemStack stack, boolean canApplyBonus) {
-        stack.getOrCreateTag().putBoolean("CanApplyBonus", canApplyBonus);
-    }
-
     @Override
     ICurio attachCurio(ItemStack stack) {
-        return new Curio(this) {
-            @Override
-            public void curioTick(String identifier, int index, LivingEntity entity) {
-                if (entity.timeUntilRegen <= 10) {
-                    setCanApplyBonus(stack, true);
-                } else {
-                    if (canApplyBonus(stack)) {
-                        entity.timeUntilRegen += 20;
-                        setCanApplyBonus(stack, false);
-                    }
-                }
-            }
-        };
+        return new Curio(this);
     }
 
     @Override

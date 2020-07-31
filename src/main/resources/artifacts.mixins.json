@@ -6,7 +6,8 @@
   "mixins": [
     "item.antidotevessel.MixinStatusEffectInstance",
     "item.antidotevessel.StatusEffectAccessor",
-    "item.bunnyhoppers.MixinLivingEntity"
+    "item.bunnyhoppers.MixinLivingEntity",
+    "item.crossnecklace.MixinLivingEntity"
   ],
   "client": [
     "dev.MixinMinecraftClient",
