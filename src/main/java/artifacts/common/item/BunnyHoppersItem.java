@@ -25,8 +25,10 @@ public class BunnyHoppersItem extends CurioArtifactItem {
         return new Curio(this) {
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity) {
+                // Do this ever 15 ticks
                 if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
-                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 39, 1, true, false));
+                    // Gives 20 ticks (1sec) of jump boost
+                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 1, true, false));
                 }
             }
         };
@@ -53,17 +55,4 @@ public class BunnyHoppersItem extends CurioArtifactItem {
             }
         };
     }
-
-    /* TODO: reimplement
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onLivingDamage(LivingDamageEvent event) {
-            if (event.getEntityLiving() instanceof PlayerEntity && CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, event.getEntityLiving()).isPresent()) {
-                event.getEntity().world.playSound(null, event.getEntityLiving().getX(), event.getEntityLiving().getY(), event.getEntityLiving().getZ(), SoundEvents.ENTITY_RABBIT_HURT, SoundCategory.PLAYERS, 1, (event.getEntityLiving().getRandom().nextFloat() - event.getEntityLiving().getRandom().nextFloat()) * 0.2F + 1.0F);
-            }
-        }
-    }*/
 }

@@ -5,10 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "item.antidotevessel.MixinStatusEffectInstance",
-    "item.antidotevessel.StatusEffectAccessor"
+    "item.antidotevessel.StatusEffectAccessor",
+    "item.bunnyhoppers.MixinLivingEntity"
   ],
   "client": [
-    "dev.MixinMinecraftClient"
+    "dev.MixinMinecraftClient",
+    "item.bunnyhoppers.client.MixinLivingEntity"
   ],
   "injectors": {
     "defaultRequire": 1

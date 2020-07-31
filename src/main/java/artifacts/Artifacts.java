@@ -37,13 +37,6 @@ public class Artifacts implements ModInitializer {
     @Override
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void onInitialize() {
-        // Developer Mode
-        // TODO: some weird server error pauses the game
-        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            // LOGGER.info("We're in developer mode now!");
-            //SharedConstants.isDevelopment = true;
-        }
-
         // Config
         AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(Toml4jConfigSerializer::new));
         CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
