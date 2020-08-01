@@ -25,7 +25,7 @@ public class Artifacts implements ModInitializer {
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     public static ModConfig CONFIG;  // TODO: we're not even using this
 
-    public static final ItemGroup CREATIVE_TAB = FabricItemGroupBuilder.build(
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
             new Identifier(MOD_ID, "item_group"),
             () -> new ItemStack(Items.PLASTIC_DRINKING_HAT)
     );

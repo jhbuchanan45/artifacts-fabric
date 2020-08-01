@@ -17,7 +17,7 @@ import java.util.List;
 public abstract class ArtifactItem extends Item {
 
     public ArtifactItem(Settings settings) {
-        super(settings.maxCount(1).group(Artifacts.CREATIVE_TAB));
+        super(settings.maxCount(1).group(Artifacts.ITEM_GROUP));
     }
 
     @Override

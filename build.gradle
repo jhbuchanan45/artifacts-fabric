@@ -41,7 +41,6 @@ dependencies {
     modRuntime ("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
         exclude module: "fabric-loader"
     }
-
     modRuntime "curse.maven:sodium:${sodium_version}"
     modRuntime "curse.maven:lithium:${lithium_version}"
     modRuntime "curse.maven:phosphor:${phosphor_version}"
