@@ -1,5 +1,6 @@
 plugins {
     id 'fabric-loom' version '0.5-SNAPSHOT'
+    id "com.github.fudge.forgedflowerloom" version "2.0.0"
 }
 
 repositories {
@@ -16,6 +17,14 @@ targetCompatibility = JavaVersion.VERSION_1_8
 archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
+
+sourceSets {
+    testmod {
+        compileClasspath += main.compileClasspath
+        runtimeClasspath += main.runtimeClasspath
+    }
+}
+
 
 dependencies {
     // To change the versions see the gradle.properties file
@@ -37,6 +46,7 @@ dependencies {
     }
 
     // Dev runtime
+    testmodImplementation sourceSets.main.output
     modRuntime "net.dblsaiko:winwonders:${project.window_wonders_version}-+"
     modRuntime("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
         exclude module: "fabric-loader"
