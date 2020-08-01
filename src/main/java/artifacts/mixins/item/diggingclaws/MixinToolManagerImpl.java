@@ -20,24 +20,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = ToolManagerImpl.class, remap = false)
 public abstract class MixinToolManagerImpl {
 
-    /**
-     * If there is no user set, check if we can get it from the stack holder
-     */
-    @ModifyVariable(method = "handleIsEffectiveOnIgnoresVanilla", argsOnly = true, at = @At("HEAD"))
-    private static LivingEntity getUserFromStackHolder(LivingEntity user, BlockState state, ItemStack stack) {
-        //noinspection ConstantConditions
-        Entity holder = ((ItemStackAccessor)(Object) stack).getHolder();
-        return user == null && holder instanceof LivingEntity ? (LivingEntity) holder : null;
-    }
+	/**
+	 * If there is no user set, check if we can get it from the stack holder
+	 */
+	@ModifyVariable(method = "handleIsEffectiveOnIgnoresVanilla", argsOnly = true, at = @At("HEAD"))
+	private static LivingEntity getUserFromStackHolder(LivingEntity user, BlockState state, ItemStack stack) {
+		//noinspection ConstantConditions
+		Entity holder = ((ItemStackAccessor) (Object) stack).getHolder();
+		return user == null && holder instanceof LivingEntity ? (LivingEntity) holder : null;
+	}
 
-    /**
-     * Run our nontool toolhandler for all items
-     */
-    @Inject(method = "handleIsEffectiveOnIgnoresVanilla", at = @At(value = "TAIL"), cancellable = true)
-    private static void invokeNonToolsHandlers(BlockState state, ItemStack stack, LivingEntity user, boolean vanillaResult, CallbackInfoReturnable<Boolean> info) {
-        if (!info.getReturnValueZ()) {
-            ActionResult effective = ToolHandlers.NON_TOOLS_HANDLER.invoker().isEffectiveOn(null, state, stack, user);
-            if (effective.isAccepted()) info.setReturnValue(true);
-        }
-    }
+	/**
+	 * Run our nontool toolhandler for all items
+	 */
+	@Inject(method = "handleIsEffectiveOnIgnoresVanilla", at = @At(value = "TAIL"), cancellable = true)
+	private static void invokeNonToolsHandlers(BlockState state, ItemStack stack, LivingEntity user, boolean vanillaResult, CallbackInfoReturnable<Boolean> info) {
+		if (!info.getReturnValueZ()) {
+			ActionResult effective = ToolHandlers.NON_TOOLS_HANDLER.invoker().isEffectiveOn(null, state, stack, user);
+			if (effective.isAccepted()) info.setReturnValue(true);
+		}
+	}
 }

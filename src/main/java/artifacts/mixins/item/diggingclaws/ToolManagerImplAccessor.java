@@ -6,8 +6,9 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(value = ToolManagerImpl.class, remap = false)
 public interface ToolManagerImplAccessor {
-    @Invoker
-    static ToolManagerImpl.ToolHandler invokeToolHandlerInvoker(ToolManagerImpl.ToolHandler[] toolHandlers) {
-        throw new IllegalStateException("Accessor did not apply correctly");
-    }
+
+	@Invoker
+	static ToolManagerImpl.ToolHandler invokeToolHandlerInvoker(ToolManagerImpl.ToolHandler[] toolHandlers) {
+		throw new IllegalStateException("Accessor did not apply correctly");
+	}
 }

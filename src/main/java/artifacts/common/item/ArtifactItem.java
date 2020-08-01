@@ -16,18 +16,18 @@ import java.util.List;
 
 public abstract class ArtifactItem extends Item {
 
-    public ArtifactItem(Settings settings) {
-        super(settings.maxCount(1).group(Artifacts.ITEM_GROUP));
-    }
+	public ArtifactItem(Settings settings) {
+		super(settings.maxCount(1).group(Artifacts.ITEM_GROUP));
+	}
 
-    @Override
-    public Rarity getRarity(ItemStack stack) {
-        return Rarity.RARE;
-    }
+	@Override
+	public Rarity getRarity(ItemStack stack) {
+		return Rarity.RARE;
+	}
 
-    @Override
-    @Environment(EnvType.CLIENT)
-    public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-        tooltip.add(new TranslatableText(this.getTranslationKey() + ".tooltip").formatted(Formatting.GRAY));
-    }
+	@Override
+	@Environment(EnvType.CLIENT)
+	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
+		tooltip.add(new TranslatableText(this.getTranslationKey() + ".tooltip").formatted(Formatting.GRAY));
+	}
 }

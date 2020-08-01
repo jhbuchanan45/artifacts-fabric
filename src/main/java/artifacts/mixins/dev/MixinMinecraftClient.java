@@ -21,10 +21,10 @@ public abstract class MixinMinecraftClient {
 
     @Shadow @Final private LevelStorage levelStorage;
 
-    @Inject(method = "<init>", at = @At("TAIL"))
-    private void autoStartLevel(RunArgs runArgs, CallbackInfo info) {
-        if (FabricLoader.getInstance().isDevelopmentEnvironment() && levelStorage.levelExists("autostart")) {
-            startIntegratedServer("autostart");
-        }
-    }
+	@Inject(method = "<init>", at = @At("TAIL"))
+	private void autoStartLevel(RunArgs runArgs, CallbackInfo info) {
+		if (FabricLoader.getInstance().isDevelopmentEnvironment() && levelStorage.levelExists("autostart")) {
+			startIntegratedServer("autostart");
+		}
+	}
 }

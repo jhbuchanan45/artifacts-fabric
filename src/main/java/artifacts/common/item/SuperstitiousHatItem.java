@@ -2,52 +2,47 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.SuperstitiousHatModel;
-import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class SuperstitiousHatItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/superstitious_hat.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/superstitious_hat.png");
 
-    public SuperstitiousHatItem() {
-        super(new Settings());
-    }
+	public SuperstitiousHatItem() {
+		super(new Settings());
+	}
 
-    @Override
-    ICurio attachCurio(ItemStack stack) {
-        return new Curio(this);
-    }
+	@Override
+	ICurio attachCurio(ItemStack stack) {
+		return new Curio(this);
+	}
 
-    @Override
-    IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected SuperstitiousHatModel getModel() {
-                if (model == null) {
-                    model = new SuperstitiousHatModel();
-                }
-                return (SuperstitiousHatModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected SuperstitiousHatModel getModel() {
+				if (model == null) {
+					model = new SuperstitiousHatModel();
+				}
+				return (SuperstitiousHatModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE;
+			}
+		};
+	}
 
     /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)

@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
  */
 @Mixin(ItemStack.class)
 public interface ItemStackAccessor {
-    @Accessor
-    Entity getHolder();
+
+	@Accessor
+	Entity getHolder();
 }

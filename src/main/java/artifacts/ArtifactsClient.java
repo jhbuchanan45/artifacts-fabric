@@ -13,16 +13,17 @@ import net.minecraft.util.Identifier;
 @SuppressWarnings("unused")
 @Environment(EnvType.CLIENT)
 public class ArtifactsClient implements ClientModInitializer {
-    @Override
-    public void onInitializeClient() {
-        // Mimic EntityRenderer
-        EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> {
-            return new MimicRenderer(dispatcher);
-        });
 
-        // ModelPredicateProvider for rendering of umbrella blocking
-        FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity) -> {
-            return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0;
-        });
-    }
+	@Override
+	public void onInitializeClient() {
+		// Mimic EntityRenderer
+		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> {
+			return new MimicRenderer(dispatcher);
+		});
+
+		// ModelPredicateProvider for rendering of umbrella blocking
+		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity) -> {
+			return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0;
+		});
+	}
 }

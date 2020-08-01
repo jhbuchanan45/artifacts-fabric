@@ -9,20 +9,21 @@ import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public abstract class CurioArtifactItem extends ArtifactItem {
-    public CurioArtifactItem(Settings settings) {
-        super(settings);
 
-        // Setup Curio for item
-        ItemComponentCallbackV2.event(this).register((item, stack, componentContainer) -> {
-            componentContainer.put(CuriosComponent.ITEM, attachCurio(stack));
+	public CurioArtifactItem(Settings settings) {
+		super(settings);
 
-            if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-                componentContainer.put(CuriosComponent.ITEM_RENDER, attachRenderableCurio(stack));
-            }
-        });
-    }
+		// Setup Curio for item
+		ItemComponentCallbackV2.event(this).register((item, stack, componentContainer) -> {
+			componentContainer.put(CuriosComponent.ITEM, attachCurio(stack));
 
-    abstract ICurio attachCurio(ItemStack stack);
+			if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+				componentContainer.put(CuriosComponent.ITEM_RENDER, attachRenderableCurio(stack));
+			}
+		});
+	}
 
-    abstract IRenderableCurio attachRenderableCurio(ItemStack stack);
+	abstract ICurio attachCurio(ItemStack stack);
+
+	abstract IRenderableCurio attachRenderableCurio(ItemStack stack);
 }

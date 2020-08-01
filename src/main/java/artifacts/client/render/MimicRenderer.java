@@ -9,14 +9,14 @@ import net.minecraft.util.Identifier;
 
 public class MimicRenderer extends MobEntityRenderer<MimicEntity, MimicModel> {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/mimic.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/mimic.png");
 
-    public MimicRenderer(EntityRenderDispatcher manager) {
-        super(manager, new MimicModel(), 0.45F);
-    }
+	public MimicRenderer(EntityRenderDispatcher manager) {
+		super(manager, new MimicModel(), 0.45F);
+	}
 
-    @Override
-    public Identifier getTexture(MimicEntity entity) {
-        return TEXTURE;
-    }
+	@Override
+	public Identifier getTexture(MimicEntity entity) {
+		return TEXTURE;
+	}
 }

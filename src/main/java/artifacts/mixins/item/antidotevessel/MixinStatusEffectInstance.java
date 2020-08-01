@@ -12,14 +12,14 @@ public abstract class MixinStatusEffectInstance implements StatusEffectInstanceE
     @Shadow private int duration;
     @Shadow private StatusEffectInstance hiddenEffect;
 
-    @Unique
-    @Override
-    public void artifacts$setDuration(int duration) {
-        // Recursively set duration for hidden effects
-        if (this.hiddenEffect != null) {
-            ((StatusEffectInstanceExtension)this.hiddenEffect).artifacts$setDuration(duration);
-        }
+	@Unique
+	@Override
+	public void artifacts$setDuration(int duration) {
+		// Recursively set duration for hidden effects
+		if (this.hiddenEffect != null) {
+			((StatusEffectInstanceExtension) this.hiddenEffect).artifacts$setDuration(duration);
+		}
 
-        this.duration = duration;
-    }
+		this.duration = duration;
+	}
 }

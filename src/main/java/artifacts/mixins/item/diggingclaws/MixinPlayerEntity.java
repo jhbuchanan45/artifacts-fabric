@@ -18,15 +18,15 @@ public abstract class MixinPlayerEntity extends LivingEntity {
 
     @Shadow @Final public PlayerInventory inventory;
 
-    protected MixinPlayerEntity(EntityType<? extends LivingEntity> entityType, World world) {
-        super(entityType, world);
-    }
+	protected MixinPlayerEntity(EntityType<? extends LivingEntity> entityType, World world) {
+		super(entityType, world);
+	}
 
-    /**
-     * Sets the holder on the itemstack to check
-     */
-    @Inject(method = "isUsingEffectiveTool", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isEffectiveOn(Lnet/minecraft/block/BlockState;)Z"))
-    private void setItemStackHolding(BlockState block, CallbackInfoReturnable<Boolean> info) {
-        this.inventory.getMainHandStack().setHolder(this);
-    }
+	/**
+	 * Sets the holder on the itemstack to check
+	 */
+	@Inject(method = "isUsingEffectiveTool", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isEffectiveOn(Lnet/minecraft/block/BlockState;)Z"))
+	private void setItemStackHolding(BlockState block, CallbackInfoReturnable<Boolean> info) {
+		this.inventory.getMainHandStack().setHolder(this);
+	}
 }

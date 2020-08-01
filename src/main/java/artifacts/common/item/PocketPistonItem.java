@@ -1,48 +1,43 @@
 package artifacts.common.item;
 
 import artifacts.Artifacts;
-import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class PocketPistonItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_default.png");
-    private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_slim.png");
+	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_default.png");
+	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/pocket_piston_slim.png");
 
-    public PocketPistonItem() {
-        super(new Settings());
-    }
+	public PocketPistonItem() {
+		super(new Settings());
+	}
 
-    @Override
-    ICurio attachCurio(ItemStack stack) {
-        return new Curio(this);
-    }
+	@Override
+	ICurio attachCurio(ItemStack stack) {
+		return new Curio(this);
+	}
 
-    @Override
-    IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableGloveCurio() {
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getSlimTexture() {
-                return TEXTURE_SLIM;
-            }
+	@Override
+	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableGloveCurio() {
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getSlimTexture() {
+				return TEXTURE_SLIM;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE_DEFAULT;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE_DEFAULT;
+			}
+		};
+	}
 
     /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)

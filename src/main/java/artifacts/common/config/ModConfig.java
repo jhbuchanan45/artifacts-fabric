@@ -11,19 +11,20 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 @Config.Gui.Background("minecraft:textures/block/oak_planks.png")
 public class ModConfig extends PartitioningSerializer.GlobalData {
 
-    @ConfigEntry.Category("campsite")
-    @ConfigEntry.Gui.TransitiveObject
-    public static Campsite campsite = new Campsite();
+	@ConfigEntry.Category("campsite")
+	@ConfigEntry.Gui.TransitiveObject
+	public static Campsite campsite = new Campsite();
 
-    @Config(name = "campsite")
-    public static class Campsite implements ConfigData {
-        public static Double genChance = 0.08;
-        public static Double mimicChance = 0.3;
-        public static Double oreChance = 0.25;
+	@Config(name = "campsite")
+	public static class Campsite implements ConfigData {
 
-        @ConfigEntry.BoundedDiscrete(max = 256)
-        public static int minY = 0;
-        @ConfigEntry.BoundedDiscrete(max = 256)
-        public static int maxY = 45;
-    }
+		public static Double genChance = 0.08;
+		public static Double mimicChance = 0.3;
+		public static Double oreChance = 0.25;
+
+		@ConfigEntry.BoundedDiscrete(max = 256)
+		public static int minY = 0;
+		@ConfigEntry.BoundedDiscrete(max = 256)
+		public static int maxY = 45;
+	}
 }

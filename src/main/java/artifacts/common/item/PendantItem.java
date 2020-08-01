@@ -1,67 +1,55 @@
 package artifacts.common.item;
 
-import artifacts.Artifacts;
 import artifacts.client.render.model.curio.PendantModel;
-import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import top.theillusivec4.curios.api.CuriosApi;
+import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class PendantItem extends CurioArtifactItem {
 
-    private final Identifier texture;
+	private final Identifier texture;
 
-    public PendantItem(Identifier texture) {
-        super(new Settings());
-        this.texture = texture;
-    }
+	public PendantItem(Identifier texture) {
+		super(new Settings());
+		this.texture = texture;
+	}
 
-    @Override
-    ICurio attachCurio(ItemStack stack) {
-        return new Curio(this) {
-            @Override
-            protected SoundEvent getEquipSound() {
-                return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
-            }
-        };
-    }
+	@Override
+	ICurio attachCurio(ItemStack stack) {
+		return new Curio(this) {
+			@Override
+			protected SoundEvent getEquipSound() {
+				return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
+			}
+		};
+	}
 
-    @Override
-    IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected PendantModel getModel() {
-                if (model == null) {
-                    model = new PendantModel();
-                }
-                return (PendantModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected PendantModel getModel() {
+				if (model == null) {
+					model = new PendantModel();
+				}
+				return (PendantModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return texture;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return texture;
+			}
+		};
+	}
 
     /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)

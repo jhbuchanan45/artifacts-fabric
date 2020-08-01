@@ -4,7 +4,6 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.curio.CrossNecklaceModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
@@ -12,37 +11,37 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class CrossNecklaceItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/cross_necklace.png");
-    public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
+	public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/cross_necklace.png");
 
-    public CrossNecklaceItem() {
-        super(new Settings());
-    }
+	public CrossNecklaceItem() {
+		super(new Settings());
+	}
 
-    @Override
-    ICurio attachCurio(ItemStack stack) {
-        return new Curio(this);
-    }
+	@Override
+	ICurio attachCurio(ItemStack stack) {
+		return new Curio(this);
+	}
 
-    @Override
-    IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected CrossNecklaceModel getModel() {
-                if (model == null) {
-                    model = new CrossNecklaceModel();
-                }
-                return (CrossNecklaceModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected CrossNecklaceModel getModel() {
+				if (model == null) {
+					model = new CrossNecklaceModel();
+				}
+				return (CrossNecklaceModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE;
+			}
+		};
+	}
 }

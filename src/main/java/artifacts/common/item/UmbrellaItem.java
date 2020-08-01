@@ -1,18 +1,10 @@
 package artifacts.common.item;
 
-import artifacts.Artifacts;
-import artifacts.common.init.Items;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Arm;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -22,12 +14,12 @@ import java.util.UUID;
 
 public class UmbrellaItem extends ArtifactItem {
 
-    private static final EntityAttributeModifier UMBRELLA_SLOW_FALLING = new EntityAttributeModifier(UUID.fromString("a7a25453-2065-4a96-bc83-df600e13f390"), "artifacts:umbrella_slow_falling", -0.875, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+	private static final EntityAttributeModifier UMBRELLA_SLOW_FALLING = new EntityAttributeModifier(UUID.fromString("a7a25453-2065-4a96-bc83-df600e13f390"), "artifacts:umbrella_slow_falling", -0.875, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
-    public UmbrellaItem() {
-        super(new Settings());
-        DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
-    }
+	public UmbrellaItem() {
+		super(new Settings());
+		DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
+	}
 
     /* TODO: reimplement, extend ShieldItem instead?
     @Override
@@ -35,19 +27,19 @@ public class UmbrellaItem extends ArtifactItem {
         return true;
     }*/
 
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BLOCK;
-    }
+	public UseAction getUseAction(ItemStack stack) {
+		return UseAction.BLOCK;
+	}
 
-    public int getMaxUseTime(ItemStack stack) {
-        return 72000;
-    }
+	public int getMaxUseTime(ItemStack stack) {
+		return 72000;
+	}
 
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        ItemStack itemstack = player.getStackInHand(hand);
-        player.setCurrentHand(hand);
-        return TypedActionResult.consume(itemstack);
-    }
+	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+		ItemStack itemstack = player.getStackInHand(hand);
+		player.setCurrentHand(hand);
+		return TypedActionResult.consume(itemstack);
+	}
 
     /* TODO: reimplement
     @SuppressWarnings("unused")

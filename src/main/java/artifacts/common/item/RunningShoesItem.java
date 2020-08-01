@@ -18,65 +18,65 @@ import java.util.UUID;
 
 public class RunningShoesItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/running_shoes.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/running_shoes.png");
 
-    private static final EntityAttributeModifier RUNNING_SHOES_SPEED_BOOST = new EntityAttributeModifier(UUID.fromString("ac7ab816-2b08-46b6-879d-e5dea34ff305"), "artifacts:running_shoes_movement_speed", 0.4, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+	private static final EntityAttributeModifier RUNNING_SHOES_SPEED_BOOST = new EntityAttributeModifier(UUID.fromString("ac7ab816-2b08-46b6-879d-e5dea34ff305"), "artifacts:running_shoes_movement_speed", 0.4, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
-    public RunningShoesItem() {
-        super(new Settings());
-    }
+	public RunningShoesItem() {
+		super(new Settings());
+	}
 
-    @Override
-    ICurio attachCurio(ItemStack stack) {
-        return new Curio(this) {
-            @Override
-            @SuppressWarnings("ConstantConditions")
-            public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-                EntityAttributeInstance movementSpeed = livingEntity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
-                if (livingEntity.isSprinting()) {
-                    if (!movementSpeed.hasModifier(RUNNING_SHOES_SPEED_BOOST)) {
-                        movementSpeed.addTemporaryModifier(RUNNING_SHOES_SPEED_BOOST);
-                    }
-                    if (livingEntity instanceof PlayerEntity) {
-                        livingEntity.stepHeight = Math.max(livingEntity.stepHeight, 1.1F);
-                    }
-                } else if (movementSpeed.hasModifier(RUNNING_SHOES_SPEED_BOOST)) {
-                    movementSpeed.removeModifier(RUNNING_SHOES_SPEED_BOOST);
-                    livingEntity.stepHeight = 0.6F;
-                }
-            }
+	@Override
+	ICurio attachCurio(ItemStack stack) {
+		return new Curio(this) {
+			@Override
+			@SuppressWarnings("ConstantConditions")
+			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
+				EntityAttributeInstance movementSpeed = livingEntity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+				if (livingEntity.isSprinting()) {
+					if (!movementSpeed.hasModifier(RUNNING_SHOES_SPEED_BOOST)) {
+						movementSpeed.addTemporaryModifier(RUNNING_SHOES_SPEED_BOOST);
+					}
+					if (livingEntity instanceof PlayerEntity) {
+						livingEntity.stepHeight = Math.max(livingEntity.stepHeight, 1.1F);
+					}
+				} else if (movementSpeed.hasModifier(RUNNING_SHOES_SPEED_BOOST)) {
+					movementSpeed.removeModifier(RUNNING_SHOES_SPEED_BOOST);
+					livingEntity.stepHeight = 0.6F;
+				}
+			}
 
-            @Override
-            @SuppressWarnings("ConstantConditions")
-            public void onUnequip(String identifier, int index, LivingEntity livingEntity) {
-                EntityAttributeInstance movementSpeed = livingEntity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
-                if (movementSpeed.hasModifier(RUNNING_SHOES_SPEED_BOOST)) {
-                    movementSpeed.removeModifier(RUNNING_SHOES_SPEED_BOOST);
-                    livingEntity.stepHeight = 0.6F;
-                }
-            }
-        };
-    }
+			@Override
+			@SuppressWarnings("ConstantConditions")
+			public void onUnequip(String identifier, int index, LivingEntity livingEntity) {
+				EntityAttributeInstance movementSpeed = livingEntity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+				if (movementSpeed.hasModifier(RUNNING_SHOES_SPEED_BOOST)) {
+					movementSpeed.removeModifier(RUNNING_SHOES_SPEED_BOOST);
+					livingEntity.stepHeight = 0.6F;
+				}
+			}
+		};
+	}
 
-    @Override
-    IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected RunningShoesModel getModel() {
-                if (model == null) {
-                    model = new RunningShoesModel();
-                }
-                return (RunningShoesModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected RunningShoesModel getModel() {
+				if (model == null) {
+					model = new RunningShoesModel();
+				}
+				return (RunningShoesModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE;
+			}
+		};
+	}
 }

@@ -1,5 +1,6 @@
 package artifacts.common.extensions;
 
 public interface LivingEntityExtension {
-    void artifacts$playBunnyHoppersHurtSound();
+
+	void artifacts$playBunnyHoppersHurtSound();
 }

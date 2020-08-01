@@ -10,28 +10,29 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 
 class Curio implements ICurio {
-    private final Item curioItem;
-    private final SoundEvent equipSound = getEquipSound();
 
-    public Curio(Item item) {
-        curioItem = item;
-    }
+	private final Item curioItem;
+	private final SoundEvent equipSound = getEquipSound();
 
-    protected SoundEvent getEquipSound() {
-        return SoundEvents.ITEM_ARMOR_EQUIP_LEATHER;
-    }
+	public Curio(Item item) {
+		curioItem = item;
+	}
 
-    @Override
-    public void playRightClickEquipSound(LivingEntity entity) {
-        entity.world.playSound(null, new BlockPos(entity.getPos()), equipSound, SoundCategory.NEUTRAL, 1, 1);
-    }
+	protected SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_LEATHER;
+	}
 
-    public boolean canRightClickEquip() {
-        return true;
-    }
+	@Override
+	public void playRightClickEquipSound(LivingEntity entity) {
+		entity.world.playSound(null, new BlockPos(entity.getPos()), equipSound, SoundCategory.NEUTRAL, 1, 1);
+	}
 
-    @Override
-    public boolean canEquip(String identifier, LivingEntity entity) {
-        return !CuriosApi.getCuriosHelper().findEquippedCurio(curioItem, entity).isPresent();
-    }
+	public boolean canRightClickEquip() {
+		return true;
+	}
+
+	@Override
+	public boolean canEquip(String identifier, LivingEntity entity) {
+		return !CuriosApi.getCuriosHelper().findEquippedCurio(curioItem, entity).isPresent();
+	}
 }

@@ -2,57 +2,47 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.KittySlippersModel;
-import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.ai.goal.FleeEntityGoal;
-import net.minecraft.entity.mob.CreeperEntity;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.predicate.entity.EntityPredicates;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class KittySlippersItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/kitty_slippers.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/kitty_slippers.png");
 
-    public KittySlippersItem() {
-        super(new Settings());
-    }
+	public KittySlippersItem() {
+		super(new Settings());
+	}
 
-    @Override
-    ICurio attachCurio(ItemStack stack) {
-        return new Curio(this);
-    }
+	@Override
+	ICurio attachCurio(ItemStack stack) {
+		return new Curio(this);
+	}
 
-    @Override
-    IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected KittySlippersModel getModel() {
-                if (model == null) {
-                    model = new KittySlippersModel();
-                }
-                return (KittySlippersModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected KittySlippersModel getModel() {
+				if (model == null) {
+					model = new KittySlippersModel();
+				}
+				return (KittySlippersModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE;
+			}
+		};
+	}
 
     /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)

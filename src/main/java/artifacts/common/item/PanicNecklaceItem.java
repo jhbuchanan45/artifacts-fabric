@@ -15,43 +15,43 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class PanicNecklaceItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/panic_necklace.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/panic_necklace.png");
 
-    public PanicNecklaceItem() {
-        super(new Settings());
-    }
+	public PanicNecklaceItem() {
+		super(new Settings());
+	}
 
-    @Override
-    ICurio attachCurio(ItemStack stack) {
-        return new Curio(this) {
-            @Override
-            protected SoundEvent getEquipSound() {
-                return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
-            }
-        };
-    }
+	@Override
+	ICurio attachCurio(ItemStack stack) {
+		return new Curio(this) {
+			@Override
+			protected SoundEvent getEquipSound() {
+				return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
+			}
+		};
+	}
 
-    @Override
-    IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected BipedEntityModel<LivingEntity> getModel() {
-                if (model == null) {
-                    model = new PanicNecklaceModel();
-                }
-                return (PanicNecklaceModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected BipedEntityModel<LivingEntity> getModel() {
+				if (model == null) {
+					model = new PanicNecklaceModel();
+				}
+				return (PanicNecklaceModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE;
+			}
+		};
+	}
 
     /* TODO: reimplement
     @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
