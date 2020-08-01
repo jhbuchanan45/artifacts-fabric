@@ -9,11 +9,8 @@
     "item.bunnyhoppers.MixinLivingEntity",
     "item.crossnecklace.MixinLivingEntity",
     "item.diggingclaws.ItemStackAccessor",
-    "item.diggingclaws.MixinModdedBlocksToolHandlers",
-    "item.diggingclaws.MixinModdedToolsVanillaBlocksToolHandler",
     "item.diggingclaws.MixinPlayerEntity",
     "item.diggingclaws.MixinToolManagerImpl",
-    "item.diggingclaws.ModdedToolsVanillaBlocksToolHandlerAccessor",
     "item.diggingclaws.ToolManagerImplAccessor"
   ],
   "client": [
