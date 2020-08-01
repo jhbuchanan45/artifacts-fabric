@@ -1,10 +1,7 @@
 package artifacts;
 
 import artifacts.common.config.ModConfig;
-import artifacts.common.init.Features;
-import artifacts.common.init.Items;
-import artifacts.common.init.LootTables;
-import artifacts.common.init.SoundEvents;
+import artifacts.common.init.*;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer;
@@ -12,7 +9,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.SharedConstants;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.PlayerScreenHandler;
@@ -57,5 +53,9 @@ public class Artifacts implements ModInitializer {
         Items.ANTIDOTE_VESSEL.toString();
         Features.CAMPSITE_FEATURE.toString();
         SoundEvents.MIMIC_CLOSE.toString();
+
+        // ToolHandlers
+        // TODO: create a test mod for these
+        ToolHandlers.register();
     }
 }

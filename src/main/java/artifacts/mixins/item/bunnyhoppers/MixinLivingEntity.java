@@ -35,6 +35,7 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
      * Play rabbit hurt sound when wearing bunny hoppers
      * Plays alongside default hurt sound
      */
+    // TODO: revisit this playSound mess (see https://fabricmc.net/wiki/tutorial:sounds)
     public void artifacts$playBunnyHoppersHurtSound() {
         if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, (LivingEntity)(Object)this).isPresent()) {
             this.playSound(SoundEvents.ENTITY_RABBIT_HURT, this.getSoundVolume(), this.getSoundPitch());
