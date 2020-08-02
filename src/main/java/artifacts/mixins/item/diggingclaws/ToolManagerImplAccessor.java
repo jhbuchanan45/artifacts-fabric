@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface ToolManagerImplAccessor {
 
 	@Invoker
-	static ToolManagerImpl.ToolHandler invokeToolHandlerInvoker(ToolManagerImpl.ToolHandler[] toolHandlers) {
+	static ToolManagerImpl.ToolHandler callToolHandlerInvoker(ToolManagerImpl.ToolHandler[] toolHandlers) {
 		throw new IllegalStateException("Accessor did not apply correctly");
 	}
 }
