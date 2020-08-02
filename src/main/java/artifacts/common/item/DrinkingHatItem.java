@@ -60,19 +60,4 @@ public class DrinkingHatItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-    /* TODO: reimplement
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onItemUseStart(LivingEntityUseItemEvent.Start event) {
-            if (CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() instanceof DrinkingHatItem, event.getEntityLiving()).isPresent()) {
-                if (event.getItem().getUseAction() == UseAction.DRINK) {
-                    event.setDuration(event.getDuration() / 4);
-                }
-            }
-        }
-    }*/
 }
