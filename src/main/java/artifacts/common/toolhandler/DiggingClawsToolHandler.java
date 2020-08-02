@@ -10,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.TypedActionResult;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Arrays;
@@ -50,11 +49,5 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 		}
 
 		return ActionResult.PASS;
-	}
-
-	@Override
-	public TypedActionResult<Float> getMiningSpeedMultiplier(Tag<Item> tag, BlockState state, ItemStack stack, LivingEntity user) {
-		// TODO: implement speed boost
-		return TypedActionResult.pass(1.0F);
 	}
 }

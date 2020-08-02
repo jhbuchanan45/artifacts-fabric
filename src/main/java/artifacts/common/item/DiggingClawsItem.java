@@ -12,6 +12,8 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 public class DiggingClawsItem extends CurioArtifactItem {
 
 	public static final int NEW_BASE_MINING_LEVEL = 2;
+	public static final float MINING_SPEED_INCREASE = 4;
+
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
 
@@ -57,24 +59,4 @@ public class DiggingClawsItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-    /* TODO: reimplement (see https://fabricmc.net/wiki/tutorial:tools and https://fabricmc.net/wiki/tutorial:mining_levels)
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-            if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, event.getEntityLiving()).isPresent()) {
-                event.setNewSpeed(event.getNewSpeed() + 4);
-            }
-        }
-
-        @SubscribeEvent
-        public static void onHarvestCheck(PlayerEvent.HarvestCheck event) {
-            if (!event.canHarvest() && CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, event.getEntityLiving()).isPresent()) {
-                event.setCanHarvest(event.canHarvest() || event.getTargetBlock().getHarvestLevel() <= 2);
-            }
-        }
-    }*/
 }
