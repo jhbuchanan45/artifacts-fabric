@@ -16,13 +16,14 @@ public class ToolHandlers {
 	public static void register() {
 		NON_TOOLS_HANDLER.register(new DiggingClawsToolHandler(
 				// Because these are mining level 2, used to check no/vanilla tools against vanilla blocks
+				// TODO: hardcoded, these are not affected by DiggingClawsItem.NEW_BASE_MINING_LEVEL
 				Arrays.asList(
 						net.minecraft.item.Items.IRON_AXE,
 						net.minecraft.item.Items.IRON_HOE,
 						net.minecraft.item.Items.IRON_PICKAXE,
 						net.minecraft.item.Items.IRON_SHOVEL,
-						net.minecraft.item.Items.IRON_SWORD
-						//net.minecraft.item.Items.SHEARS // TODO: is this the same as the forge version?
+						net.minecraft.item.Items.IRON_SWORD,
+						net.minecraft.item.Items.SHEARS
 				)
 		));
 	}

@@ -2,6 +2,7 @@ package artifacts.common.toolhandler;
 
 import artifacts.common.init.Items;
 import artifacts.common.item.DiggingClawsItem;
+import artifacts.mixins.item.diggingclaws.ToolManagerImplEntryImplAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
@@ -12,6 +13,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.TypedActionResult;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,7 +34,9 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 			// Modded block
 			ToolManagerImpl.Entry entry = ToolManagerImpl.entryNullable(state.getBlock());
 			if (entry != null) {
-				int requiredMiningLevel = entry.getMiningLevel(tag);
+				// Problem: modded blocks can have different mining levels for different tools
+				// Solution: get the lowest miningLevel
+				int requiredMiningLevel = Arrays.stream(((ToolManagerImplEntryImplAccessor) entry).getTagLevels()).min().orElse(-1);
 				return requiredMiningLevel >= 0 && requiredMiningLevel <= DiggingClawsItem.NEW_BASE_MINING_LEVEL ? ActionResult.SUCCESS : ActionResult.PASS;
 			}
 
