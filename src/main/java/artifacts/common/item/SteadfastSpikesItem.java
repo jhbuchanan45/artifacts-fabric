@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class SteadfastSpikesItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/steadfast_spikes.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/steadfast_spikes.png");
 
 	private static final EntityAttributeModifier STEADFAST_SPIKES_KNOCKBACK_RESISTANCE = new EntityAttributeModifier(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttributeModifier.Operation.ADDITION);
 

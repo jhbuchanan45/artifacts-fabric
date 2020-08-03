@@ -14,8 +14,8 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class DrinkingHatItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/plastic_drinking_hat.png");
-	private static final Identifier TEXTURE_NOVELTY = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/novelty_drinking_hat.png");
+	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/plastic_drinking_hat.png");
+	private static final Identifier TEXTURE_NOVELTY = new Identifier(Artifacts.MODID, "textures/entity/curio/novelty_drinking_hat.png");
 
 	private final boolean isNoveltyHat;
 

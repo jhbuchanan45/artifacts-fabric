@@ -15,7 +15,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class PanicNecklaceItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/panic_necklace.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/panic_necklace.png");
 
 	public PanicNecklaceItem() {
 		super(new Settings());

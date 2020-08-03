@@ -7,7 +7,7 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 
 // TODO: restrictions, better descriptions, make shit non-static
-@Config(name = Artifacts.MOD_ID)
+@Config(name = Artifacts.MODID)
 @Config.Gui.Background("minecraft:textures/block/oak_planks.png")
 public class ModConfig extends PartitioningSerializer.GlobalData {
 

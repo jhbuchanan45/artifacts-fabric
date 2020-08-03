@@ -11,7 +11,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class KittySlippersItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/kitty_slippers.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/kitty_slippers.png");
 
 	public KittySlippersItem() {
 		super(new Settings());

@@ -15,7 +15,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class ScarfOfInvisibilityItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/scarf_of_invisibility.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/scarf_of_invisibility.png");
 
 	public ScarfOfInvisibilityItem() {
 		super(new Settings());

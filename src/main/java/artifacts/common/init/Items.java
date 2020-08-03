@@ -20,9 +20,9 @@ public class Items {
 
 	// Necklace
 	public static final Item PANIC_NECKLACE = register("panic_necklace", new PanicNecklaceItem());
-	public static final Item SHOCK_PENDANT = register("shock_pendant", new PendantItem(new Identifier(Artifacts.MOD_ID, "textures/entity/curio/shock_pendant.png")));
-	public static final Item FLAME_PENDANT = register("flame_pendant", new PendantItem(new Identifier(Artifacts.MOD_ID, "textures/entity/curio/flame_pendant.png")));
-	public static final Item THORN_PENDANT = register("thorn_pendant", new PendantItem(new Identifier(Artifacts.MOD_ID, "textures/entity/curio/thorn_pendant.png")));
+	public static final Item SHOCK_PENDANT = register("shock_pendant", new PendantItem(new Identifier(Artifacts.MODID, "textures/entity/curio/shock_pendant.png")));
+	public static final Item FLAME_PENDANT = register("flame_pendant", new PendantItem(new Identifier(Artifacts.MODID, "textures/entity/curio/flame_pendant.png")));
+	public static final Item THORN_PENDANT = register("thorn_pendant", new PendantItem(new Identifier(Artifacts.MODID, "textures/entity/curio/thorn_pendant.png")));
 	public static final Item CROSS_NECKLACE = register("cross_necklace", new CrossNecklaceItem());
 	public static final Item LUCKY_SCARF = register("lucky_scarf", new LuckyScarfItem());
 	public static final Item SCARF_OF_INVISIBILITY = register("scarf_of_invisibility", new ScarfOfInvisibilityItem());
@@ -55,6 +55,6 @@ public class Items {
 	public static final Item MIMIC_SPAWN_EGG = register("mimic_spawn_egg", new SpawnEggItem(Entities.MIMIC, 0x805113, 0x212121, new Item.Settings().group(ItemGroup.MISC)));
 
 	private static Item register(String name, Item item) {
-		return Registry.register(Registry.ITEM, new Identifier(Artifacts.MOD_ID, name), item);
+		return Registry.register(Registry.ITEM, new Identifier(Artifacts.MODID, name), item);
 	}
 }

@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Mixin to fabric-tool-attribute-api because it's ass
- * TODO: PR events to fabric instead
+ * TODO: PR events to fabric instead?
  */
 @Mixin(value = ToolManagerImpl.class, remap = false)
 public abstract class MixinToolManagerImpl {
@@ -31,7 +31,7 @@ public abstract class MixinToolManagerImpl {
 	}
 
 	/**
-	 * Run our nontool toolhandler for all items
+	 * Run non-tools handler events
 	 */
 	@Inject(method = "handleIsEffectiveOnIgnoresVanilla", at = @At(value = "TAIL"), cancellable = true)
 	private static void invokeNonToolsHandlers(BlockState state, ItemStack stack, LivingEntity user, boolean vanillaResult, CallbackInfoReturnable<Boolean> info) {

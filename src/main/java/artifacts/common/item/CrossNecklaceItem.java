@@ -12,7 +12,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 public class CrossNecklaceItem extends CurioArtifactItem {
 
 	public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/cross_necklace.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/cross_necklace.png");
 
 	public CrossNecklaceItem() {
 		super(new Settings());

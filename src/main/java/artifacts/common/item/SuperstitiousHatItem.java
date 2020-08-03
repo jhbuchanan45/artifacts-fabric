@@ -11,7 +11,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class SuperstitiousHatItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/superstitious_hat.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/superstitious_hat.png");
 
 	public SuperstitiousHatItem() {
 		super(new Settings());

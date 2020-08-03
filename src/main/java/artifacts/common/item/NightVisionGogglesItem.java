@@ -21,8 +21,8 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class NightVisionGogglesItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/night_vision_goggles.png");
-	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/night_vision_goggles_glow.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles.png");
+	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles_glow.png");
 
 	public NightVisionGogglesItem() {
 		super(new Item.Settings());

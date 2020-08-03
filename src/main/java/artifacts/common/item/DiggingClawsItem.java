@@ -14,8 +14,8 @@ public class DiggingClawsItem extends CurioArtifactItem {
 	public static final int NEW_BASE_MINING_LEVEL = 2;
 	public static final float MINING_SPEED_INCREASE = 4;
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/digging_claws_default.png");
+	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/digging_claws_default.png");
+	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/digging_claws_default.png");
 
 	public DiggingClawsItem() {
 		super(new Settings());

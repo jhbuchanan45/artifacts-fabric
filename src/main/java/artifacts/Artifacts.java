@@ -20,10 +20,10 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 
 public class Artifacts implements ModInitializer {
 
-	public static final String MOD_ID = "artifacts";
-	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
+	public static final String MODID = "artifacts";
+	public static final Logger LOGGER = LogManager.getLogger(MODID);
 	public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
-			new Identifier(MOD_ID, "item_group"),
+			new Identifier(MODID, "item_group"),
 			() -> new ItemStack(Items.PLASTIC_DRINKING_HAT)
 	);
 	public static ModConfig CONFIG;  // TODO: we're not even using this

@@ -11,7 +11,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class ObsidianSkullItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/obsidian_skull.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/obsidian_skull.png");
 
 	public ObsidianSkullItem() {
 		super(new Settings());

@@ -13,7 +13,7 @@ public class SoundEvents {
 	public static final SoundEvent MIMIC_CLOSE = register("mimic.close");
 
 	private static SoundEvent register(String name) {
-		Identifier id = new Identifier(Artifacts.MOD_ID, name);
+		Identifier id = new Identifier(Artifacts.MODID, name);
 		return Registry.register(Registry.SOUND_EVENT, id, new SoundEvent(id));
 	}
 }

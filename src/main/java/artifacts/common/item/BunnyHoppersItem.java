@@ -14,7 +14,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class BunnyHoppersItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/bunny_hoppers.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
 
 	public BunnyHoppersItem() {
 		super(new Settings());

@@ -14,7 +14,7 @@ public class Entities {
 
 	public static final EntityType<MimicEntity> MIMIC = Registry.register(
 			Registry.ENTITY_TYPE,
-			new Identifier(Artifacts.MOD_ID, "mimic"),
+			new Identifier(Artifacts.MODID, "mimic"),
 			FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MimicEntity::new)
 					.dimensions(EntityDimensions.changing(14 / 16F, 14 / 16F))  // TODO: can this be fixed?
 					.trackable(64, 1)  // TODO: what should this interval be?

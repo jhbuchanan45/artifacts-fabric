@@ -17,7 +17,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class AntidoteVesselItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/antidote_vessel.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/antidote_vessel.png");
 
 	public AntidoteVesselItem() {
 		super(new Settings());

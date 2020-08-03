@@ -15,8 +15,8 @@ import java.util.List;
 
 public class LootTables {
 
-	public static final Identifier MIMIC = new Identifier(Artifacts.MOD_ID, "entities/mimic");
-	public static final Identifier CAMPSITE_CHEST = new Identifier(Artifacts.MOD_ID, "chests/campsite_chest");
+	public static final Identifier MIMIC = new Identifier(Artifacts.MODID, "entities/mimic");
+	public static final Identifier CAMPSITE_CHEST = new Identifier(Artifacts.MODID, "chests/campsite_chest");
 
 	public static final List<Identifier> LOOT_TABLE_IDS = Arrays.asList(
 			new Identifier("minecraft", "chests/village/village_armorer"),
@@ -56,7 +56,7 @@ public class LootTables {
 	}
 
 	private static LootPoolEntry.Builder<?> getInjectEntry(String name) {
-		Identifier table = new Identifier(Artifacts.MOD_ID, "inject/" + name);
+		Identifier table = new Identifier(Artifacts.MODID, "inject/" + name);
 		return LootTableEntry.builder(table).weight(1);
 	}
 }

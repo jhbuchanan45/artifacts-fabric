@@ -55,6 +55,7 @@ dependencies {
     modRuntime "curse.maven:lithium:${lithium_version}"
     modRuntime "curse.maven:phosphor:${phosphor_version}"
     modRuntime "curse.maven:iamverysmart:${iamverysmart_version}"
+    modRuntime "curse.maven:okzoomer:${okzoomer_version}"
 }
 
 processResources {

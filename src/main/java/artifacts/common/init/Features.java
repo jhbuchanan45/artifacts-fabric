@@ -18,7 +18,7 @@ public class Features {
 
 	public static final Feature<DefaultFeatureConfig> CAMPSITE_FEATURE = Registry.register(
 			Registry.FEATURE,
-			new Identifier(Artifacts.MOD_ID, "campsite"),
+			new Identifier(Artifacts.MODID, "campsite"),
 			new CampsiteFeature()
 	);
 

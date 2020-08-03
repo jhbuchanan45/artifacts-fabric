@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UniversalAttractorItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/universal_attractor.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/universal_attractor.png");
 
 	public UniversalAttractorItem() {
 		super(new Settings());

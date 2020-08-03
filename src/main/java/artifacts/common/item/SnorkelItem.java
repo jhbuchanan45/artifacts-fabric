@@ -14,7 +14,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class SnorkelItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MOD_ID, "textures/entity/curio/snorkel.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/snorkel.png");
 
 	public SnorkelItem() {
 		super(new Settings());
