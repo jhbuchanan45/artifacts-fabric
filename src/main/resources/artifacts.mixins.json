@@ -14,10 +14,12 @@
     "item.diggingclaws.ToolManagerImplAccessor",
     "item.diggingclaws.ToolManagerImplEntryImplAccessor",
     "item.drinkinghat.MixinLivingEntity",
-    "item.firegauntlet.MixinEnchantmentHelper"
+    "item.firegauntlet.MixinEnchantmentHelper",
+    "item.flippers.MixinLivingEntity"
   ],
   "client": [
-    "item.bunnyhoppers.client.MixinLivingEntity"
+    "item.bunnyhoppers.client.MixinLivingEntity",
+    "item.flippers.client.MixinLivingEntity"
   ],
   "injectors": {
     "defaultRequire": 1

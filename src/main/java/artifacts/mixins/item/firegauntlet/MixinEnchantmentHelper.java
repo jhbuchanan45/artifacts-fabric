@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(EnchantmentHelper.class)
-public class MixinEnchantmentHelper {
+public abstract class MixinEnchantmentHelper {
 
 	/**
 	 * Give the player fire aspect II (equals 8 seconds in Forge version)
