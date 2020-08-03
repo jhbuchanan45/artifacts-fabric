@@ -47,11 +47,15 @@ public class FireGauntletItem extends CurioArtifactItem {
 			public void render(String identifier, int index, MatrixStack matrixStack, VertexConsumerProvider renderTypeBuffer, int light, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
 				boolean smallArms = hasSmallArms(entity);
 				GloveModel model = getModel(smallArms);
+
 				model.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 				model.animateModel(entity, limbSwing, limbSwingAmount, partialTicks);
 				RenderHelper.followBodyRotations(entity, model);
+
 				VertexConsumer vertexBuilder = ItemRenderer.getArmorVertexConsumer(renderTypeBuffer, model.getLayer(getTexture(smallArms)), false, false);
 				model.renderHand(index == 0, matrixStack, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+
+				// The glow effect is achieved by rendering the glow texture unlit
 				vertexBuilder = ItemRenderer.getArmorVertexConsumer(renderTypeBuffer, RenderTypes.unlit(getGlowTexture(smallArms)), false, false);
 				model.renderHand(index == 0, matrixStack, vertexBuilder, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 			}
@@ -74,24 +78,4 @@ public class FireGauntletItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-    /* TODO: reimplement
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onLivingHurt(LivingHurtEvent event) {
-            if (event.getSource() instanceof EntityDamageSource && !(event.getSource() instanceof ProjectileDamageSource) && !((EntityDamageSource) event.getSource()).isThorns()) {
-                if (event.getSource().getAttacker() instanceof LivingEntity) {
-                    LivingEntity attacker = (LivingEntity) event.getSource().getAttacker();
-                    if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.FIRE_GAUNTLET, attacker).isPresent()) {
-                        if (!event.getEntity().isFireImmune()) {
-                            event.getEntity().setOnFireFor(8);
-                        }
-                    }
-                }
-            }
-        }
-    }*/
 }

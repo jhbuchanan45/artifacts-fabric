@@ -13,7 +13,8 @@
     "item.diggingclaws.MixinToolManagerImpl",
     "item.diggingclaws.ToolManagerImplAccessor",
     "item.diggingclaws.ToolManagerImplEntryImplAccessor",
-    "item.drinkinghat.MixinLivingEntity"
+    "item.drinkinghat.MixinLivingEntity",
+    "item.firegauntlet.MixinEnchantmentHelper"
   ],
   "client": [
     "dev.MixinMinecraftClient",
