@@ -17,7 +17,6 @@
     "item.firegauntlet.MixinEnchantmentHelper"
   ],
   "client": [
-    "dev.MixinMinecraftClient",
     "item.bunnyhoppers.client.MixinLivingEntity"
   ],
   "injectors": {

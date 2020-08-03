@@ -25,7 +25,6 @@ sourceSets {
     }
 }
 
-
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -56,6 +55,7 @@ dependencies {
     modRuntime "curse.maven:phosphor:${phosphor_version}"
     modRuntime "curse.maven:iamverysmart:${iamverysmart_version}"
     modRuntime "curse.maven:okzoomer:${okzoomer_version}"
+    modRuntime "com.github.florensie:auto-load:${autoload_version}"
 }
 
 processResources {
