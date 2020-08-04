@@ -6,7 +6,7 @@
   "mixins": [
     "item.antidotevessel.MixinStatusEffectInstance",
     "item.antidotevessel.StatusEffectAccessor",
-    "item.bunnyhoppers.MixinLivingEntity",
+    "event.MixinLivingEntity",
     "item.crossnecklace.MixinLivingEntity",
     "item.diggingclaws.ItemStackAccessor",
     "item.diggingclaws.MixinPlayerEntity",
@@ -18,7 +18,7 @@
     "item.flippers.MixinLivingEntity"
   ],
   "client": [
-    "item.bunnyhoppers.client.MixinLivingEntity",
+    "event.client.MixinLivingEntity",
     "item.flippers.client.MixinLivingEntity"
   ],
   "injectors": {

@@ -2,13 +2,17 @@ package artifacts.common.item;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.BunnyHoppersModel;
+import artifacts.common.events.PlayHurtSoundCallback;
+import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
@@ -18,6 +22,13 @@ public class BunnyHoppersItem extends CurioArtifactItem {
 
 	public BunnyHoppersItem() {
 		super(new Settings());
+		PlayHurtSoundCallback.EVENT.register(BunnyHoppersItem::onPlayHurtSound);
+	}
+
+	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
+		CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, entity).ifPresent(curio -> {
+			entity.playSound(SoundEvents.ENTITY_RABBIT_HURT, volume, pitch);
+		});
 	}
 
 	@Override
