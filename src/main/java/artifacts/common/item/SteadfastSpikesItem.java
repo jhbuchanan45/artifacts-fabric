@@ -19,7 +19,7 @@ public class SteadfastSpikesItem extends CurioArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/steadfast_spikes.png");
 
-	private static final EntityAttributeModifier STEADFAST_SPIKES_KNOCKBACK_RESISTANCE = new EntityAttributeModifier(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttributeModifier.Operation.ADDITION);
+	private static final EntityAttributeModifier KNOCKBACK_RESISTANCE_MODIFIER = new EntityAttributeModifier(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttributeModifier.Operation.ADDITION);
 
 	public SteadfastSpikesItem() {
 		super(new Settings());
@@ -31,7 +31,7 @@ public class SteadfastSpikesItem extends CurioArtifactItem {
 			@Override
 			public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(String identifier) {
 				Multimap<EntityAttribute, EntityAttributeModifier> result = super.getAttributeModifiers(identifier);
-				result.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, STEADFAST_SPIKES_KNOCKBACK_RESISTANCE);
+				result.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER);
 				return result;
 			}
 		};

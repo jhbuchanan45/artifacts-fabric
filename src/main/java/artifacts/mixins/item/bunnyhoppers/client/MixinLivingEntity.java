@@ -12,11 +12,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(LivingEntity.class)
-public abstract class MixinLivingEntity {
+public abstract class MixinLivingEntity implements LivingEntityExtension {
 
 	@Inject(method = "handleStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getHurtSound(Lnet/minecraft/entity/damage/DamageSource;)Lnet/minecraft/sound/SoundEvent;"))
 	private void onClientPlayHurtSound(byte status, CallbackInfo info) {
-		((LivingEntityExtension) this).artifacts$playBunnyHoppersHurtSound();
+		this.artifacts$playBunnyHoppersHurtSound();
 	}
 
 	/**

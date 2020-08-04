@@ -16,7 +16,7 @@ public abstract class MixinLivingEntity {
 
 	@Shadow protected int itemUseTimeLeft;
 
-	@Inject(method = "setCurrentHand", cancellable = true, at = @At(value = "INVOKE_ASSIGN", shift = At.Shift.AFTER, target = "Lnet/minecraft/item/ItemStack;getMaxUseTime()I"))
+	@Inject(method = "setCurrentHand", at = @At(value = "INVOKE_ASSIGN", shift = At.Shift.AFTER, target = "Lnet/minecraft/item/ItemStack;getMaxUseTime()I"))
 	private void decreaseDrinkingDuration(Hand hand, CallbackInfo info) {
 		CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() instanceof DrinkingHatItem, (LivingEntity)(Object) this).ifPresent(curio -> {
 			if (((LivingEntity)(Object) this).getActiveItem().getUseAction() == UseAction.DRINK) {

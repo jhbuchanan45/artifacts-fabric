@@ -20,7 +20,7 @@ public class FeralClawsItem extends CurioArtifactItem {
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/feral_claws_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/feral_claws_default.png");
 
-	public static EntityAttributeModifier FERAL_CLAWS_ATTACK_SPEED = new EntityAttributeModifier(UUID.fromString("7a3367b2-0a38-491d-b5c7-338d5d0c1dd4"), Artifacts.MODID + ":feral_claws_attack_speed", 1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+	public static EntityAttributeModifier ATTACK_SPEED_MODIFIER = new EntityAttributeModifier(UUID.fromString("7a3367b2-0a38-491d-b5c7-338d5d0c1dd4"), Artifacts.MODID + ":feral_claws_attack_speed", 1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
 	public FeralClawsItem() {
 		super(new Settings());
@@ -32,7 +32,7 @@ public class FeralClawsItem extends CurioArtifactItem {
 			@Override
 			public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(String identifier) {
 				Multimap<EntityAttribute, EntityAttributeModifier> result = super.getAttributeModifiers(identifier);
-				result.put(EntityAttributes.GENERIC_ATTACK_SPEED, FERAL_CLAWS_ATTACK_SPEED);
+				result.put(EntityAttributes.GENERIC_ATTACK_SPEED, ATTACK_SPEED_MODIFIER);
 				return result;
 			}
 		};

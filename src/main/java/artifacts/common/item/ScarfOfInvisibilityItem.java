@@ -26,6 +26,7 @@ public class ScarfOfInvisibilityItem extends CurioArtifactItem {
 		return new Curio(this) {
 			@Override
 			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
+				// TODO: make gooder
 				if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
 					livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 19, 0, true, false));
 				}
