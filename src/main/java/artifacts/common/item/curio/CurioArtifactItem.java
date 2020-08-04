@@ -1,6 +1,7 @@
 package artifacts.common.item.curio;
 
 import artifacts.common.item.ArtifactItem;
+import artifacts.common.item.Curio;
 import nerdhub.cardinal.components.api.event.ItemComponentCallbackV2;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -24,7 +25,9 @@ public abstract class CurioArtifactItem extends ArtifactItem {
 		});
 	}
 
-	abstract ICurio attachCurio(ItemStack stack);
+	protected ICurio attachCurio(ItemStack stack) {
+		return new Curio(this);
+	}
 
-	abstract IRenderableCurio attachRenderableCurio(ItemStack stack);
+	protected abstract IRenderableCurio attachRenderableCurio(ItemStack stack);
 }

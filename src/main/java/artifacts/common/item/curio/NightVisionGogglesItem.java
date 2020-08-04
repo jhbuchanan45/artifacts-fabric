@@ -31,7 +31,7 @@ public class NightVisionGogglesItem extends CurioArtifactItem {
 	}
 
 	@Override
-	ICurio attachCurio(ItemStack stack) {
+	protected ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
 			@Override
 			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
@@ -45,7 +45,7 @@ public class NightVisionGogglesItem extends CurioArtifactItem {
 	}
 
 	@Override
-	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+	protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
 		return new RenderableCurio() {
 			private Object model;
 

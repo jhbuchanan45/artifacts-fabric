@@ -4,7 +4,6 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.curio.KittySlippersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Items;
-import artifacts.common.item.Curio;
 import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class KittySlippersItem extends CurioArtifactItem {
@@ -33,12 +31,7 @@ public class KittySlippersItem extends CurioArtifactItem {
 	}
 
 	@Override
-	ICurio attachCurio(ItemStack stack) {
-		return new Curio(this);
-	}
-
-	@Override
-	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+	protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
 		return new RenderableCurio() {
 			private Object model;
 

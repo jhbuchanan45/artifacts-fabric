@@ -26,7 +26,7 @@ public class AntidoteVesselItem extends CurioArtifactItem {
 	}
 
 	@Override
-	ICurio attachCurio(ItemStack stack) {
+	protected ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
 			@Override
 			protected SoundEvent getEquipSound() {
@@ -46,7 +46,7 @@ public class AntidoteVesselItem extends CurioArtifactItem {
 	}
 
 	@Override
-	IRenderableCurio attachRenderableCurio(ItemStack stack) {
+	protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
 		return new RenderableCurio() {
 			private Object model;
 
