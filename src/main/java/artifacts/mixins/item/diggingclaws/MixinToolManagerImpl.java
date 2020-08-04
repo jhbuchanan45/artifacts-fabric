@@ -1,6 +1,7 @@
 package artifacts.mixins.item.diggingclaws;
 
 import artifacts.common.init.ToolHandlers;
+import artifacts.mixins.accessors.ItemStackAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;

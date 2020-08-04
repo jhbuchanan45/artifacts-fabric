@@ -1,4 +1,4 @@
-package artifacts.mixins.item.diggingclaws;
+package artifacts.mixins.accessors;
 
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import org.spongepowered.asm.mixin.Mixin;

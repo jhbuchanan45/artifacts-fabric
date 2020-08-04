@@ -4,18 +4,20 @@
   "package": "artifacts.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "item.antidotevessel.MixinStatusEffectInstance",
-    "item.antidotevessel.StatusEffectAccessor",
+    "accessors.ItemStackAccessor",
+    "accessors.StatusEffectAccessor",
+    "accessors.ToolManagerImplAccessor",
+    "accessors.ToolManagerImplEntryImplAccessor",
     "event.MixinLivingEntity",
+    "item.antidotevessel.MixinStatusEffectInstance",
     "item.crossnecklace.MixinLivingEntity",
-    "item.diggingclaws.ItemStackAccessor",
     "item.diggingclaws.MixinPlayerEntity",
     "item.diggingclaws.MixinToolManagerImpl",
-    "item.diggingclaws.ToolManagerImplAccessor",
-    "item.diggingclaws.ToolManagerImplEntryImplAccessor",
     "item.drinkinghat.MixinLivingEntity",
     "item.firegauntlet.MixinEnchantmentHelper",
-    "item.flippers.MixinLivingEntity"
+    "item.flippers.MixinLivingEntity",
+    "item.luckyscarf.MixinEnchantmentHelper",
+    "item.luckyscarf.MixinServerPlayerInteractionManager"
   ],
   "client": [
     "event.client.MixinLivingEntity",

@@ -1,4 +1,4 @@
-package artifacts.mixins.item.diggingclaws;
+package artifacts.mixins.accessors;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;

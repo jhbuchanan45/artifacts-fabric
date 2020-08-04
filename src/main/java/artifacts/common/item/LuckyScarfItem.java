@@ -43,6 +43,4 @@ public class LuckyScarfItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-	// TODO: Mixin to add +1 fortune to loot table
 }

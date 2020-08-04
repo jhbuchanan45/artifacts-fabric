@@ -2,7 +2,7 @@ package artifacts.common.toolhandler;
 
 import artifacts.common.init.Items;
 import artifacts.common.item.DiggingClawsItem;
-import artifacts.mixins.item.diggingclaws.ToolManagerImplEntryImplAccessor;
+import artifacts.mixins.accessors.ToolManagerImplEntryImplAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;

@@ -35,6 +35,7 @@ public class NightVisionGogglesItem extends CurioArtifactItem {
 			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
 				// TODO: make gooder
 				if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
+					// Duration is higher because of fading effect
 					livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 319, 0, true, false));
 				}
 			}

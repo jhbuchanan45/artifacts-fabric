@@ -3,7 +3,7 @@ package artifacts.common.item;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.AntidoteVesselModel;
 import artifacts.common.extensions.StatusEffectInstanceExtension;
-import artifacts.mixins.item.antidotevessel.StatusEffectAccessor;
+import artifacts.mixins.accessors.StatusEffectAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
