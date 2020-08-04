@@ -18,7 +18,8 @@
     "item.flippers.MixinLivingEntity",
     "item.luckyscarf.MixinEnchantmentHelper",
     "item.luckyscarf.MixinServerPlayerInteractionManager",
-    "item.pocketpiston.MixinEnchantmentHelper"
+    "item.pocketpiston.MixinEnchantmentHelper",
+    "item.superstitioushat.MixinEnchantmentHelper"
   ],
   "client": [
     "event.client.MixinLivingEntity",

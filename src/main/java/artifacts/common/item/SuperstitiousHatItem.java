@@ -43,18 +43,4 @@ public class SuperstitiousHatItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-    /* TODO: reimplement
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onLootingLevel(LootingLevelEvent event) {
-            Entity killerEntity = event.getDamageSource().getAttacker();
-            if (killerEntity instanceof LivingEntity && CuriosApi.getCuriosHelper().findEquippedCurio(Items.SUPERSTITIOUS_HAT, (LivingEntity) killerEntity).isPresent()) {
-                event.setLootingLevel(event.getLootingLevel() + 1);
-            }
-        }
-    }*/
 }
