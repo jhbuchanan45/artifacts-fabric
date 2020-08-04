@@ -1,8 +1,10 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.AntidoteVesselModel;
 import artifacts.common.extensions.StatusEffectInstanceExtension;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import artifacts.mixins.accessors.StatusEffectAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

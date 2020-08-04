@@ -1,20 +1,23 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.ScarfModel;
+import artifacts.client.render.model.curio.SuperstitiousHatModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class LuckyScarfItem extends CurioArtifactItem {
+public class SuperstitiousHatItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/lucky_scarf.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/superstitious_hat.png");
 
-	public LuckyScarfItem() {
-		super(new Settings());
+	public SuperstitiousHatItem() {
+		super(new Item.Settings());
 	}
 
 	@Override
@@ -29,11 +32,11 @@ public class LuckyScarfItem extends CurioArtifactItem {
 
 			@Override
 			@Environment(EnvType.CLIENT)
-			protected ScarfModel getModel() {
+			protected SuperstitiousHatModel getModel() {
 				if (model == null) {
-					model = new ScarfModel();
+					model = new SuperstitiousHatModel();
 				}
-				return (ScarfModel) model;
+				return (SuperstitiousHatModel) model;
 			}
 
 			@Override

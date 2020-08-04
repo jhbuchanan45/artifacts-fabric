@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 
-class Curio implements ICurio {
+public class Curio implements ICurio {
 
 	private final Item curioItem;
 	private final SoundEvent equipSound = getEquipSound();

@@ -1,9 +1,12 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.DrinkingHatModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -20,7 +23,7 @@ public class DrinkingHatItem extends CurioArtifactItem {
 	private final boolean isNoveltyHat;
 
 	public DrinkingHatItem(boolean isNoveltyHat) {
-		super(new Settings());
+		super(new Item.Settings());
 		this.isNoveltyHat = isNoveltyHat;
 	}
 

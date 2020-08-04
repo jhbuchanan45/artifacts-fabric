@@ -1,7 +1,9 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.FlippersModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;

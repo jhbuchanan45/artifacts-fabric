@@ -13,7 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 
-abstract class RenderableGloveCurio extends RenderableCurio {
+public abstract class RenderableGloveCurio extends RenderableCurio {
 
 	protected Object modelDefault;
 	protected Object modelSlim;

@@ -12,7 +12,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-abstract class RenderableCurio implements IRenderableCurio {
+public abstract class RenderableCurio implements IRenderableCurio {
 
 	@Override
 	@Environment(EnvType.CLIENT)

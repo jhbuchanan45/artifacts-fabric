@@ -1,13 +1,16 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ClawsModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableGloveCurio;
 import com.google.common.collect.Multimap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
@@ -23,7 +26,7 @@ public class FeralClawsItem extends CurioArtifactItem {
 	public static EntityAttributeModifier ATTACK_SPEED_MODIFIER = new EntityAttributeModifier(UUID.fromString("7a3367b2-0a38-491d-b5c7-338d5d0c1dd4"), Artifacts.MODID + ":feral_claws_attack_speed", 1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
 	public FeralClawsItem() {
-		super(new Settings());
+		super(new Item.Settings());
 	}
 
 	@Override

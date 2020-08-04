@@ -1,12 +1,15 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.KittySlippersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Items;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -19,7 +22,7 @@ public class KittySlippersItem extends CurioArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/kitty_slippers.png");
 
 	public KittySlippersItem() {
-		super(new Settings());
+		super(new Item.Settings());
 		PlayHurtSoundCallback.EVENT.register(KittySlippersItem::onPlayHurtSound);
 	}
 

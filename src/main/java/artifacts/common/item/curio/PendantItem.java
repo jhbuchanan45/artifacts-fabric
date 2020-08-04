@@ -1,8 +1,11 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.client.render.model.curio.PendantModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -15,7 +18,7 @@ public class PendantItem extends CurioArtifactItem {
 	private final Identifier texture;
 
 	public PendantItem(Identifier texture) {
-		super(new Settings());
+		super(new Item.Settings());
 		this.texture = texture;
 	}
 

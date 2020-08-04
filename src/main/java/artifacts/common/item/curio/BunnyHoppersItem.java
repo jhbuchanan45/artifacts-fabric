@@ -1,14 +1,17 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.BunnyHoppersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Items;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -21,7 +24,7 @@ public class BunnyHoppersItem extends CurioArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
 
 	public BunnyHoppersItem() {
-		super(new Settings());
+		super(new Item.Settings());
 		PlayHurtSoundCallback.EVENT.register(BunnyHoppersItem::onPlayHurtSound);
 	}
 

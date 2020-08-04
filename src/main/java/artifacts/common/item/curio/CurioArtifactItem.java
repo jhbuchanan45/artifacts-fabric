@@ -1,5 +1,6 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
+import artifacts.common.item.ArtifactItem;
 import nerdhub.cardinal.components.api.event.ItemComponentCallbackV2;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;

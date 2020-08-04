@@ -1,9 +1,12 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ObsidianSkullModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
@@ -14,7 +17,7 @@ public class ObsidianSkullItem extends CurioArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/obsidian_skull.png");
 
 	public ObsidianSkullItem() {
-		super(new Settings());
+		super(new Item.Settings());
 	}
 
 	@Override

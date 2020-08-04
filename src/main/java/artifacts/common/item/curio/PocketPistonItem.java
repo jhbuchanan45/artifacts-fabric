@@ -1,8 +1,11 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableGloveCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
@@ -14,7 +17,7 @@ public class PocketPistonItem extends CurioArtifactItem {
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/pocket_piston_slim.png");
 
 	public PocketPistonItem() {
-		super(new Settings());
+		super(new Item.Settings());
 	}
 
 	@Override

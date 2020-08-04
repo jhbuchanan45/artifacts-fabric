@@ -1,20 +1,24 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.SuperstitiousHatModel;
+import artifacts.client.render.model.curio.CrossNecklaceModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class SuperstitiousHatItem extends CurioArtifactItem {
+public class CrossNecklaceItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/superstitious_hat.png");
+	public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/cross_necklace.png");
 
-	public SuperstitiousHatItem() {
-		super(new Settings());
+	public CrossNecklaceItem() {
+		super(new Item.Settings());
 	}
 
 	@Override
@@ -29,11 +33,11 @@ public class SuperstitiousHatItem extends CurioArtifactItem {
 
 			@Override
 			@Environment(EnvType.CLIENT)
-			protected SuperstitiousHatModel getModel() {
+			protected CrossNecklaceModel getModel() {
 				if (model == null) {
-					model = new SuperstitiousHatModel();
+					model = new CrossNecklaceModel();
 				}
-				return (SuperstitiousHatModel) model;
+				return (CrossNecklaceModel) model;
 			}
 
 			@Override

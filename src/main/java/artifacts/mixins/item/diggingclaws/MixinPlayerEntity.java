@@ -1,7 +1,7 @@
 package artifacts.mixins.item.diggingclaws;
 
 import artifacts.common.init.Items;
-import artifacts.common.item.DiggingClawsItem;
+import artifacts.common.item.curio.DiggingClawsItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

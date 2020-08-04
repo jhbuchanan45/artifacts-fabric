@@ -1,9 +1,12 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ClawsModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableGloveCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
@@ -18,7 +21,7 @@ public class DiggingClawsItem extends CurioArtifactItem {
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/digging_claws_default.png");
 
 	public DiggingClawsItem() {
-		super(new Settings());
+		super(new Item.Settings());
 	}
 
 	@Override

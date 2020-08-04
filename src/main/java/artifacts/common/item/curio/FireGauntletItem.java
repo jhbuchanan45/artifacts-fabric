@@ -1,8 +1,10 @@
-package artifacts.common.item;
+package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.RenderTypes;
 import artifacts.client.render.model.curio.GloveModel;
+import artifacts.common.item.Curio;
+import artifacts.common.item.RenderableGloveCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
@@ -11,6 +13,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -26,7 +29,7 @@ public class FireGauntletItem extends CurioArtifactItem {
 	private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_slim_glow.png");
 
 	public FireGauntletItem() {
-		super(new Settings());
+		super(new Item.Settings());
 	}
 
 	@Override
