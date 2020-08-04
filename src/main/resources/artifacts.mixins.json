@@ -17,7 +17,8 @@
     "item.firegauntlet.MixinEnchantmentHelper",
     "item.flippers.MixinLivingEntity",
     "item.luckyscarf.MixinEnchantmentHelper",
-    "item.luckyscarf.MixinServerPlayerInteractionManager"
+    "item.luckyscarf.MixinServerPlayerInteractionManager",
+    "item.pocketpiston.MixinEnchantmentHelper"
   ],
   "client": [
     "event.client.MixinLivingEntity",

@@ -53,7 +53,6 @@ public class Artifacts implements ModInitializer {
 		SoundEvents.MIMIC_CLOSE.toString();
 
 		// ToolHandlers
-		// TODO: create a test mod for these
 		ToolHandlers.register();
 	}
 }

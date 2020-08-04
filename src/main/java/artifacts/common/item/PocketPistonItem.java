@@ -38,18 +38,4 @@ public class PocketPistonItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-    /* TODO: reimplement
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onLivingAttack(LivingAttackEvent event) {
-            if (event.getSource().getAttacker() instanceof LivingEntity && CuriosApi.getCuriosHelper().findEquippedCurio(Items.POCKET_PISTON, (LivingEntity) event.getSource().getAttacker()).isPresent()) {
-                LivingEntity attacker = (LivingEntity) event.getSource().getAttacker();
-                event.getEntityLiving().takeKnockback(1.5F, MathHelper.sin((float) (attacker.yaw * (Math.PI / 180))), -MathHelper.cos((float) (attacker.yaw * (Math.PI / 180))));
-            }
-        }
-    }*/
 }
