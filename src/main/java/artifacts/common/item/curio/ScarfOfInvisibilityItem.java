@@ -7,7 +7,6 @@ import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
@@ -28,11 +27,8 @@ public class ScarfOfInvisibilityItem extends CurioArtifactItem {
 	protected ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
 			@Override
-			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-				// TODO: make gooder
-				if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
-					livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 19, 0, true, false));
-				}
+			public StatusEffectInstance getPermanentEffect() {
+				return new StatusEffectInstance(StatusEffects.INVISIBILITY, 20, 0, true, false);
 			}
 		};
 	}

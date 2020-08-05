@@ -10,6 +10,7 @@ import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+@SuppressWarnings("unused")
 public class Items {
 
 	// Head

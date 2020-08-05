@@ -19,11 +19,14 @@
     "item.luckyscarf.MixinEnchantmentHelper",
     "item.luckyscarf.MixinServerPlayerInteractionManager",
     "item.pocketpiston.MixinEnchantmentHelper",
-    "item.superstitioushat.MixinEnchantmentHelper"
+    "item.superstitioushat.MixinEnchantmentHelper",
+    "statuseffect.MixinLivingEntity"
   ],
   "client": [
     "event.client.MixinLivingEntity",
-    "item.flippers.client.MixinLivingEntity"
+    "item.flippers.client.MixinLivingEntity",
+    "statuseffect.client.MixinLivingEntity",
+    "statuseffect.client.MixinGameRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

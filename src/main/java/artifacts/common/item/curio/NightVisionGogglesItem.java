@@ -34,12 +34,8 @@ public class NightVisionGogglesItem extends CurioArtifactItem {
 	protected ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
 			@Override
-			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-				// TODO: make gooder
-				if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
-					// Duration is higher because of fading effect
-					livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 319, 0, true, false));
-				}
+			public StatusEffectInstance getPermanentEffect() {
+				return new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20, 0, true, false);
 			}
 		};
 	}

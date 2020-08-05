@@ -2,7 +2,7 @@ package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.AntidoteVesselModel;
-import artifacts.common.extensions.StatusEffectInstanceExtension;
+import artifacts.common.extensions.StatusEffectInstanceExtensions;
 import artifacts.common.item.Curio;
 import artifacts.common.item.RenderableCurio;
 import artifacts.mixins.accessors.StatusEffectAccessor;
@@ -38,7 +38,7 @@ public class AntidoteVesselItem extends CurioArtifactItem {
 				// Reduce duration of all negative status effects to 80
 				entity.getActiveStatusEffects().forEach((effect, instance) -> {
 					if (!effect.isInstant() && ((StatusEffectAccessor) effect).getType() != StatusEffectType.BENEFICIAL && instance.getDuration() > 80) {
-						((StatusEffectInstanceExtension) instance).artifacts$setDuration(80);
+						((StatusEffectInstanceExtensions) instance).artifacts$setDuration(80);
 					}
 				});
 			}

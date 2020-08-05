@@ -1,6 +1,6 @@
 package artifacts.common.extensions;
 
-public interface StatusEffectInstanceExtension {
+public interface StatusEffectInstanceExtensions {
 
 	/**
 	 * Sets the duration of the status effect instance and

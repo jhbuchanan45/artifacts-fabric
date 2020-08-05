@@ -1,6 +1,6 @@
 package artifacts.mixins.item.flippers;
 
-import artifacts.common.extensions.LivingEntityExtension;
+import artifacts.common.extensions.LivingEntityExtensions;
 import artifacts.common.init.Items;
 import artifacts.common.item.curio.FlippersItem;
 import net.minecraft.entity.LivingEntity;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Slice;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(LivingEntity.class)
-public abstract class MixinLivingEntity implements LivingEntityExtension {
+public abstract class MixinLivingEntity implements LivingEntityExtensions {
 
 	@ModifyArg(method = "swimUpward", index = 1, at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;add(DDD)Lnet/minecraft/util/math/Vec3d;"))
 	private double increaseSwimUpSpeed(double y) {

@@ -1,6 +1,7 @@
 package artifacts.common.item;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Item;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -33,6 +34,17 @@ public class Curio implements ICurio {
 
 	@Override
 	public boolean canEquip(String identifier, LivingEntity entity) {
+		// Only one of the same artifacts can be equiped at a time
 		return !CuriosApi.getCuriosHelper().findEquippedCurio(curioItem, entity).isPresent();
+	}
+
+	/**
+	 * Used to give a Curio a permanent status effect while wearing it.
+	 * The StatusEffectInstance is applied every 15 ticks so a duration greater than that is required.
+	 *
+	 * @return The StatusEffectInstance to be applied
+	 */
+	public StatusEffectInstance getPermanentEffect() {
+		return null;
 	}
 }

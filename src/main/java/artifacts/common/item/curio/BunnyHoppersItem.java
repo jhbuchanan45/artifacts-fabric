@@ -38,12 +38,8 @@ public class BunnyHoppersItem extends CurioArtifactItem {
 	protected ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
 			@Override
-			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-				// Do this ever 15 ticks
-				if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
-					// Gives 20 ticks (1sec) of jump boost
-					livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 1, true, false));
-				}
+			public StatusEffectInstance getPermanentEffect() {
+				return new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 1, true, false);
 			}
 		};
 	}

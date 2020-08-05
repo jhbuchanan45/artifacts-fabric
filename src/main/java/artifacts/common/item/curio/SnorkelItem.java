@@ -6,7 +6,6 @@ import artifacts.common.item.Curio;
 import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
@@ -27,11 +26,8 @@ public class SnorkelItem extends CurioArtifactItem {
 	protected ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
 			@Override
-			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-				// TODO: make gooder
-				if (!livingEntity.world.isClient && livingEntity.age % 15 == 0) {
-					livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 39, 0, true, false));
-				}
+			public StatusEffectInstance getPermanentEffect() {
+				return new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0, true, false);
 			}
 		};
 	}
