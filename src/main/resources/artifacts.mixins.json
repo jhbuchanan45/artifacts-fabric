@@ -18,6 +18,7 @@
     "item.flippers.MixinLivingEntity",
     "item.luckyscarf.MixinEnchantmentHelper",
     "item.luckyscarf.MixinServerPlayerInteractionManager",
+    "item.obsidianskull.MixinEntity",
     "item.pocketpiston.MixinEnchantmentHelper",
     "item.superstitioushat.MixinEnchantmentHelper",
     "statuseffect.MixinLivingEntity"
@@ -25,8 +26,8 @@
   "client": [
     "event.client.MixinLivingEntity",
     "item.flippers.client.MixinLivingEntity",
-    "statuseffect.client.MixinLivingEntity",
-    "statuseffect.client.MixinGameRenderer"
+    "statuseffect.client.MixinGameRenderer",
+    "statuseffect.client.MixinLivingEntity"
   ],
   "injectors": {
     "defaultRequire": 1

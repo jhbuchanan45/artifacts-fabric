@@ -39,20 +39,4 @@ public class ObsidianSkullItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-    /* TODO: reimplement
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onLivingHurt(LivingHurtEvent event) {
-            if (!event.getEntity().world.isClient && event.getAmount() >= 1 && (event.getSource() == DamageSource.ON_FIRE || event.getSource() == DamageSource.IN_FIRE || event.getSource() == DamageSource.LAVA) && event.getEntity() instanceof PlayerEntity) {
-                if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.OBSIDIAN_SKULL, event.getEntityLiving()).isPresent() && !((PlayerEntity) event.getEntity()).getItemCooldownManager().isCoolingDown(Items.OBSIDIAN_SKULL)) {
-                    event.getEntityLiving().addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0, false, true));
-                    ((PlayerEntity) event.getEntity()).getItemCooldownManager().set(Items.OBSIDIAN_SKULL, 1200);
-                }
-            }
-        }
-    }*/
 }
