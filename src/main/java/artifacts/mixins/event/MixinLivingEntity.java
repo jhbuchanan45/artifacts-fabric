@@ -25,10 +25,6 @@ public abstract class MixinLivingEntity extends Entity {
 
 	@Inject(method = "playHurtSound", at = @At("HEAD"))
 	private void onServerPlayHurtSound(DamageSource source, CallbackInfo info) {
-		artifacts$onPlayHurtSound();
-	}
-
-	public void artifacts$onPlayHurtSound() {
 		PlayHurtSoundCallback.EVENT.invoker().play((LivingEntity)(Object) this, this.getSoundVolume(), this.getSoundPitch());
 	}
 }

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(LivingEntity.class)
-public class MixinLivingEntity {
+public abstract class MixinLivingEntity {
 
 	/**
 	 * Extends the amount of ticks of vulnerability
