@@ -43,6 +43,8 @@ dependencies {
     modImplementation("io.github.prospector:modmenu:${project.mod_menu_version}") {
         transitive = false
     }
+    modImplementation "com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}"
+    include "com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}"
 
     // Dev runtime
     testmodImplementation sourceSets.main.output
@@ -56,6 +58,8 @@ dependencies {
     modRuntime "curse.maven:iamverysmart:${iamverysmart_version}"
     modRuntime "curse.maven:okzoomer:${okzoomer_version}"
     modRuntime "com.github.florensie:auto-load:${autoload_version}"
+    modRuntime "curse.maven:compact_status_effects:${compact_status_effects_version}"
+    modRuntime "net.fabricmc:fabric-language-kotlin:${fabric_lang_kotlin_version}"
 }
 
 processResources {
