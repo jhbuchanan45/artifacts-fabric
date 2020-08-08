@@ -21,7 +21,7 @@ public class UmbrellaItem extends ArtifactItem {
 		DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
 	}
 
-    /* TODO: reimplement, extend ShieldItem instead?
+    /* TODO: wait for fapi/lib
     @Override
     public boolean isShield(ItemStack stack, LivingEntity entity) {
         return true;
@@ -42,28 +42,6 @@ public class UmbrellaItem extends ArtifactItem {
 	}
 
     /* TODO: reimplement
-    @SuppressWarnings("unused")
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    public static class Events {
-        @SubscribeEvent
-        public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-            LivingEntity entity = event.getEntityLiving();
-            EntityAttributeInstance gravity = entity.getAttributeInstance(ForgeMod.ENTITY_GRAVITY.get());
-            if (gravity != null) {
-                if (!entity.isOnGround() && !entity.isTouchingWater() && event.getEntity().getVelocity().y < 0 && !entity.hasStatusEffect(StatusEffects.SLOW_FALLING)
-                        && (entity.getOffHandStack().getItem() == Items.UMBRELLA
-                        || entity.getMainHandStack().getItem() == Items.UMBRELLA) && !(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK)) {
-                    if (!gravity.hasModifier(UMBRELLA_SLOW_FALLING)) {
-                        gravity.addTemporaryModifier(UMBRELLA_SLOW_FALLING);
-                    }
-                    entity.fallDistance = 0;
-                } else if (gravity.hasModifier(UMBRELLA_SLOW_FALLING)) {
-                    gravity.removeModifier(UMBRELLA_SLOW_FALLING);
-                }
-            }
-        }
-    }
-
     @SuppressWarnings("unused")
     @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Artifacts.MOD_ID)
     public static class ClientEvents {

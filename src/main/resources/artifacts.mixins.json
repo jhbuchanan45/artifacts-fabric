@@ -21,6 +21,7 @@
     "item.obsidianskull.MixinEntity",
     "item.pocketpiston.MixinEnchantmentHelper",
     "item.superstitioushat.MixinEnchantmentHelper",
+    "item.umbrella.MixinLivingEntity",
     "statuseffect.MixinLivingEntity"
   ],
   "client": [

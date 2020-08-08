@@ -43,6 +43,7 @@ dependencies {
     modImplementation("io.github.prospector:modmenu:${project.mod_menu_version}") {
         transitive = false
     }
+    // TODO: api for extra entity attributes: gravity, swimming speed, step height, reach/range
     modImplementation "com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}"
     include "com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}"
 
