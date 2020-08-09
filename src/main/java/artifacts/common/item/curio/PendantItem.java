@@ -1,10 +1,13 @@
 package artifacts.common.item.curio;
 
 import artifacts.client.render.model.curio.PendantModel;
+import artifacts.common.events.UserAttackedCallback;
 import artifacts.common.item.Curio;
 import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
@@ -13,13 +16,18 @@ import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class PendantItem extends CurioArtifactItem {
+import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
+public abstract class PendantItem extends CurioArtifactItem {
 
 	private final Identifier texture;
 
-	public PendantItem(Identifier texture) {
+	public PendantItem(Identifier texture, UserAttackedCallback callback) {
 		super(new Item.Settings());
 		this.texture = texture;
+		UserAttackedCallback.EVENT.register(callback);
 	}
 
 	@Override
