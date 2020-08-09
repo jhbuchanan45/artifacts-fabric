@@ -4,6 +4,7 @@
   "package": "artifacts.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "accessors.DamageSourceAccessor",
     "accessors.ItemStackAccessor",
     "accessors.StatusEffectAccessor",
     "accessors.ToolManagerImplAccessor",
@@ -20,6 +21,8 @@
     "item.luckyscarf.MixinEnchantmentHelper",
     "item.luckyscarf.MixinServerPlayerInteractionManager",
     "item.obsidianskull.MixinEntity",
+    "item.pendant.MixinEnchantmentHelper",
+    "item.pendant.MixinEntity",
     "item.pocketpiston.MixinEnchantmentHelper",
     "item.superstitioushat.MixinEnchantmentHelper",
     "item.umbrella.MixinLivingEntity",
