@@ -40,6 +40,7 @@ public class Items {
 	public static final Item OBSIDIAN_SKULL = register("obsidian_skull", new ObsidianSkullItem());
 	public static final Item ANTIDOTE_VESSEL = register("antidote_vessel", new AntidoteVesselItem());
 	public static final Item UNIVERSAL_ATTRACTOR = register("universal_attractor", new UniversalAttractorItem());
+	public static final Item CRYSTAL_HEART = register("crystal_heart", new CrystalHeartItem());
 
 	// Feet
 	public static final Item FLIPPERS = register("flippers", new FlippersItem());
