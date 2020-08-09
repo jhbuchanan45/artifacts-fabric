@@ -16,9 +16,14 @@ public class EverlastingFoodItem extends ArtifactItem {
 		if (isFood()) {
 			entity.eatFood(world, stack.copy());
 			if (!world.isClient && entity instanceof PlayerEntity) {
-				((PlayerEntity) entity).getItemCooldownManager().set(this, 800);
+				((PlayerEntity) entity).getItemCooldownManager().set(this, 200);
 			}
 		}
 		return stack;
+	}
+
+	@Override
+	public int getMaxUseTime(ItemStack stack) {
+		return 24;
 	}
 }
