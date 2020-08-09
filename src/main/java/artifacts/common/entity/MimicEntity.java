@@ -29,8 +29,9 @@ import java.util.EnumSet;
 
 public class MimicEntity extends MobEntity implements Monster {
 
-	public int ticksInAir;
-	public boolean isDormant;
+    public int ticksInAir;
+    public int attackCooldown;
+    public boolean isDormant;
 
 	public MimicEntity(EntityType<? extends MimicEntity> type, World world) {
 		super(type, world);
@@ -43,8 +44,8 @@ public class MimicEntity extends MobEntity implements Monster {
 				.add(EntityAttributes.GENERIC_MAX_HEALTH, 60)
 				.add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16)
 				.add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.5)
-				.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1)
-				.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6);
+				.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
+				.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5);
 	}
 
 	@Override
@@ -100,11 +101,13 @@ public class MimicEntity extends MobEntity implements Monster {
 			}
 		} else if (!onGround) {
 			ticksInAir++;
-		} else {
-			if (ticksInAir > 0) {
-				playSound(getLandingSound(), getSoundVolume(), getSoundPitch());
-				ticksInAir = 0;
-			}
+		} else if (ticksInAir > 0) {
+			playSound(getLandingSound(), getSoundVolume(), getSoundPitch());
+			ticksInAir = 0;
+		}
+
+		if (attackCooldown > 0) {
+			attackCooldown--;
 		}
 	}
 
@@ -112,7 +115,10 @@ public class MimicEntity extends MobEntity implements Monster {
 	public void onPlayerCollision(PlayerEntity player) {
 		super.onPlayerCollision(player);
 		// noinspection ConstantConditions
-		if (player.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL && canSee(player) && squaredDistanceTo(player) < 1 && player.damage(DamageSource.mob(this), (float) getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getValue())) {
+		if (attackCooldown <= 0 && player.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL && canSee(player)
+				&& squaredDistanceTo(player.getBoundingBox().getCenter().subtract(0, getBoundingBox().getYLength() / 2, 0)) < 1
+				&& player.damage(DamageSource.mob(this), (float) getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getValue())) {
+			attackCooldown = 20;
 			dealDamage(this, player);
 		}
 	}
@@ -128,7 +134,7 @@ public class MimicEntity extends MobEntity implements Monster {
 		if (source.getAttacker() instanceof PlayerEntity) {
 			setTarget((LivingEntity) source.getAttacker());
 		}
-		if (ticksInAir <= 0 && !source.isSourceCreativePlayer() && source.getAttacker() != null) {
+		if (ticksInAir <= 0 && !source.isProjectile() && !source.isUnblockable()) {
 			playSound(SoundEvents.MIMIC_HURT, getSoundVolume(), getSoundPitch());
 			return false;
 		}
@@ -311,8 +317,8 @@ public class MimicEntity extends MobEntity implements Monster {
 
 		public void setDirection(float rotation, boolean isAggressive) {
 			this.rotationDegrees = rotation;
-			if (isAggressive && jumpDelay > 20) {
-				jumpDelay = mimic.random.nextInt(10) + 10;
+			if (isAggressive && jumpDelay > 10) {
+				jumpDelay = 10;
 			}
 		}
 
