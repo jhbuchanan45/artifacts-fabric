@@ -3,4 +3,4 @@ Artifacts is a minecraft mod that adds various powerful items which can be found
 More information can be found here:
 https://minecraft.curseforge.com/projects/artifacts
 
-Tracked upstream commit: 69b127cf
+Tracked upstream commit: c583e46f
