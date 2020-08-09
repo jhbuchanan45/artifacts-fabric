@@ -1,6 +1,7 @@
 package artifacts.mixins.event;
 
 import artifacts.common.events.PlayHurtSoundCallback;
+import artifacts.common.events.UserHurtCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -26,5 +27,10 @@ public abstract class MixinLivingEntity extends Entity {
 	@Inject(method = "playHurtSound", at = @At("HEAD"))
 	private void onServerPlayHurtSound(DamageSource source, CallbackInfo info) {
 		PlayHurtSoundCallback.EVENT.invoker().play((LivingEntity)(Object) this, this.getSoundVolume(), this.getSoundPitch());
+	}
+
+	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;applyArmorToDamage(Lnet/minecraft/entity/damage/DamageSource;F)F"))
+	private void onUserHurt(DamageSource source, float amount, CallbackInfo info) {
+		UserHurtCallback.EVENT.invoker().applyEffects((LivingEntity)(Object) this, source, amount);
 	}
 }

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class MixinEnchantmentHelper {
 
     @Inject(method = "onUserDamaged", at = @At("HEAD"))
-    private static void applyPendantEffect(LivingEntity entity, Entity attacker, CallbackInfo info) {
+    private static void onUserAttacked(LivingEntity entity, Entity attacker, CallbackInfo info) {
         UserAttackedCallback.EVENT.invoker().applyEffects(entity, attacker, entity.getRandom());
     }
 }
