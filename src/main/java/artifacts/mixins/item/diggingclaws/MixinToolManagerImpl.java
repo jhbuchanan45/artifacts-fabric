@@ -16,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Mixin to fabric-tool-attribute-api because it's ass
- * TODO: PR events to fabric instead?
  */
 @Mixin(value = ToolManagerImpl.class, remap = false)
 public abstract class MixinToolManagerImpl {

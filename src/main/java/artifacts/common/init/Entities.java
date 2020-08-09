@@ -16,8 +16,8 @@ public class Entities {
 			Registry.ENTITY_TYPE,
 			new Identifier(Artifacts.MODID, "mimic"),
 			FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MimicEntity::new)
-					.dimensions(EntityDimensions.changing(14 / 16F, 14 / 16F))  // TODO: can this be fixed?
-					.trackable(64, 1)  // TODO: what should this interval be?
+					.dimensions(EntityDimensions.fixed(14 / 16F, 14 / 16F))
+					.trackable(64, 1)
 					.build()
 	);
 

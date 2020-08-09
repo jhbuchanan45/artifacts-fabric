@@ -26,7 +26,7 @@ public class Artifacts implements ModInitializer {
 			new Identifier(MODID, "item_group"),
 			() -> new ItemStack(Items.BUNNY_HOPPERS)
 	);
-	public static ModConfig CONFIG;  // TODO: we're not even using this
+	public static ModConfig CONFIG;
 
 	@Override
 	@SuppressWarnings("ResultOfMethodCallIgnored")
