@@ -21,7 +21,7 @@
     "item.luckyscarf.MixinEnchantmentHelper",
     "item.luckyscarf.MixinServerPlayerInteractionManager",
     "item.obsidianskull.MixinEntity",
-    "item.pendant.MixinEnchantmentHelper",
+    "event.MixinEnchantmentHelper",
     "item.pendant.MixinEntity",
     "item.pocketpiston.MixinEnchantmentHelper",
     "item.superstitioushat.MixinEnchantmentHelper",

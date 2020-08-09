@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(Entity.class)
-public class MixinEntity {
+public abstract class MixinEntity {
 
 	@Inject(method = "setOnFireFor", at = @At("HEAD"))
 	private void giveFireResistance(int seconds, CallbackInfo info) {
