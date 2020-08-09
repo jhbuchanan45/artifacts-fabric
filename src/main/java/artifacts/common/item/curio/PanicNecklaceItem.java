@@ -36,7 +36,7 @@ public class PanicNecklaceItem extends CurioArtifactItem {
 	}
 
 	private static void applyEffects(LivingEntity user, DamageSource source, float amount) {
-		if (user.world.isClient && amount >= 1 && CuriosApi.getCuriosHelper().findEquippedCurio(Items.PANIC_NECKLACE, user).isPresent()) {
+		if (!user.world.isClient && amount >= 1 && CuriosApi.getCuriosHelper().findEquippedCurio(Items.PANIC_NECKLACE, user).isPresent()) {
 			user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 160, 0, false, false));
 		}
 	}

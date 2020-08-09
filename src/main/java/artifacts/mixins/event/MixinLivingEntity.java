@@ -28,9 +28,4 @@ public abstract class MixinLivingEntity extends Entity {
 	private void onServerPlayHurtSound(DamageSource source, CallbackInfo info) {
 		PlayHurtSoundCallback.EVENT.invoker().play((LivingEntity)(Object) this, this.getSoundVolume(), this.getSoundPitch());
 	}
-
-	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;applyArmorToDamage(Lnet/minecraft/entity/damage/DamageSource;F)F"))
-	private void onUserHurt(DamageSource source, float amount, CallbackInfo info) {
-		UserHurtCallback.EVENT.invoker().applyEffects((LivingEntity)(Object) this, source, amount);
-	}
 }
