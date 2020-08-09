@@ -28,7 +28,7 @@ public class Features {
 
 		Registry.BIOME.forEach(biome -> {
 			if (biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND) {
-				biome.addFeature(GenerationStep.Feature.UNDERGROUND_STRUCTURES, CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(placement.configure(new ChanceDecoratorConfig((int) (1 / ModConfig.campsite.genChance)))));
+				biome.addFeature(GenerationStep.Feature.UNDERGROUND_STRUCTURES, CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(placement.configure(new ChanceDecoratorConfig((int) (1 / Artifacts.CONFIG.campsite.genChance)))));
 			}
 		});
 	}
