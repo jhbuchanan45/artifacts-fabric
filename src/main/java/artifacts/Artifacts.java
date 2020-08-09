@@ -51,6 +51,7 @@ public class Artifacts implements ModInitializer {
 		Items.ANTIDOTE_VESSEL.toString();
 		Features.CAMPSITE_FEATURE.toString();
 		SoundEvents.MIMIC_CLOSE.toString();
+		Components.register();
 
 		// ToolHandlers
 		ToolHandlers.register();

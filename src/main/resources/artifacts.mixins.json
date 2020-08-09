@@ -22,13 +22,14 @@
     "item.pocketpiston.MixinEnchantmentHelper",
     "item.superstitioushat.MixinEnchantmentHelper",
     "item.umbrella.MixinLivingEntity",
+    "item.universalattractor.MixinPlayerEntity",
     "statuseffect.MixinLivingEntity"
   ],
   "client": [
     "event.client.MixinLivingEntity",
     "item.flippers.client.MixinLivingEntity",
-    "item.umbrella.client.MixinLivingEntityRenderer",
     "item.umbrella.client.MixinBipedEntityModel",
+    "item.umbrella.client.MixinLivingEntityRenderer",
     "statuseffect.client.MixinGameRenderer",
     "statuseffect.client.MixinLivingEntity"
   ],

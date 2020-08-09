@@ -5,6 +5,7 @@ import artifacts.common.init.Items;
 import artifacts.common.item.curio.FlippersItem;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Slice;
@@ -31,6 +32,7 @@ public abstract class MixinLivingEntity implements LivingEntityExtensions {
 		return (float) artifacts$getIncreasedSwimSpeed(speed);
 	}
 
+	@Unique
 	@Override
 	public double artifacts$getIncreasedSwimSpeed(double speed) {
 		return CuriosApi.getCuriosHelper().findEquippedCurio(Items.FLIPPERS, (LivingEntity)(Object) this).isPresent()

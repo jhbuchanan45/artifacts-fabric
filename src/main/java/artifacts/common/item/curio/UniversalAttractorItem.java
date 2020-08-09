@@ -2,6 +2,7 @@ package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.UniversalAttractorModel;
+import artifacts.common.init.Components;
 import artifacts.common.item.Curio;
 import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
@@ -27,14 +28,6 @@ public class UniversalAttractorItem extends CurioArtifactItem {
 		super(new Item.Settings());
 	}
 
-	public static int getCooldown(ItemStack stack) {
-		return stack.getOrCreateTag().getInt("Cooldown");
-	}
-
-	public static void setCooldown(ItemStack stack, int cooldown) {
-		stack.getOrCreateTag().putInt("Cooldown", cooldown);
-	}
-
 	@Override
 	protected ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
@@ -45,29 +38,24 @@ public class UniversalAttractorItem extends CurioArtifactItem {
 					return;
 				}
 
-				int cooldown = getCooldown(stack);
-				if (cooldown <= 0) {
-					Vec3d playerPos = entity.getPos().add(0, 0.75, 0);
+				Vec3d playerPos = entity.getPos().add(0, 0.75, 0);
 
-					int range = 5;
-					List<ItemEntity> items = entity.world.getNonSpectatingEntities(ItemEntity.class, new Box(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-					int pulled = 0;
-					for (ItemEntity item : items) {
-						// TODO: fix this or wait for botania-fabric to do it for me
-						if (item.isAlive() && !item.cannotPickup()) { // && !item.getPersistentData().getBoolean("PreventRemoteMovement")
-							if (pulled++ > 200) {
-								break;
-							}
-
-							Vec3d motion = playerPos.subtract(item.getPos().add(0, item.getHeight() / 2, 0));
-							if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
-								motion = motion.normalize();
-							}
-							item.setVelocity(motion.multiply(0.6));
+				int range = 5;
+				List<ItemEntity> items = entity.world.getNonSpectatingEntities(ItemEntity.class, new Box(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+				int pulled = 0;
+				for (ItemEntity item : items) {
+					if (Components.DROPPED_ITEM_ENTITY.maybeGet(item).isPresent() && Components.DROPPED_ITEM_ENTITY.get(item).getWasDropped() &&
+						item.getAge() > 100 && item.isAlive() && !item.cannotPickup()) {
+						if (pulled++ > 200) {
+							break;
 						}
+
+						Vec3d motion = playerPos.subtract(item.getPos().add(0, item.getHeight() / 2, 0));
+						if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
+							motion = motion.normalize();
+						}
+						item.setVelocity(motion.multiply(0.6));
 					}
-				} else {
-					setCooldown(stack, cooldown - 1);
 				}
 			}
 		};
@@ -94,15 +82,4 @@ public class UniversalAttractorItem extends CurioArtifactItem {
 			}
 		};
 	}
-
-    /* TODO: reimplement
-    @Mod.EventBusSubscriber(modid = Artifacts.MOD_ID)
-    @SuppressWarnings("unused")
-    public static class Events {
-
-        @SubscribeEvent
-        public static void onItemToss(ItemTossEvent event) {
-            CuriosApi.getCuriosHelper().findEquippedCurio(Items.UNIVERSAL_ATTRACTOR, event.getPlayer()).ifPresent((triple) -> setCooldown(triple.right, 100));
-        }
-    }*/
 }
