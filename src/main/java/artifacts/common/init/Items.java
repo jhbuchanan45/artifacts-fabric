@@ -15,8 +15,8 @@ public class Items {
 
 	// Head
 	public static final Item SNORKEL = register("snorkel", new SnorkelItem());
-	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem(false));
-	public static final Item NOVELTY_DRINKING_HAT = register("novelty_drinking_hat", new DrinkingHatItem(true));
+	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/curio/plastic_drinking_hat.png")));
+	public static final Item NOVELTY_DRINKING_HAT = register("novelty_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/curio/novelty_drinking_hat.png")));
 	public static final Item NIGHT_VISION_GOGGLES = register("night_vision_goggles", new NightVisionGogglesItem());
 	public static final Item SUPERSTITIOUS_HAT = register("superstitious_hat", new SuperstitiousHatItem());
 
