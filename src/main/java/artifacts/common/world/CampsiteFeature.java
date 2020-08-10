@@ -1,7 +1,6 @@
 package artifacts.common.world;
 
 import artifacts.Artifacts;
-import artifacts.common.config.ModConfig;
 import artifacts.common.entity.MimicEntity;
 import artifacts.common.init.Entities;
 import artifacts.common.init.LootTables;
@@ -11,9 +10,7 @@ import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.gen.StructureAccessor;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -71,10 +68,10 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 	}
 
 	@Override
-	public boolean generate(ServerWorldAccess world, StructureAccessor manager, ChunkGenerator generator, Random random, BlockPos pos, DefaultFeatureConfig config) {
+	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos blockPos, DefaultFeatureConfig featureConfig) {
 		List<BlockPos> positions = new ArrayList<>();
-		BlockPos.stream(pos.add(-3, 0, -3), pos.add(3, 0, 3)).forEach((blockPos -> positions.add(blockPos.toImmutable())));
-		positions.remove(pos);
+		BlockPos.stream(blockPos.add(-3, 0, -3), blockPos.add(3, 0, 3)).forEach((pos -> positions.add(pos.toImmutable())));
+		positions.remove(blockPos);
 		positions.removeIf(currentPos -> !world.isAir(currentPos));
 		positions.removeIf(currentPos -> !world.getBlockState(currentPos.down()).getMaterial().blocksMovement());
 		if (positions.size() < 12) {
@@ -83,10 +80,10 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		Collections.shuffle(positions);
 
 		if (random.nextFloat() < Artifacts.CONFIG.campsite.oreChance) {
-			generateOreVein(world, pos.down(), random);
+			generateOreVein(world, blockPos.down(), random);
 		}
 
-		generateLightSource(world, pos, random);
+		generateLightSource(world, blockPos, random);
 
 		generateContainer(world, positions.remove(0), random);
 		if (random.nextBoolean()) {
@@ -101,7 +98,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		return true;
 	}
 
-	public void generateLightSource(WorldAccess world, BlockPos pos, Random random) {
+	public void generateLightSource(StructureWorldAccess world, BlockPos pos, Random random) {
 		if (random.nextInt(4) != 0) {
 			BlockPos currentPos = pos;
 			while (currentPos.getY() - pos.getY() < 8 && world.isAir(currentPos.up())) {
@@ -115,9 +112,9 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		world.setBlockState(pos, CAMPFIRE_PROVIDER.getBlockState(random, pos), 2);
 	}
 
-	public void generateContainer(WorldAccess world, BlockPos pos, Random random) {
+	public void generateContainer(StructureWorldAccess world, BlockPos pos, Random random) {
 		if (random.nextFloat() < Artifacts.CONFIG.campsite.mimicChance) {
-			MimicEntity mimic = Entities.MIMIC.create(world.getWorld());
+			MimicEntity mimic = Entities.MIMIC.create(world.toServerWorld());
 			if (mimic != null) {
 				mimic.setDormant();
 				mimic.updatePosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
@@ -142,7 +139,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		}
 	}
 
-	public void generateCraftingStation(WorldAccess world, BlockPos pos, Random random) {
+	public void generateCraftingStation(StructureWorldAccess world, BlockPos pos, Random random) {
 		BlockState state = CRAFTING_STATION_PROVIDER.getBlockState(random, pos);
 		world.setBlockState(pos, state, 0);
 		if (random.nextBoolean() && world.isAir(pos.up())) {
@@ -151,7 +148,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 
 	}
 
-	public void generateDecoration(WorldAccess world, BlockPos pos, Random random) {
+	public void generateDecoration(StructureWorldAccess world, BlockPos pos, Random random) {
 		if (random.nextInt(3) == 0) {
 			world.setBlockState(pos, DECORATION_PROVIDER.getBlockState(random, pos), 2);
 		} else {
@@ -159,7 +156,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		}
 	}
 
-	public void generateOreVein(WorldAccess world, BlockPos pos, Random random) {
+	public void generateOreVein(StructureWorldAccess world, BlockPos pos, Random random) {
 		BlockState ore = ORE_PROVIDER.getBlockState(random, pos);
 		List<BlockPos> positions = new ArrayList<>();
 		positions.add(pos);

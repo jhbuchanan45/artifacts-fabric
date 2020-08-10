@@ -49,7 +49,9 @@ public class Artifacts implements ModInitializer {
 		// Force loading init classes
 		// Entities is loaded by items, loottables can load lazily (no registration)
 		Items.ANTIDOTE_VESSEL.toString();
-		Features.CAMPSITE_FEATURE.toString();
+		//Features.CAMPSITE_FEATURE.toString();
+		// TODO: this is cursed and doesn't work
+		WorldGenerator.initWorldGen();
 		SoundEvents.MIMIC_CLOSE.toString();
 		Components.register();
 

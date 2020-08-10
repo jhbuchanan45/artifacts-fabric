@@ -33,28 +33,26 @@ dependencies {
 
     // Dependencies
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "top.theillusivec4.curios:curios-fabric:${project.curios_version}"
-    modImplementation("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
+    //modImplementation "top.theillusivec4.curios:curios-fabric:${project.curios_version}"
+    modImplementation "com.github.florensie:Curios:1.16.x-fabric-SNAPSHOT"
+    modImplementation include("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
         exclude(group: "io.github.prospector", module: "modmenu")
     }
-    include "me.shedaniel.cloth:config-2:${project.cloth_config_version}"
-    modImplementation "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
-    include "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
+    modImplementation include("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}")
     modImplementation("io.github.prospector:modmenu:${project.mod_menu_version}") {
         transitive = false
     }
     // TODO: api for extra entity attributes: gravity, swimming speed, step height, reach/range
-    modImplementation "com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}"
-    include "com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}"
+    modImplementation include("com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}")
 
     // Dev runtime
     testmodImplementation sourceSets.main.output
     modRuntime "net.dblsaiko:winwonders:${project.window_wonders_version}-+"
-    modRuntime("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
-        exclude module: "fabric-loader"
-    }
-    modRuntime "curse.maven:sodium:${sodium_version}"
-    modRuntime "curse.maven:lithium:${lithium_version}"
+    //modRuntime("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
+    //    exclude module: "fabric-loader"
+    //}
+    //modRuntime "curse.maven:sodium:${sodium_version}"
+    //modRuntime "curse.maven:lithium:${lithium_version}"
     modRuntime "curse.maven:phosphor:${phosphor_version}"
     modRuntime "curse.maven:iamverysmart:${iamverysmart_version}"
     modRuntime "curse.maven:okzoomer:${okzoomer_version}"

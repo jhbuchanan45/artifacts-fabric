@@ -64,7 +64,7 @@ public class NightVisionGogglesItem extends CurioArtifactItem {
 			@Environment(EnvType.CLIENT)
 			public void render(String identifier, int index, MatrixStack matrixStack, VertexConsumerProvider renderTypeBuffer, int light, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
 				super.render(identifier, index, matrixStack, renderTypeBuffer, light, entity, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
-				VertexConsumer buffer = ItemRenderer.getArmorVertexConsumer(renderTypeBuffer, RenderTypes.unlit(TEXTURE_GLOW), false, false);
+				VertexConsumer buffer = ItemRenderer.getGlintVertexConsumer(renderTypeBuffer, RenderTypes.unlit(TEXTURE_GLOW), false, false);
 				getModel().render(matrixStack, buffer, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 			}
 		};

@@ -49,11 +49,11 @@ public class MimicEntity extends MobEntity implements Monster {
 	}
 
 	@Override
-	public EntityData initialize(WorldAccess worldIn, LocalDifficulty difficultyIn, SpawnReason reason, EntityData spawnDataIn, CompoundTag dataTag) {
+	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, CompoundTag entityTag) {
 		if (getMoveControl() instanceof MimicMovementController) {
 			((MimicMovementController) moveControl).setDirection(random.nextInt(4) * 90, false);
 		}
-		return super.initialize(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+		return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
 	}
 
 	public SoundCategory getSoundCategory() {
