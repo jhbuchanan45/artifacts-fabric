@@ -16,42 +16,42 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class VillagerHatItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/villager_hat.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/villager_hat.png");
 
-    public VillagerHatItem() {
-        super(new Item.Settings());
-    }
+	public VillagerHatItem() {
+		super(new Item.Settings());
+	}
 
-    @Override
-    public ICurio attachCurio(ItemStack stack) {
-        return new Curio(this) {
+	@Override
+	public ICurio attachCurio(ItemStack stack) {
+		return new Curio(this) {
 
-            @Override
-            public StatusEffectInstance getPermanentEffect() {
-                return new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 20, 1, true, false);
-            }
-        };
-    }
+			@Override
+			public StatusEffectInstance getPermanentEffect() {
+				return new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 20, 1, true, false);
+			}
+		};
+	}
 
-    @Override
-    protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected VillagerHatModel getModel() {
-                if (model == null) {
-                    model = new VillagerHatModel();
-                }
-                return (VillagerHatModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected VillagerHatModel getModel() {
+				if (model == null) {
+					model = new VillagerHatModel();
+				}
+				return (VillagerHatModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE;
+			}
+		};
+	}
 }

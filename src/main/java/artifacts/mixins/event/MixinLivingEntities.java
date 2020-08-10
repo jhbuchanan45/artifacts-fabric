@@ -15,15 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = {LivingEntity.class, PlayerEntity.class})
 public abstract class MixinLivingEntities extends Entity {
 
-    public MixinLivingEntities(EntityType<?> type, World world) {
-        super(type, world);
-    }
+	public MixinLivingEntities(EntityType<?> type, World world) {
+		super(type, world);
+	}
 
-    @Inject(method = "applyDamage", at = @At("HEAD"))
-    private void onUserHurt(DamageSource source, float amount, CallbackInfo info) {
-        System.out.println("KEKEKEKE");
-        if (!this.isInvulnerableTo(source)) {
-            UserHurtCallback.EVENT.invoker().applyEffects((LivingEntity) (Object) this, source, amount);
-        }
-    }
+	@Inject(method = "applyDamage", at = @At("HEAD"))
+	private void onUserHurt(DamageSource source, float amount, CallbackInfo info) {
+		if (!this.isInvulnerableTo(source)) {
+			UserHurtCallback.EVENT.invoker().applyEffects((LivingEntity) (Object) this, source, amount);
+		}
+	}
 }

@@ -12,12 +12,12 @@ import java.util.Random;
  */
 public interface UserAttackedCallback {
 
-    Event<UserAttackedCallback> EVENT = EventFactory.createArrayBacked(UserAttackedCallback.class,
-            (listeners) -> (user, attacker, random) -> {
-                for (UserAttackedCallback listener : listeners) {
-                    listener.applyEffects(user, attacker, random);
-                }
-            });
+	Event<UserAttackedCallback> EVENT = EventFactory.createArrayBacked(UserAttackedCallback.class,
+			(listeners) -> (user, attacker, random) -> {
+				for (UserAttackedCallback listener : listeners) {
+					listener.applyEffects(user, attacker, random);
+				}
+			});
 
-    void applyEffects(LivingEntity user, Entity attacker, Random random);
+	void applyEffects(LivingEntity user, Entity attacker, Random random);
 }

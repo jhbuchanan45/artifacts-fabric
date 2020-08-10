@@ -22,16 +22,16 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 
 import java.util.EnumSet;
 
 public class MimicEntity extends MobEntity implements Monster {
 
-    public int ticksInAir;
-    public int attackCooldown;
-    public boolean isDormant;
+	public int ticksInAir;
+	public int attackCooldown;
+	public boolean isDormant;
 
 	public MimicEntity(EntityType<? extends MimicEntity> type, World world) {
 		super(type, world);

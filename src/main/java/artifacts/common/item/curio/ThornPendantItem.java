@@ -12,15 +12,15 @@ import java.util.Random;
 
 public class ThornPendantItem extends PendantItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/thorn_pendant.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/thorn_pendant.png");
 
-    public ThornPendantItem() {
-        super(TEXTURE, ThornPendantItem::applyEffects);
-    }
+	public ThornPendantItem() {
+		super(TEXTURE, ThornPendantItem::applyEffects);
+	}
 
-    private static void applyEffects(LivingEntity user, Entity attacker, Random random) {
-        if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.THORN_PENDANT, user).isPresent() && random.nextFloat() < 0.5f) {
-            attacker.damage(DamageSource.thorns(user), 2 + random.nextInt(5));
-        }
-    }
+	private static void applyEffects(LivingEntity user, Entity attacker, Random random) {
+		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.THORN_PENDANT, user).isPresent() && random.nextFloat() < 0.5f) {
+			attacker.damage(DamageSource.thorns(user), 2 + random.nextInt(5));
+		}
+	}
 }

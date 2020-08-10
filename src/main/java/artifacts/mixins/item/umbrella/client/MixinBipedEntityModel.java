@@ -16,26 +16,26 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(BipedEntityModel.class)
 public abstract class MixinBipedEntityModel<T extends LivingEntity> {
 
-    @Shadow public ModelPart rightArm;
+	@Shadow public ModelPart rightArm;
 
-    @Shadow public ModelPart leftArm;
+	@Shadow public ModelPart leftArm;
 
-    @SuppressWarnings("UnresolvedMixinReference")
-    @Inject(method = "setAngles", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMainArm()Lnet/minecraft/util/Arm;"))
-    private void reduceHandSwing(T entity, float f, float g, float h, float i, float j, CallbackInfo info) {
-        if (!(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK)) {
-            // Check if umbrella is held in main or offhand
-            boolean isHoldingOffHand = entity.getOffHandStack().getItem() == Items.UMBRELLA;
-            boolean isHoldingMainHand = entity.getMainHandStack().getItem() == Items.UMBRELLA;
-            Arm mainArm = MinecraftClient.getInstance().options.mainArm;
+	@SuppressWarnings("UnresolvedMixinReference")
+	@Inject(method = "setAngles", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMainArm()Lnet/minecraft/util/Arm;"))
+	private void reduceHandSwing(T entity, float f, float g, float h, float i, float j, CallbackInfo info) {
+		if (!(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK)) {
+			// Check if umbrella is held in main or offhand
+			boolean isHoldingOffHand = entity.getOffHandStack().getItem() == Items.UMBRELLA;
+			boolean isHoldingMainHand = entity.getMainHandStack().getItem() == Items.UMBRELLA;
+			Arm mainArm = MinecraftClient.getInstance().options.mainArm;
 
-            // Handle right hand
-            if ((isHoldingMainHand && mainArm == Arm.RIGHT) || (isHoldingOffHand && mainArm == Arm.LEFT)) {
-                this.rightArm.pitch /= 8;
-            // Handle left hand
-            } else if ((isHoldingMainHand && mainArm == Arm.LEFT) || (isHoldingOffHand && mainArm == Arm.RIGHT)) {
-                this.leftArm.pitch /= 8;
-            }
-        }
-    }
+			// Handle right hand
+			if ((isHoldingMainHand && mainArm == Arm.RIGHT) || (isHoldingOffHand && mainArm == Arm.LEFT)) {
+				this.rightArm.pitch /= 8;
+				// Handle left hand
+			} else if ((isHoldingMainHand && mainArm == Arm.LEFT) || (isHoldingOffHand && mainArm == Arm.RIGHT)) {
+				this.leftArm.pitch /= 8;
+			}
+		}
+	}
 }

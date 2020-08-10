@@ -20,61 +20,61 @@ import java.util.UUID;
 
 public class CrystalHeartItem extends CurioArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/crystal_heart.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/crystal_heart.png");
 
-    private static final EntityAttributeModifier HEALTH_BONUS = new EntityAttributeModifier(UUID.fromString("99fa0537-90b9-481a-bc76-4650987faba3"), "artifacts:crystal_heart_health_bonus", 10, EntityAttributeModifier.Operation.ADDITION);
+	private static final EntityAttributeModifier HEALTH_BONUS = new EntityAttributeModifier(UUID.fromString("99fa0537-90b9-481a-bc76-4650987faba3"), "artifacts:crystal_heart_health_bonus", 10, EntityAttributeModifier.Operation.ADDITION);
 
-    public CrystalHeartItem() {
-        super(new Item.Settings());
-    }
+	public CrystalHeartItem() {
+		super(new Item.Settings());
+	}
 
-    @Override
-    public ICurio attachCurio(ItemStack stack) {
-        return new Curio(this) {
-            @Override
-            public void onEquip(String identifier, int index, LivingEntity entity) {
-                if (!entity.world.isClient()) {
-                    EntityAttributeInstance health = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
-                    if (health != null && !health.hasModifier(HEALTH_BONUS)) {
-                        health.addPersistentModifier(HEALTH_BONUS);
-                    }
-                }
-            }
+	@Override
+	public ICurio attachCurio(ItemStack stack) {
+		return new Curio(this) {
+			@Override
+			public void onEquip(String identifier, int index, LivingEntity entity) {
+				if (!entity.world.isClient()) {
+					EntityAttributeInstance health = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+					if (health != null && !health.hasModifier(HEALTH_BONUS)) {
+						health.addPersistentModifier(HEALTH_BONUS);
+					}
+				}
+			}
 
-            @Override
-            public void onUnequip(String identifier, int index, LivingEntity entity) {
-                if (!entity.world.isClient()) {
-                    EntityAttributeInstance health = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
-                    if (health != null && health.hasModifier(HEALTH_BONUS)) {
-                        health.removeModifier(HEALTH_BONUS);
-                        if (entity.getHealth() > entity.getMaxHealth()) {
-                            entity.setHealth(entity.getMaxHealth());
-                        }
-                    }
-                }
-            }
-        };
-    }
+			@Override
+			public void onUnequip(String identifier, int index, LivingEntity entity) {
+				if (!entity.world.isClient()) {
+					EntityAttributeInstance health = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+					if (health != null && health.hasModifier(HEALTH_BONUS)) {
+						health.removeModifier(HEALTH_BONUS);
+						if (entity.getHealth() > entity.getMaxHealth()) {
+							entity.setHealth(entity.getMaxHealth());
+						}
+					}
+				}
+			}
+		};
+	}
 
-    @Override
-    protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
-        return new RenderableCurio() {
-            private Object model;
+	@Override
+	protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
+		return new RenderableCurio() {
+			private Object model;
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected CrystalHeartModel getModel() {
-                if (model == null) {
-                    model = new CrystalHeartModel();
-                }
-                return (CrystalHeartModel) model;
-            }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected CrystalHeartModel getModel() {
+				if (model == null) {
+					model = new CrystalHeartModel();
+				}
+				return (CrystalHeartModel) model;
+			}
 
-            @Override
-            @Environment(EnvType.CLIENT)
-            protected Identifier getTexture() {
-                return TEXTURE;
-            }
-        };
-    }
+			@Override
+			@Environment(EnvType.CLIENT)
+			protected Identifier getTexture() {
+				return TEXTURE;
+			}
+		};
+	}
 }

@@ -19,7 +19,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 @Mixin(PlayerEntity.class)
 public abstract class MixinPlayerEntity extends LivingEntity {
 
-    @Shadow @Final public PlayerInventory inventory;
+	@Shadow @Final public PlayerInventory inventory;
 
 	protected MixinPlayerEntity(EntityType<? extends LivingEntity> entityType, World world) {
 		super(entityType, world);

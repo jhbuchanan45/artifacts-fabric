@@ -14,18 +14,18 @@ import java.util.Random;
 
 public class FlamePendantItem extends PendantItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/flame_pendant.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/flame_pendant.png");
 
-    public FlamePendantItem() {
-        super(TEXTURE, FlamePendantItem::applyEffects);
-    }
+	public FlamePendantItem() {
+		super(TEXTURE, FlamePendantItem::applyEffects);
+	}
 
-    private static void applyEffects(LivingEntity user, Entity attacker, Random random) {
-        if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.FLAME_PENDANT, user).isPresent() && random.nextFloat() < 0.4f) {
-            attacker.setOnFireFor(8);
-            //noinspection ConstantConditions
-            DamageSource setFireSource = ((DamageSourceAccessor) (new EntityDamageSource("onFire", user))).callSetFire();
-            attacker.damage(setFireSource, 2);
-        }
-    }
+	private static void applyEffects(LivingEntity user, Entity attacker, Random random) {
+		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.FLAME_PENDANT, user).isPresent() && random.nextFloat() < 0.4f) {
+			attacker.setOnFireFor(8);
+			//noinspection ConstantConditions
+			DamageSource setFireSource = ((DamageSourceAccessor) (new EntityDamageSource("onFire", user))).callSetFire();
+			attacker.damage(setFireSource, 2);
+		}
+	}
 }

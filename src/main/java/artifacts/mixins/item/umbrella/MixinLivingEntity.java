@@ -16,25 +16,28 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity extends Entity {
 
-    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
+	public MixinLivingEntity(EntityType<?> type, World world) {
+		super(type, world);
+	}
 
-    @Shadow public abstract ItemStack getMainHandStack();
+	@Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
+	@Shadow public abstract ItemStack getMainHandStack();
+	@Shadow public abstract ItemStack getOffHandStack();
+	@Shadow public abstract boolean isUsingItem();
+	@Shadow public abstract ItemStack getActiveItem();
 
-    @Shadow public abstract ItemStack getOffHandStack();
+	@ModifyVariable(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"))
+	private double changeGravity(double gravity) {
+		boolean isFalling = this.getVelocity().y <= 0.0D;
+		LivingEntity self = ((LivingEntity) (Object) this);
+		boolean isBlocking = this.isUsingItem() && !this.getActiveItem().isEmpty() && this.getActiveItem().getUseAction() == UseAction.BLOCK;
 
-    public MixinLivingEntity(EntityType<?> type, World world) {
-        super(type, world);
-    }
+		// TODO: check if blocking
+		if (!isBlocking && isFalling && !this.hasStatusEffect(StatusEffects.SLOW_FALLING) && !isTouchingWater() &&
+				(this.getMainHandStack().getItem() == Items.UMBRELLA || this.getOffHandStack().getItem() == Items.UMBRELLA)) {
+			gravity -= 0.07;
+		}
 
-    @ModifyVariable(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"))
-    private double changeGravity(double gravity) {
-        boolean isFalling = this.getVelocity().y <= 0.0D;
-
-        if (isFalling && !this.hasStatusEffect(StatusEffects.SLOW_FALLING) && !isTouchingWater() &&
-                (this.getMainHandStack().getItem() == Items.UMBRELLA || this.getOffHandStack().getItem() == Items.UMBRELLA)) {
-            gravity -= 0.07;
-        }
-
-        return gravity;
-    }
+		return gravity;
+	}
 }

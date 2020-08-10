@@ -45,7 +45,7 @@ public class UniversalAttractorItem extends CurioArtifactItem {
 				int pulled = 0;
 				for (ItemEntity item : items) {
 					if (Components.DROPPED_ITEM_ENTITY.maybeGet(item).isPresent() && Components.DROPPED_ITEM_ENTITY.get(item).getWasDropped() &&
-						item.getAge() > 100 && item.isAlive() && !item.cannotPickup()) {
+							item.getAge() > 100 && item.isAlive() && !item.cannotPickup()) {
 						if (pulled++ > 200) {
 							break;
 						}

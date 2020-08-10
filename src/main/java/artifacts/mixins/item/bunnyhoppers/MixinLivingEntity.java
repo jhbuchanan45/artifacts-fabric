@@ -11,10 +11,10 @@ import top.theillusivec4.curios.api.CuriosApi;
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity {
 
-    @Inject(method = "handleFallDamage", cancellable = true, at = @At("HEAD"))
-    private void cancelFallDamage(float fallDistance, float damageMultiplier, CallbackInfoReturnable<Boolean> info) {
-        CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, (LivingEntity)(Object) this).ifPresent(curio -> {
-            info.setReturnValue(false);
-        });
-    }
+	@Inject(method = "handleFallDamage", cancellable = true, at = @At("HEAD"))
+	private void cancelFallDamage(float fallDistance, float damageMultiplier, CallbackInfoReturnable<Boolean> info) {
+		CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, (LivingEntity)(Object) this).ifPresent(curio -> {
+			info.setReturnValue(false);
+		});
+	}
 }

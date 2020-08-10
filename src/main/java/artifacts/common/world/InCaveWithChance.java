@@ -1,11 +1,8 @@
 package artifacts.common.world;
 
 import artifacts.Artifacts;
-import artifacts.common.config.ModConfig;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 

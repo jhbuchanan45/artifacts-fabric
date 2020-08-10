@@ -6,6 +6,6 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(DamageSource.class)
 public interface DamageSourceAccessor {
-    @Invoker
-    DamageSource callSetFire();
+	@Invoker
+	DamageSource callSetFire();
 }

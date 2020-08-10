@@ -2,7 +2,6 @@ package artifacts.common.item.curio;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.PanicNecklaceModel;
-import artifacts.common.events.UserAttackedCallback;
 import artifacts.common.events.UserHurtCallback;
 import artifacts.common.init.Items;
 import artifacts.common.item.Curio;
@@ -10,7 +9,6 @@ import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -23,8 +21,6 @@ import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
-
-import java.util.Random;
 
 public class PanicNecklaceItem extends CurioArtifactItem {
 

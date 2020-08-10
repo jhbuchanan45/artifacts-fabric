@@ -12,8 +12,8 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class FlippersItem extends CurioArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/flippers.png");
 	public static final int SWIM_SPEED_MULTIPLIER = 2;
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/flippers.png");
 
 
 	public FlippersItem() {

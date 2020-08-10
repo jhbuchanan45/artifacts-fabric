@@ -2,7 +2,6 @@ package artifacts.common.events;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 
@@ -11,12 +10,12 @@ import net.minecraft.entity.damage.DamageSource;
  */
 public interface UserHurtCallback {
 
-    Event<UserHurtCallback> EVENT = EventFactory.createArrayBacked(UserHurtCallback.class,
-            (listeners) -> (user, source, amount) -> {
-                for (UserHurtCallback listener : listeners) {
-                    listener.applyEffects(user, source, amount);
-                }
-            });
+	Event<UserHurtCallback> EVENT = EventFactory.createArrayBacked(UserHurtCallback.class,
+			(listeners) -> (user, source, amount) -> {
+				for (UserHurtCallback listener : listeners) {
+					listener.applyEffects(user, source, amount);
+				}
+			});
 
-    void applyEffects(LivingEntity user, DamageSource source, float amount);
+	void applyEffects(LivingEntity user, DamageSource source, float amount);
 }

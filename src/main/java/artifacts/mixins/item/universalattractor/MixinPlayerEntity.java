@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PlayerEntity.class)
 public abstract class MixinPlayerEntity {
 
-    @Inject(method = "dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/ItemEntity;", at = @At("TAIL"))
-    private void setDroppedFlag(ItemStack stack, boolean throwRandomly, boolean retainOwnership, CallbackInfoReturnable<ItemEntity> info) {
-        Components.DROPPED_ITEM_ENTITY.maybeGet(info.getReturnValue()).ifPresent(component -> component.setWasDropped(true));
-    }
+	@Inject(method = "dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/ItemEntity;", at = @At("TAIL"))
+	private void setDroppedFlag(ItemStack stack, boolean throwRandomly, boolean retainOwnership, CallbackInfoReturnable<ItemEntity> info) {
+		Components.DROPPED_ITEM_ENTITY.maybeGet(info.getReturnValue()).ifPresent(component -> component.setWasDropped(true));
+	}
 }

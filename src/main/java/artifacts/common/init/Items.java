@@ -1,7 +1,8 @@
 package artifacts.common.init;
 
 import artifacts.Artifacts;
-import artifacts.common.item.*;
+import artifacts.common.item.EverlastingFoodItem;
+import artifacts.common.item.UmbrellaItem;
 import artifacts.common.item.curio.*;
 import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;

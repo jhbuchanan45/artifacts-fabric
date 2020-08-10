@@ -15,26 +15,26 @@ import java.util.Random;
 
 public class ShockPendantItem extends PendantItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/shock_pendant.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/shock_pendant.png");
 
-    public ShockPendantItem() {
-        super(TEXTURE, ShockPendantItem::applyEffect);
-    }
+	public ShockPendantItem() {
+		super(TEXTURE, ShockPendantItem::applyEffect);
+	}
 
-    private static void applyEffect(LivingEntity user, Entity attacker, Random random) {
-        if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, user).isPresent()
-                && attacker.world.isSkyVisible(attacker.getBlockPos()) && random.nextFloat() < 0.25f) {
-            LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(attacker.world);
+	private static void applyEffect(LivingEntity user, Entity attacker, Random random) {
+		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, user).isPresent()
+				&& attacker.world.isSkyVisible(attacker.getBlockPos()) && random.nextFloat() < 0.25f) {
+			LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(attacker.world);
 
-            if (lightning != null) {
-                lightning.method_29495(Vec3d.ofBottomCenter(attacker.getBlockPos()));
+			if (lightning != null) {
+				lightning.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(attacker.getBlockPos()));
 
-                if (attacker instanceof ServerPlayerEntity) {
-                    lightning.setChanneler((ServerPlayerEntity) attacker);
-                }
+				if (attacker instanceof ServerPlayerEntity) {
+					lightning.setChanneler((ServerPlayerEntity) attacker);
+				}
 
-                attacker.world.spawnEntity(lightning);
-            }
-        }
-    }
+				attacker.world.spawnEntity(lightning);
+			}
+		}
+	}
 }

@@ -13,13 +13,13 @@ import top.theillusivec4.curios.api.CuriosApi;
 @Mixin(Entity.class)
 public abstract class MixinEntity {
 
-    @Inject(method = "onStruckByLightning", at = @At("HEAD"), cancellable = true)
-    private void lightningImmune(LightningEntity lightning, CallbackInfo info) {
-        //noinspection ConstantConditions
-        if ((Entity)(Object) this instanceof LivingEntity) {
-            CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, (LivingEntity)(Object) this).ifPresent(curio -> {
-                info.cancel();
-            });
-        }
-    }
+	@Inject(method = "onStruckByLightning", at = @At("HEAD"), cancellable = true)
+	private void lightningImmune(ServerWorld world, LightningEntity lightning, CallbackInfo info) {
+		//noinspection ConstantConditions
+		if ((Entity)(Object) this instanceof LivingEntity) {
+			CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, (LivingEntity) (Object) this).ifPresent(curio -> {
+				info.cancel();
+			});
+		}
+	}
 }
