@@ -3,9 +3,9 @@ package artifacts.common.extensions;
 public interface StatusEffectInstanceExtensions {
 
 	/**
-	 * Sets the duration of the status effect instance and
+	 * Sets the duwation of the status effect instance and
 	 *
-	 * @param duration the duration to set
+	 * @param duwation the duwation to set
 	 */
-	void artifacts$setDuration(int duration);
+	void awtifacts$setDuwation(int duwation);
 }
