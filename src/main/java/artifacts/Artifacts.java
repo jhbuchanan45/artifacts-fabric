@@ -31,10 +31,6 @@ public class Artifacts implements ModInitializer {
 	@Override
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public void onInitialize() {
-		// Config
-		AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(Toml4jConfigSerializer::new));
-		CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-
 		// Curios setup
 		SlotTypePreset[] types = {SlotTypePreset.HEAD, SlotTypePreset.NECKLACE, SlotTypePreset.BELT};
 		for (SlotTypePreset type : types) {
@@ -49,9 +45,6 @@ public class Artifacts implements ModInitializer {
 		// Force loading init classes
 		// Entities is loaded by items, loottables can load lazily (no registration)
 		Items.ANTIDOTE_VESSEL.toString();
-		//Features.CAMPSITE_FEATURE.toString();
-		// TODO: this is cursed and doesn't work
-		WorldGenerator.initWorldGen();
 		SoundEvents.MIMIC_CLOSE.toString();
 		Components.register();
 

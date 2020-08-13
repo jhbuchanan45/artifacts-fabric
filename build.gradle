@@ -8,7 +8,7 @@ repositories {
     maven { url = "https://www.cursemaven.com" }
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://dl.bintray.com/ladysnake/libs" }
-    maven { url = 'https://maven.dblsaiko.net' }
+    maven { url = "https://maven.dblsaiko.net" }
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -44,13 +44,14 @@ dependencies {
     }
     // TODO: api for extra entity attributes: gravity, swimming speed, step height, reach/range
     modImplementation include("com.github.emilyploszaj:step-height-entity-attribute:${step_height_attr_version}")
+    // TODO: add cca here (and in fabric.mod.json), we use it
 
     // Dev runtime
     testmodImplementation sourceSets.main.output
     modRuntime "net.dblsaiko:winwonders:${project.window_wonders_version}-+"
-    //modRuntime("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
-    //    exclude module: "fabric-loader"
-    //}
+    modRuntime("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
+        exclude module: "fabric-loader"
+    }
     //modRuntime "curse.maven:sodium:${sodium_version}"
     //modRuntime "curse.maven:lithium:${lithium_version}"
     modRuntime "curse.maven:phosphor:${phosphor_version}"

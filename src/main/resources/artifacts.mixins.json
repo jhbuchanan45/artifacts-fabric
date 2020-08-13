@@ -4,11 +4,14 @@
   "package": "artifacts.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "accessors.ConfiguredFeaturesAccessor",
     "accessors.DamageSourceAccessor",
+    "accessors.GenerationSettingsAccessor",
     "accessors.ItemStackAccessor",
     "accessors.StatusEffectAccessor",
     "accessors.ToolManagerImplAccessor",
     "accessors.ToolManagerImplEntryImplAccessor",
+    "dev.MixinLootableContainerBlockEntity",
     "event.MixinEnchantmentHelper",
     "event.MixinLivingEntities",
     "event.MixinLivingEntity",
@@ -29,7 +32,7 @@
     "item.umbrella.MixinLivingEntity",
     "item.universalattractor.MixinPlayerEntity",
     "statuseffect.MixinLivingEntity",
-    "worldgen.MixinGenerationSettings"
+    "worldgen.MixinBootstrap"
   ],
   "client": [
     "event.client.MixinLivingEntity",
