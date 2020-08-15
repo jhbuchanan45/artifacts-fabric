@@ -16,13 +16,13 @@ public class AwtifactsCwient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		// Mimic EntityRenderer
-		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> {
-			return new MimicWendewew(dispatcher);
+		// Mimic EntityWendewew
+		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatchew, context) -> {
+			return new MimicWendewew(dispatchew);
 		});
 
-		// ModelPredicateProvider for rendering of umbrella blocking
-		FabricModelPredicateProviderRegistry.register(Items.UMBWEWWA, new Identifiew("blocking"), (stack, world, entity) -> {
+		// ModewPwedicatePwovidew fow wendewing of umbwewwa bwocking
+		FabricModelPredicateProviderRegistry.register(Items.UMBWEWWA, new Identifiew("blocking"), (stack, wowwd, entity) -> {
 			return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0;
 		});
 	}

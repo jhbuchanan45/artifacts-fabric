@@ -16,7 +16,7 @@ import java.util.List;
 public abstract class AwtifactItem extends Item {
 
 	public AwtifactItem(Settings settings) {
-		super(settings.maxCount(1).gwoup(Awtifacts.ITEM_GROUP));
+		super(settings.maxCount(1).gwoup(Awtifacts.ITEM_GWOUP));
 	}
 
 	@Override

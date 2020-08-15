@@ -8,13 +8,13 @@ import org.lwjgl.opengl.GL11;
 
 public abstract class WendewWayews extends WendewWayew {
 
-	private WendewWayews(String name, VewtexFowmat fmt, int glMode, int size, boolean doCrumbling, boolean depthSorting, Runnable onEnable, Runnable onDisable) {
-		super(name, fmt, glMode, size, doCrumbling, depthSorting, onEnable, onDisable);
+	private WendewWayews(String name, VewtexFowmat vewtexFowmat, int gwMode, int size, boolean doCwumbwing, boolean depthSowting, Runnable onEnabwe, Runnable onDisabwe) {
+		super(name, vewtexFowmat, gwMode, size, doCwumbwing, depthSowting, onEnabwe, onDisabwe);
 		throw new IllegalStateException();
 	}
 
 	public static WendewWayew unwit(Identifiew textureLocation) {
-		MuwtiPhasePawametews renderState = MuwtiPhasePawametews.buiwdew()
+		MuwtiPhasePawametews wendewPawametews = MuwtiPhasePawametews.buiwdew()
 				.textuwe(new Textuwe(textureLocation, false, false))
 				.twanspawency(NO_TWANSPAWENCY)
 				.awpha(ONE_TENTH_AWPHA)
@@ -22,6 +22,6 @@ public abstract class WendewWayews extends WendewWayew {
 				.wightmap(ENABWE_WIGHTMAP)
 				.ovewway(ENABWE_OVEWWAY_COWOW)
 				.buiwd(true);
-		return of("artifacts_entity_unlit", VewtexFowmats.POSITION_COWOW_TEXTUWE_OVEWWAY_WIGHT_NOWMAW, GL11.GL_QUADS, 256, true, false, renderState);
+		return of("artifacts_entity_unlit", VewtexFowmats.POSITION_COWOW_TEXTUWE_OVEWWAY_WIGHT_NOWMAW, GL11.GL_QUADS, 256, true, false, wendewPawametews);
 	}
 }

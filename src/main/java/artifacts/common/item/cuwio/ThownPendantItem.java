@@ -15,12 +15,12 @@ public class ThownPendantItem extends PendantItem {
 	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/thorn_pendant.png");
 
 	public ThownPendantItem() {
-		super(TEXTUWE, ThownPendantItem::applyEffects);
+		super(TEXTUWE, ThownPendantItem::appwyEffects);
 	}
 
-	private static void applyEffects(WivingEntity user, Entity attacker, Random random) {
-		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.THOWN_PENDANT, user).isPresent() && random.nextFloat() < 0.5f) {
-			attacker.damage(DamageSouwce.thowns(user), 2 + random.nextInt(5));
+	private static void appwyEffects(WivingEntity usew, Entity attackew, Random wandom) {
+		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.THOWN_PENDANT, usew).isPresent() && wandom.nextFloat() < 0.5f) {
+			attackew.damage(DamageSouwce.thowns(usew), 2 + wandom.nextInt(5));
 		}
 	}
 }

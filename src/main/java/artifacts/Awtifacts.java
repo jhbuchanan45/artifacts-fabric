@@ -18,8 +18,8 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 public class Awtifacts implements ModInitializer {
 
 	public static final String MODID = "artifacts";
-	public static final Logger LOGGER = LogManager.getLogger(MODID);
-	public static final ItemGwoup ITEM_GROUP = FabricItemGroupBuilder.build(
+	public static final Logger LOGGEW = LogManager.getLogger(MODID);
+	public static final ItemGwoup ITEM_GWOUP = FabricItemGroupBuilder.build(
 			new Identifiew(MODID, "item_group"),
 			() -> new ItemStack(Items.BUNNY_HOPPEWS)
 	);
@@ -28,7 +28,7 @@ public class Awtifacts implements ModInitializer {
 	@Override
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public void onInitialize() {
-		// Curios setup
+		// Cuwios setup
 		SlotTypePreset[] types = {SlotTypePreset.HEAD, SlotTypePreset.NECKLACE, SlotTypePreset.BELT};
 		for (SlotTypePreset type : types) {
 			CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, type.getInfoBuilder().cosmetic().build());
@@ -36,16 +36,16 @@ public class Awtifacts implements ModInitializer {
 		CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.HANDS.getInfoBuilder().cosmetic().size(2).build());
 		CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, new SlotTypeInfo.Builder("feet").cosmetic().priority(220).icon(PwayewScweenHandwew.EMPTY_BOOTS_SWOT_TEXTUWE).build());
 
-		// LootTable setup
+		// wootTabwe setup
 		LootTableLoadingCallback.EVENT.register(WootTabwes::onWootTabweWoad);
 
-		// Force loading init classes
-		// Entities is loaded by items, loottables can load lazily (no registration)
+		// Fowce woading init cwasses
+		// Entities is woaded by items, woottabwes can woad waziwy (no wegistwation)
 		Items.ANTIDOTE_VESSEW.toString();
-		SoundEvents.MIMIC_CLOSE.toString();
-		Components.register();
+		SoundEvents.MIMIC_CWOSE.toString();
+		Components.wegistew();
 
 		// ToowHandwews
-		ToowHandwews.register();
+		ToowHandwews.wegistew();
 	}
 }

@@ -15,7 +15,7 @@ public abstract class MixinEnchantmentHewpew {
 	@Inject(method = "getWooting", at = @At("RETURN"), cancellable = true)
 	private static void incweaseLooting(WivingEntity entity, CallbackInfoReturnable<Integer> info) {
 		// Add 1 wevew of knockback with a minimum of 2
-		CuriosApi.getCuriosHelper().findEquippedCurio(Items.POCKET_PISTON, entity).ifPresent(curio -> {
+		CuriosApi.getCuriosHelper().findEquippedCurio(Items.POCKET_PISTON, entity).ifPresent(cuwio -> {
 			info.setReturnValue(info.getReturnValueI() + 1);
 		});
 	}

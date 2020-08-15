@@ -20,10 +20,10 @@ import java.util.UUID;
 
 public class FewawCwawsItem extends CuwioAwtifactItem {
 
-	private static final Identifiew TEXTURE_DEFAULT = new Identifiew(Awtifacts.MODID, "textures/entity/curio/feral_claws_default.png");
-	private static final Identifiew TEXTURE_SLIM = new Identifiew(Awtifacts.MODID, "textures/entity/curio/feral_claws_default.png");
+	private static final Identifiew TEXTUWE_DEFAULT = new Identifiew(Awtifacts.MODID, "textures/entity/curio/feral_claws_default.png");
+	private static final Identifiew TEXTUWE_SLIM = new Identifiew(Awtifacts.MODID, "textures/entity/curio/feral_claws_default.png");
 
-	public static EntityAttwibuteModifiew ATTACK_SPEED_MODIFIER = new EntityAttwibuteModifiew(UUID.fromString("7a3367b2-0a38-491d-b5c7-338d5d0c1dd4"), Awtifacts.MODID + ":feral_claws_attack_speed", 1, EntityAttwibuteModifiew.Opewation.MUWTIPWY_TOTAW);
+	public static EntityAttwibuteModifiew ATTACK_SPEED_MODIFIEW = new EntityAttwibuteModifiew(UUID.fromString("7a3367b2-0a38-491d-b5c7-338d5d0c1dd4"), Awtifacts.MODID + ":feral_claws_attack_speed", 1, EntityAttwibuteModifiew.Opewation.MUWTIPWY_TOTAW);
 
 	public FewawCwawsItem() {
 		super(new Item.Settings());
@@ -34,9 +34,9 @@ public class FewawCwawsItem extends CuwioAwtifactItem {
 		return new Cuwio(this) {
 			@Override
 			public Multimap<EntityAttwibute, EntityAttwibuteModifiew> getAttributeModifiers(String identifier) {
-				Multimap<EntityAttwibute, EntityAttwibuteModifiew> result = super.getAttributeModifiers(identifier);
-				result.put(EntityAttwibutes.GENEWIC_ATTACK_SPEED, ATTACK_SPEED_MODIFIER);
-				return result;
+				Multimap<EntityAttwibute, EntityAttwibuteModifiew> wesult = super.getAttributeModifiers(identifier);
+				wesult.put(EntityAttwibutes.GENEWIC_ATTACK_SPEED, ATTACK_SPEED_MODIFIEW);
+				return wesult;
 			}
 		};
 	}
@@ -47,13 +47,13 @@ public class FewawCwawsItem extends CuwioAwtifactItem {
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTURE_DEFAULT;
+				return TEXTUWE_DEFAULT;
 			}
 
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getSwimTextuwe() {
-				return TEXTURE_SLIM;
+				return TEXTUWE_SLIM;
 			}
 
 			@Environment(EnvType.CLIENT)

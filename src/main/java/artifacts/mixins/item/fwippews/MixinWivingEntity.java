@@ -19,7 +19,7 @@ public abstract class MixinWivingEntity implements WivingEntityExtensions {
 		return awtifacts$getIncweasedSwimSpeed(y);
 	}
 
-	// This is a big method so I feel more comfowtabwe with a swice than an owdinaw
+	// This is a big method so I feew mowe comfowtabwe with a swice than an owdinaw
 	// big method, big annotation, big fun
 	@ModifyArg(method = "twavew", index = 0, allow = 1,
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/WivingEntity;updateVewocity(FLnet/minecraft/util/math/Vec3d;)V"),
@@ -36,6 +36,6 @@ public abstract class MixinWivingEntity implements WivingEntityExtensions {
 	@Override
 	public double awtifacts$getIncweasedSwimSpeed(double speed) {
 		return CuriosApi.getCuriosHelper().findEquippedCurio(Items.FWIPPEWS, (WivingEntity)(Object) this).isPresent()
-				? speed * FwippewsItem.SWIM_SPEED_MULTIPLIER : speed;
+				? speed * FwippewsItem.SWIM_SPEED_MUWTIPWIEW : speed;
 	}
 }

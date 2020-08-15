@@ -13,10 +13,10 @@ public class EvewwastingFoodItem extends AwtifactItem {
 	}
 
 	@Override
-	public ItemStack finishUsing(ItemStack stack, Wowwd world, WivingEntity entity) {
+	public ItemStack finishUsing(ItemStack stack, Wowwd wowwd, WivingEntity entity) {
 		if (isFood()) {
-			entity.eatFood(world, stack.copy());
-			if (!world.isCwient && entity instanceof PwayewEntity) {
+			entity.eatFood(wowwd, stack.copy());
+			if (!wowwd.isCwient && entity instanceof PwayewEntity) {
 				((PwayewEntity) entity).getItemCoowdownManagew().set(this, Awtifacts.CONFIG.items.everlastingFoodCooldown);
 			}
 		}

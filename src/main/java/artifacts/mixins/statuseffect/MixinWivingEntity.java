@@ -23,7 +23,7 @@ public abstract class MixinWivingEntity extends Entity {
 	}
 
 	/**
-	 * Applies permanent status effects added by curios every 15 ticks
+	 * Applies pewmanent status effects added by cuwios evewy 15 ticks
 	 */
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void applyPermanentEffects(CallbackInfo info) {

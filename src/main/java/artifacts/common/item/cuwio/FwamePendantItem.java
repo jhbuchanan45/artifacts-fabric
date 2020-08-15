@@ -14,18 +14,18 @@ import net.minecraft.util.Identifiew;
 
 public class FwamePendantItem extends PendantItem {
 
-	private static final Identifiew TEXTURE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/flame_pendant.png");
+	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/flame_pendant.png");
 
 	public FwamePendantItem() {
-		super(TEXTURE, FwamePendantItem::applyEffects);
+		super(TEXTUWE, FwamePendantItem::appwyEffects);
 	}
 
-	private static void applyEffects(WivingEntity user, Entity attacker, Random random) {
-		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.FWAME_PENDANT, user).isPresent() && random.nextFloat() < 0.4f) {
-			attacker.setOnFiweFow(8);
+	private static void appwyEffects(WivingEntity usew, Entity attackew, Random wandom) {
+		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.FWAME_PENDANT, usew).isPresent() && wandom.nextFloat() < 0.4f) {
+			attackew.setOnFiweFow(8);
 			//noinspection ConstantConditions
-			DamageSouwce setFireSource = ((DamageSouwceAccessow) (new EntityDamageSouwce("onFire", user))).callSetFiwe();
-			attacker.damage(setFireSource, 2);
+			DamageSouwce setFiweSouwce = ((DamageSouwceAccessow) (new EntityDamageSouwce("onFire", usew))).callSetFiwe();
+			attackew.damage(setFiweSouwce, 2);
 		}
 	}
 }

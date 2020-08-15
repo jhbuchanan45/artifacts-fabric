@@ -19,7 +19,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class AntidoteVessewItem extends CuwioAwtifactItem {
 
-	private static final Identifiew TEXTURE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/antidote_vessel.png");
+	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/antidote_vessel.png");
 
 	public AntidoteVessewItem() {
 		super(new Settings());
@@ -62,7 +62,7 @@ public class AntidoteVessewItem extends CuwioAwtifactItem {
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTURE;
+				return TEXTUWE;
 			}
 		};
 	}

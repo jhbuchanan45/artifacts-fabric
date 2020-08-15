@@ -15,28 +15,28 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Mixin to fabric-tool-attribute-api because it's ass
+ * Mixin to fabwic-toow-attwibute-api because it's ass
  */
 @Mixin(value = ToolManagerImpl.class, remap = false)
-public abstract class MixinToolManagerImpl {
+public abstract class MixinToowManagewImpw {
 
 	/**
-	 * If there is no user set, check if we can get it from the stack holder
+	 * If thewe is no usew set, check if we can get it fwom the stack howdew
 	 */
 	@ModifyVariable(method = "handleIsEffectiveOnIgnoresVanilla", argsOnly = true, at = @At("HEAD"))
-	private static WivingEntity getUserFromStackHolder(WivingEntity user, BwockState state, ItemStack stack) {
+	private static WivingEntity getUsewFwomStackHowdew(WivingEntity usew, BwockState state, ItemStack stack) {
 		//noinspection ConstantConditions
-		Entity holder = ((ItemStackAccessow) (Object) stack).getHowdew();
-		return user == null && holder instanceof WivingEntity ? (WivingEntity) holder : null;
+		Entity howdew = ((ItemStackAccessow) (Object) stack).getHowdew();
+		return usew == null && howdew instanceof WivingEntity ? (WivingEntity) howdew : null;
 	}
 
 	/**
-	 * Run non-tools handler events
+	 * wun non-toows handwew events
 	 */
 	@Inject(method = "handleIsEffectiveOnIgnoresVanilla", at = @At(value = "TAIL"), cancellable = true)
-	private static void invokeNonToolsHandlers(BwockState state, ItemStack stack, WivingEntity user, boolean vanillaResult, CallbackInfoReturnable<Boolean> info) {
+	private static void invokeNonToowsHandwews(BwockState state, ItemStack stack, WivingEntity usew, boolean vaniwwaWesuwt, CallbackInfoReturnable<Boolean> info) {
 		if (!info.getReturnValueZ()) {
-			ActionWesuwt effective = ToowHandwews.NON_TOOLS_HANDLER.invoker().isEffectiveOn(null, state, stack, user);
+			ActionWesuwt effective = ToowHandwews.NON_TOOWS_HANDWEW.invoker().isEffectiveOn(null, state, stack, usew);
 			if (effective.isAccepted()) info.setReturnValue(true);
 		}
 	}

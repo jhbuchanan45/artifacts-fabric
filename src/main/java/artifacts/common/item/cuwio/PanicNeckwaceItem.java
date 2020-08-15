@@ -28,12 +28,12 @@ public class PanicNeckwaceItem extends CuwioAwtifactItem {
 
 	public PanicNeckwaceItem() {
 		super(new Item.Settings());
-		UsewHuwtCawwback.EVENT.register(PanicNeckwaceItem::applyEffects);
+		UsewHuwtCawwback.EVENT.register(PanicNeckwaceItem::appwyEffects);
 	}
 
-	private static void applyEffects(WivingEntity user, DamageSouwce source, float amount) {
-		if (!user.wowwd.isCwient && amount >= 1 && CuriosApi.getCuriosHelper().findEquippedCurio(Items.PANIC_NECKWACE, user).isPresent()) {
-			user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 160, 0, false, false));
+	private static void appwyEffects(WivingEntity usew, DamageSouwce souwce, float amount) {
+		if (!usew.wowwd.isCwient && amount >= 1 && CuriosApi.getCuriosHelper().findEquippedCurio(Items.PANIC_NECKWACE, usew).isPresent()) {
+			usew.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 160, 0, false, false));
 		}
 	}
 

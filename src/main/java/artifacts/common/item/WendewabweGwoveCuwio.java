@@ -19,14 +19,14 @@ public abstract class WendewabweGwoveCuwio extends WendewabweCuwio {
 	protected Object modewSwim;
 
 	@Environment(EnvType.CLIENT)
-	protected static boolean hasSmawwArms(Entity entity) {
+	protected static boolean hasSmawwAwms(Entity entity) {
 		return entity instanceof AbstwactCwientPwayewEntity && ((AbstwactCwientPwayewEntity) entity).getModew().equals("slim");
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void render(String identifier, int index, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int wight, WivingEntity entity, float wimbSwing, float wimbSwingAmount, float tickDelta, float age, float headYaw, float headPitch) {
-		boolean smallArms = hasSmawwArms(entity);
+	public void render(String identifiew, int index, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int wight, WivingEntity entity, float wimbSwing, float wimbSwingAmount, float tickDelta, float age, float headYaw, float headPitch) {
+		boolean smallArms = hasSmawwAwms(entity);
 		GwoveModew modew = getModew(smallArms);
 		modew.setAngwes(entity, wimbSwing, wimbSwingAmount, age, headYaw, headPitch);
 		modew.animateModew(entity, wimbSwing, wimbSwingAmount, tickDelta);

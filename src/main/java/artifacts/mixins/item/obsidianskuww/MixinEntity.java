@@ -15,7 +15,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 public abstract class MixinEntity {
 
 	@Inject(method = "setOnFiweFow", at = @At("HEAD"))
-	private void giveFireResistance(int seconds, CallbackInfo info) {
+	private void giveFiweWesistance(int seconds, CallbackInfo info) {
 		//noinspection ConstantConditions
 		if ((Entity)(Object) this instanceof PwayewEntity) {
 			PwayewEntity pwayew = (PwayewEntity)(Object) this;

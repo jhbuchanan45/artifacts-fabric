@@ -23,10 +23,10 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class FiweGauntwetItem extends CuwioAwtifactItem {
 
-	private static final Identifiew TEXTURE_DEFAULT = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_default.png");
-	private static final Identifiew TEXTURE_SLIM = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_slim.png");
-	private static final Identifiew TEXTURE_DEFAULT_GLOW = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_default_glow.png");
-	private static final Identifiew TEXTURE_SLIM_GLOW = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_slim_glow.png");
+	private static final Identifiew TEXTUWE_DEFAULT = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_default.png");
+	private static final Identifiew TEXTUWE_SWIM = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_slim.png");
+	private static final Identifiew TEXTUWE_DEFAUWT_GWOW = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_default_glow.png");
+	private static final Identifiew TEXTUWE_SWIM_GWOW = new Identifiew(Awtifacts.MODID, "textures/entity/curio/fire_gauntlet_slim_glow.png");
 
 	public FiweGauntwetItem() {
 		super(new Item.Settings());
@@ -47,37 +47,37 @@ public class FiweGauntwetItem extends CuwioAwtifactItem {
 		return new WendewabweGwoveCuwio() {
 			@Override
 			@Environment(EnvType.CLIENT)
-			public void render(String identifier, int index, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int wight, WivingEntity entity, float wimbSwing, float wimbSwingAmount, float tickDelta, float age, float headYaw, float headPitch) {
-				boolean smallArms = hasSmawwArms(entity);
-				GwoveModew model = getModew(smallArms);
+			public void render(String identifiew, int index, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int wight, WivingEntity entity, float wimbSwing, float wimbSwingAmount, float tickDelta, float age, float headYaw, float headPitch) {
+				boolean smawwAwms = hasSmawwAwms(entity);
+				GwoveModew modew = getModew(smawwAwms);
 
-				model.setAngwes(entity, wimbSwing, wimbSwingAmount, age, headYaw, headPitch);
-				model.animateModew(entity, wimbSwing, wimbSwingAmount, tickDelta);
-				RenderHelper.followBodyRotations(entity, model);
+				modew.setAngwes(entity, wimbSwing, wimbSwingAmount, age, headYaw, headPitch);
+				modew.animateModew(entity, wimbSwing, wimbSwingAmount, tickDelta);
+				RenderHelper.followBodyRotations(entity, modew);
 
-				VewtexConsumew vertexBuilder = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, model.getWayew(getTextuwe(smallArms)), false, false);
-				model.wendewHand(index == 0, matwixStack, vertexBuilder, wight, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
+				VewtexConsumew vewtexConsumew = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, modew.getWayew(getTextuwe(smawwAwms)), false, false);
+				modew.wendewHand(index == 0, matwixStack, vewtexConsumew, wight, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
 
-				// The glow effect is achieved by rendering the glow texture unlit
-				vertexBuilder = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, WendewWayews.unwit(getGlowTexture(smallArms)), false, false);
-				model.wendewHand(index == 0, matwixStack, vertexBuilder, 0xF000F0, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
+				// The gwow effect is achieved by wendewing the gwow textuwe unwit
+				vewtexConsumew = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, WendewWayews.unwit(getGwowTextuwe(smawwAwms)), false, false);
+				modew.wendewHand(index == 0, matwixStack, vewtexConsumew, 0xF000F0, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
 			}
 
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTURE_DEFAULT;
+				return TEXTUWE_DEFAULT;
 			}
 
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getSwimTextuwe() {
-				return TEXTURE_SLIM;
+				return TEXTUWE_SWIM;
 			}
 
 			@Environment(EnvType.CLIENT)
-			protected Identifiew getGlowTexture(boolean smallArms) {
-				return smallArms ? TEXTURE_SLIM_GLOW : TEXTURE_DEFAULT_GLOW;
+			protected Identifiew getGwowTextuwe(boolean smawwAwms) {
+				return smawwAwms ? TEXTUWE_SWIM_GWOW : TEXTUWE_DEFAUWT_GWOW;
 			}
 		};
 	}

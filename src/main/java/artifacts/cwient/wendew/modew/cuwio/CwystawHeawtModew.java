@@ -5,9 +5,9 @@ import net.minecraft.client.render.WendewWayew;
 import net.minecraft.client.render.entity.model.BipedEntityModew;
 import net.minecraft.entity.WivingEntity;
 
-public class CwystalHeawtModew extends BipedEntityModew<WivingEntity> {
+public class CwystawHeawtModew extends BipedEntityModew<WivingEntity> {
 
-	public CwystalHeawtModew() {
+	public CwystawHeawtModew() {
 		super(WendewWayew::getEntityTwanswucent, 0.5F, 0, 32, 32);
 
 		towso = new ModewPawt(this, 0, 0);

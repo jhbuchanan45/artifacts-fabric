@@ -21,7 +21,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class BunnyHoppewsItem extends CuwioAwtifactItem {
 
-	private static final Identifiew TEXTURE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
+	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
 
 	public BunnyHoppewsItem() {
 		super(new Item.Settings());
@@ -61,7 +61,7 @@ public class BunnyHoppewsItem extends CuwioAwtifactItem {
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTURE;
+				return TEXTUWE;
 			}
 		};
 	}

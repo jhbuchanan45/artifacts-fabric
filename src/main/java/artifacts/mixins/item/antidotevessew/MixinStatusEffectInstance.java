@@ -15,7 +15,7 @@ public abstract class MixinStatusEffectInstance implements StatusEffectInstanceE
 	@Unique
 	@Override
 	public void awtifacts$setDuwation(int duwation) {
-		// Wecuwsively set duwation fow hidden effects
+		// Wecuwsivewy set duwation fow hidden effects
 		if (this.hiddenEffect != null) {
 			((StatusEffectInstanceExtensions) this.hiddenEffect).awtifacts$setDuwation(duwation);
 		}

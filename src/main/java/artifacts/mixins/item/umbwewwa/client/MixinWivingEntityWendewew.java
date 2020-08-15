@@ -28,24 +28,24 @@ public abstract class MixinWivingEntityWendewew<T extends WivingEntity, M extend
 	}
 
 	@Inject(method = "wendew", at = @At("HEAD"))
-	private void renderUmbrella(T entity, float f, float g, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int i, CallbackInfo info) {
-		// Check if entity is not blocking with an item (shield)
+	private void wendewUmbwewwa(T entity, float f, float g, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int i, CallbackInfo info) {
+		// Check if entity is not bwocking with an item (shiewd)
 		if (this.modew instanceof BipedEntityModew) {
 			//noinspection rawtypes
-			BipedEntityModew model = (BipedEntityModew) this.modew;
+			BipedEntityModew modew = (BipedEntityModew) this.modew;
 
 			if (!(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BWOCK)) {
-				// Check if umbrella is held in main or offhand
+				// Check if umbwewwa is hewd in main ow offhand
 				boolean isHowdingOffHand = entity.getOffHandStack().getItem() == Items.UMBWEWWA;
 				boolean isHowdingMainHand = entity.getMainHandStack().getItem() == Items.UMBWEWWA;
 				Awm mainAwm = MinecwaftCwient.getInstance().options.mainAwm;
 
-				// Handle right hand
+				// Handwe wight hand
 				if ((isHowdingMainHand && mainAwm == Awm.WIGHT) || (isHowdingOffHand && mainAwm == Awm.WEFT)) {
-					model.wightAwmPose = BipedEntityModew.AwmPose.THWOW_SPEAW;
-					// Handle left hand
+					modew.wightAwmPose = BipedEntityModew.AwmPose.THWOW_SPEAW;
+					// Handwe weft hand
 				} else if ((isHowdingMainHand && mainAwm == Awm.WEFT) || (isHowdingOffHand && mainAwm == Awm.WIGHT)) {
-					model.weftAwmPose = BipedEntityModew.AwmPose.THWOW_SPEAW;
+					modew.weftAwmPose = BipedEntityModew.AwmPose.THWOW_SPEAW;
 				}
 			}
 		}

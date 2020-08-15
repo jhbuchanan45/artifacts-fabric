@@ -16,13 +16,13 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 public abstract class WendewabweCuwio implements IRenderableCurio {
 
 	@Override
-	public void render(String identifier, int index, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int wight, WivingEntity entity, float wimbSwing, float wimbSwingAmount, float tickDelta, float ageInTicks, float headYaw, float headPitch) {
-		BipedEntityModew<WivingEntity> model = getModew();
-		model.setAngwes(entity, wimbSwing, wimbSwingAmount, ageInTicks, headYaw, headPitch);
-		model.animateModew(entity, wimbSwing, wimbSwingAmount, tickDelta);
-		RenderHelper.followBodyRotations(entity, model);
-		VewtexConsumew vertexBuilder = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, model.getWayew(getTextuwe()), false, false);
-		model.wendew(matwixStack, vertexBuilder, wight, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
+	public void render(String identifiew, int index, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int wight, WivingEntity entity, float wimbSwing, float wimbSwingAmount, float tickDelta, float ageInTicks, float headYaw, float headPitch) {
+		BipedEntityModew<WivingEntity> modew = getModew();
+		modew.setAngwes(entity, wimbSwing, wimbSwingAmount, ageInTicks, headYaw, headPitch);
+		modew.animateModew(entity, wimbSwing, wimbSwingAmount, tickDelta);
+		RenderHelper.followBodyRotations(entity, modew);
+		VewtexConsumew vertexBuilder = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, modew.getWayew(getTextuwe()), false, false);
+		modew.wendew(matwixStack, vertexBuilder, wight, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
 	}
 
 	protected abstract BipedEntityModew<WivingEntity> getModew();

@@ -155,7 +155,7 @@ public class MimicEntity extends MobEntity implements Monstew {
 	}
 
 	protected SoundEvent getWandingSound() {
-		return SoundEvents.MIMIC_CLOSE;
+		return SoundEvents.MIMIC_CWOSE;
 	}
 
 	@Override

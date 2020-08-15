@@ -22,16 +22,16 @@ public abstract class MixinLivingEntity {
 	 */
 	@Inject(method = "appwyStatusEffect", at = @At("HEAD"))
 	private void showStatusEffectPewmanent(StatusEffectInstance effect, CallbackInfo info) {
-		CuriosApi.getCuriosHelper().getCuriosHandler((WivingEntity)(Object) this).ifPresent(itemHandler -> {
+		CuriosApi.getCuriosHelper().getCuriosHandler((WivingEntity)(Object) this).ifPresent(itemHandwew -> {
 
-			for (Map.Entry<String, ICurioStacksHandler> entry : itemHandler.getCurios().entrySet()) {
-				ICurioStacksHandler stacksHandler = entry.getValue();
-				IDynamicStackHandler stacks = stacksHandler.getStacks();
+			for (Map.Entry<String, ICurioStacksHandler> entwy : itemHandwew.getCurios().entrySet()) {
+				ICurioStacksHandler stacksHandwew = entwy.getValue();
+				IDynamicStackHandler stacks = stacksHandwew.getStacks();
 
 				for (int i = 0; i < stacks.size(); i++) {
-					CuriosApi.getCuriosHelper().getCurio(stacks.getStack(i)).ifPresent(curio -> {
-						if (curio instanceof Cuwio && ((Cuwio) curio).getPewmanentEffect() != null
-								&& ((Cuwio) curio).getPewmanentEffect().getEffectType() == effect.getEffectType()) {
+					CuriosApi.getCuriosHelper().getCurio(stacks.getStack(i)).ifPresent(cuwio -> {
+						if (cuwio instanceof Cuwio && ((Cuwio) cuwio).getPewmanentEffect() != null
+								&& ((Cuwio) cuwio).getPewmanentEffect().getEffectType() == effect.getEffectType()) {
 							effect.setPewmanent(true);
 						}
 					});

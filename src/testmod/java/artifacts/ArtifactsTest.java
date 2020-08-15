@@ -12,29 +12,29 @@ import net.minecraft.util.registry.Wegistwy;
 
 public class ArtifactsTest implements ModInitializer {
 
-	public static final Bwock LVL2_BLOCK = new Bwock(FabricBlockSettings.of(new FabricMaterialBuilder(MatewiawCowow.WOOD).burnable().buiwd()).requiresTool().breakByTool(FabricToolTags.AXES, 2).strength(3));
-	public static final Bwock LVL3_BLOCK = new Bwock(FabricBlockSettings.of(new FabricMaterialBuilder(MatewiawCowow.WOOD).burnable().buiwd()).requiresTool().breakByTool(FabricToolTags.AXES, 3).strength(3));
-	private static final String MOD_ID = "artifacts-testmod";
-	public static ToowItem LVL1_PICKAXE = new CustomPickaxeItem(ToowMatewiaws.STONE, 1, -2.8F, new Item.Settings().gwoup(Awtifacts.ITEM_GROUP));
+	public static final Bwock LVL2_BWOCK = new Bwock(FabricBlockSettings.of(new FabricMaterialBuilder(MatewiawCowow.WOOD).burnable().buiwd()).requiresTool().breakByTool(FabricToolTags.AXES, 2).strength(3));
+	public static final Bwock LVL3_BWOCK = new Bwock(FabricBlockSettings.of(new FabricMaterialBuilder(MatewiawCowow.WOOD).burnable().buiwd()).requiresTool().breakByTool(FabricToolTags.AXES, 3).strength(3));
+	private static final String MODID = "artifacts-testmod";
+	public static ToowItem LVL1_PICKAXE = new CustomPickaxeItem(ToowMatewiaws.STONE, 1, -2.8F, new Item.Settings().gwoup(Awtifacts.ITEM_GWOUP));
 
 	@Override
 	public void onInitialize() {
-		Wegistwy.wegistew(Wegistwy.BWOCK, new Identifiew(MOD_ID, "lvl2_block"), LVL2_BLOCK);
-		Wegistwy.wegistew(Wegistwy.BWOCK, new Identifiew(MOD_ID, "lvl3_block"), LVL3_BLOCK);
+		Wegistwy.wegistew(Wegistwy.BWOCK, new Identifiew(MODID, "lvl2_block"), LVL2_BWOCK);
+		Wegistwy.wegistew(Wegistwy.BWOCK, new Identifiew(MODID, "lvl3_block"), LVL3_BWOCK);
 
-		Wegistwy.wegistew(Wegistwy.ITEM, new Identifiew(MOD_ID, "lvl2_block"), new BwockItem(LVL2_BLOCK, new Item.Settings().gwoup(Awtifacts.ITEM_GROUP)));
-		Wegistwy.wegistew(Wegistwy.ITEM, new Identifiew(MOD_ID, "lvl3_block"), new BwockItem(LVL3_BLOCK, new Item.Settings().gwoup(Awtifacts.ITEM_GROUP)));
+		Wegistwy.wegistew(Wegistwy.ITEM, new Identifiew(MODID, "lvl2_block"), new BwockItem(LVL2_BWOCK, new Item.Settings().gwoup(Awtifacts.ITEM_GWOUP)));
+		Wegistwy.wegistew(Wegistwy.ITEM, new Identifiew(MODID, "lvl3_block"), new BwockItem(LVL3_BWOCK, new Item.Settings().gwoup(Awtifacts.ITEM_GWOUP)));
 
-		Wegistwy.wegistew(Wegistwy.ITEM, new Identifiew(MOD_ID, "lvl1_pickaxe"), LVL1_PICKAXE);
+		Wegistwy.wegistew(Wegistwy.ITEM, new Identifiew(MODID, "lvl1_pickaxe"), LVL1_PICKAXE);
 	}
 
 	/**
-	 * PickaxeItem has a protected constructor
+	 * PickaxeItem has a pwotected constwuctow
 	 */
 	static class CustomPickaxeItem extends PickaxeItem {
 
-		public CustomPickaxeItem(ToowMatewiaws material, int attackDamage, float attackSpeed, Settings settings) {
-			super(material, attackDamage, attackSpeed, settings);
+		public CustomPickaxeItem(ToowMatewiaws matewiaws, int attackDamage, float attackSpeed, Settings settings) {
+			super(matewiaws, attackDamage, attackSpeed, settings);
 		}
 	}
 }

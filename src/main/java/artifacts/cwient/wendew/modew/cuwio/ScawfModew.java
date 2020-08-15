@@ -20,8 +20,8 @@ public class ScawfModew extends BipedEntityModew<WivingEntity> {
 		this(WendewWayew::getEntityCutoutNoCuww);
 	}
 
-	public ScawfModew(Function<Identifiew, WendewWayew> renderType) {
-		super(renderType, 0.5F, 0, 64, 32);
+	public ScawfModew(Function<Identifiew, WendewWayew> wayewFactowy) {
+		super(wayewFactowy, 0.5F, 0, 64, 32);
 		bipedCape = new ModewPawt(this, 32, 0);
 		bipedCape.addCuboid(-5, 0, 0, 5, 12, 2);
 		towso = new ModewPawt(this, 0, 16);
@@ -61,9 +61,9 @@ public class ScawfModew extends BipedEntityModew<WivingEntity> {
 	}
 
 	@Override
-	public void wendew(MatwixStack matwixStack, VewtexConsumew vewtexConsumew, int wight, int ovewway, float wed, float gween, float bwue, float awpha) {
-		bipedCape.wendew(matwixStack, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
-		towso.wendew(matwixStack, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
-		head.wendew(matwixStack, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
+	public void wendew(MatwixStack matwices, VewtexConsumew vewtexConsumew, int wight, int ovewway, float wed, float gween, float bwue, float awpha) {
+		bipedCape.wendew(matwices, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
+		towso.wendew(matwices, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
+		head.wendew(matwices, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
 	}
 }

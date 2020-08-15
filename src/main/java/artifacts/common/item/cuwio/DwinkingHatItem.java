@@ -15,11 +15,11 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class DwinkingHatItem extends CuwioAwtifactItem {
 
-	private final Identifiew texture;
+	private final Identifiew textuwe;
 
-	public DwinkingHatItem(Identifiew texture) {
+	public DwinkingHatItem(Identifiew textuwe) {
 		super(new Item.Settings());
-		this.texture = texture;
+		this.textuwe = textuwe;
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class DwinkingHatItem extends CuwioAwtifactItem {
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return texture;
+				return textuwe;
 			}
 		};
 	}

@@ -18,22 +18,22 @@ public class ShockPendantItem extends PendantItem {
 	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/shock_pendant.png");
 
 	public ShockPendantItem() {
-		super(TEXTUWE, ShockPendantItem::applyEffect);
+		super(TEXTUWE, ShockPendantItem::appwyEffects);
 	}
 
-	private static void applyEffect(WivingEntity user, Entity attacker, Random random) {
-		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, user).isPresent()
-				&& attacker.wowwd.isSkyVisibwe(attacker.getBwockPos()) && random.nextFloat() < 0.25f) {
-			WightningEntity lightning = EntityType.WIGHTNING_BOWT.cweate(attacker.wowwd);
+	private static void appwyEffects(WivingEntity usew, Entity attackew, Random wandom) {
+		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, usew).isPresent()
+				&& attackew.wowwd.isSkyVisibwe(attackew.getBwockPos()) && wandom.nextFloat() < 0.25f) {
+			WightningEntity lightning = EntityType.WIGHTNING_BOWT.cweate(attackew.wowwd);
 
 			if (lightning != null) {
-				lightning.wefweshPositionAftewTewepowt(Vec3d.ofBottomCentew(attacker.getBwockPos()));
+				lightning.wefweshPositionAftewTewepowt(Vec3d.ofBottomCentew(attackew.getBwockPos()));
 
-				if (attacker instanceof SewvewPwayewEntity) {
-					lightning.setChannewew((SewvewPwayewEntity) attacker);
+				if (attackew instanceof SewvewPwayewEntity) {
+					lightning.setChannewew((SewvewPwayewEntity) attackew);
 				}
 
-				attacker.wowwd.spawnEntity(lightning);
+				attackew.wowwd.spawnEntity(lightning);
 			}
 		}
 	}

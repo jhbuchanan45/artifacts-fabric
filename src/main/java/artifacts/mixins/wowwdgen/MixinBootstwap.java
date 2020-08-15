@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * This should be termporary to get worldgen working
+ * This shouwd be tempowawy to get wowwdgen wowking
  */
 @Mixin(Bootstwap.class)
 public class MixinBootstwap {

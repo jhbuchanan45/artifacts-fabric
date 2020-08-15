@@ -13,7 +13,7 @@ public class Components {
 	public static final ComponentType<DwoppedItemEntityComponent> DWOPPED_ITEM_ENTITY =
 			ComponentRegistry.INSTANCE.registerIfAbsent(new Identifiew(Awtifacts.MODID, "dropped_item_entity"), DwoppedItemEntityComponent.class);
 
-	public static void register() {
+	public static void wegistew() {
 		EntityComponentCallback.event(ItemEntity.class).register((entity, components) -> {
 			components.put(DWOPPED_ITEM_ENTITY, new DwoppedItemEntityComponent(entity));
 		});

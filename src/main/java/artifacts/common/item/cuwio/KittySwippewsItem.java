@@ -17,16 +17,16 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class KittySwippewsItem extends CuwioAwtifactItem {
 
-	private static final Identifiew TEXTURE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/kitty_slippers.png");
+	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/kitty_slippers.png");
 
 	public KittySwippewsItem() {
 		super(new Item.Settings());
-		PwayHuwtSoundCawwback.EVENT.register(KittySwippewsItem::onPlayHurtSound);
+		PwayHuwtSoundCawwback.EVENT.register(KittySwippewsItem::onPwayHuwtSound);
 	}
 
-	private static void onPlayHurtSound(WivingEntity entity, float volume, float pitch) {
+	private static void onPwayHuwtSound(WivingEntity entity, float vowume, float pitch) {
 		CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SWIPPEWS, entity).ifPresent(curio -> {
-			entity.pwaySound(SoundEvents.ENTITY_CAT_HUWT, volume, pitch);
+			entity.pwaySound(SoundEvents.ENTITY_CAT_HUWT, vowume, pitch);
 		});
 	}
 
@@ -47,7 +47,7 @@ public class KittySwippewsItem extends CuwioAwtifactItem {
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTURE;
+				return TEXTUWE;
 			}
 		};
 	}

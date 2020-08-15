@@ -15,10 +15,10 @@ import top.theillusivec4.curios.api.CuriosApi;
 public abstract class MixinEntity {
 
 	@Inject(method = "onStwuckByWightning", at = @At("HEAD"), cancellable = true)
-	private void lightningImmune(SewvewWowwd wowwd, WightningEntity wightning, CallbackInfo info) {
+	private void wightningImmune(SewvewWowwd wowwd, WightningEntity wightning, CallbackInfo info) {
 		//noinspection ConstantConditions
 		if ((Entity)(Object) this instanceof WivingEntity) {
-			CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, (WivingEntity) (Object) this).ifPresent(curio -> {
+			CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, (WivingEntity) (Object) this).ifPresent(cuwio -> {
 				info.cancel();
 			});
 		}

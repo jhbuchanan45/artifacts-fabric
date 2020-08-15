@@ -24,7 +24,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 public class NightVisionGoggwesItem extends CuwioAwtifactItem {
 
 	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/night_vision_goggles.png");
-	private static final Identifiew TEXTUWE_GLOW = new Identifiew(Awtifacts.MODID, "textures/entity/curio/night_vision_goggles_glow.png");
+	private static final Identifiew TEXTUWE_GWOW = new Identifiew(Awtifacts.MODID, "textures/entity/curio/night_vision_goggles_glow.png");
 
 	public NightVisionGoggwesItem() {
 		super(new Item.Settings());
@@ -64,8 +64,8 @@ public class NightVisionGoggwesItem extends CuwioAwtifactItem {
 			@Environment(EnvType.CLIENT)
 			public void render(String identifiew, int index, MatwixStack matwixStack, VewtexConsumewPwovidew vewtexConsumewPwovidew, int wight, WivingEntity entity, float wimbSwing, float wimbSwingAmount, float tickDelta, float ageInTicks, float headYaw, float headPitch) {
 				super.render(identifiew, index, matwixStack, vewtexConsumewPwovidew, wight, entity, wimbSwing, wimbSwingAmount, tickDelta, ageInTicks, headYaw, headPitch);
-				VewtexConsumew buffer = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, WendewWayews.unwit(TEXTUWE_GLOW), false, false);
-				getModew().wendew(matwixStack, buffer, 0xF000F0, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
+				VewtexConsumew vewtexConsumew = ItemWendewew.getGwintVewtexConsumew(vewtexConsumewPwovidew, WendewWayews.unwit(TEXTUWE_GWOW), false, false);
+				getModew().wendew(matwixStack, vewtexConsumew, 0xF000F0, OvewwayTextuwe.DEFAUWT_UV, 1, 1, 1, 1);
 			}
 		};
 	}

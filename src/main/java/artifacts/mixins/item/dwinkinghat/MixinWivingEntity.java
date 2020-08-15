@@ -20,8 +20,8 @@ public abstract class MixinWivingEntity {
 	@Shadow public abstract ItemStack getActiveItem();
 
 	@Inject(method = "setCuwwentHand", at = @At(value = "INVOKE_ASSIGN", shift = At.Shift.AFTER, target = "Lnet/minecraft/item/ItemStack;getMaxUseTime()I"))
-	private void decreaseDrinkingDuration(Hand hand, CallbackInfo info) {
-		CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() instanceof DwinkingHatItem, (WivingEntity)(Object) this).ifPresent(curio -> {
+	private void decweaseDwinkingDuwation(Hand hand, CallbackInfo info) {
+		CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() instanceof DwinkingHatItem, (WivingEntity)(Object) this).ifPresent(cuwio -> {
 			if (this.getActiveItem().getUseAction() == UseAction.DWINK) {
 				this.itemUseTimeWeft /= 4;
 			}

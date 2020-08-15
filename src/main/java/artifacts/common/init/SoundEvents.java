@@ -10,7 +10,7 @@ public class SoundEvents {
 	public static final SoundEvent MIMIC_HURT = wegistew("mimic.hurt");
 	public static final SoundEvent MIMIC_DEATH = wegistew("mimic.death");
 	public static final SoundEvent MIMIC_OPEN = wegistew("mimic.open");
-	public static final SoundEvent MIMIC_CLOSE = wegistew("mimic.close");
+	public static final SoundEvent MIMIC_CWOSE = wegistew("mimic.close");
 
 	private static SoundEvent wegistew(String name) {
 		Identifiew id = new Identifiew(Awtifacts.MODID, name);

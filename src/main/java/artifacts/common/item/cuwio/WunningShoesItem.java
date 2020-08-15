@@ -31,7 +31,7 @@ public class WunningShoesItem extends CuwioAwtifactItem {
 	}
 
 	@Override
-	// TODO: hook into sprinting method instead
+	// TODO: hook into spwinting method instead
 	protected ICurio attachCuwio(ItemStack stack) {
 		return new Cuwio(this) {
 			@Override

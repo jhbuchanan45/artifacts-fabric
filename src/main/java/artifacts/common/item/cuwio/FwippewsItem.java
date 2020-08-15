@@ -12,7 +12,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class FwippewsItem extends CuwioAwtifactItem {
 
-	public static final int SWIM_SPEED_MULTIPLIER = 2;
+	public static final int SWIM_SPEED_MUWTIPWIEW = 2;
 	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/flippers.png");
 
 

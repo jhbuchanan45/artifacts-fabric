@@ -19,10 +19,10 @@ import java.util.UUID;
 
 public class PowewGwoveItem extends CuwioAwtifactItem {
 
-	private static final Identifiew TEXTUWE_DEFAULT = new Identifiew(Awtifacts.MODID, "textures/entity/curio/power_glove_default.png");
-	private static final Identifiew TEXTUWE_SLIM = new Identifiew(Awtifacts.MODID, "textures/entity/curio/power_glove_slim.png");
+	private static final Identifiew TEXTUWE_DEFAUWT = new Identifiew(Awtifacts.MODID, "textures/entity/curio/power_glove_default.png");
+	private static final Identifiew TEXTUWE_SWIM = new Identifiew(Awtifacts.MODID, "textures/entity/curio/power_glove_slim.png");
 
-	private static final EntityAttwibuteModifiew ATTACK_DAMAGE_MODIFIER = new EntityAttwibuteModifiew(UUID.fromString("15fab7b9-5916-460b-a8e8-8434849a0662"), "artifacts:power_glove_attack_damage", 4, EntityAttwibuteModifiew.Opewation.ADDITION);
+	private static final EntityAttwibuteModifiew ATTACK_DAMAGE_MODIFIEW = new EntityAttwibuteModifiew(UUID.fromString("15fab7b9-5916-460b-a8e8-8434849a0662"), "artifacts:power_glove_attack_damage", 4, EntityAttwibuteModifiew.Opewation.ADDITION);
 
 	public PowewGwoveItem() {
 		super(new Item.Settings());
@@ -32,9 +32,9 @@ public class PowewGwoveItem extends CuwioAwtifactItem {
 	protected ICurio attachCuwio(ItemStack stack) {
 		return new Cuwio(this) {
 			@Override
-			public Multimap<EntityAttwibute, EntityAttwibuteModifiew> getAttributeModifiers(String identifier) {
-				Multimap<EntityAttwibute, EntityAttwibuteModifiew> result = super.getAttributeModifiers(identifier);
-				result.put(EntityAttwibutes.GENEWIC_ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER);
+			public Multimap<EntityAttwibute, EntityAttwibuteModifiew> getAttributeModifiers(String identifiew) {
+				Multimap<EntityAttwibute, EntityAttwibuteModifiew> result = super.getAttributeModifiers(identifiew);
+				result.put(EntityAttwibutes.GENEWIC_ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIEW);
 				return result;
 			}
 		};
@@ -46,13 +46,13 @@ public class PowewGwoveItem extends CuwioAwtifactItem {
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getSwimTextuwe() {
-				return TEXTUWE_SLIM;
+				return TEXTUWE_SWIM;
 			}
 
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTUWE_DEFAULT;
+				return TEXTUWE_DEFAUWT;
 			}
 		};
 	}

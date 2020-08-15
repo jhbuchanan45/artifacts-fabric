@@ -29,8 +29,8 @@ public class CwossNeckwaceModew extends BipedEntityModew<WivingEntity> {
 	}
 
 	@Override
-	public void wendew(MatwixStack matrixStack, VewtexConsumew buffer, int light, int overlay, float red, float green, float blue, float alpha) {
-		matrixStack.scawe(0.5F, 0.5F, 0.5F);
-		towso.wendew(matrixStack, buffer, light, overlay, red, green, blue, alpha);
+	public void wendew(MatwixStack matwices, VewtexConsumew vewtexConsumew, int wight, int ovewway, float wed, float gween, float bwue, float awpha) {
+		matwices.scawe(0.5F, 0.5F, 0.5F);
+		towso.wendew(matwices, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
 	}
 }

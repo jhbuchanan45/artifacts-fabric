@@ -23,16 +23,16 @@ public abstract class MixinGameRenderer {
 	@Inject(method = "getNightVisionStwength", at = @At("RETURN"), cancellable = true)
 	private static void cancelNightVisionFadeEffect(WivingEntity entity, float tickDewta, CallbackInfoReturnable<Float> info) {
 		if (info.getReturnValueF() != 1f) {
-			CuriosApi.getCuriosHelper().getCuriosHandler(entity).ifPresent(itemHandler -> {
+			CuriosApi.getCuriosHelper().getCuriosHandler(entity).ifPresent(itemHandwew -> {
 
-				for (Map.Entry<String, ICurioStacksHandler> entry : itemHandler.getCurios().entrySet()) {
-					ICurioStacksHandler stacksHandler = entry.getValue();
-					IDynamicStackHandler stacks = stacksHandler.getStacks();
+				for (Map.Entry<String, ICurioStacksHandler> entwy : itemHandwew.getCurios().entrySet()) {
+					ICurioStacksHandler stacksHandwew = entwy.getValue();
+					IDynamicStackHandler stacks = stacksHandwew.getStacks();
 
 					for (int i = 0; i < stacks.size(); i++) {
-						CuriosApi.getCuriosHelper().getCurio(stacks.getStack(i)).ifPresent(curio -> {
-							if (curio instanceof Cuwio && ((Cuwio) curio).getPewmanentEffect() != null
-									&& ((Cuwio) curio).getPewmanentEffect().getEffectType() == StatusEffects.NIGHT_VISION) {
+						CuriosApi.getCuriosHelper().getCurio(stacks.getStack(i)).ifPresent(cuwio -> {
+							if (cuwio instanceof Cuwio && ((Cuwio) cuwio).getPewmanentEffect() != null
+									&& ((Cuwio) cuwio).getPewmanentEffect().getEffectType() == StatusEffects.NIGHT_VISION) {
 								info.setReturnValue(1f);
 							}
 						});

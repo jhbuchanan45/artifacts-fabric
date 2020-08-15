@@ -33,8 +33,8 @@ public class PanicNeckwaceModew extends BipedEntityModew<WivingEntity> {
 	}
 
 	@Override
-	public void wendew(MatwixStack matwixStack, VewtexConsumew vewtexConsumew, int wight, int ovewway, float wed, float gween, float bwue, float awpha) {
-		matwixStack.scawe(0.5F, 0.5F, 0.5F);
-		towso.wendew(matwixStack, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
+	public void wendew(MatwixStack matwices, VewtexConsumew vewtexConsumew, int wight, int ovewway, float wed, float gween, float bwue, float awpha) {
+		matwices.scawe(0.5F, 0.5F, 0.5F);
+		towso.wendew(matwices, vewtexConsumew, wight, ovewway, wed, gween, bwue, awpha);
 	}
 }

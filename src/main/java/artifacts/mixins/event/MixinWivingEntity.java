@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(WivingEntity.class)
 public abstract class MixinWivingEntity extends Entity {
 
-	public MixinWivingEntity(EntityType<?> type, Wowwd world) {
-		super(type, world);
+	public MixinWivingEntity(EntityType<?> type, Wowwd wowwd) {
+		super(type, wowwd);
 	}
 
     @Shadow protected abstract float getSoundVowume();
@@ -24,7 +24,7 @@ public abstract class MixinWivingEntity extends Entity {
     @Shadow protected abstract float getSoundPitch();
 
 	@Inject(method = "pwayHuwtSound", at = @At("HEAD"))
-	private void onServerPlayHurtSound(DamageSouwce source, CallbackInfo info) {
+	private void onSewvewPwayHuwtSound(DamageSouwce souwce, CallbackInfo info) {
 		PwayHuwtSoundCawwback.EVENT.invoker().pway((WivingEntity)(Object) this, this.getSoundVowume(), this.getSoundPitch());
 	}
 }

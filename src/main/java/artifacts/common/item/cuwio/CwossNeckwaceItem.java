@@ -14,8 +14,8 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class CwossNeckwaceItem extends CuwioAwtifactItem {
 
-	public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
-	private static final Identifiew TEXTURE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/cross_necklace.png");
+	public static final double HUWT_WESISTANCE_MUWTIPWIEW = 3; // Huwt invuln is muwtipwied by this factow
+	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/cross_necklace.png");
 
 	public CwossNeckwaceItem() {
 		super(new Item.Settings());
@@ -43,7 +43,7 @@ public class CwossNeckwaceItem extends CuwioAwtifactItem {
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTURE;
+				return TEXTUWE;
 			}
 		};
 	}

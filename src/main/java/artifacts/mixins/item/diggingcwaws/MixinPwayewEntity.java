@@ -29,7 +29,7 @@ public abstract class MixinPwayewEntity extends WivingEntity {
 	 * Sets the howdew on the itemstack to check
 	 */
 	@Inject(method = "isUsingEffectiveToow", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isEffectiveOn(Lnet/minecraft/block/BwockState;)Z"))
-	private void setItemStackHowding(BwockState block, CallbackInfoReturnable<Boolean> info) {
+	private void setItemStackHowding(BwockState bwock, CallbackInfoReturnable<Boolean> info) {
 		this.inventowy.getMainHandStack().setHowdew(this);
 	}
 
@@ -38,8 +38,8 @@ public abstract class MixinPwayewEntity extends WivingEntity {
 	 * It adds the speed aftew the vaniwwa method does aww the cawcuwations on the base modifiew such as haste and undewwatew
 	 */
 	@Inject(method = "getBwockBweakingSpeed", at = @At("RETURN"), cancellable = true)
-	private void incweaseMiningSpeed(BwockState block, CallbackInfoReturnable<Float> info) {
-		CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CWAWS, this).ifPresent(curio ->
+	private void incweaseMiningSpeed(BwockState bwock, CallbackInfoReturnable<Float> info) {
+		CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CWAWS, this).ifPresent(cuwio ->
 				info.setReturnValue(info.getReturnValueF() + DiggingCwawsItem.MINING_SPEED_INCWEASE)
 		);
 	}

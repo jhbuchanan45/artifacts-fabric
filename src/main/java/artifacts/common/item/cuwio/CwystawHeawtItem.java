@@ -1,7 +1,7 @@
 package artifacts.common.item.cuwio;
 
 import artifacts.Awtifacts;
-import artifacts.cwient.wendew.modew.cuwio.CwystalHeawtModew;
+import artifacts.cwient.wendew.modew.cuwio.CwystawHeawtModew;
 import artifacts.common.item.Cuwio;
 import artifacts.common.item.WendewabweCuwio;
 import net.fabricmc.api.EnvType;
@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class CwystawHeawtItem extends CuwioAwtifactItem {
 
-	private static final Identifiew TEXTURE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/crystal_heart.png");
+	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/crystal_heart.png");
 
 	private static final EntityAttwibuteModifiew HEALTH_BONUS = new EntityAttwibuteModifiew(UUID.fromString("99fa0537-90b9-481a-bc76-4650987faba3"), "artifacts:crystal_heart_health_bonus", 10, EntityAttwibuteModifiew.Opewation.ADDITION);
 
@@ -32,7 +32,7 @@ public class CwystawHeawtItem extends CuwioAwtifactItem {
 	public ICurio attachCuwio(ItemStack stack) {
 		return new Cuwio(this) {
 			@Override
-			public void onEquip(String identifier, int index, WivingEntity entity) {
+			public void onEquip(String identifiew, int index, WivingEntity entity) {
 				if (!entity.wowwd.isCwient()) {
 					EntityAttwibuteInstance health = entity.getAttwibuteInstance(EntityAttwibutes.GENEWIC_MAX_HEAWTH);
 					if (health != null && !health.hasModifiew(HEALTH_BONUS)) {
@@ -42,7 +42,7 @@ public class CwystawHeawtItem extends CuwioAwtifactItem {
 			}
 
 			@Override
-			public void onUnequip(String identifier, int index, WivingEntity entity) {
+			public void onUnequip(String identifiew, int index, WivingEntity entity) {
 				if (!entity.wowwd.isCwient()) {
 					EntityAttwibuteInstance health = entity.getAttwibuteInstance(EntityAttwibutes.GENEWIC_MAX_HEAWTH);
 					if (health != null && health.hasModifiew(HEALTH_BONUS)) {
@@ -63,17 +63,17 @@ public class CwystawHeawtItem extends CuwioAwtifactItem {
 
 			@Override
 			@Environment(EnvType.CLIENT)
-			protected CwystalHeawtModew getModew() {
+			protected CwystawHeawtModew getModew() {
 				if (modew == null) {
-					modew = new CwystalHeawtModew();
+					modew = new CwystawHeawtModew();
 				}
-				return (CwystalHeawtModew) modew;
+				return (CwystawHeawtModew) modew;
 			}
 
 			@Override
 			@Environment(EnvType.CLIENT)
 			protected Identifiew getTextuwe() {
-				return TEXTURE;
+				return TEXTUWE;
 			}
 		};
 	}

@@ -22,7 +22,7 @@ public class SteadfastSpikesItem extends CuwioAwtifactItem {
 
 	private static final Identifiew TEXTUWE = new Identifiew(Awtifacts.MODID, "textures/entity/curio/steadfast_spikes.png");
 
-	private static final EntityAttwibuteModifiew KNOCKBACK_RESISTANCE_MODIFIER = new EntityAttwibuteModifiew(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttwibuteModifiew.Opewation.ADDITION);
+	private static final EntityAttwibuteModifiew KNOCKBACK_WESISTANCE_MODIFIEW = new EntityAttwibuteModifiew(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttwibuteModifiew.Opewation.ADDITION);
 
 	public SteadfastSpikesItem() {
 		super(new Item.Settings());
@@ -32,9 +32,9 @@ public class SteadfastSpikesItem extends CuwioAwtifactItem {
 	protected ICurio attachCuwio(ItemStack stack) {
 		return new Cuwio(this) {
 			@Override
-			public Multimap<EntityAttwibute, EntityAttwibuteModifiew> getAttributeModifiers(String identifier) {
-				Multimap<EntityAttwibute, EntityAttwibuteModifiew> result = super.getAttributeModifiers(identifier);
-				result.put(EntityAttwibutes.GENEWIC_KNOCKBACK_WESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER);
+			public Multimap<EntityAttwibute, EntityAttwibuteModifiew> getAttributeModifiers(String identifiew) {
+				Multimap<EntityAttwibute, EntityAttwibuteModifiew> result = super.getAttributeModifiers(identifiew);
+				result.put(EntityAttwibutes.GENEWIC_KNOCKBACK_WESISTANCE, KNOCKBACK_WESISTANCE_MODIFIEW);
 				return result;
 			}
 		};

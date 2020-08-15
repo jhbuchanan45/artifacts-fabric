@@ -14,8 +14,8 @@ public abstract class MixinEnchantmentHewpew {
 
 	@Inject(method = "getKnockback", at = @At("RETURN"), cancellable = true)
 	private static void incweaseKnockback(WivingEntity entity, CallbackInfoReturnable<Integer> info) {
-		// Add 1 level of knockback with a minimum of 2
-		CuriosApi.getCuriosHelper().findEquippedCurio(Items.POCKET_PISTON, entity).ifPresent(curio -> {
+		// Add 1 wevew of knockback with a minimum of 2
+		CuriosApi.getCuriosHelper().findEquippedCurio(Items.POCKET_PISTON, entity).ifPresent(cuwio -> {
 			info.setReturnValue(Math.max(info.getReturnValueI() + 1, 2));
 		});
 	}

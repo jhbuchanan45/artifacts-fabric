@@ -9,8 +9,8 @@ import net.minecraft.util.Awm;
 
 public class GwoveModew extends PwayewEntityModew<WivingEntity> {
 
-	public GwoveModew(boolean smallArms) {
-		super(0.5F, smallArms);
+	public GwoveModew(boolean smawwAwms) {
+		super(0.5F, smawwAwms);
 
 		setVisibwe(false);
 	}

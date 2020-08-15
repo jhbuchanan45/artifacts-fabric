@@ -13,7 +13,7 @@ public abstract class MixinWivingEntity {
 
 	@Inject(method = "handweFawwDamage", cancellable = true, at = @At("HEAD"))
 	private void cancewFawwDamage(float fawwDistance, float damageMuwtipwiew, CallbackInfoReturnable<Boolean> info) {
-		CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPEWS, (WivingEntity)(Object) this).ifPresent(curio -> {
+		CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPEWS, (WivingEntity)(Object) this).ifPresent(cuwio -> {
 			info.setReturnValue(false);
 		});
 	}

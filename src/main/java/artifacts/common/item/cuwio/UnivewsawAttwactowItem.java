@@ -31,17 +31,17 @@ public class UnivewsawAttwactowItem extends CuwioAwtifactItem {
 	@Override
 	protected ICurio attachCuwio(ItemStack stack) {
 		return new Cuwio(this) {
-			// magnet logic from Botania, see https://github.com/Vazkii/Botania
+			// Magnet logic fwom Botania, see https://github.com/Vazkii/Botania
 			@Override
 			public void curioTick(String identifier, int index, WivingEntity entity) {
 				if (entity.isSpectatow() || !(entity instanceof PwayewEntity)) {
 					return;
 				}
 
-				Vec3d playerPos = entity.getPos().add(0, 0.75, 0);
+				Vec3d pwayewPos = entity.getPos().add(0, 0.75, 0);
 
 				int range = 5;
-				List<ItemEntity> items = entity.wowwd.getNonSpectatingEntities(ItemEntity.class, new Box(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+				List<ItemEntity> items = entity.wowwd.getNonSpectatingEntities(ItemEntity.class, new Box(pwayewPos.x - range, pwayewPos.y - range, pwayewPos.z - range, pwayewPos.x + range, pwayewPos.y + range, pwayewPos.z + range));
 				int pulled = 0;
 				for (ItemEntity item : items) {
 					if (Components.DWOPPED_ITEM_ENTITY.maybeGet(item).isPresent() && Components.DWOPPED_ITEM_ENTITY.get(item).getWasDwopped() &&
@@ -50,7 +50,7 @@ public class UnivewsawAttwactowItem extends CuwioAwtifactItem {
 							break;
 						}
 
-						Vec3d motion = playerPos.subtwact(item.getPos().add(0, item.getHeight() / 2, 0));
+						Vec3d motion = pwayewPos.subtwact(item.getPos().add(0, item.getHeight() / 2, 0));
 						if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
 							motion = motion.nowmawize();
 						}

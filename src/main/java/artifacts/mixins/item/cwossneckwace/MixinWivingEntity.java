@@ -12,13 +12,13 @@ import top.theillusivec4.curios.api.CuriosApi;
 public abstract class MixinWivingEntity {
 
 	/**
-	 * Extends the amount of ticks of vulnerability
+	 * Extends the amount of ticks of vuwnewabiwity
 	 */
 	@ModifyConstant(method = "damage", constant = @Constant(intValue = 20, ordinal = 0))
-	private int longerInvulnerability(int owiginaw) {
+	private int wongewInvuwnewabiwity(int owiginaw) {
 		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.CWOSS_NECKWACE, (WivingEntity) (Object) this).isPresent()) {
-			// Invulnerability is determined by timeUntilRegen > 10 so we subtract this amount before applying our multiplier
-			return (int) ((owiginaw - 10) * CwossNeckwaceItem.HURT_RESISTANCE_MULTIPLIER + 10);
+			// Invuwnewabiwity is detewmined by timeUntiwwegen > 10 so we subtwact this amount befowe appwying ouw muwtipwiew
+			return (int) ((owiginaw - 10) * CwossNeckwaceItem.HUWT_WESISTANCE_MUWTIPWIEW + 10);
 		}
 
 		return owiginaw;
