@@ -21,7 +21,7 @@ public abstract class RenderableCurio implements IRenderableCurio {
 		model.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 		model.animateModel(entity, limbSwing, limbSwingAmount, partialTicks);
 		RenderHelper.followBodyRotations(entity, model);
-		VertexConsumer vertexBuilder = ItemRenderer.getGlintVertexConsumer(renderTypeBuffer, model.getLayer(getTexture()), false, false);
+		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(renderTypeBuffer, model.getLayer(getTexture()), false, false);
 		model.render(matrixStack, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}
 

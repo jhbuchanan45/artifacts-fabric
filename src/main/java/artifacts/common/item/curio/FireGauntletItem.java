@@ -55,11 +55,11 @@ public class FireGauntletItem extends CurioArtifactItem {
 				model.animateModel(entity, limbSwing, limbSwingAmount, partialTicks);
 				RenderHelper.followBodyRotations(entity, model);
 
-				VertexConsumer vertexBuilder = ItemRenderer.getGlintVertexConsumer(renderTypeBuffer, model.getLayer(getTexture(smallArms)), false, false);
+				VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(renderTypeBuffer, model.getLayer(getTexture(smallArms)), false, false);
 				model.renderHand(index == 0, matrixStack, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 
 				// The glow effect is achieved by rendering the glow texture unlit
-				vertexBuilder = ItemRenderer.getGlintVertexConsumer(renderTypeBuffer, RenderTypes.unlit(getGlowTexture(smallArms)), false, false);
+				vertexBuilder = ItemRenderer.getItemGlintConsumer(renderTypeBuffer, RenderTypes.unlit(getGlowTexture(smallArms)), false, false);
 				model.renderHand(index == 0, matrixStack, vertexBuilder, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 			}
 
