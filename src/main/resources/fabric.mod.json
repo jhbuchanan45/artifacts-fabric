@@ -20,10 +20,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "artifacts.Awtifacts"
+      "artifacts.Artifacts"
     ],
     "client": [
-      "artifacts.AwtifactsCwient"
+      "artifacts.ArtifactsClient"
     ],
     "modmenu": [
       "artifacts.common.config.ModMenuConfig"

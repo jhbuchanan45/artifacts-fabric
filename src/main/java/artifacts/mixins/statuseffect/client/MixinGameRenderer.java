@@ -1,8 +1,8 @@
 package artifacts.mixins.statuseffect.client;
 
-import artifacts.common.item.Cuwio;
-import net.minecraft.client.render.GameWendewew;
-import net.minecraft.entity.WivingEntity;
+import artifacts.common.item.Curio;
+import net.minecraft.client.render.GameRenderer;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,25 +14,25 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.Map;
 
-@Mixin(GameWendewew.class)
+@Mixin(GameRenderer.class)
 public abstract class MixinGameRenderer {
 
 	/**
-	 * Cancews the night vision fading effect when weawing a cuwio that adds night vision as a pewmanent effect
+	 * Cancels the night vision fading effect when wearing a curio that adds night vision as a permanent effect
 	 */
-	@Inject(method = "getNightVisionStwength", at = @At("RETURN"), cancellable = true)
-	private static void cancelNightVisionFadeEffect(WivingEntity entity, float tickDewta, CallbackInfoReturnable<Float> info) {
+	@Inject(method = "getNightVisionStrength", at = @At("RETURN"), cancellable = true)
+	private static void cancelNightVisionFadeEffect(LivingEntity entity, float tickDelta, CallbackInfoReturnable<Float> info) {
 		if (info.getReturnValueF() != 1f) {
-			CuriosApi.getCuriosHelper().getCuriosHandler(entity).ifPresent(itemHandwew -> {
+			CuriosApi.getCuriosHelper().getCuriosHandler(entity).ifPresent(itemHandler -> {
 
-				for (Map.Entry<String, ICurioStacksHandler> entwy : itemHandwew.getCurios().entrySet()) {
-					ICurioStacksHandler stacksHandwew = entwy.getValue();
-					IDynamicStackHandler stacks = stacksHandwew.getStacks();
+				for (Map.Entry<String, ICurioStacksHandler> entry : itemHandler.getCurios().entrySet()) {
+					ICurioStacksHandler stacksHandler = entry.getValue();
+					IDynamicStackHandler stacks = stacksHandler.getStacks();
 
 					for (int i = 0; i < stacks.size(); i++) {
-						CuriosApi.getCuriosHelper().getCurio(stacks.getStack(i)).ifPresent(cuwio -> {
-							if (cuwio instanceof Cuwio && ((Cuwio) cuwio).getPewmanentEffect() != null
-									&& ((Cuwio) cuwio).getPewmanentEffect().getEffectType() == StatusEffects.NIGHT_VISION) {
+						CuriosApi.getCuriosHelper().getCurio(stacks.getStack(i)).ifPresent(curio -> {
+							if (curio instanceof Curio && ((Curio) curio).getPermanentEffect() != null
+									&& ((Curio) curio).getPermanentEffect().getEffectType() == StatusEffects.NIGHT_VISION) {
 								info.setReturnValue(1f);
 							}
 						});

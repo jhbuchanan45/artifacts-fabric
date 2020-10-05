@@ -1,13 +1,13 @@
 package artifacts.common.config;
 
-import artifacts.Awtifacts;
+import artifacts.Artifacts;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 
 // TODO: restrictions, better descriptions
-@Config(name = Awtifacts.MODID)
+@Config(name = Artifacts.MODID)
 @Config.Gui.Background("minecraft:textures/block/oak_planks.png")
 public class ModConfig extends PartitioningSerializer.GlobalData {
 
@@ -28,7 +28,7 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
 	public static class Campsite implements ConfigData {
 		public double genChance = 0.08;
 		public double mimicChance = 0.3;
-		public double oweChance = 0.25;
+		public double oreChance = 0.25;
 
 		@ConfigEntry.BoundedDiscrete(max = 256)
 		public int minY = 0;

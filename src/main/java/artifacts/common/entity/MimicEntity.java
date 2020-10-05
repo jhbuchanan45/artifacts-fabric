@@ -1,107 +1,108 @@
 package artifacts.common.entity;
 
-import artifacts.common.init.WootTabwes;
+import artifacts.common.init.LootTables;
 import artifacts.common.init.SoundEvents;
-import java.util.EnumSet;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnWeason;
-import net.minecraft.entity.WivingEntity;
-import net.minecraft.entity.ai.control.MoveContwow;
-import net.minecraft.entity.ai.goal.FowwowTawgetGoaw;
-import net.minecraft.entity.ai.goal.Goaw;
-import net.minecraft.entity.attribute.DefauwtAttwibuteContainew;
-import net.minecraft.entity.attribute.EntityAttwibutes;
-import net.minecraft.entity.damage.DamageSouwce;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.control.MoveControl;
+import net.minecraft.entity.ai.goal.FollowTargetGoal;
+import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.Monstew;
-import net.minecraft.entity.player.PwayewEntity;
+import net.minecraft.entity.mob.Monster;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sound.SoundCategowy;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Identifiew;
-import net.minecraft.world.Difficuwty;
-import net.minecraft.world.SewvewWowwdAccess;
-import net.minecraft.world.WocawDifficuwty;
-import net.minecraft.world.Wowwd;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.World;
 
-public class MimicEntity extends MobEntity implements Monstew {
+import java.util.EnumSet;
+
+public class MimicEntity extends MobEntity implements Monster {
 
 	public int ticksInAir;
 	public int attackCooldown;
-	public boolean isDowmant;
+	public boolean isDormant;
 
-	public MimicEntity(EntityType<? extends MimicEntity> type, Wowwd world) {
+	public MimicEntity(EntityType<? extends MimicEntity> type, World world) {
 		super(type, world);
-		moveContwow = new MimicMoveContwow(this);
-		expewiencePoints = 10;
+		moveControl = new MimicMovementController(this);
+		experiencePoints = 10;
 	}
 
-	public static DefauwtAttwibuteContainew.Buiwdew cweateMobAttwibutes() {
-		return MobEntity.cweateMobAttwibutes()
-				.add(EntityAttwibutes.GENEWIC_MAX_HEAWTH, 60)
-				.add(EntityAttwibutes.GENEWIC_FOWWOW_WANGE, 16)
-				.add(EntityAttwibutes.GENEWIC_KNOCKBACK_WESISTANCE, 0.5)
-				.add(EntityAttwibutes.GENEWIC_MOVEMENT_SPEED, 0.8)
-				.add(EntityAttwibutes.GENEWIC_ATTACK_DAMAGE, 5);
+	public static DefaultAttributeContainer.Builder createMobAttributes() {
+		return MobEntity.createMobAttributes()
+				.add(EntityAttributes.GENERIC_MAX_HEALTH, 60)
+				.add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16)
+				.add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.5)
+				.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
+				.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5);
 	}
 
 	@Override
-	public EntityData initiawize(SewvewWowwdAccess wowwd, WocawDifficuwty difficuwty, SpawnWeason spawnWeason, EntityData entityData, CompoundTag entityTag) {
-		if (getMoveContwow() instanceof MimicMoveContwow) {
-			((MimicMoveContwow) moveContwow).setDirection(wandom.nextInt(4) * 90, false);
+	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, CompoundTag entityTag) {
+		if (getMoveControl() instanceof MimicMovementController) {
+			((MimicMovementController) moveControl).setDirection(random.nextInt(4) * 90, false);
 		}
-		return super.initiawize(wowwd, difficuwty, spawnWeason, entityData, entityTag);
+		return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
 	}
 
-	public SoundCategowy getSoundCategowy() {
-		return SoundCategowy.HOSTIWE;
+	public SoundCategory getSoundCategory() {
+		return SoundCategory.HOSTILE;
 	}
 
 	@Override
-	public boolean canImmediatewyDespawn(double distance) {
+	public boolean canImmediatelyDespawn(double distance) {
 		return false;
 	}
 
 	@Override
-	protected void initGoaws() {
-		super.initGoaws();
-		goawSewectow.add(1, new FwoatGoaw(this));
-		goawSewectow.add(2, new AttackGoaw(this));
-		goawSewectow.add(3, new FaceWandomGoaw(this));
-		goawSewectow.add(5, new HopGoaw(this));
+	protected void initGoals() {
+		super.initGoals();
+		goalSelector.add(1, new FloatGoal(this));
+		goalSelector.add(2, new AttackGoal(this));
+		goalSelector.add(3, new FaceRandomGoal(this));
+		goalSelector.add(5, new HopGoal(this));
 		// noinspection ConstantConditions
-		tawgetSewectow.add(1, new FowwowTawgetGoaw<>(this, PwayewEntity.class, 1, true, false, (entity) -> !isDowmant || distanceTo(entity) < getAttwibuteInstance(EntityAttwibutes.GENEWIC_FOWWOW_WANGE).getVawue() / 2.5));
+		targetSelector.add(1, new FollowTargetGoal<>(this, PlayerEntity.class, 1, true, false, (entity) -> !isDormant || distanceTo(entity) < getAttributeInstance(EntityAttributes.GENERIC_FOLLOW_RANGE).getValue() / 2.5));
 	}
 
 	@Override
-	public void wwiteCustomDataToTag(CompoundTag compound) {
-		super.wwiteCustomDataToTag(compound);
+	public void writeCustomDataToTag(CompoundTag compound) {
+		super.writeCustomDataToTag(compound);
 		compound.putInt("ticksInAir", ticksInAir);
-		compound.putBoowean("isDormant", isDowmant);
+		compound.putBoolean("isDormant", isDormant);
 	}
 
 	@Override
-	public void weadCustomDataFwomTag(CompoundTag compound) {
-		super.weadCustomDataFwomTag(compound);
+	public void readCustomDataFromTag(CompoundTag compound) {
+		super.readCustomDataFromTag(compound);
 		ticksInAir = compound.getInt("ticksInAir");
-		isDowmant = compound.getBoowean("isDormant");
+		isDormant = compound.getBoolean("isDormant");
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
 
-		if (isTouchingWatew()) {
+		if (isTouchingWater()) {
 			ticksInAir = 0;
-			if (isDowmant) {
-				isDowmant = false;
+			if (isDormant) {
+				isDormant = false;
 			}
-		} else if (!onGwound) {
+		} else if (!onGround) {
 			ticksInAir++;
 		} else if (ticksInAir > 0) {
-			pwaySound(getWandingSound(), getSoundVowume(), getSoundPitch());
+			playSound(getLandingSound(), getSoundVolume(), getSoundPitch());
 			ticksInAir = 0;
 		}
 
@@ -111,37 +112,37 @@ public class MimicEntity extends MobEntity implements Monstew {
 	}
 
 	@Override
-	public void onPwayewCowwision(PwayewEntity player) {
-		super.onPwayewCowwision(player);
+	public void onPlayerCollision(PlayerEntity player) {
+		super.onPlayerCollision(player);
 		// noinspection ConstantConditions
-		if (attackCooldown <= 0 && player.getEntityWowwd().getDifficuwty() != Difficuwty.PEACEFUW && canSee(player)
-				&& squawedDistanceTo(player.getBoundingBox().getCentew().subtwact(0, getBoundingBox().getYWength() / 2, 0)) < 1
-				&& player.damage(DamageSouwce.mob(this), (float) getAttwibuteInstance(EntityAttwibutes.GENEWIC_ATTACK_DAMAGE).getVawue())) {
+		if (attackCooldown <= 0 && player.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL && canSee(player)
+				&& squaredDistanceTo(player.getBoundingBox().getCenter().subtract(0, getBoundingBox().getYLength() / 2, 0)) < 1
+				&& player.damage(DamageSource.mob(this), (float) getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getValue())) {
 			attackCooldown = 20;
-			deawDamage(this, player);
+			dealDamage(this, player);
 		}
 	}
 
 	@Override
-	public void setTawget(WivingEntity entity) {
-		isDowmant = false;
-		super.setTawget(entity);
+	public void setTarget(LivingEntity entity) {
+		isDormant = false;
+		super.setTarget(entity);
 	}
 
 	@Override
-	public boolean damage(DamageSouwce source, float amount) {
-		if (source.getAttackew() instanceof PwayewEntity) {
-			setTawget((WivingEntity) source.getAttackew());
+	public boolean damage(DamageSource source, float amount) {
+		if (source.getAttacker() instanceof PlayerEntity) {
+			setTarget((LivingEntity) source.getAttacker());
 		}
-		if (ticksInAir <= 0 && !source.isPwojectiwe() && !source.isUnbwockabwe()) {
-			pwaySound(SoundEvents.MIMIC_HURT, getSoundVowume(), getSoundPitch());
+		if (ticksInAir <= 0 && !source.isProjectile() && !source.isUnblockable()) {
+			playSound(SoundEvents.MIMIC_HURT, getSoundVolume(), getSoundPitch());
 			return false;
 		}
 		return super.damage(source, amount);
 	}
 
 	@Override
-	protected SoundEvent getHuwtSound(DamageSouwce damageSource) {
+	protected SoundEvent getHurtSound(DamageSource damageSource) {
 		return SoundEvents.MIMIC_HURT;
 	}
 
@@ -154,168 +155,168 @@ public class MimicEntity extends MobEntity implements Monstew {
 		return SoundEvents.MIMIC_OPEN;
 	}
 
-	protected SoundEvent getWandingSound() {
-		return SoundEvents.MIMIC_CWOSE;
+	protected SoundEvent getLandingSound() {
+		return SoundEvents.MIMIC_CLOSE;
 	}
 
 	@Override
-	protected Identifiew getWootTabweId() {
-		return WootTabwes.MIMIC;
+	protected Identifier getLootTableId() {
+		return LootTables.MIMIC;
 	}
 
-	public void setDowmant() {
-		isDowmant = true;
+	public void setDormant() {
+		isDormant = true;
 	}
 
-	protected static class AttackGoaw extends Goaw {
+	protected static class AttackGoal extends Goal {
 
 		private final MimicEntity mimic;
-		private int wimeWemaining;
+		private int timeRemaining;
 
-		public AttackGoaw(MimicEntity mimic) {
+		public AttackGoal(MimicEntity mimic) {
 			this.mimic = mimic;
-			setContwows(EnumSet.of(Goaw.Contwow.WOOK));
+			setControls(EnumSet.of(Goal.Control.LOOK));
 		}
 
 		@Override
-		public boolean canStawt() {
-			WivingEntity livingEntity = mimic.getTawget();
+		public boolean canStart() {
+			LivingEntity livingEntity = mimic.getTarget();
 
 			if (livingEntity == null) {
 				return false;
-			} else if (!livingEntity.isAwive()) {
+			} else if (!livingEntity.isAlive()) {
 				return false;
 			} else {
-				return !(livingEntity instanceof PwayewEntity) || !((PwayewEntity) livingEntity).abiwities.invuwnewabwe;
+				return !(livingEntity instanceof PlayerEntity) || !((PlayerEntity) livingEntity).abilities.invulnerable;
 			}
 		}
 
 		@Override
-		public void stawt() {
-			wimeWemaining = 300;
-			super.stawt();
+		public void start() {
+			timeRemaining = 300;
+			super.start();
 		}
 
 		@Override
-		public boolean shouwdContinue() {
-			WivingEntity livingEntity = mimic.getTawget();
+		public boolean shouldContinue() {
+			LivingEntity livingEntity = mimic.getTarget();
 
 			if (livingEntity == null) {
 				return false;
-			} else if (!livingEntity.isAwive()) {
+			} else if (!livingEntity.isAlive()) {
 				return false;
-			} else if (livingEntity instanceof PwayewEntity && ((PwayewEntity) livingEntity).abiwities.invuwnewabwe) {
+			} else if (livingEntity instanceof PlayerEntity && ((PlayerEntity) livingEntity).abilities.invulnerable) {
 				return false;
 			} else {
-				return --wimeWemaining > 0;
+				return --timeRemaining > 0;
 			}
 		}
 
 		@Override
 		public void tick() {
 			super.tick();
-			if (mimic.getTawget() != null && mimic.getMoveContwow() instanceof MimicMoveContwow) {
-				mimic.wookAtEntity(mimic.getTawget(), 10, 10);
-				((MimicMoveContwow) mimic.getMoveContwow()).setDirection(mimic.yaw, true);
+			if (mimic.getTarget() != null && mimic.getMoveControl() instanceof MimicMovementController) {
+				mimic.lookAtEntity(mimic.getTarget(), 10, 10);
+				((MimicMovementController) mimic.getMoveControl()).setDirection(mimic.yaw, true);
 			}
 		}
 	}
 
-	protected static class FaceWandomGoaw extends Goaw {
+	protected static class FaceRandomGoal extends Goal {
 
 		private final MimicEntity mimic;
-		private int chosenDegwees;
-		private int nextWandomizeTime;
+		private int chosenDegrees;
+		private int nextRandomizeTime;
 
-		public FaceWandomGoaw(MimicEntity mimic) {
+		public FaceRandomGoal(MimicEntity mimic) {
 			this.mimic = mimic;
-			setContwows(EnumSet.of(Goaw.Contwow.WOOK));
+			setControls(EnumSet.of(Goal.Control.LOOK));
 		}
 
 		@Override
-		public boolean canStawt() {
-			return mimic.getTawget() == null && (mimic.onGwound || mimic.isTouchingWatew() || mimic.isInWava() || mimic.hasStatusEffect(StatusEffects.WEVITATION));
+		public boolean canStart() {
+			return mimic.getTarget() == null && (mimic.onGround || mimic.isTouchingWater() || mimic.isInLava() || mimic.hasStatusEffect(StatusEffects.LEVITATION));
 		}
 
 		@Override
 		public void tick() {
-			if (--nextWandomizeTime <= 0) {
-				nextWandomizeTime = 480 + mimic.getWandom().nextInt(320);
-				if (mimic.isDowmant) {
-					chosenDegwees = Math.round(mimic.yaw / 90) * 90;
+			if (--nextRandomizeTime <= 0) {
+				nextRandomizeTime = 480 + mimic.getRandom().nextInt(320);
+				if (mimic.isDormant) {
+					chosenDegrees = Math.round(mimic.yaw / 90) * 90;
 				} else {
-					chosenDegwees = mimic.getWandom().nextInt(4) * 90;
+					chosenDegrees = mimic.getRandom().nextInt(4) * 90;
 				}
 			}
-			if (mimic.getMoveContwow() instanceof MimicMoveContwow) {
-				((MimicMoveContwow) mimic.getMoveContwow()).setDirection(chosenDegwees, false);
+			if (mimic.getMoveControl() instanceof MimicMovementController) {
+				((MimicMovementController) mimic.getMoveControl()).setDirection(chosenDegrees, false);
 			}
 		}
 	}
 
-	protected static class FwoatGoaw extends Goaw {
+	protected static class FloatGoal extends Goal {
 
 		private final MimicEntity mimic;
 
-		public FwoatGoaw(MimicEntity mimic) {
+		public FloatGoal(MimicEntity mimic) {
 			this.mimic = mimic;
-			setContwows(EnumSet.of(Goaw.Contwow.JUMP, Goaw.Contwow.MOVE));
+			setControls(EnumSet.of(Goal.Control.JUMP, Goal.Control.MOVE));
 			mimic.getNavigation().setCanSwim(true);
 		}
 
 		@Override
-		public boolean canStawt() {
-			return mimic.isTouchingWatew() || mimic.isInWava();
+		public boolean canStart() {
+			return mimic.isTouchingWater() || mimic.isInLava();
 		}
 
 		@Override
 		public void tick() {
-			if (mimic.getWandom().nextFloat() < 0.8F) {
-				mimic.jumpContwow.setActive();
+			if (mimic.getRandom().nextFloat() < 0.8F) {
+				mimic.jumpControl.setActive();
 			}
-			if (mimic.getMoveContwow() instanceof MimicMoveContwow) {
-				((MimicMoveContwow) mimic.getMoveContwow()).setSpeed(1.2);
+			if (mimic.getMoveControl() instanceof MimicMovementController) {
+				((MimicMovementController) mimic.getMoveControl()).setSpeed(1.2);
 			}
 		}
 	}
 
-	protected static class HopGoaw extends Goaw {
+	protected static class HopGoal extends Goal {
 
 		private final MimicEntity mimic;
 
-		public HopGoaw(MimicEntity mimic) {
+		public HopGoal(MimicEntity mimic) {
 			this.mimic = mimic;
-			setContwows(EnumSet.of(Goaw.Contwow.JUMP, Goaw.Contwow.MOVE));
+			setControls(EnumSet.of(Goal.Control.JUMP, Goal.Control.MOVE));
 		}
 
 		@Override
-		public boolean canStawt() {
-			return !mimic.isDowmant && !mimic.hasVehicwe();
+		public boolean canStart() {
+			return !mimic.isDormant && !mimic.hasVehicle();
 		}
 
 		@Override
 		public void tick() {
-			if (mimic.getMoveContwow() instanceof MimicMoveContwow) {
-				((MimicMoveContwow) mimic.getMoveContwow()).setSpeed(1);
+			if (mimic.getMoveControl() instanceof MimicMovementController) {
+				((MimicMovementController) mimic.getMoveControl()).setSpeed(1);
 			}
 		}
 	}
 
-	protected static class MimicMoveContwow extends MoveContwow {
+	protected static class MimicMovementController extends MoveControl {
 
 		private final MimicEntity mimic;
-		private float wotationDegwees;
+		private float rotationDegrees;
 		private int jumpDelay;
 
-		public MimicMoveContwow(MimicEntity mimic) {
+		public MimicMovementController(MimicEntity mimic) {
 			super(mimic);
 			this.mimic = mimic;
-			wotationDegwees = 180 * mimic.yaw / (float) Math.PI;
-			jumpDelay = mimic.wandom.nextInt(320) + 640;
+			rotationDegrees = 180 * mimic.yaw / (float) Math.PI;
+			jumpDelay = mimic.random.nextInt(320) + 640;
 		}
 
 		public void setDirection(float rotation, boolean isAggressive) {
-			this.wotationDegwees = rotation;
+			this.rotationDegrees = rotation;
 			if (isAggressive && jumpDelay > 10) {
 				jumpDelay = 10;
 			}
@@ -328,27 +329,27 @@ public class MimicEntity extends MobEntity implements Monstew {
 
 		@Override
 		public void tick() {
-			mimic.headYaw = mimic.bodyYaw = mimic.yaw = changeAngwe(mimic.yaw, wotationDegwees, 90);
+			mimic.headYaw = mimic.bodyYaw = mimic.yaw = changeAngle(mimic.yaw, rotationDegrees, 90);
 
 			if (state != State.MOVE_TO) {
-				mimic.setFowwawdSpeed(0);
+				mimic.setForwardSpeed(0);
 			} else {
 				state = State.WAIT;
-				if (mimic.onGwound) {
+				if (mimic.onGround) {
 					// noinspection ConstantConditions
-					mimic.setMovementSpeed((float) (speed * mimic.getAttwibuteInstance(EntityAttwibutes.GENEWIC_MOVEMENT_SPEED).getVawue()));
+					mimic.setMovementSpeed((float) (speed * mimic.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
 					if (jumpDelay-- > 0) {
-						mimic.sidewaysSpeed = mimic.fowwawdSpeed = 0;
+						mimic.sidewaysSpeed = mimic.forwardSpeed = 0;
 						mimic.setMovementSpeed(0);
 					} else {
-						jumpDelay = mimic.wandom.nextInt(320) + 640;
+						jumpDelay = mimic.random.nextInt(320) + 640;
 
-						mimic.jumpContwow.setActive();
-						mimic.pwaySound(mimic.getJumpingSound(), mimic.getSoundVowume(), mimic.getSoundPitch());
+						mimic.jumpControl.setActive();
+						mimic.playSound(mimic.getJumpingSound(), mimic.getSoundVolume(), mimic.getSoundPitch());
 					}
 				} else {
 					// noinspection ConstantConditions
-					mimic.setMovementSpeed((float) (speed * mimic.getAttwibuteInstance(EntityAttwibutes.GENEWIC_MOVEMENT_SPEED).getVawue()));
+					mimic.setMovementSpeed((float) (speed * mimic.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
 				}
 			}
 		}
