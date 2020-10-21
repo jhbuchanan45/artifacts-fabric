@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
+import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * For mining vanilla/modded blocks with non-tools
  */
+@SuppressWarnings("UnstableApiUsage")
 public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 
 	private final List<Item> vanillaItems;
@@ -27,7 +29,7 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 	}
 
 	@Override
-	public ActionResult isEffectiveOn(Tag<Item> tag, BlockState state, ItemStack stack, LivingEntity user) {
+	public @NotNull ActionResult isEffectiveOn(Tag<Item> tag, BlockState state, ItemStack stack, LivingEntity user) {
 		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, user).isPresent()) {
 
 			// Modded block

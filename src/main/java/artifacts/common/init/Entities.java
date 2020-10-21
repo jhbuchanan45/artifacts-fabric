@@ -17,7 +17,7 @@ public class Entities {
 			new Identifier(Artifacts.MODID, "mimic"),
 			FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MimicEntity::new)
 					.dimensions(EntityDimensions.fixed(14 / 16F, 14 / 16F))
-					.trackable(64, 1)
+					.trackRangeBlocks(64)
 					.build()
 	);
 

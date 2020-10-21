@@ -30,7 +30,6 @@ public abstract class MixinLivingEntity extends Entity {
 	@ModifyVariable(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"))
 	private double changeGravity(double gravity) {
 		boolean isFalling = this.getVelocity().y <= 0.0D;
-		LivingEntity self = ((LivingEntity) (Object) this);
 		boolean isBlocking = this.isUsingItem() && !this.getActiveItem().isEmpty() && this.getActiveItem().getUseAction() == UseAction.BLOCK;
 
 		// TODO: check if blocking

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class MixinLootableContainerBlockEntity {
 
 	/**
-	 * Allow spectators to generate loot
+	 * Allow spectators to generate loot in development environments
 	 */
 	@Redirect(method = "checkUnlocked", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSpectator()Z"))
 	private boolean spectatorUnlockable(PlayerEntity player) {
