@@ -31,8 +31,7 @@
     "item.superstitioushat.MixinEnchantmentHelper",
     "item.umbrella.MixinLivingEntity",
     "item.universalattractor.MixinPlayerEntity",
-    "statuseffect.MixinLivingEntity",
-    "worldgen.MixinBootstrap"
+    "statuseffect.MixinLivingEntity"
   ],
   "client": [
     "event.client.MixinLivingEntity",

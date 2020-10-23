@@ -3,14 +3,12 @@ package artifacts.common.init;
 import artifacts.Artifacts;
 import artifacts.common.world.CampsiteFeature;
 import artifacts.common.world.InCaveWithChance;
-import artifacts.mixins.accessors.ConfiguredFeaturesAccessor;
-import artifacts.mixins.accessors.GenerationSettingsAccessor;
-import com.google.common.collect.Lists;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -19,10 +17,10 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.Predicate;
 
+// TODO: wait for API to get merged
+@SuppressWarnings("deprecation")
 public class Features {
 
 	public static final Feature<DefaultFeatureConfig> CAMPSITE_FEATURE = Registry.register(
@@ -35,48 +33,16 @@ public class Features {
 			new Identifier(Artifacts.MODID, "incavewithchance"),
 			new InCaveWithChance(ChanceDecoratorConfig.CODEC)
 	);
-	public static final ConfiguredFeature<?, ?> CAMPSITE_CONFIGURED_FEATURE = ConfiguredFeaturesAccessor.register(
-			new Identifier(Artifacts.MODID, "campsite").toString(),
+	public static final ConfiguredFeature<?, ?> CAMPSITE_CONFIGURED_FEATURE = Registry.register(
+			BuiltinRegistries.CONFIGURED_FEATURE,
+			new Identifier(Artifacts.MODID, "campsite"),
 			CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).decorate(DECORATOR.configure(new ChanceDecoratorConfig((int) (1 / Artifacts.CONFIG.campsite.genChance))))
 	);
 
-	private static final List<Biome> checkedBiomes = new ArrayList<>();
-
-	public static void init() {
-		for (Biome biome : BuiltinRegistries.BIOME) {
-			populateBiome(biome);
-		}
-
-		//Handles modded biomes
-		RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, identifier, biome) -> populateBiome(biome));
-	}
-
-	private static void populateBiome(Biome biome) {
-		if (checkedBiomes.contains(biome)) {
-			//Just to be sure we dont add the stuff twice to the same biome
-			return;
-		}
-		checkedBiomes.add(biome);
-
-		if (biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND) {
-			addFeature(biome, GenerationStep.Feature.UNDERGROUND_STRUCTURES, CAMPSITE_CONFIGURED_FEATURE);
-		}
-	}
-
-
-	private static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
-		GenerationSettingsAccessor generationSettingsAccessor = (GenerationSettingsAccessor) biome.getGenerationSettings();
-		int stepIndex = step.ordinal();
-		List<List<Supplier<ConfiguredFeature<?, ?>>>> featuresByStep = new ArrayList<>(generationSettingsAccessor.getFeatures());
-
-		while (featuresByStep.size() <= stepIndex) {
-			featuresByStep.add(Lists.newArrayList());
-		}
-
-		List<Supplier<ConfiguredFeature<?, ?>>> features = new ArrayList<>(featuresByStep.get(stepIndex));
-		features.add(() -> feature);
-		featuresByStep.set(stepIndex, features);
-
-		generationSettingsAccessor.setFeatures(featuresByStep);
+	public static void register() {
+		Predicate<BiomeSelectionContext> biomeSelector = BiomeSelectors.foundInOverworld();
+		BiomeModifications.addFeature(biomeSelector,
+				GenerationStep.Feature.UNDERGROUND_STRUCTURES,
+				BuiltinRegistries.CONFIGURED_FEATURE.getKey(CAMPSITE_CONFIGURED_FEATURE).get());
 	}
 }

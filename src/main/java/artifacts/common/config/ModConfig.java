@@ -26,6 +26,7 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
 
 	@Config(name = "campsite")
 	public static class Campsite implements ConfigData {
+		@ConfigEntry.Gui.RequiresRestart
 		public double genChance = 0.08;
 		public double mimicChance = 0.3;
 		public double oreChance = 0.25;
