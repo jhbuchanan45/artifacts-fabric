@@ -32,14 +32,13 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // Dependencies
-    //modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.github.shartte:fabric:38fbd309ccef26486043e93b115c18b3c973a36a" // TODO: Fabric PR #1097
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation include("top.theillusivec4.curios:curios-fabric:${project.curios_version}") {
         transitive = false
     }
     modImplementation "io.github.onyxstudios:Cardinal-Components-API:${cca_version}"
     modImplementation include("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
-        exclude(group: "io.github.prospector", module: "modmenu")
+        transitive = false
     }
     modImplementation include("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}") {
         transitive = false
@@ -53,21 +52,21 @@ dependencies {
     }
 
     // Dev runtime
-    /*testmodImplementation sourceSets.main.output
+    testmodImplementation sourceSets.main.output
     modRuntime "net.dblsaiko:winwonders:${project.window_wonders_version}-+"
     modRuntime("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
         exclude module: "fabric-loader"
     }
-    modRuntime "curse.maven:sodium:${sodium_version}"
+    //modRuntime "curse.maven:sodium:${sodium_version}"
     //modRuntime "curse.maven:lithium:${lithium_version}"
-    modRuntime "curse.maven:phosphor:${phosphor_version}"
-    modRuntime "curse.maven:iamverysmart:${iamverysmart_version}"
+    //modRuntime "curse.maven:phosphor:${phosphor_version}"
+    //modRuntime "curse.maven:iamverysmart:${iamverysmart_version}"
     //modRuntime "curse.maven:okzoomer:${okzoomer_version}"
     modRuntime "com.github.florensie:auto-load:${autoload_version}"
     modRuntime "curse.maven:compact_status_effects:${compact_status_effects_version}"
     modRuntime "net.fabricmc:fabric-language-kotlin:${fabric_lang_kotlin_version}"
     modRuntime "curse.maven:hwyla:${hwyla_version}"
-    modRuntime "curse.maven:cimtb:${cimtb_version}"*/
+    modRuntime "curse.maven:cimtb:${cimtb_version}"
 }
 
 processResources {

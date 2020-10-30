@@ -22,31 +22,37 @@ import java.util.List;
 @SuppressWarnings("UnstableApiUsage")
 public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 
-	private final List<Item> vanillaItems;
-
-	public DiggingClawsToolHandler(List<Item> vanillaItems) {
-		this.vanillaItems = vanillaItems;
-	}
+	// Because these are mining level 2, used to check no/vanilla tools against vanilla blocks
+	// TODO: hardcoded, these are not affected by DiggingClawsItem.NEW_BASE_MINING_LEVEL
+	private final List<Item> vanillaItems = Arrays.asList(
+		net.minecraft.item.Items.IRON_AXE,
+		net.minecraft.item.Items.IRON_HOE,
+		net.minecraft.item.Items.IRON_PICKAXE,
+		net.minecraft.item.Items.IRON_SHOVEL,
+		net.minecraft.item.Items.IRON_SWORD,
+		net.minecraft.item.Items.SHEARS
+	);
 
 	@Override
 	public @NotNull ActionResult isEffectiveOn(Tag<Item> tag, BlockState state, ItemStack stack, LivingEntity user) {
-		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, user).isPresent()) {
+		if (!CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, user).isPresent()) {
+			return ActionResult.PASS;
+		}
 
-			// Modded block
-			ToolManagerImpl.Entry entry = ToolManagerImpl.entryNullable(state.getBlock());
-			if (entry != null) {
-				// Problem: modded blocks can have different mining levels for different tools
-				// Solution: get the lowest miningLevel
-				int requiredMiningLevel = Arrays.stream(((ToolManagerImplEntryImplAccessor) entry).getTagLevels()).min().orElse(-1);
-				return requiredMiningLevel >= 0 && requiredMiningLevel <= DiggingClawsItem.NEW_BASE_MINING_LEVEL ? ActionResult.SUCCESS : ActionResult.PASS;
-			}
+		// Modded block
+		ToolManagerImpl.Entry entry = ToolManagerImpl.entryNullable(state.getBlock());
+		if (entry != null) {
+			// Problem: modded blocks can have different mining levels for different tools
+			// Solution: get the lowest miningLevel
+			int requiredMiningLevel = Arrays.stream(((ToolManagerImplEntryImplAccessor) entry).getTagLevels()).min().orElse(-1);
+			return requiredMiningLevel >= 0 && requiredMiningLevel <= DiggingClawsItem.NEW_BASE_MINING_LEVEL ? ActionResult.SUCCESS : ActionResult.PASS;
+		}
 
-			// Vanilla block
-			for (Item tool : vanillaItems) {
-				// Success if any of the iron tools pass
-				if (new ItemStack(tool).isEffectiveOn(state)) {
-					return ActionResult.SUCCESS;
-				}
+		// Vanilla block
+		for (Item tool : vanillaItems) {
+			// Success if any of the iron tools pass
+			if (new ItemStack(tool).isEffectiveOn(state)) {
+				return ActionResult.SUCCESS;
 			}
 		}
 

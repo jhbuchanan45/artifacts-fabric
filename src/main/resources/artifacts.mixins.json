@@ -4,9 +4,7 @@
   "package": "artifacts.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "accessors.ConfiguredFeaturesAccessor",
     "accessors.DamageSourceAccessor",
-    "accessors.GenerationSettingsAccessor",
     "accessors.ItemStackAccessor",
     "accessors.StatusEffectAccessor",
     "accessors.ToolManagerImplAccessor",
