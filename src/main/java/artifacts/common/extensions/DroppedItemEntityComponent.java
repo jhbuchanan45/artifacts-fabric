@@ -1,19 +1,16 @@
 package artifacts.common.extensions;
 
+import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import nerdhub.cardinal.components.api.util.sync.EntitySyncedComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
 import org.jetbrains.annotations.NotNull;
 
-public class DroppedItemEntityComponent implements EntitySyncedComponent {
-	private final ItemEntity entity;
+public class DroppedItemEntityComponent implements AutoSyncedComponent {
 	private boolean wasDropped = false;
-
-	public DroppedItemEntityComponent(ItemEntity entity) {
-		this.entity = entity;
-	}
 
 	public boolean getWasDropped() {
 		return wasDropped;
@@ -24,12 +21,17 @@ public class DroppedItemEntityComponent implements EntitySyncedComponent {
 	}
 
 	@Override
-	public @NotNull Entity getEntity() {
-		return this.entity;
+	public void writeSyncPacket(PacketByteBuf buf, ServerPlayerEntity recipient) {
+		buf.writeBoolean(this.wasDropped);
 	}
 
 	@Override
-	public void fromTag(CompoundTag tag) {
+	public void applySyncPacket(PacketByteBuf buf) {
+		this.wasDropped = buf.readBoolean();
+	}
+
+	@Override
+	public void readFromNbt(CompoundTag tag) {
 		if (tag.contains("wasDropped")) {
 			this.wasDropped = tag.getBoolean("wasDropped");
 		} else {
@@ -38,18 +40,7 @@ public class DroppedItemEntityComponent implements EntitySyncedComponent {
 	}
 
 	@Override
-	public @NotNull CompoundTag toTag(CompoundTag tag) {
+	public void writeToNbt(CompoundTag tag) {
 		tag.putBoolean("wasDropped", this.wasDropped);
-		return tag;
-	}
-
-	@Override
-	public void writeToPacket(PacketByteBuf buf) {
-		buf.writeBoolean(this.wasDropped);
-	}
-
-	@Override
-	public void readFromPacket(PacketByteBuf buf) {
-		this.wasDropped = buf.readBoolean();
 	}
 }

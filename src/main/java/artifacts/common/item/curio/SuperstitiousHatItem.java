@@ -19,7 +19,7 @@ public class SuperstitiousHatItem extends CurioArtifactItem {
 	}
 
 	@Override
-	protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
+	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
 		return new RenderableCurio() {
 			private Object model;
 

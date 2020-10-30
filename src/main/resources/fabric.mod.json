@@ -27,6 +27,12 @@
     ],
     "modmenu": [
       "artifacts.common.config.ModMenuConfig"
+    ],
+    "cardinal-components-entity": [
+      "artifacts.common.init.Components"
+    ],
+    "cardinal-components-item": [
+      "artifacts.common.init.Components"
     ]
   },
   "mixins": [
@@ -42,5 +48,11 @@
   },
   "suggests": {
     "modmenu": "*"
+  },
+
+  "custom": {
+    "cardinal-components": [
+      "artifacts:dropped_item_entity"
+    ]
   }
 }

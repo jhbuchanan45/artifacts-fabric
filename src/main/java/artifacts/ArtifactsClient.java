@@ -17,9 +17,7 @@ public class ArtifactsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		// Mimic EntityRenderer
-		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> {
-			return new MimicRenderer(dispatcher);
-		});
+		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> new MimicRenderer(dispatcher));
 
 		// ModelPredicateProvider for rendering of umbrella blocking
 		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity) -> {

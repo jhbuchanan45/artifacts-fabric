@@ -35,7 +35,7 @@ public class BunnyHoppersItem extends CurioArtifactItem {
 	}
 
 	@Override
-	protected ICurio attachCurio(ItemStack stack) {
+	public ICurio attachCurio(ItemStack stack) {
 		return new Curio(this) {
 			@Override
 			public StatusEffectInstance getPermanentEffect() {
@@ -45,7 +45,7 @@ public class BunnyHoppersItem extends CurioArtifactItem {
 	}
 
 	@Override
-	protected IRenderableCurio attachRenderableCurio(ItemStack stack) {
+	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
 		return new RenderableCurio() {
 			private Object model;
 

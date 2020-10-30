@@ -2,20 +2,38 @@ package artifacts.common.init;
 
 import artifacts.Artifacts;
 import artifacts.common.extensions.DroppedItemEntityComponent;
-import nerdhub.cardinal.components.api.ComponentRegistry;
-import nerdhub.cardinal.components.api.ComponentType;
-import nerdhub.cardinal.components.api.event.EntityComponentCallback;
+import artifacts.common.item.curio.CurioArtifactItem;
+import dev.onyxstudios.cca.api.v3.component.ComponentKey;
+import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
+import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
+import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
+import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
+import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import top.theillusivec4.curios.api.CuriosComponent;
 
-public class Components {
+public class Components implements EntityComponentInitializer, ItemComponentInitializer {
 
-	public static final ComponentType<DroppedItemEntityComponent> DROPPED_ITEM_ENTITY =
-			ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier(Artifacts.MODID, "dropped_item_entity"), DroppedItemEntityComponent.class);
+	public static final ComponentKey<DroppedItemEntityComponent> DROPPED_ITEM_ENTITY =
+			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "dropped_item_entity"), DroppedItemEntityComponent.class);
 
-	public static void register() {
-		EntityComponentCallback.event(ItemEntity.class).register((entity, components) -> {
-			components.put(DROPPED_ITEM_ENTITY, new DroppedItemEntityComponent(entity));
-		});
+	@Override
+	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
+		registry.registerFor(ItemEntity.class, DROPPED_ITEM_ENTITY, entity -> new DroppedItemEntityComponent());
+	}
+
+	@Override
+	public void registerItemComponentFactories(ItemComponentFactoryRegistry registry) {
+		registry.registerFor((Item item) -> item instanceof CurioArtifactItem, CuriosComponent.ITEM,
+				stack -> ((CurioArtifactItem)stack.getItem()).attachCurio(stack));
+
+		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+			registry.registerFor((Item item) -> item instanceof CurioArtifactItem, CuriosComponent.ITEM_RENDER,
+					stack -> ((CurioArtifactItem)stack.getItem()).attachRenderableCurio(stack));
+		}
 	}
 }

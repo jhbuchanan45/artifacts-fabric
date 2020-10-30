@@ -50,7 +50,6 @@ public class Artifacts implements ModInitializer {
 		// Entities is loaded by items, loottables can load lazily (no registration)
 		Items.ANTIDOTE_VESSEL.toString();
 		SoundEvents.MIMIC_CLOSE.toString();
-		Components.register();
 		Features.register();
 
 		// ToolHandlers
