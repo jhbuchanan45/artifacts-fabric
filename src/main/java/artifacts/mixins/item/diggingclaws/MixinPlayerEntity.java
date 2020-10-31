@@ -1,5 +1,8 @@
 package artifacts.mixins.item.diggingclaws;
 
+import artifacts.common.init.Items;
+import artifacts.common.item.trinket.DiggingClawsItem;
+import artifacts.common.util.TrinketsHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -37,9 +40,8 @@ public abstract class MixinPlayerEntity extends LivingEntity {
 	// TODO: identical artifacts-forge behaviour but could do this on the speed mutliplier instead of end result
 	@Inject(method = "getBlockBreakingSpeed", at = @At("RETURN"), cancellable = true)
 	private void increaseMiningSpeed(BlockState block, CallbackInfoReturnable<Float> info) {
-		// TODO: Port to Trinkets
-		/*CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, this).ifPresent(curio ->
-				info.setReturnValue(info.getReturnValueF() + DiggingClawsItem.MINING_SPEED_INCREASE)
-		);*/
+		if (TrinketsHelper.isEquipped(Items.DIGGING_CLAWS, this)) {
+			info.setReturnValue(info.getReturnValueF() + DiggingClawsItem.MINING_SPEED_INCREASE);
+		}
 	}
 }

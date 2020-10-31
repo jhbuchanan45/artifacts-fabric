@@ -1,5 +1,7 @@
 package artifacts.mixins.item.pendant;
 
+import artifacts.common.init.Items;
+import artifacts.common.util.TrinketsHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
@@ -16,10 +18,9 @@ public abstract class MixinEntity {
 	private void lightningImmune(ServerWorld world, LightningEntity lightning, CallbackInfo info) {
 		//noinspection ConstantConditions
 		if ((Entity)(Object) this instanceof LivingEntity) {
-			// TODO: Port to Trinkets
-			/*CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, (LivingEntity) (Object) this).ifPresent(curio -> {
+			if (TrinketsHelper.isEquipped(Items.SHOCK_PENDANT, (LivingEntity) (Object) this)) {
 				info.cancel();
-			});*/
+			}
 		}
 	}
 }

@@ -57,7 +57,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
 		// TODO: check if same trinket is already equipped in another slot
-		return false;
+		return true;
 	}
 
 	@Override

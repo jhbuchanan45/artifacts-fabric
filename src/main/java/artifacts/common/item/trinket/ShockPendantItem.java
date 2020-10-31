@@ -1,9 +1,15 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
+import artifacts.common.init.Items;
+import artifacts.common.util.TrinketsHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 
 import java.util.Random;
 
@@ -16,9 +22,8 @@ public class ShockPendantItem extends PendantItem {
 	}
 
 	private static void applyEffect(LivingEntity user, Entity attacker, Random random) {
-		// TODO: Port to Trinkets
-		/*if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.SHOCK_PENDANT, user).isPresent()
-				&& attacker.world.isSkyVisible(attacker.getBlockPos()) && random.nextFloat() < 0.25f) {
+		if (TrinketsHelper.isEquipped(Items.SHOCK_PENDANT, user) && attacker.world.isSkyVisible(attacker.getBlockPos())
+				&& random.nextFloat() < 0.25f) {
 			LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(attacker.world);
 
 			if (lightning != null) {
@@ -30,7 +35,7 @@ public class ShockPendantItem extends PendantItem {
 
 				attacker.world.spawnEntity(lightning);
 			}
-		}*/
+		}
 	}
 
 	@Override

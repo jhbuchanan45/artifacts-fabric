@@ -1,8 +1,11 @@
 package artifacts.mixins.item.luckyscarf;
 
+import artifacts.common.init.Items;
+import artifacts.common.util.TrinketsHelper;
 import artifacts.mixins.accessors.ItemStackAccessor;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,9 +20,8 @@ public abstract class MixinEnchantmentHelper {
 	private static void increaseFortune(Enchantment enchantment, ItemStack stack, CallbackInfoReturnable<Integer> info) {
 		//noinspection ConstantConditions
 		LivingEntity holder = ((ItemStackAccessor)(Object) stack).getHolder() instanceof LivingEntity ? (LivingEntity) ((ItemStackAccessor)(Object) stack).getHolder() : null;
-		// TODO: Port to Trinkets
-		/*if (enchantment == Enchantments.FORTUNE && CuriosApi.getCuriosHelper().findEquippedCurio(Items.LUCKY_SCARF, holder).isPresent()) {
+		if (enchantment == Enchantments.FORTUNE && TrinketsHelper.isEquipped(Items.LUCKY_SCARF, holder)) {
 			info.setReturnValue(info.getReturnValueI() + 1);
-		}*/
+		}
 	}
 }

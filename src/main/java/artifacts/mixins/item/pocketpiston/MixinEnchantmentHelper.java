@@ -1,5 +1,7 @@
 package artifacts.mixins.item.pocketpiston;
 
+import artifacts.common.init.Items;
+import artifacts.common.util.TrinketsHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,9 +15,8 @@ public abstract class MixinEnchantmentHelper {
 	@Inject(method = "getKnockback", at = @At("RETURN"), cancellable = true)
 	private static void increaseKnockback(LivingEntity entity, CallbackInfoReturnable<Integer> info) {
 		// Add 1 level of knockback with a minimum of 2
-		// TODO: Port to Trinkets
-		/*CuriosApi.getCuriosHelper().findEquippedCurio(Items.POCKET_PISTON, entity).ifPresent(curio -> {
+		if (TrinketsHelper.isEquipped(Items.POCKET_PISTON, entity)) {
 			info.setReturnValue(Math.max(info.getReturnValueI() + 1, 2));
-		});*/
+		}
 	}
 }

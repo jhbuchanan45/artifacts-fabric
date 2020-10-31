@@ -1,6 +1,8 @@
 package artifacts.common.toolhandler;
 
+import artifacts.common.init.Items;
 import artifacts.common.item.trinket.DiggingClawsItem;
+import artifacts.common.util.TrinketsHelper;
 import artifacts.mixins.accessors.ToolManagerImplEntryImplAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;
@@ -33,10 +35,9 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 
 	@Override
 	public @NotNull ActionResult isEffectiveOn(Tag<Item> tag, BlockState state, ItemStack stack, LivingEntity user) {
-		// TODO: Port to Trinkets
-		/*if (!CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, user).isPresent()) {
+		if (!TrinketsHelper.isEquipped(Items.DIGGING_CLAWS, user)) {
 			return ActionResult.PASS;
-		}*/
+		}
 
 		// Modded block
 		ToolManagerImpl.Entry entry = ToolManagerImpl.entryNullable(state.getBlock());

@@ -3,12 +3,16 @@ package artifacts.common.item.trinket;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.BunnyHoppersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
+import artifacts.common.init.Items;
+import artifacts.common.util.TrinketsHelper;
+import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class BunnyHoppersItem extends TrinketArtifactItem {
@@ -22,11 +26,9 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 	}
 
 	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
-		// TODO: Port to Trinkets
-
-		/*CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, entity).ifPresent(curio -> {
+		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, entity)) {
 			entity.playSound(SoundEvents.ENTITY_RABBIT_HURT, volume, pitch);
-		});*/
+		}
 	}
 
 	@Override
@@ -51,6 +53,6 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
+		return super.canWearInSlot(group, slot) && group.equals(SlotGroups.FEET) && slot.equals("shoes");
 	}
 }
