@@ -1,7 +1,8 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.common.item.Curio;
+import artifacts.common.item.GloveArtifactItem;
 import artifacts.common.item.RenderableGloveCurio;
 import com.google.common.collect.Multimap;
 import net.fabricmc.api.EnvType;
@@ -17,7 +18,7 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 import java.util.UUID;
 
-public class PowerGloveItem extends CurioArtifactItem {
+public class PowerGloveItem extends GloveArtifactItem {
 
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/power_glove_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/power_glove_slim.png");
@@ -29,31 +30,26 @@ public class PowerGloveItem extends CurioArtifactItem {
 	}
 
 	@Override
-	public ICurio attachCurio(ItemStack stack) {
-		return new Curio(this) {
-			@Override
-			public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(String identifier) {
-				Multimap<EntityAttribute, EntityAttributeModifier> result = super.getAttributeModifiers(identifier);
-				result.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER);
-				return result;
-			}
-		};
+	public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+		Multimap<EntityAttribute, EntityAttributeModifier> result = super.getTrinketModifiers(group, slot,uuid, stack);
+		result.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER);
+		return result;
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableGloveCurio() {
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getSlimTexture() {
-				return TEXTURE_SLIM;
-			}
+	@Environment(EnvType.CLIENT)
+	protected Identifier getSlimTexture() {
+		return TEXTURE_SLIM;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE_DEFAULT;
-			}
-		};
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE_DEFAULT;
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

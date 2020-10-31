@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.client.render.model.curio.PendantModel;
 import artifacts.common.events.UserAttackedCallback;
@@ -14,9 +14,10 @@ import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public abstract class PendantItem extends CurioArtifactItem {
+public abstract class PendantItem extends TrinketArtifactItem {
 
 	private final Identifier texture;
+	private Object model;
 
 	public PendantItem(Identifier texture, UserAttackedCallback callback) {
 		super(new Item.Settings());
@@ -25,34 +26,22 @@ public abstract class PendantItem extends CurioArtifactItem {
 	}
 
 	@Override
-	public ICurio attachCurio(ItemStack stack) {
-		return new Curio(this) {
-			@Override
-			protected SoundEvent getEquipSound() {
-				return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
-			}
-		};
+	protected SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
+	@Environment(EnvType.CLIENT)
+	protected PendantModel getModel() {
+		if (model == null) {
+			model = new PendantModel();
+		}
+		return (PendantModel) model;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected PendantModel getModel() {
-				if (model == null) {
-					model = new PendantModel();
-				}
-				return (PendantModel) model;
-			}
-
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return texture;
-			}
-		};
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return texture;
 	}
 }

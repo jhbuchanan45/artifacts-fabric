@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.common.init.Items;
@@ -22,5 +22,10 @@ public class ThornPendantItem extends PendantItem {
 		if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.THORN_PENDANT, user).isPresent() && random.nextFloat() < 0.5f) {
 			attacker.damage(DamageSource.thorns(user), 2 + random.nextInt(5));
 		}
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

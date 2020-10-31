@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.RenderTypes;
@@ -7,9 +7,11 @@ import artifacts.common.item.Curio;
 import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
@@ -21,10 +23,11 @@ import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class NightVisionGogglesItem extends CurioArtifactItem {
+public class NightVisionGogglesItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles.png");
 	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles_glow.png");
+	private Object model;
 
 	public NightVisionGogglesItem() {
 		super(new Item.Settings());
@@ -41,32 +44,29 @@ public class NightVisionGogglesItem extends CurioArtifactItem {
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
+	@Environment(EnvType.CLIENT)
+	protected NightVisionGogglesModel getModel() {
+		if (model == null) {
+			model = new NightVisionGogglesModel();
+		}
+		return (NightVisionGogglesModel) model;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected NightVisionGogglesModel getModel() {
-				if (model == null) {
-					model = new NightVisionGogglesModel();
-				}
-				return (NightVisionGogglesModel) model;
-			}
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE;
-			}
+	@Override
+	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel, AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
+		super.render(slot, matrices, vertexConsumers, light, playerModel, player, limbAngle, limbDistance, tickDelta, animationProgress, headYaw, headPitch);
+		VertexConsumer buffer = ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderTypes.unlit(TEXTURE_GLOW), false, false);
+		getModel().render(matrices, buffer, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			public void render(String identifier, int index, MatrixStack matrixStack, VertexConsumerProvider renderTypeBuffer, int light, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-				super.render(identifier, index, matrixStack, renderTypeBuffer, light, entity, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
-				VertexConsumer buffer = ItemRenderer.getItemGlintConsumer(renderTypeBuffer, RenderTypes.unlit(TEXTURE_GLOW), false, false);
-				getModel().render(matrixStack, buffer, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
-			}
-		};
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

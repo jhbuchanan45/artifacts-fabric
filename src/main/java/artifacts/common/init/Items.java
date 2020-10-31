@@ -3,7 +3,7 @@ package artifacts.common.init;
 import artifacts.Artifacts;
 import artifacts.common.item.EverlastingFoodItem;
 import artifacts.common.item.UmbrellaItem;
-import artifacts.common.item.curio.*;
+import artifacts.common.item.trinket.*;
 import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;

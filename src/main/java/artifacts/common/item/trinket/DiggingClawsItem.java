@@ -1,7 +1,8 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ClawsModel;
+import artifacts.common.item.GloveArtifactItem;
 import artifacts.common.item.RenderableGloveCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class DiggingClawsItem extends CurioArtifactItem {
+public class DiggingClawsItem extends GloveArtifactItem {
 
 	public static final int NEW_BASE_MINING_LEVEL = 2;
 	public static final float MINING_SPEED_INCREASE = 4;
@@ -23,36 +24,36 @@ public class DiggingClawsItem extends CurioArtifactItem {
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableGloveCurio() {
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE_DEFAULT;
-			}
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE_DEFAULT;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getSlimTexture() {
-				return TEXTURE_SLIM;
-			}
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getSlimTexture() {
+		return TEXTURE_SLIM;
+	}
 
-			@Environment(EnvType.CLIENT)
-			protected ClawsModel getSlimModel() {
-				if (modelSlim == null) {
-					modelSlim = new ClawsModel(true);
-				}
-				return (ClawsModel) modelSlim;
-			}
+	@Environment(EnvType.CLIENT)
+	protected ClawsModel getSlimModel() {
+		if (modelSlim == null) {
+			modelSlim = new ClawsModel(true);
+		}
+		return (ClawsModel) modelSlim;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected ClawsModel getModel() {
-				if (modelDefault == null) {
-					modelDefault = new ClawsModel(false);
-				}
-				return (ClawsModel) modelDefault;
-			}
-		};
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected ClawsModel getModel() {
+		if (modelDefault == null) {
+			modelDefault = new ClawsModel(false);
+		}
+		return (ClawsModel) modelDefault;
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

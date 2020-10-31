@@ -1,7 +1,7 @@
 package artifacts.common.toolhandler;
 
 import artifacts.common.init.Items;
-import artifacts.common.item.curio.DiggingClawsItem;
+import artifacts.common.item.trinket.DiggingClawsItem;
 import artifacts.mixins.accessors.ToolManagerImplEntryImplAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;

@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.common.init.Items;
@@ -27,5 +27,10 @@ public class FlamePendantItem extends PendantItem {
 			DamageSource setFireSource = ((DamageSourceAccessor) (new EntityDamageSource("onFire", user))).callSetFire();
 			attacker.damage(setFireSource, 2);
 		}
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

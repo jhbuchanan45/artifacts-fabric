@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.VillagerHatModel;
@@ -14,44 +14,37 @@ import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class VillagerHatItem extends CurioArtifactItem {
+public class VillagerHatItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/villager_hat.png");
+	private Object model;
 
 	public VillagerHatItem() {
 		super(new Item.Settings());
 	}
 
 	@Override
-	public ICurio attachCurio(ItemStack stack) {
-		return new Curio(this) {
-
-			@Override
-			public StatusEffectInstance getPermanentEffect() {
-				return new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 20, 1, true, false);
-			}
-		};
+	public StatusEffectInstance getPermanentEffect() {
+		return new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 20, 1, true, false);
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
+	@Environment(EnvType.CLIENT)
+	protected VillagerHatModel getModel() {
+		if (model == null) {
+			model = new VillagerHatModel();
+		}
+		return (VillagerHatModel) model;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected VillagerHatModel getModel() {
-				if (model == null) {
-					model = new VillagerHatModel();
-				}
-				return (VillagerHatModel) model;
-			}
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE;
-			}
-		};
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

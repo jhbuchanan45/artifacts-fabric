@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.common.init.Items;
@@ -36,5 +36,10 @@ public class ShockPendantItem extends PendantItem {
 				attacker.world.spawnEntity(lightning);
 			}
 		}
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

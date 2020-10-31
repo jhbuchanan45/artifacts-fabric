@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.SteadfastSpikesModel;
@@ -18,47 +18,41 @@ import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 import java.util.UUID;
 
-public class SteadfastSpikesItem extends CurioArtifactItem {
+public class SteadfastSpikesItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/steadfast_spikes.png");
 
 	private static final EntityAttributeModifier KNOCKBACK_RESISTANCE_MODIFIER = new EntityAttributeModifier(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttributeModifier.Operation.ADDITION);
+	private Object model;
 
 	public SteadfastSpikesItem() {
 		super(new Item.Settings());
 	}
 
 	@Override
-	public ICurio attachCurio(ItemStack stack) {
-		return new Curio(this) {
-			@Override
-			public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(String identifier) {
-				Multimap<EntityAttribute, EntityAttributeModifier> result = super.getAttributeModifiers(identifier);
-				result.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER);
-				return result;
-			}
-		};
+	public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+		Multimap<EntityAttribute, EntityAttributeModifier> result = super.getTrinketModifiers(group, slot, uuid, stack);
+		result.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER);
+		return result;
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
+	@Environment(EnvType.CLIENT)
+	protected SteadfastSpikesModel getModel() {
+		if (model == null) {
+			model = new SteadfastSpikesModel();
+		}
+		return (SteadfastSpikesModel) model;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected SteadfastSpikesModel getModel() {
-				if (model == null) {
-					model = new SteadfastSpikesModel();
-				}
-				return (SteadfastSpikesModel) model;
-			}
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE;
-			}
-		};
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

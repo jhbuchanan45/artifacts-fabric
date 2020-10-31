@@ -2,7 +2,7 @@ package artifacts.common.init;
 
 import artifacts.Artifacts;
 import artifacts.common.extensions.DroppedItemEntityComponent;
-import artifacts.common.item.curio.CurioArtifactItem;
+import artifacts.common.item.trinket.TrinketArtifactItem;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
@@ -28,12 +28,7 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 
 	@Override
 	public void registerItemComponentFactories(ItemComponentFactoryRegistry registry) {
-		registry.registerFor((Item item) -> item instanceof CurioArtifactItem, CuriosComponent.ITEM,
-				stack -> ((CurioArtifactItem)stack.getItem()).attachCurio(stack));
-
-		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-			registry.registerFor((Item item) -> item instanceof CurioArtifactItem, CuriosComponent.ITEM_RENDER,
-					stack -> ((CurioArtifactItem)stack.getItem()).attachRenderableCurio(stack));
-		}
+		registry.registerFor((Item item) -> item instanceof TrinketArtifactItem, CuriosComponent.ITEM,
+				stack -> ((TrinketArtifactItem)stack.getItem()).attachCurio(stack));
 	}
 }

@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ObsidianSkullModel;
@@ -10,33 +10,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class ObsidianSkullItem extends CurioArtifactItem {
+public class ObsidianSkullItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/obsidian_skull.png");
+	private Object model;
 
 	public ObsidianSkullItem() {
 		super(new Item.Settings());
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
+	@Environment(EnvType.CLIENT)
+	protected ObsidianSkullModel getModel() {
+		if (model == null) {
+			model = new ObsidianSkullModel();
+		}
+		return (ObsidianSkullModel) model;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected ObsidianSkullModel getModel() {
-				if (model == null) {
-					model = new ObsidianSkullModel();
-				}
-				return (ObsidianSkullModel) model;
-			}
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE;
-			}
-		};
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

@@ -36,6 +36,9 @@ dependencies {
     modImplementation include("top.theillusivec4.curios:curios-fabric:${project.curios_version}") {
         transitive = false
     }
+    modImplementation("com.github.emilyploszaj:trinkets:${project.trinkets_version}") {
+        transitive = false
+    }
     modImplementation "io.github.onyxstudios:Cardinal-Components-API:${cca_version}"
     modImplementation include("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
         transitive = false

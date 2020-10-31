@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.KittySlippersModel;
@@ -15,9 +15,10 @@ import net.minecraft.util.Identifier;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class KittySlippersItem extends CurioArtifactItem {
+public class KittySlippersItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/kitty_slippers.png");
+	private Object model;
 
 	public KittySlippersItem() {
 		super(new Item.Settings());
@@ -31,26 +32,26 @@ public class KittySlippersItem extends CurioArtifactItem {
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
-
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected KittySlippersModel getModel() {
-				if (model == null) {
-					model = new KittySlippersModel();
-				}
-				return (KittySlippersModel) model;
-			}
-
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE;
-			}
-		};
+	@Environment(EnvType.CLIENT)
+	protected KittySlippersModel getModel() {
+		if (model == null) {
+			model = new KittySlippersModel();
+		}
+		return (KittySlippersModel) model;
 	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
+	}
+
+	// TODO: is this fixed?
 
 /*    public static void onSetAttackTarget(LivingSetAttackTargetEvent event) {
         if (event.getEntityLiving() instanceof CreeperEntity && event.getTarget() != null) {

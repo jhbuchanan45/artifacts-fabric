@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.BunnyHoppersModel;
@@ -19,9 +19,10 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class BunnyHoppersItem extends CurioArtifactItem {
+public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
+	private Object model;
 
 	public BunnyHoppersItem() {
 		super(new Item.Settings());
@@ -45,24 +46,22 @@ public class BunnyHoppersItem extends CurioArtifactItem {
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
+	@Environment(EnvType.CLIENT)
+	protected BunnyHoppersModel getModel() {
+		if (model == null) {
+			model = new BunnyHoppersModel();
+		}
+		return (BunnyHoppersModel) model;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected BunnyHoppersModel getModel() {
-				if (model == null) {
-					model = new BunnyHoppersModel();
-				}
-				return (BunnyHoppersModel) model;
-			}
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE;
-			}
-		};
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }

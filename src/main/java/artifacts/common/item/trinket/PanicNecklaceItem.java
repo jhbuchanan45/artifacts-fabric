@@ -1,4 +1,4 @@
-package artifacts.common.item.curio;
+package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.PanicNecklaceModel;
@@ -22,9 +22,10 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.component.ICurio;
 import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
-public class PanicNecklaceItem extends CurioArtifactItem {
+public class PanicNecklaceItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/panic_necklace.png");
+	private Object model;
 
 	public PanicNecklaceItem() {
 		super(new Item.Settings());
@@ -38,34 +39,27 @@ public class PanicNecklaceItem extends CurioArtifactItem {
 	}
 
 	@Override
-	public ICurio attachCurio(ItemStack stack) {
-		return new Curio(this) {
-			@Override
-			protected SoundEvent getEquipSound() {
-				return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
-			}
-		};
+	protected SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 	}
 
 	@Override
-	public IRenderableCurio attachRenderableCurio(ItemStack stack) {
-		return new RenderableCurio() {
-			private Object model;
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> getModel() {
+		if (model == null) {
+			model = new PanicNecklaceModel();
+		}
+		return (PanicNecklaceModel) model;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected BipedEntityModel<LivingEntity> getModel() {
-				if (model == null) {
-					model = new PanicNecklaceModel();
-				}
-				return (PanicNecklaceModel) model;
-			}
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
 
-			@Override
-			@Environment(EnvType.CLIENT)
-			protected Identifier getTexture() {
-				return TEXTURE;
-			}
-		};
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return false;
 	}
 }
