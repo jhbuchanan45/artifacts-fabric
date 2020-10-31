@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Slice;
-import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity implements LivingEntityExtensions {
@@ -35,7 +34,9 @@ public abstract class MixinLivingEntity implements LivingEntityExtensions {
 	@Unique
 	@Override
 	public double artifacts$getIncreasedSwimSpeed(double speed) {
-		return CuriosApi.getCuriosHelper().findEquippedCurio(Items.FLIPPERS, (LivingEntity)(Object) this).isPresent()
-				? speed * FlippersItem.SWIM_SPEED_MULTIPLIER : speed;
+		// TODO: Port to Trinkets
+		/*return CuriosApi.getCuriosHelper().findEquippedCurio(Items.FLIPPERS, (LivingEntity)(Object) this).isPresent()
+				? speed * FlippersItem.SWIM_SPEED_MULTIPLIER : speed;*/
+		return speed;
 	}
 }

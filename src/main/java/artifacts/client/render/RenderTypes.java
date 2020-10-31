@@ -1,4 +1,4 @@
-package artifacts.client;
+package artifacts.client.render;
 
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexFormat;

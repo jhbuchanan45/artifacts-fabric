@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(PlayerEntity.class)
 public abstract class MixinPlayerEntity extends LivingEntity {
@@ -40,8 +39,9 @@ public abstract class MixinPlayerEntity extends LivingEntity {
 	// TODO: identical artifacts-forge behaviour but could do this on the speed mutliplier instead of end result
 	@Inject(method = "getBlockBreakingSpeed", at = @At("RETURN"), cancellable = true)
 	private void increaseMiningSpeed(BlockState block, CallbackInfoReturnable<Float> info) {
-		CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, this).ifPresent(curio ->
+		// TODO: Port to Trinkets
+		/*CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, this).ifPresent(curio ->
 				info.setReturnValue(info.getReturnValueF() + DiggingClawsItem.MINING_SPEED_INCREASE)
-		);
+		);*/
 	}
 }

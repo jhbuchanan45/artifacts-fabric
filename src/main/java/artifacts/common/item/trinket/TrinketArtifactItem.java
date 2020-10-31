@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
+import artifacts.client.render.TrinketRenderHelper;
 import artifacts.common.item.ArtifactItem;
-import artifacts.common.item.Curio;
 import dev.emi.trinkets.api.Trinket;
 import dev.emi.trinkets.api.TrinketItem;
 import net.fabricmc.api.EnvType;
@@ -27,18 +27,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import top.theillusivec4.curios.api.type.component.ICurio;
-import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public abstract class TrinketArtifactItem extends ArtifactItem implements Trinket {
 
 	public TrinketArtifactItem(Settings settings) {
 		super(settings);
 		DispenserBlock.registerBehavior(this, TrinketItem.TRINKET_DISPENSER_BEHAVIOR);
-	}
-
-	public ICurio attachCurio(ItemStack stack) {
-		return new Curio(this);
 	}
 
 	@Override
@@ -72,7 +66,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, animationProgress, headPitch);
 		model.animateModel(player, limbAngle, limbDistance, tickDelta);
 		// TODO: split RenderHelper off from curios
-		IRenderableCurio.RenderHelper.followBodyRotations(player, model);
+		TrinketRenderHelper.followBodyRotations(player, model);
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(this.getTexture()), false, false);
 		model.render(matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}

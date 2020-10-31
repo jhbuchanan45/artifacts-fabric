@@ -4,16 +4,12 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.curio.KittySlippersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Items;
-import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class KittySlippersItem extends TrinketArtifactItem {
 
@@ -26,9 +22,10 @@ public class KittySlippersItem extends TrinketArtifactItem {
 	}
 
 	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
-		CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, entity).ifPresent(curio -> {
+		// TODO: Port to Trinkets
+		/*CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, entity).ifPresent(curio -> {
 			entity.playSound(SoundEvents.ENTITY_CAT_HURT, volume, pitch);
-		});
+		});*/
 	}
 
 	@Override

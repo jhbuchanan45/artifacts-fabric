@@ -1,17 +1,11 @@
 package artifacts.mixins.statuseffect.client;
 
-import artifacts.common.item.Curio;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
-
-import java.util.Map;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity {
@@ -22,7 +16,8 @@ public abstract class MixinLivingEntity {
 	 */
 	@Inject(method = "applyStatusEffect", at = @At("HEAD"))
 	private void showStatusEffectPermanent(StatusEffectInstance effect, CallbackInfo info) {
-		CuriosApi.getCuriosHelper().getCuriosHandler((LivingEntity)(Object) this).ifPresent(itemHandler -> {
+		// TODO: Port to Trinkets
+		/*CuriosApi.getCuriosHelper().getCuriosHandler((LivingEntity)(Object) this).ifPresent(itemHandler -> {
 
 			for (Map.Entry<String, ICurioStacksHandler> entry : itemHandler.getCurios().entrySet()) {
 				ICurioStacksHandler stacksHandler = entry.getValue();
@@ -37,6 +32,6 @@ public abstract class MixinLivingEntity {
 					});
 				}
 			}
-		});
+		});*/
 	}
 }

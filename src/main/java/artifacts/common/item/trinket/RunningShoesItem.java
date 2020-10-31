@@ -2,12 +2,9 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.RunningShoesModel;
-import artifacts.common.item.Curio;
-import artifacts.common.item.RenderableCurio;
 import dev.emi.stepheightentityattribute.StepHeightEntityAttributeMain;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -15,8 +12,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.type.component.ICurio;
-import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 import java.util.UUID;
 

@@ -1,5 +1,6 @@
 package artifacts.common.item;
 
+import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.curio.GloveModel;
 import artifacts.common.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.api.SlotGroups;
@@ -14,7 +15,6 @@ import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public abstract class GloveArtifactItem extends TrinketArtifactItem {
 
@@ -69,7 +69,7 @@ public abstract class GloveArtifactItem extends TrinketArtifactItem {
 		GloveModel model = this.getModel(smallArms);
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
 		model.animateModel(player, limbAngle, limbDistance, tickDelta);
-		IRenderableCurio.RenderHelper.followBodyRotations(player, model);
+		TrinketRenderHelper.followBodyRotations(player, model);
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, false);
 		model.renderHand(hand, matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}

@@ -4,8 +4,6 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.curio.PanicNecklaceModel;
 import artifacts.common.events.UserHurtCallback;
 import artifacts.common.init.Items;
-import artifacts.common.item.Curio;
-import artifacts.common.item.RenderableCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -14,13 +12,9 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.component.ICurio;
-import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class PanicNecklaceItem extends TrinketArtifactItem {
 
@@ -33,9 +27,10 @@ public class PanicNecklaceItem extends TrinketArtifactItem {
 	}
 
 	private static void applyEffects(LivingEntity user, DamageSource source, float amount) {
-		if (!user.world.isClient && amount >= 1 && CuriosApi.getCuriosHelper().findEquippedCurio(Items.PANIC_NECKLACE, user).isPresent()) {
+		// TODO: Port to Trinkets
+		/*if (!user.world.isClient && amount >= 1 && CuriosApi.getCuriosHelper().findEquippedCurio(Items.PANIC_NECKLACE, user).isPresent()) {
 			user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 160, 0, false, false));
-		}
+		}*/
 	}
 
 	@Override

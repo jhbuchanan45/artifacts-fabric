@@ -1,13 +1,11 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.RenderTypes;
+import artifacts.client.render.RenderTypes;
+import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.curio.GloveModel;
-import artifacts.common.item.Curio;
 import artifacts.common.item.GloveArtifactItem;
-import artifacts.common.item.RenderableGloveCurio;
 import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.TrinketSlots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -17,14 +15,10 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.type.component.ICurio;
-import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class FireGauntletItem extends GloveArtifactItem {
 
@@ -51,7 +45,7 @@ public class FireGauntletItem extends GloveArtifactItem {
 
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
 		model.animateModel(player, limbAngle, limbDistance, tickDelta);
-		IRenderableCurio.RenderHelper.followBodyRotations(player, model);
+		TrinketRenderHelper.followBodyRotations(player, model);
 
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, false);
 		model.renderHand(hand, matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);

@@ -22,7 +22,7 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 
 	public AntidoteVesselItem() {
 		super(new Settings());
-}
+	}
 
 	@Override
 	@Environment(EnvType.CLIENT)

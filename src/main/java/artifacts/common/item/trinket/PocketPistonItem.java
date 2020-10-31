@@ -2,13 +2,10 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.common.item.GloveArtifactItem;
-import artifacts.common.item.RenderableGloveCurio;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.type.component.IRenderableCurio;
 
 public class PocketPistonItem extends GloveArtifactItem {
 

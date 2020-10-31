@@ -1,18 +1,11 @@
 package artifacts.mixins.statuseffect.client;
 
-import artifacts.common.item.Curio;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
-
-import java.util.Map;
 
 @Mixin(GameRenderer.class)
 public abstract class MixinGameRenderer {
@@ -22,7 +15,8 @@ public abstract class MixinGameRenderer {
 	 */
 	@Inject(method = "getNightVisionStrength", at = @At("RETURN"), cancellable = true)
 	private static void cancelNightVisionFadeEffect(LivingEntity entity, float tickDelta, CallbackInfoReturnable<Float> info) {
-		if (info.getReturnValueF() != 1f) {
+		// TODO: Port to Trinkets
+		/*if (info.getReturnValueF() != 1f) {
 			CuriosApi.getCuriosHelper().getCuriosHandler(entity).ifPresent(itemHandler -> {
 
 				for (Map.Entry<String, ICurioStacksHandler> entry : itemHandler.getCurios().entrySet()) {
@@ -39,6 +33,6 @@ public abstract class MixinGameRenderer {
 					}
 				}
 			});
-		}
+		}*/
 	}
 }
