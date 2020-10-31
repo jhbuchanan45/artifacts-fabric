@@ -6,7 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 
 /**
- * Callback for applying Curio effects when the wearer was hurt in general, same injection point as Forge's LivingHurtEvent
+ * Callback for applying Trinket effects when the wearer was hurt in general, same injection point as Forge's LivingHurtEvent
  */
 public interface UserHurtCallback {
 

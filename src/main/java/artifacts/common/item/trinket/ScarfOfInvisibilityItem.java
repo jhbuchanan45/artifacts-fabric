@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.ScarfModel;
+import artifacts.client.render.model.trinket.ScarfModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.RenderLayer;
@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/scarf_of_invisibility.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/scarf_of_invisibility.png");
 	private Object model;
 
 	public ScarfOfInvisibilityItem() {

@@ -1,8 +1,4 @@
 {
-  "forge.swimSpeed": "Velocidade de Nado",
-  "curios.identifier.feet": "Pés",
-  "curios.modifiers.feet": "Quando nos pés:",
-  "itemGroup.artifacts": "Artifacts",
   "artifacts.advancements.amateur_archaeologist.title": "Arqueólogo Amador",
   "artifacts.advancements.amateur_archaeologist.description": "Encontre um Artefato",
   "artifacts.advancements.chest_slayer.title": "Assassino de Báu",

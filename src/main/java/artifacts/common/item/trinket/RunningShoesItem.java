@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.RunningShoesModel;
+import artifacts.client.render.model.trinket.RunningShoesModel;
 import dev.emi.stepheightentityattribute.StepHeightEntityAttributeMain;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class RunningShoesItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/running_shoes.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/running_shoes.png");
 
 	private static final EntityAttributeModifier SPEED_BOOST_MODIFIER = new EntityAttributeModifier(UUID.fromString("ac7ab816-2b08-46b6-879d-e5dea34ff305"), "artifacts:running_shoes_movement_speed", 0.4, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 	private static final EntityAttributeModifier STEP_HEIGHT_MODIFIER = new EntityAttributeModifier(UUID.fromString("7e97cede-a343-411f-b465-14cdf6df3666"), "artifacts:running_shoes_step_height", .5, EntityAttributeModifier.Operation.ADDITION);

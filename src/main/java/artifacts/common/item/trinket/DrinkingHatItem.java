@@ -1,6 +1,6 @@
 package artifacts.common.item.trinket;
 
-import artifacts.client.render.model.curio.DrinkingHatModel;
+import artifacts.client.render.model.trinket.DrinkingHatModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;

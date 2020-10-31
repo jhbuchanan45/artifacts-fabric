@@ -45,7 +45,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	/**
-	 * Used to give a Curio a permanent status effect while wearing it.
+	 * Used to give a Trinket a permanent status effect while wearing it.
 	 * The StatusEffectInstance is applied every 15 ticks so a duration greater than that is required.
 	 *
 	 * @return The StatusEffectInstance to be applied

@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.ScarfModel;
+import artifacts.client.render.model.trinket.ScarfModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class LuckyScarfItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/lucky_scarf.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/lucky_scarf.png");
 	private Object model;
 
 	public LuckyScarfItem() {

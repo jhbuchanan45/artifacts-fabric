@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.FlippersModel;
+import artifacts.client.render.model.trinket.FlippersModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 public class FlippersItem extends TrinketArtifactItem {
 
 	public static final int SWIM_SPEED_MULTIPLIER = 2;
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/flippers.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/flippers.png");
 	private Object model;
 
 

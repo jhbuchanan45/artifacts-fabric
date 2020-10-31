@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.VillagerHatModel;
+import artifacts.client.render.model.trinket.VillagerHatModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class VillagerHatItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/villager_hat.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/villager_hat.png");
 	private Object model;
 
 	public VillagerHatItem() {

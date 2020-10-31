@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class FlamePendantItem extends PendantItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/flame_pendant.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/flame_pendant.png");
 
 	public FlamePendantItem() {
 		super(TEXTURE, FlamePendantItem::applyEffects);

@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.ObsidianSkullModel;
+import artifacts.client.render.model.trinket.ObsidianSkullModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class ObsidianSkullItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/obsidian_skull.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/obsidian_skull.png");
 	private Object model;
 
 	public ObsidianSkullItem() {

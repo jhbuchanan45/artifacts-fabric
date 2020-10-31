@@ -1,6 +1,6 @@
 package artifacts.common.item.trinket;
 
-import artifacts.client.render.model.curio.PendantModel;
+import artifacts.client.render.model.trinket.PendantModel;
 import artifacts.common.events.UserAttackedCallback;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

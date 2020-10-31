@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.BunnyHoppersModel;
+import artifacts.client.render.model.trinket.BunnyHoppersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Items;
 import artifacts.common.util.TrinketsHelper;
@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 
 public class BunnyHoppersItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/bunny_hoppers.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/bunny_hoppers.png");
 	private Object model;
 
 	public BunnyHoppersItem() {

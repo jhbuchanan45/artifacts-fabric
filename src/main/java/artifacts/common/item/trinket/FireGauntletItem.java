@@ -3,7 +3,7 @@ package artifacts.common.item.trinket;
 import artifacts.Artifacts;
 import artifacts.client.render.RenderTypes;
 import artifacts.client.render.TrinketRenderHelper;
-import artifacts.client.render.model.curio.GloveModel;
+import artifacts.client.render.model.trinket.GloveModel;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -21,10 +21,10 @@ import net.minecraft.util.Identifier;
 
 public class FireGauntletItem extends GloveItem {
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_slim.png");
-	private static final Identifier TEXTURE_DEFAULT_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_default_glow.png");
-	private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/fire_gauntlet_slim_glow.png");
+	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_default.png");
+	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_slim.png");
+	private static final Identifier TEXTURE_DEFAULT_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_default_glow.png");
+	private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_slim_glow.png");
 
 	public FireGauntletItem() {
 		super(new Item.Settings());

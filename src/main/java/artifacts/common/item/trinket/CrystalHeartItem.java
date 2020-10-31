@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.CrystalHeartModel;
+import artifacts.client.render.model.trinket.CrystalHeartModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class CrystalHeartItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/crystal_heart.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/crystal_heart.png");
 
 	private static final EntityAttributeModifier HEALTH_BONUS = new EntityAttributeModifier(UUID.fromString("99fa0537-90b9-481a-bc76-4650987faba3"), "artifacts:crystal_heart_health_bonus", 10, EntityAttributeModifier.Operation.ADDITION);
 	private Object model;

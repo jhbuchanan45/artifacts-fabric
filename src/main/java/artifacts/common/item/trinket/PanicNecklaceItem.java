@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.PanicNecklaceModel;
+import artifacts.client.render.model.trinket.PanicNecklaceModel;
 import artifacts.common.events.UserHurtCallback;
 import artifacts.common.init.Items;
 import artifacts.common.util.TrinketsHelper;
@@ -19,7 +19,7 @@ import net.minecraft.util.Identifier;
 
 public class PanicNecklaceItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/panic_necklace.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/panic_necklace.png");
 	private Object model;
 
 	public PanicNecklaceItem() {

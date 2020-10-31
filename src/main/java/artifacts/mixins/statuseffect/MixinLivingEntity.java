@@ -26,7 +26,7 @@ public abstract class MixinLivingEntity extends Entity {
 	}
 
 	/**
-	 * Applies permanent status effects added by curios every 15 ticks
+	 * Applies permanent status effects added by trinkets every 15 ticks
 	 */
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void applyPermanentEffects(CallbackInfo info) {

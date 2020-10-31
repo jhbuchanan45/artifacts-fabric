@@ -1,4 +1,4 @@
-package artifacts.client.render.model.curio;
+package artifacts.client.render.model.trinket;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumer;

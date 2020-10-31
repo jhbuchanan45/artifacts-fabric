@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MixinGameRenderer {
 
 	/**
-	 * Cancels the night vision fading effect when wearing a curio that adds night vision as a permanent effect
+	 * Cancels the night vision fading effect when wearing a trinket that adds night vision as a permanent effect
 	 */
 	@Inject(method = "getNightVisionStrength", at = @At("RETURN"), cancellable = true)
 	private static void cancelNightVisionFadeEffect(LivingEntity entity, float tickDelta, CallbackInfoReturnable<Float> info) {

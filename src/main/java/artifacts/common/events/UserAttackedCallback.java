@@ -8,7 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import java.util.Random;
 
 /**
- * Callback for applying Curio effects when the wearer was attacked by another entity
+ * Callback for applying Trinket effects when the wearer was attacked by another entity
  */
 public interface UserAttackedCallback {
 

@@ -17,9 +17,9 @@ import net.minecraft.entity.LivingEntity;
 public final class TrinketRenderHelper {
 
 	/**
-	 * Translates the rendering for the curio if the entity is sneaking.
+	 * Translates the rendering for the trinket if the entity is sneaking.
 	 *
-	 * @param livingEntity The wearer of the curio
+	 * @param livingEntity The wearer of the trinket
 	 */
 	public static void translateIfSneaking(final MatrixStack matrixStack,
 	                                       final LivingEntity livingEntity) {
@@ -30,11 +30,11 @@ public final class TrinketRenderHelper {
 	}
 
 	/**
-	 * Rotates the rendering for the curio if the entity is sneaking. The rotation angle is based on
+	 * Rotates the rendering for the trinket if the entity is sneaking. The rotation angle is based on
 	 * the body of a player model when sneaking, so this is typically used for items being rendered
 	 * on the body.
 	 *
-	 * @param livingEntity The wearer of the curio
+	 * @param livingEntity The wearer of the trinket
 	 */
 	public static void rotateIfSneaking(final MatrixStack matrixStack,
 	                                    final LivingEntity livingEntity) {
@@ -50,7 +50,7 @@ public final class TrinketRenderHelper {
 	 * if the entity render object does not implement {@link LivingEntityRenderer} or if the model
 	 * does not have a head (does not implement {@link BipedEntityModel}).
 	 *
-	 * @param livingEntity The wearer of the curio
+	 * @param livingEntity The wearer of the trinket
 	 * @param parts        The list of model renderers to align to the head movement
 	 */
 	public static void followHeadRotations(final LivingEntity livingEntity, ModelPart... parts) {
@@ -76,7 +76,7 @@ public final class TrinketRenderHelper {
 	 * nothing if the entity render object does not implement {@link LivingEntityRenderer} or if the
 	 * model does not implement {@link BipedEntityModel}).
 	 *
-	 * @param livingEntity The wearer of the curio
+	 * @param livingEntity The wearer of the trinket
 	 * @param models       The list of models to align to the body movement
 	 */
 	@SafeVarargs

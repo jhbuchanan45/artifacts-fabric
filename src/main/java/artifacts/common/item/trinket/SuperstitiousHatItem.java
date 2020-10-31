@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.SuperstitiousHatModel;
+import artifacts.client.render.model.trinket.SuperstitiousHatModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class SuperstitiousHatItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/superstitious_hat.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/superstitious_hat.png");
 	private Object model;
 
 	public SuperstitiousHatItem() {

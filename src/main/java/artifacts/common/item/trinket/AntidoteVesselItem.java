@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.AntidoteVesselModel;
+import artifacts.client.render.model.trinket.AntidoteVesselModel;
 import artifacts.common.extensions.StatusEffectInstanceExtensions;
 import artifacts.mixins.accessors.StatusEffectAccessor;
 import dev.emi.trinkets.api.SlotGroups;
@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 
 public class AntidoteVesselItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/antidote_vessel.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/antidote_vessel.png");
 	private Object model;
 
 	public AntidoteVesselItem() {

@@ -2,7 +2,7 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.RenderTypes;
-import artifacts.client.render.model.curio.NightVisionGogglesModel;
+import artifacts.client.render.model.trinket.NightVisionGogglesModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -19,8 +19,8 @@ import net.minecraft.util.Identifier;
 
 public class NightVisionGogglesItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles.png");
-	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/curio/night_vision_goggles_glow.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles.png");
+	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles_glow.png");
 	private Object model;
 
 	public NightVisionGogglesItem() {

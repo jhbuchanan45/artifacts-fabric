@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.UniversalAttractorModel;
+import artifacts.client.render.model.trinket.UniversalAttractorModel;
 import artifacts.common.init.Components;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class UniversalAttractorItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/universal_attractor.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/universal_attractor.png");
 	private Object model;
 
 	public UniversalAttractorItem() {

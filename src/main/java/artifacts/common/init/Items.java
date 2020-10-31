@@ -23,8 +23,8 @@ public class Items {
 	public static final Item ETERNAL_STEAK = register("eternal_steak", new EverlastingFoodItem(new Item.Settings().food(FoodComponents.COOKED_BEEF)));
 
 	// Head
-	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/curio/plastic_drinking_hat.png")));
-	public static final Item NOVELTY_DRINKING_HAT = register("novelty_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/curio/novelty_drinking_hat.png")));
+	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/trinket/plastic_drinking_hat.png")));
+	public static final Item NOVELTY_DRINKING_HAT = register("novelty_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/trinket/novelty_drinking_hat.png")));
 	public static final Item SNORKEL = register("snorkel", new SnorkelItem());
 	public static final Item NIGHT_VISION_GOGGLES = register("night_vision_goggles", new NightVisionGogglesItem());
 	public static final Item VILLAGER_HAT = register("villager_hat", new VillagerHatItem());

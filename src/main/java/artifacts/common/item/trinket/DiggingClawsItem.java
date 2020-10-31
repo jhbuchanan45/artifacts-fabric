@@ -1,7 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.curio.ClawsModel;
+import artifacts.client.render.model.trinket.ClawsModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -12,8 +12,8 @@ public class DiggingClawsItem extends GloveItem {
 	public static final int NEW_BASE_MINING_LEVEL = 2;
 	public static final float MINING_SPEED_INCREASE = 4;
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/digging_claws_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/digging_claws_default.png");
+	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_default.png");
+	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_default.png");
 
 	public DiggingClawsItem() {
 		super(new Item.Settings());
