@@ -1,6 +1,8 @@
 package artifacts.common.item.trinket;
 
 import artifacts.client.render.model.trinket.DrinkingHatModel;
+import artifacts.common.trinkets.Slots;
+import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -40,6 +42,6 @@ public class DrinkingHatItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
+		return group.equals(SlotGroups.HEAD) && slot.equals(Slots.HAT);
 	}
 }

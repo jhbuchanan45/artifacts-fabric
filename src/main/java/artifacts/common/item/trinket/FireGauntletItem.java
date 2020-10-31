@@ -70,9 +70,4 @@ public class FireGauntletItem extends GloveItem {
 	protected Identifier getGlowTexture(boolean smallArms) {
 		return smallArms ? TEXTURE_SLIM_GLOW : TEXTURE_DEFAULT_GLOW;
 	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
-	}
 }

@@ -2,7 +2,9 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.RunningShoesModel;
+import artifacts.common.trinkets.Slots;
 import dev.emi.stepheightentityattribute.StepHeightEntityAttributeMain;
+import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
@@ -82,6 +84,6 @@ public class RunningShoesItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
+		return group.equals(SlotGroups.FEET) && slot.equals(Slots.SHOES);
 	}
 }

@@ -2,6 +2,8 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.ObsidianSkullModel;
+import dev.emi.trinkets.api.SlotGroups;
+import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -33,6 +35,6 @@ public class ObsidianSkullItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
+		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
 	}
 }

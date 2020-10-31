@@ -25,6 +25,16 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 	}
 
 	@Override
+	public void tick(PlayerEntity player, ItemStack stack) {
+		// Reduce duration of all negative status effects to 80
+		player.getActiveStatusEffects().forEach((effect, instance) -> {
+			if (!effect.isInstant() && ((StatusEffectAccessor) effect).getType() != StatusEffectType.BENEFICIAL && instance.getDuration() > 80) {
+				((StatusEffectInstanceExtensions) instance).artifacts$setDuration(80);
+			}
+		});
+	}
+
+	@Override
 	@Environment(EnvType.CLIENT)
 	protected AntidoteVesselModel getModel() {
 		if (model == null) {
@@ -46,16 +56,6 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot) && group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
-	}
-
-	@Override
-	public void tick(PlayerEntity player, ItemStack stack) {
-		// Reduce duration of all negative status effects to 80
-		player.getActiveStatusEffects().forEach((effect, instance) -> {
-			if (!effect.isInstant() && ((StatusEffectAccessor) effect).getType() != StatusEffectType.BENEFICIAL && instance.getDuration() > 80) {
-				((StatusEffectInstanceExtensions) instance).artifacts$setDuration(80);
-			}
-		});
+		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
 	}
 }

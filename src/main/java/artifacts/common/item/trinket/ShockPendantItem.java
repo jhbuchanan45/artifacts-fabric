@@ -37,9 +37,4 @@ public class ShockPendantItem extends PendantItem {
 			}
 		}
 	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
-	}
 }

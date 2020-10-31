@@ -2,6 +2,8 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.ClawsModel;
+import dev.emi.trinkets.api.SlotGroups;
+import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -46,10 +48,5 @@ public class DiggingClawsItem extends GloveItem {
 			modelDefault = new ClawsModel(false);
 		}
 		return (ClawsModel) modelDefault;
-	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
 	}
 }

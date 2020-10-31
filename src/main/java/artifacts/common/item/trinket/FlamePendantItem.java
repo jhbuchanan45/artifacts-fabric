@@ -28,9 +28,4 @@ public class FlamePendantItem extends PendantItem {
 			attacker.damage(setFireSource, 2);
 		}
 	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
-	}
 }

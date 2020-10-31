@@ -2,6 +2,8 @@ package artifacts.common.item.trinket;
 
 import artifacts.client.render.model.trinket.PendantModel;
 import artifacts.common.events.UserAttackedCallback;
+import dev.emi.trinkets.api.SlotGroups;
+import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -38,5 +40,10 @@ public abstract class PendantItem extends TrinketArtifactItem {
 	@Environment(EnvType.CLIENT)
 	protected Identifier getTexture() {
 		return texture;
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return group.equals(SlotGroups.HEAD) && slot.equals(Slots.NECKLACE);
 	}
 }

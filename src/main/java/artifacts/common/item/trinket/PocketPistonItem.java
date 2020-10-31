@@ -26,9 +26,4 @@ public class PocketPistonItem extends GloveItem {
 	protected Identifier getTexture() {
 		return TEXTURE_DEFAULT;
 	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
-	}
 }

@@ -60,9 +60,4 @@ public class FeralClawsItem extends GloveItem {
 		}
 		return (ClawsModel) modelDefault;
 	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
-	}
 }

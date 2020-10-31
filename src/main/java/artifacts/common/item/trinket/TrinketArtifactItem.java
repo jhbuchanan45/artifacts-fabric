@@ -55,12 +55,6 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		// TODO: check if same trinket is already equipped in another slot
-		return true;
-	}
-
-	@Override
 	public void onEquip(PlayerEntity player, ItemStack stack) {
 		player.world.playSound(null, new BlockPos(player.getPos()), this.getEquipSound(), SoundCategory.NEUTRAL, 1, 1);
 	}

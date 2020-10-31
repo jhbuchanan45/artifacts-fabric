@@ -26,15 +26,15 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 		PlayHurtSoundCallback.EVENT.register(BunnyHoppersItem::onPlayHurtSound);
 	}
 
+	@Override
+	public StatusEffectInstance getPermanentEffect() {
+		return new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 1, true, false);
+	}
+
 	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
 		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, entity)) {
 			entity.playSound(SoundEvents.ENTITY_RABBIT_HURT, volume, pitch);
 		}
-	}
-
-	@Override
-	public StatusEffectInstance getPermanentEffect() {
-		return new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 1, true, false);
 	}
 
 	@Override
@@ -54,6 +54,6 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot) && group.equals(SlotGroups.FEET) && slot.equals(Slots.SHOES);
+		return group.equals(SlotGroups.FEET) && slot.equals(Slots.SHOES);
 	}
 }

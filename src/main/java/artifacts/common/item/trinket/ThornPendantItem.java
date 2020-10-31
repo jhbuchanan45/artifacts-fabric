@@ -23,9 +23,4 @@ public class ThornPendantItem extends PendantItem {
 			attacker.damage(DamageSource.thorns(user), 2 + random.nextInt(5));
 		}
 	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot);
-	}
 }

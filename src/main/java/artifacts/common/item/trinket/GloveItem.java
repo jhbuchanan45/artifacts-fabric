@@ -3,6 +3,7 @@ package artifacts.common.item.trinket;
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.trinket.GloveModel;
 import dev.emi.trinkets.api.SlotGroups;
+import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -71,5 +72,10 @@ public abstract class GloveItem extends TrinketArtifactItem {
 		TrinketRenderHelper.followBodyRotations(player, model);
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, false);
 		model.renderHand(hand, matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+	}
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return (group.equals(SlotGroups.HAND) || group.equals(SlotGroups.OFFHAND)) && slot.equals(Slots.GLOVES);
 	}
 }
