@@ -1,7 +1,7 @@
 package artifacts.mixins.item.pocketpiston;
 
 import artifacts.common.init.Items;
-import artifacts.common.util.TrinketsHelper;
+import artifacts.common.trinkets.TrinketsHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;

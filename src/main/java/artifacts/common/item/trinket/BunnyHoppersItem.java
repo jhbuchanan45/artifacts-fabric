@@ -4,7 +4,8 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.BunnyHoppersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Items;
-import artifacts.common.util.TrinketsHelper;
+import artifacts.common.trinkets.Slots;
+import artifacts.common.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -53,6 +54,6 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return super.canWearInSlot(group, slot) && group.equals(SlotGroups.FEET) && slot.equals("shoes");
+		return super.canWearInSlot(group, slot) && group.equals(SlotGroups.FEET) && slot.equals(Slots.SHOES);
 	}
 }

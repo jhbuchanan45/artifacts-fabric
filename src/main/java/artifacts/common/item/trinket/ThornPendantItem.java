@@ -2,7 +2,7 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.common.init.Items;
-import artifacts.common.util.TrinketsHelper;
+import artifacts.common.trinkets.TrinketsHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;

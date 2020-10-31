@@ -1,7 +1,7 @@
 package artifacts.mixins.item.luckyscarf;
 
 import artifacts.common.init.Items;
-import artifacts.common.util.TrinketsHelper;
+import artifacts.common.trinkets.TrinketsHelper;
 import artifacts.mixins.accessors.ItemStackAccessor;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;

@@ -4,7 +4,7 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.PanicNecklaceModel;
 import artifacts.common.events.UserHurtCallback;
 import artifacts.common.init.Items;
-import artifacts.common.util.TrinketsHelper;
+import artifacts.common.trinkets.TrinketsHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;

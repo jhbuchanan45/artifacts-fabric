@@ -1,4 +1,4 @@
-package artifacts.common.util;
+package artifacts.common.trinkets;
 
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.LivingEntity;
