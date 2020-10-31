@@ -30,7 +30,10 @@
     "item.superstitioushat.MixinEnchantmentHelper",
     "item.umbrella.MixinLivingEntity",
     "item.universalattractor.MixinPlayerEntity",
-    "statuseffect.MixinLivingEntity"
+    "statuseffect.MixinLivingEntity",
+    "trinkets.MixinPlayerEntity",
+    "trinkets.MixinPlayerTrinketComponent",
+    "trinkets.MixinTrinketSlot"
   ],
   "client": [
     "event.client.MixinLivingEntity",
