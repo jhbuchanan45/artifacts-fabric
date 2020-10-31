@@ -1,6 +1,5 @@
 package artifacts.mixins.item.firegauntlet;
 
-import artifacts.common.init.Items;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;

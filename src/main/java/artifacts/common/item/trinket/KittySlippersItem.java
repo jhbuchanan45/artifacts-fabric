@@ -3,12 +3,10 @@ package artifacts.common.item.trinket;
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.KittySlippersModel;
 import artifacts.common.events.PlayHurtSoundCallback;
-import artifacts.common.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class KittySlippersItem extends TrinketArtifactItem {

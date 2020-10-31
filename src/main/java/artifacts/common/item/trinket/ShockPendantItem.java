@@ -1,14 +1,9 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.common.init.Items;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
 
 import java.util.Random;
 

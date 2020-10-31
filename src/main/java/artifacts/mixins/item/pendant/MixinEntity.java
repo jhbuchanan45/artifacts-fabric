@@ -1,6 +1,5 @@
 package artifacts.mixins.item.pendant;
 
-import artifacts.common.init.Items;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;

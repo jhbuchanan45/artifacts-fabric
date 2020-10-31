@@ -1,7 +1,5 @@
 package artifacts.mixins.item.crossnecklace;
 
-import artifacts.common.init.Items;
-import artifacts.common.item.trinket.CrossNecklaceItem;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;

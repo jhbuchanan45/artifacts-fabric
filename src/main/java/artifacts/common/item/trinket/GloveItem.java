@@ -2,7 +2,6 @@ package artifacts.common.item.trinket;
 
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.curio.GloveModel;
-import artifacts.common.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

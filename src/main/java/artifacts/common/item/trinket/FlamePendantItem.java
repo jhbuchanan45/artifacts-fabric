@@ -1,12 +1,8 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.common.init.Items;
-import artifacts.mixins.accessors.DamageSourceAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.util.Identifier;
 
 import java.util.Random;

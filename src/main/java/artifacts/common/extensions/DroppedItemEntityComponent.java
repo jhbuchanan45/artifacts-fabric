@@ -1,13 +1,9 @@
 package artifacts.common.extensions;
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import nerdhub.cardinal.components.api.util.sync.EntitySyncedComponent;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.jetbrains.annotations.NotNull;
 
 public class DroppedItemEntityComponent implements AutoSyncedComponent {
 	private boolean wasDropped = false;
