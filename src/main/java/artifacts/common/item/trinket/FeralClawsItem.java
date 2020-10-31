@@ -63,6 +63,6 @@ public class FeralClawsItem extends GloveItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return false;
+		return super.canWearInSlot(group, slot);
 	}
 }

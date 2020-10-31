@@ -46,7 +46,7 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
+		return super.canWearInSlot(group, slot) && group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
 	}
 
 	@Override

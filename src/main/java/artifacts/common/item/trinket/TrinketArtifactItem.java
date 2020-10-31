@@ -55,6 +55,12 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		// TODO: check if same trinket is already equipped in another slot
+		return false;
+	}
+
+	@Override
 	public void onEquip(PlayerEntity player, ItemStack stack) {
 		player.world.playSound(null, new BlockPos(player.getPos()), this.getEquipSound(), SoundCategory.NEUTRAL, 1, 1);
 	}
@@ -65,7 +71,6 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		BipedEntityModel<LivingEntity> model = this.getModel();
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, animationProgress, headPitch);
 		model.animateModel(player, limbAngle, limbDistance, tickDelta);
-		// TODO: split RenderHelper off from curios
 		TrinketRenderHelper.followBodyRotations(player, model);
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(this.getTexture()), false, false);
 		model.render(matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
