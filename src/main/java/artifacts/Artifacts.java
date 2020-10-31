@@ -38,8 +38,8 @@ public class Artifacts implements ModInitializer {
 		// Trinkets setup
 		TrinketSlots.addSlot(SlotGroups.LEGS, Slots.BELT, new Identifier("trinkets", "textures/item/empty_trinket_slot_belt.png"));
 		TrinketSlots.addSlot(SlotGroups.HEAD, Slots.NECKLACE, new Identifier("trinkets", "textures/item/empty_trinket_slot_necklace.png"));
-		TrinketSlots.addSlot(SlotGroups.HEAD, artifacts.common.trinkets.Slots.HAT, new Identifier("textures/item/empty_armor_slot_helmet"));
-		TrinketSlots.addSlot(SlotGroups.FEET, artifacts.common.trinkets.Slots.SHOES, new Identifier("textures/item/empty_armor_slot_boots"));
+		TrinketSlots.addSlot(SlotGroups.HEAD, artifacts.common.trinkets.Slots.HAT, new Identifier("textures/item/empty_armor_slot_helmet.png"));
+		TrinketSlots.addSlot(SlotGroups.FEET, artifacts.common.trinkets.Slots.SHOES, new Identifier("textures/item/empty_armor_slot_boots.png"));
 		TrinketSlots.addSlot(SlotGroups.HAND, Slots.GLOVES, new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
 		TrinketSlots.addSlot(SlotGroups.OFFHAND, Slots.GLOVES, new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
 

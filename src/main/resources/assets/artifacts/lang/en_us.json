@@ -1,4 +1,6 @@
 {
+  "trinkets.slots.feet.shoes": "Shoes",
+  "trinkets.slots.head.hat": "Hat",
   "itemGroup.artifacts.item_group": "Artifacts",
   "artifacts.advancements.amateur_archaeologist.title": "Amateur Archaeologist",
   "artifacts.advancements.amateur_archaeologist.description": "Find an Artifact",
