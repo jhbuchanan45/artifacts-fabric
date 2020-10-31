@@ -44,6 +44,6 @@ public abstract class PendantItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.HEAD) && slot.equals(Slots.NECKLACE);
+		return group.equals(SlotGroups.CHEST) && slot.equals(Slots.NECKLACE);
 	}
 }
