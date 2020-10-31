@@ -1,13 +1,12 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.common.item.GloveArtifactItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-public class PocketPistonItem extends GloveArtifactItem {
+public class PocketPistonItem extends GloveItem {
 
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/pocket_piston_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/pocket_piston_slim.png");

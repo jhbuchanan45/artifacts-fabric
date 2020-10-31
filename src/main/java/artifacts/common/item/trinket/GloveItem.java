@@ -1,4 +1,4 @@
-package artifacts.common.item;
+package artifacts.common.item.trinket;
 
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.curio.GloveModel;
@@ -16,12 +16,12 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 
-public abstract class GloveArtifactItem extends TrinketArtifactItem {
+public abstract class GloveItem extends TrinketArtifactItem {
 
 	protected Object modelDefault;
 	protected Object modelSlim;
 
-	public GloveArtifactItem(Settings settings) {
+	public GloveItem(Settings settings) {
 		super(settings);
 	}
 

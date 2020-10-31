@@ -2,7 +2,6 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ClawsModel;
-import artifacts.common.item.GloveArtifactItem;
 import com.google.common.collect.Multimap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,7 +14,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.UUID;
 
-public class FeralClawsItem extends GloveArtifactItem {
+public class FeralClawsItem extends GloveItem {
 
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/feral_claws_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/feral_claws_default.png");

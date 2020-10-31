@@ -23,6 +23,7 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
 		// TODO: Port to Trinkets
+
 		/*CuriosApi.getCuriosHelper().findEquippedCurio(Items.BUNNY_HOPPERS, entity).ifPresent(curio -> {
 			entity.playSound(SoundEvents.ENTITY_RABBIT_HURT, volume, pitch);
 		});*/

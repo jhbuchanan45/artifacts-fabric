@@ -1,7 +1,6 @@
 package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.common.item.GloveArtifactItem;
 import com.google.common.collect.Multimap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.UUID;
 
-public class PowerGloveItem extends GloveArtifactItem {
+public class PowerGloveItem extends GloveItem {
 
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/curio/power_glove_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/curio/power_glove_slim.png");

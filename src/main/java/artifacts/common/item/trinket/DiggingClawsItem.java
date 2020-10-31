@@ -2,13 +2,12 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.curio.ClawsModel;
-import artifacts.common.item.GloveArtifactItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-public class DiggingClawsItem extends GloveArtifactItem {
+public class DiggingClawsItem extends GloveItem {
 
 	public static final int NEW_BASE_MINING_LEVEL = 2;
 	public static final float MINING_SPEED_INCREASE = 4;
