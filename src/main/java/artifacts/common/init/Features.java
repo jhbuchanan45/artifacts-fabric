@@ -19,7 +19,6 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 
 import java.util.function.Predicate;
 
-// TODO: wait for API to get merged
 @SuppressWarnings("deprecation")
 public class Features {
 
@@ -41,8 +40,8 @@ public class Features {
 
 	public static void register() {
 		Predicate<BiomeSelectionContext> biomeSelector = BiomeSelectors.foundInOverworld();
-		BiomeModifications.addFeature(biomeSelector,
-				GenerationStep.Feature.UNDERGROUND_STRUCTURES,
-				BuiltinRegistries.CONFIGURED_FEATURE.getKey(CAMPSITE_CONFIGURED_FEATURE).get());
+		BiomeModifications.addFeature(biomeSelector, GenerationStep.Feature.UNDERGROUND_STRUCTURES,
+				BuiltinRegistries.CONFIGURED_FEATURE.getKey(CAMPSITE_CONFIGURED_FEATURE)
+						.orElseThrow(() -> new RuntimeException("Failed to get feature from registry")));
 	}
 }
