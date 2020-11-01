@@ -2,12 +2,9 @@ package artifacts.common.init;
 
 import artifacts.Artifacts;
 import net.fabricmc.fabric.api.loot.v1.FabricLootSupplierBuilder;
-import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
-import net.minecraft.loot.LootManager;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.entry.LootTableEntry;
-import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
@@ -46,7 +43,7 @@ public class LootTables {
 			new Identifier("minecraft", "entities/cow")
 	);
 
-	public static void onLootTableLoad(ResourceManager resourceManager, LootManager manager, Identifier id, FabricLootSupplierBuilder supplier, LootTableLoadingCallback.LootTableSetter setter) {
+	public static void onLootTableLoad(Identifier id, FabricLootSupplierBuilder supplier) {
 		if (LOOT_TABLE_IDS.contains(id)) {
 			supplier.withPool(getInjectPool(id.getPath()));
 		}

@@ -13,7 +13,6 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,7 +43,7 @@ public class Artifacts implements ModInitializer {
 		TrinketSlots.addSlot(SlotGroups.OFFHAND, Slots.GLOVES, new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
 
 		// LootTable setup
-		LootTableLoadingCallback.EVENT.register(LootTables::onLootTableLoad);
+		LootTableLoadingCallback.EVENT.register((resourceManager, manager, id, supplier, setter) -> LootTables.onLootTableLoad(id, supplier));
 
 		// Force loading init classes
 		// Entities is loaded by items, loottables can load lazily (no registration)
@@ -54,5 +53,6 @@ public class Artifacts implements ModInitializer {
 
 		// ToolHandlers
 		ToolHandlers.register();
+		LOGGER.info("[Artifacts] Finished initialization");
 	}
 }
