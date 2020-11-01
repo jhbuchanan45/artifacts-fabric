@@ -1,4 +1,4 @@
-package artifacts.mixins;
+package artifacts.mixins.trinkets;
 
 import artifacts.common.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.TrinketFeatureRenderer;
@@ -26,7 +26,9 @@ public abstract class MixinTrinketFeatureRenderer {
 
 	@Shadow private FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> context;
 
-	@Inject(method = "render", locals = LocalCapture.CAPTURE_FAILSOFT, at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/GlStateManager;popMatrix()V"))
+	// Overridden vanilla method so remap must be on
+	@SuppressWarnings("DefaultAnnotationParam")
+	@Inject(method = "render", locals = LocalCapture.CAPTURE_FAILSOFT, remap = true, at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/GlStateManager;popMatrix()V"))
 	private void extendedRender(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player,
 	                            float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw,
 	                            float headPitch, CallbackInfo info, TrinketComponent comp, List<String> names, int i, ItemStack stack) {

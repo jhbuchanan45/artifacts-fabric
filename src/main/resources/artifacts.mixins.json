@@ -4,7 +4,7 @@
   "package": "artifacts.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinTrinketFeatureRenderer",
+    "trinkets.MixinTrinketFeatureRenderer",
     "accessors.DamageSourceAccessor",
     "accessors.ItemStackAccessor",
     "accessors.StatusEffectAccessor",

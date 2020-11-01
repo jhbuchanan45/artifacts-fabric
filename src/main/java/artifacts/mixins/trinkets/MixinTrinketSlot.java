@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Collections;
 import java.util.function.BiFunction;
 
+// Remap is on because canInsert is an overridden method from minecraft, and thus obfuscated as well
 @Mixin(value = TrinketSlot.class, remap = false)
 public abstract class MixinTrinketSlot extends Slot {
 
@@ -23,7 +24,9 @@ public abstract class MixinTrinketSlot extends Slot {
 	/**
 	 * Prevent player from equipping two of the same Artifacts trinkets
 	 */
-	@Redirect(method = "canInsert", at = @At(value = "INVOKE", target = "Ljava/util/function/BiFunction;apply(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"))
+	// Overridden vanilla method so remap must be on
+	@SuppressWarnings("DefaultAnnotationParam")
+	@Redirect(method = "canInsert", remap = true, at = @At(value = "INVOKE", target = "Ljava/util/function/BiFunction;apply(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"))
 	private Object canEquipNoDuplicate(BiFunction<TrinketSlots.Slot, ItemStack, Boolean> canEquip, Object _slot, Object _stack) {
 		// Correct types
 		ItemStack stack = (ItemStack) _stack;
