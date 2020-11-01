@@ -72,7 +72,7 @@ public class MimicEntity extends MobEntity implements Monster {
 		goalSelector.add(2, new AttackGoal(this));
 		goalSelector.add(3, new FaceRandomGoal(this));
 		goalSelector.add(5, new HopGoal(this));
-		// noinspection ConstantConditions
+		//noinspection ConstantConditions
 		targetSelector.add(1, new FollowTargetGoal<>(this, PlayerEntity.class, 1, true, false, (entity) -> !isDormant || distanceTo(entity) < getAttributeInstance(EntityAttributes.GENERIC_FOLLOW_RANGE).getValue() / 2.5));
 	}
 
@@ -134,7 +134,7 @@ public class MimicEntity extends MobEntity implements Monster {
 		if (source.getAttacker() instanceof PlayerEntity) {
 			setTarget((LivingEntity) source.getAttacker());
 		}
-		if (ticksInAir <= 0 && !source.isProjectile() && !source.isUnblockable()) {
+		if (ticksInAir <= 0 && source.isProjectile() && !source.isUnblockable()) {
 			playSound(SoundEvents.MIMIC_HURT, getSoundVolume(), getSoundPitch());
 			return false;
 		}
