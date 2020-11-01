@@ -49,28 +49,4 @@ public class KittySlippersItem extends TrinketArtifactItem {
 	public boolean canWearInSlot(String group, String slot) {
 		return group.equals(SlotGroups.FEET) && slot.equals(Slots.SHOES);
 	}
-
-	// TODO: is this fixed?
-
-/*    public static void onSetAttackTarget(LivingSetAttackTargetEvent event) {
-        if (event.getEntityLiving() instanceof CreeperEntity && event.getTarget() != null) {
-            if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, event.getTarget()).isPresent()) {
-                ((MobEntity) event.getEntityLiving()).setTarget(null);
-            }
-        }
-    }
-
-    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof CreeperEntity && event.getEntityLiving().getAttacker() != null) {
-            if (CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, event.getEntityLiving().getAttacker()).isPresent()) {
-                event.getEntityLiving().setAttacker(null);
-            }
-        }
-    }
-
-    public static void onJoinWorld(EntityJoinWorldEvent event) {
-        if (event.getEntity() instanceof CreeperEntity) {
-            ((CreeperEntity) event.getEntity()).goalSelector.add(3, new FleeEntityGoal<>((CreeperEntity) event.getEntity(), PlayerEntity.class, (entity) -> entity != null && CuriosApi.getCuriosHelper().findEquippedCurio(Items.KITTY_SLIPPERS, entity).isPresent(), 6, 1, 1.3, EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR::test));
-        }
-    }*/
 }
