@@ -33,10 +33,11 @@ dependencies {
 
     // Dependencies
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation("com.github.emilyploszaj:trinkets:${project.trinkets_version}") {
+    modImplementation include("com.github.emilyploszaj:trinkets:${project.trinkets_version}") {
         transitive = false
     }
-    modImplementation "io.github.onyxstudios:Cardinal-Components-API:${cca_version}"
+    modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${cca_version}")
+    modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${cca_version}")
     modImplementation include("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
         transitive = false
     }
