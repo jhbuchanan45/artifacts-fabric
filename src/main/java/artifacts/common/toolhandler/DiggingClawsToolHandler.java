@@ -1,7 +1,8 @@
 package artifacts.common.toolhandler;
 
 import artifacts.common.init.Items;
-import artifacts.common.item.curio.DiggingClawsItem;
+import artifacts.common.item.trinket.DiggingClawsItem;
+import artifacts.common.trinkets.TrinketsHelper;
 import artifacts.mixins.accessors.ToolManagerImplEntryImplAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;
@@ -11,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +35,7 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 
 	@Override
 	public @NotNull ActionResult isEffectiveOn(Tag<Item> tag, BlockState state, ItemStack stack, LivingEntity user) {
-		if (!CuriosApi.getCuriosHelper().findEquippedCurio(Items.DIGGING_CLAWS, user).isPresent()) {
+		if (!TrinketsHelper.isEquipped(Items.DIGGING_CLAWS, user)) {
 			return ActionResult.PASS;
 		}
 

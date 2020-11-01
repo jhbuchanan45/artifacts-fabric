@@ -2,14 +2,14 @@ package artifacts.mixins.item.flippers;
 
 import artifacts.common.extensions.LivingEntityExtensions;
 import artifacts.common.init.Items;
-import artifacts.common.item.curio.FlippersItem;
+import artifacts.common.item.trinket.FlippersItem;
+import artifacts.common.trinkets.TrinketsHelper;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Slice;
-import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity implements LivingEntityExtensions {
@@ -35,7 +35,7 @@ public abstract class MixinLivingEntity implements LivingEntityExtensions {
 	@Unique
 	@Override
 	public double artifacts$getIncreasedSwimSpeed(double speed) {
-		return CuriosApi.getCuriosHelper().findEquippedCurio(Items.FLIPPERS, (LivingEntity)(Object) this).isPresent()
+		return TrinketsHelper.isEquipped(Items.FLIPPERS, (LivingEntity)(Object) this)
 				? speed * FlippersItem.SWIM_SPEED_MULTIPLIER : speed;
 	}
 }

@@ -20,6 +20,8 @@ public abstract class MixinBipedEntityModel<T extends LivingEntity> {
 
 	@Shadow public ModelPart leftArm;
 
+	// Target is unresolved because method owner is a generic T
+	// Seems to work fine, but has failed to apply once or twice in dev (in a fresh runtime)
 	@SuppressWarnings("UnresolvedMixinReference")
 	@Inject(method = "setAngles", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMainArm()Lnet/minecraft/util/Arm;"))
 	private void reduceHandSwing(T entity, float f, float g, float h, float i, float j, CallbackInfo info) {

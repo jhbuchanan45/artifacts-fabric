@@ -33,7 +33,7 @@ dependencies {
 
     // Dependencies
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation include("top.theillusivec4.curios:curios-fabric:${project.curios_version}") {
+    modImplementation("com.github.emilyploszaj:trinkets:${project.trinkets_version}") {
         transitive = false
     }
     modImplementation "io.github.onyxstudios:Cardinal-Components-API:${cca_version}"

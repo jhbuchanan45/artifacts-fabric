@@ -6,8 +6,6 @@ import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 
-import java.util.Arrays;
-
 public class ToolHandlers {
 
 	// Custom ToolHandler event that runs on all items (not limited to fabric api's tool tags)

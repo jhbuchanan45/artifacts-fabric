@@ -30,9 +30,6 @@
     ],
     "cardinal-components-entity": [
       "artifacts.common.init.Components"
-    ],
-    "cardinal-components-item": [
-      "artifacts.common.init.Components"
     ]
   },
   "mixins": [
@@ -43,7 +40,7 @@
     "fabricloader": ">=0.7.4",
     "fabric": "*",
     "minecraft": ">1.16.1",
-    "curios": "*",
+    "trinkets": "*",
     "cardinal-components": "*"
   },
   "suggests": {

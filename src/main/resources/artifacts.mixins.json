@@ -4,6 +4,7 @@
   "package": "artifacts.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinTrinketFeatureRenderer",
     "accessors.DamageSourceAccessor",
     "accessors.ItemStackAccessor",
     "accessors.StatusEffectAccessor",
@@ -29,7 +30,10 @@
     "item.superstitioushat.MixinEnchantmentHelper",
     "item.umbrella.MixinLivingEntity",
     "item.universalattractor.MixinPlayerEntity",
-    "statuseffect.MixinLivingEntity"
+    "statuseffect.MixinLivingEntity",
+    "trinkets.MixinPlayerEntity",
+    "trinkets.MixinPlayerTrinketComponent",
+    "trinkets.MixinTrinketSlot"
   ],
   "client": [
     "event.client.MixinLivingEntity",

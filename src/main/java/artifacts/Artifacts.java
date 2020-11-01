@@ -2,6 +2,9 @@ package artifacts;
 
 import artifacts.common.config.ModConfig;
 import artifacts.common.init.*;
+import dev.emi.trinkets.api.SlotGroups;
+import dev.emi.trinkets.api.Slots;
+import dev.emi.trinkets.api.TrinketSlots;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer;
@@ -14,9 +17,6 @@ import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotTypeInfo;
-import top.theillusivec4.curios.api.SlotTypePreset;
 
 public class Artifacts implements ModInitializer {
 
@@ -35,13 +35,13 @@ public class Artifacts implements ModInitializer {
 		AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(Toml4jConfigSerializer::new));
 		Artifacts.CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
-		// Curios setup
-		SlotTypePreset[] types = {SlotTypePreset.HEAD, SlotTypePreset.NECKLACE, SlotTypePreset.BELT};
-		for (SlotTypePreset type : types) {
-			CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, type.getInfoBuilder().cosmetic().build());
-		}
-		CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.HANDS.getInfoBuilder().cosmetic().size(2).build());
-		CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, new SlotTypeInfo.Builder("feet").cosmetic().priority(220).icon(PlayerScreenHandler.EMPTY_BOOTS_SLOT_TEXTURE).build());
+		// Trinkets setup
+		TrinketSlots.addSlot(SlotGroups.LEGS, Slots.BELT, new Identifier("trinkets", "textures/item/empty_trinket_slot_belt.png"));
+		TrinketSlots.addSlot(SlotGroups.CHEST, Slots.NECKLACE, new Identifier("trinkets", "textures/item/empty_trinket_slot_necklace.png"));
+		TrinketSlots.addSlot(SlotGroups.HEAD, artifacts.common.trinkets.Slots.HAT, new Identifier(MODID, "textures/item/empty_trinket_slot_hat.png"));
+		TrinketSlots.addSlot(SlotGroups.FEET, artifacts.common.trinkets.Slots.SHOES, new Identifier(MODID, "textures/item/empty_trinket_slot_shoes.png"));
+		TrinketSlots.addSlot(SlotGroups.HAND, Slots.GLOVES, new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
+		TrinketSlots.addSlot(SlotGroups.OFFHAND, Slots.GLOVES, new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
 
 		// LootTable setup
 		LootTableLoadingCallback.EVENT.register(LootTables::onLootTableLoad);
