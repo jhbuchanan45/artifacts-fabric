@@ -4,7 +4,7 @@
   "version": "1.0.0",
 
   "name": "Artifacts Test Mod",
-  "license": "MIT",
+  "license": "LGPL-3.0-or-later",
 
   "environment": "*",
   "entrypoints": {
