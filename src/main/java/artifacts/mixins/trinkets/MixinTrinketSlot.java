@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Collections;
 import java.util.function.BiFunction;
 
-// Remap is on because canInsert is an overridden method from minecraft, and thus obfuscated as well
 @Mixin(value = TrinketSlot.class, remap = false)
 public abstract class MixinTrinketSlot extends Slot {
 

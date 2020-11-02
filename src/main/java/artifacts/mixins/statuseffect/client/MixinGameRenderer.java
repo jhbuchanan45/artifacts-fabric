@@ -33,6 +33,7 @@ public abstract class MixinGameRenderer {
 
 					if (effect != null && effect.getEffectType() == StatusEffects.NIGHT_VISION) {
 						info.setReturnValue(1.0f);
+						return;
 					}
 				}
 			}

@@ -28,6 +28,6 @@ public abstract class MixinCreeperEntity extends HostileEntity {
 	private void addPlayerFleeGoal(CallbackInfo info) {
 		this.goalSelector.add(3, new FleeEntityGoal<>(this, PlayerEntity.class,
 				(entity) -> TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, entity), 6.0f, 1.0f,
-				1.3f, EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR::test));
+				1.2f, EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR::test));
 	}
 }
