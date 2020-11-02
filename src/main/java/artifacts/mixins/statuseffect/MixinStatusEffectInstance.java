@@ -1,4 +1,4 @@
-package artifacts.mixins.item.antidotevessel;
+package artifacts.mixins.statuseffect;
 
 import artifacts.common.extensions.StatusEffectInstanceExtensions;
 import net.minecraft.entity.effect.StatusEffectInstance;

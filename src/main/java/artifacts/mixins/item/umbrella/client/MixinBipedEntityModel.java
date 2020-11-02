@@ -17,7 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class MixinBipedEntityModel<T extends LivingEntity> {
 
 	@Shadow public ModelPart rightArm;
-
 	@Shadow public ModelPart leftArm;
 
 	// Target is unresolved because method owner is a generic T
@@ -34,8 +33,9 @@ public abstract class MixinBipedEntityModel<T extends LivingEntity> {
 			// Handle right hand
 			if ((isHoldingMainHand && mainArm == Arm.RIGHT) || (isHoldingOffHand && mainArm == Arm.LEFT)) {
 				this.rightArm.pitch /= 8;
-				// Handle left hand
-			} else if ((isHoldingMainHand && mainArm == Arm.LEFT) || (isHoldingOffHand && mainArm == Arm.RIGHT)) {
+			}
+			// Handle left hand
+			if ((isHoldingMainHand && mainArm == Arm.LEFT) || (isHoldingOffHand && mainArm == Arm.RIGHT)) {
 				this.leftArm.pitch /= 8;
 			}
 		}
