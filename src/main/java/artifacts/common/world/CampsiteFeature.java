@@ -105,11 +105,11 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 				currentPos = currentPos.up();
 			}
 			if (currentPos.getY() - pos.getY() > 2 && !world.isAir(currentPos.up())) {
-				world.setBlockState(currentPos, LANTERN_PROVIDER.getBlockState(random, currentPos), 2);
+				this.setBlockState(world, currentPos, LANTERN_PROVIDER.getBlockState(random, currentPos));
 				return;
 			}
 		}
-		world.setBlockState(pos, CAMPFIRE_PROVIDER.getBlockState(random, pos), 2);
+		this.setBlockState(world, pos, CAMPFIRE_PROVIDER.getBlockState(random, pos));
 	}
 
 	public void generateContainer(StructureWorldAccess world, BlockPos pos, Random random) {
@@ -123,14 +123,14 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		} else {
 			if (random.nextBoolean()) {
 				if (random.nextInt(5) == 0) {
-					world.setBlockState(pos, Blocks.TRAPPED_CHEST.getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)), 2);
-					world.setBlockState(pos.down(), Blocks.TNT.getDefaultState(), 0);
+					this.setBlockState(world, pos, Blocks.TRAPPED_CHEST.getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)));
+					this.setBlockState(world, pos.down(), Blocks.TNT.getDefaultState());
 				} else {
 					// TODO: random wooden chest with tag
-					world.setBlockState(pos, Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)), 2);
+					this.setBlockState(world, pos, Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, Direction.Type.HORIZONTAL.random(random)));
 				}
 			} else {
-				world.setBlockState(pos, Blocks.BARREL.getDefaultState().with(BarrelBlock.FACING, Direction.random(random)), 2);
+				this.setBlockState(world, pos, Blocks.BARREL.getDefaultState().with(BarrelBlock.FACING, Direction.random(random)));
 			}
 			BlockEntity container = world.getBlockEntity(pos);
 			if (container instanceof LootableContainerBlockEntity) {
@@ -141,7 +141,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 
 	public void generateCraftingStation(StructureWorldAccess world, BlockPos pos, Random random) {
 		BlockState state = CRAFTING_STATION_PROVIDER.getBlockState(random, pos);
-		world.setBlockState(pos, state, 0);
+		this.setBlockState(world, pos, state);
 		if (random.nextBoolean() && world.isAir(pos.up())) {
 			generateDecoration(world, pos.up(), random);
 		}
@@ -150,9 +150,9 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 
 	public void generateDecoration(StructureWorldAccess world, BlockPos pos, Random random) {
 		if (random.nextInt(3) == 0) {
-			world.setBlockState(pos, DECORATION_PROVIDER.getBlockState(random, pos), 2);
+			this.setBlockState(world, pos, DECORATION_PROVIDER.getBlockState(random, pos));
 		} else {
-			world.setBlockState(pos, BlockTags.FLOWER_POTS.getRandom(random).getDefaultState(), 2);
+			this.setBlockState(world, pos, BlockTags.FLOWER_POTS.getRandom(random).getDefaultState());
 		}
 	}
 
@@ -162,7 +162,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		positions.add(pos);
 		for (int i = 4 + random.nextInt(12); i > 0; i--) {
 			pos = positions.remove(0);
-			world.setBlockState(pos, ore, 2);
+			this.setBlockState(world, pos, ore);
 			for (Direction direction : Direction.Type.HORIZONTAL) {
 				if (world.getBlockState(pos.offset(direction)).getMaterial().blocksMovement() && !world.getBlockState(pos.offset(direction).up()).getMaterial().blocksMovement()) {
 					positions.add(pos.offset(direction));

@@ -15,7 +15,7 @@ public abstract class MixinEnchantmentHelper {
 	@Inject(method = "getLooting", at = @At("RETURN"), cancellable = true)
 	private static void increaseLooting(LivingEntity entity, CallbackInfoReturnable<Integer> info) {
 		// Add 1 level of knockback with a minimum of 2
-		if (TrinketsHelper.isEquipped(Items.POCKET_PISTON, entity)) {
+		if (TrinketsHelper.isEquipped(Items.SUPERSTITIOUS_HAT, entity)) {
 			info.setReturnValue(info.getReturnValueI() + 1);
 		}
 	}
