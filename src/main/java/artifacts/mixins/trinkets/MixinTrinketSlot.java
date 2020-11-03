@@ -23,7 +23,7 @@ public abstract class MixinTrinketSlot extends Slot {
 	/**
 	 * Prevent player from equipping two of the same Artifacts trinkets
 	 */
-	// Overridden vanilla method so remap must be on
+	// Remap on, not sure why
 	@SuppressWarnings("DefaultAnnotationParam")
 	@Redirect(method = "canInsert", remap = true, at = @At(value = "INVOKE", target = "Ljava/util/function/BiFunction;apply(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"))
 	private Object canEquipNoDuplicate(BiFunction<TrinketSlots.Slot, ItemStack, Boolean> canEquip, Object _slot, Object _stack) {
