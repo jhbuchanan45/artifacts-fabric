@@ -24,7 +24,6 @@ public abstract class MixinRevengeGoal extends TrackTargetGoal {
 		LivingEntity attacker = this.mob.getAttacker();
 		if (this.mob.getType() == EntityType.CREEPER && TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, attacker)) {
 			info.setReturnValue(false);
-			info.cancel();
 		}
 	}
 }

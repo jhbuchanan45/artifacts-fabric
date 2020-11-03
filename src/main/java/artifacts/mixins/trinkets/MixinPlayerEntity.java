@@ -23,10 +23,9 @@ public abstract class MixinPlayerEntity extends LivingEntity {
 	 * Prevent player from equipping two of the same Artifacts trinkets
 	 */
 	@Inject(method = "canEquip(Lnet/minecraft/item/ItemStack;)Z", at = @At("HEAD"), cancellable = true)
-	public void canEquipNoDuplicate(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+	public void canEquipNoDuplicate(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
 		if (stack.getItem() instanceof TrinketArtifactItem && TrinketsHelper.isEquipped(stack.getItem(), this)) {
-			cir.setReturnValue(false);
-			cir.cancel();
+			info.setReturnValue(false);
 		}
 	}
 }
