@@ -33,6 +33,7 @@ public abstract class MixinTrinketFeatureRenderer {
 	                            float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw,
 	                            float headPitch, CallbackInfo info, TrinketComponent comp, List<String> names, int i, ItemStack stack) {
 		if (stack.getItem() instanceof TrinketArtifactItem) {
+			// TODO: remove this push/pop in the future, left in for compat with old trinket versions
 			matrices.push();
 			((TrinketArtifactItem) stack.getItem()).render(names.get(i), matrices, vertexConsumers, light, context.getModel(), player, limbAngle, limbDistance, tickDelta, animationProgress, headYaw, headPitch);
 			matrices.pop();

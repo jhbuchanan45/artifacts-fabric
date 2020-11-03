@@ -33,7 +33,7 @@ dependencies {
 
     // Dependencies
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation include("com.github.emilyploszaj:trinkets:${project.trinkets_version}") {
+    modImplementation "com.github.emilyploszaj:trinkets:${project.trinkets_version}" {
         transitive = false
     }
     modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${cca_version}")
