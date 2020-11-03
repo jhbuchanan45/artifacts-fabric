@@ -36,6 +36,5 @@ public class PanicNecklaceModel extends BipedEntityModel<LivingEntity> {
 	public void render(MatrixStack matrixStack, VertexConsumer buffer, int light, int overlay, float red, float green, float blue, float alpha) {
 		matrixStack.scale(0.5F, 0.5F, 0.5F);
 		torso.render(matrixStack, buffer, light, overlay, red, green, blue, alpha);
-		matrixStack.scale(2.0F, 2.0F, 2.0F);
 	}
 }
