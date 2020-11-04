@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "accessors.DamageSourceAccessor",
+    "accessors.ItemEntityAccessor",
     "accessors.ItemStackAccessor",
     "accessors.StatusEffectAccessor",
     "accessors.ToolManagerImplAccessor",

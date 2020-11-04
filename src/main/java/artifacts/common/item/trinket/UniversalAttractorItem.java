@@ -3,6 +3,7 @@ package artifacts.common.item.trinket;
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.UniversalAttractorModel;
 import artifacts.common.init.Components;
+import artifacts.mixins.accessors.ItemEntityAccessor;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
@@ -36,7 +37,7 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 		int pulled = 0;
 		for (ItemEntity item : items) {
 			if (Components.DROPPED_ITEM_ENTITY.maybeGet(item).isPresent() && Components.DROPPED_ITEM_ENTITY.get(item).getWasDropped() &&
-					item.getAge() > 100 && item.isAlive() && !item.cannotPickup()) {
+					((ItemEntityAccessor) item).getAge() > 100 && item.isAlive() && !item.cannotPickup()) {
 				if (pulled++ > 200) {
 					break;
 				}
