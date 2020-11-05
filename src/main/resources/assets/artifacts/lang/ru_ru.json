@@ -1,5 +1,12 @@
 {
+  "trinkets.slot.feet.shoes": "Обувь",
+  "trinkets.slot.head.hat": "Шапка",
+  "trinkets.slot.offhand.gloves": "Перчатки",
   "itemGroup.artifacts.item_group": "Артефакты",
+  "artifacts.advancements.amateur_archaeologist.title": "Археолог-любитель",
+  "artifacts.advancements.amateur_archaeologist.description": "Найти артефакт",
+  "artifacts.advancements.chest_slayer.title": "Убийца сундуков",
+  "artifacts.advancements.chest_slayer.description": "Убейте мимика",
   "entity.artifacts.mimic": "Мимик",
   "item.artifacts.mimic_spawn_egg": "Яйцо призыва Мимика",
   "item.artifacts.snorkel": "Дыхательная трубка",
@@ -28,6 +35,10 @@
   "item.artifacts.steadfast_spikes": "Устойчивые шипы",
   "item.artifacts.universal_attractor": "Универсальный аттрактор",
   "item.artifacts.kitty_slippers": "Тапочки 'Кошечки'",
+  "item.artifacts.running_shoes": "Беговая обувь",
+  "item.artifacts.bunny_hoppers": "Обувь прыгуна",
+  "item.artifacts.crystal_heart": "Хрустальное сердце",
+  "item.artifacts.villager_hat": "Шляпа деревенского жителя",
   "item.artifacts.snorkel.tooltip": "Владелец может дышать под водой",
   "item.artifacts.plastic_drinking_hat.tooltip": "Уменьшается время, необходимое для питья",
   "item.artifacts.novelty_drinking_hat.tooltip": "'Хей! Я #1, и я позволил гравитации делать для меня напитки!'",
@@ -53,5 +64,9 @@
   "item.artifacts.digging_claws.tooltip": "У владельца увеличивается скорость и базовый уровень майнинга",
   "item.artifacts.steadfast_spikes.tooltip": "Даётся иммунитет к отбрасыванию",
   "item.artifacts.universal_attractor.tooltip": "Предметы рядом будут притягиваться",
-  "item.artifacts.kitty_slippers.tooltip": "Криперы будут избегать владельца"
+  "item.artifacts.kitty_slippers.tooltip": "Криперы будут избегать владельца",
+  "item.artifacts.running_shoes.tooltip": "Увеличивает скорость передвижения во время бега",
+  "item.artifacts.bunny_hoppers.tooltip": "Увеличивает высоту прыжка и дает иммунитет к урону от падения",
+  "item.artifacts.crystal_heart.tooltip": "Увеличивает максимальное количество жизней владельца",
+  "item.artifacts.villager_hat.tooltip": "Снижает цены при торговле, а также жители иногда дарят владельцу подарки"
 }
