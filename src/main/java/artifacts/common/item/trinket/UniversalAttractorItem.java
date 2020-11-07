@@ -36,8 +36,9 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 		List<ItemEntity> items = player.world.getNonSpectatingEntities(ItemEntity.class, new Box(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
 		int pulled = 0;
 		for (ItemEntity item : items) {
-			if (Components.DROPPED_ITEM_ENTITY.maybeGet(item).isPresent() && Components.DROPPED_ITEM_ENTITY.get(item).getWasDropped() &&
-					((ItemEntityAccessor) item).getAge() > 100 && item.isAlive() && !item.cannotPickup()) {
+			boolean attractable = Components.DROPPED_ITEM_ENTITY.maybeGet(item).isPresent()
+					&& (!Components.DROPPED_ITEM_ENTITY.get(item).getWasDropped() || ((ItemEntityAccessor) item).getAge() > 100);
+			if (attractable && item.isAlive() && !item.cannotPickup()) {
 				if (pulled++ > 200) {
 					break;
 				}
