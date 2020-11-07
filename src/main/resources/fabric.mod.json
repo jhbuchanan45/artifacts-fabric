@@ -38,7 +38,7 @@
 
   "depends": {
     "fabricloader": ">=0.7.4",
-    "fabric": "*",
+    "fabric": ">=0.25.0",
     "minecraft": ">=1.16.2",
     "trinkets": "*",
     "cardinal-components-base": ">=2.6.0",
