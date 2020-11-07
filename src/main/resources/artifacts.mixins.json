@@ -32,6 +32,7 @@
     "item.superstitioushat.MixinEnchantmentHelper",
     "item.umbrella.MixinLivingEntity",
     "item.universalattractor.MixinPlayerEntity",
+    "item.waterwalking.MixinLivingEntity",
     "statuseffect.MixinLivingEntity",
     "statuseffect.MixinStatusEffectInstance",
     "trinkets.MixinPlayerEntity",
