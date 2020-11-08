@@ -3,7 +3,7 @@ package artifacts.common.toolhandler;
 import artifacts.common.init.Items;
 import artifacts.common.item.trinket.DiggingClawsItem;
 import artifacts.common.trinkets.TrinketsHelper;
-import artifacts.mixins.accessors.ToolManagerImplEntryImplAccessor;
+import artifacts.mixin.mixins.accessors.ToolManagerImplEntryImplAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;

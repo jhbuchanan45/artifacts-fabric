@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "artifacts.mixins",
+  "package": "artifacts.mixin.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "accessors.DamageSourceAccessor",

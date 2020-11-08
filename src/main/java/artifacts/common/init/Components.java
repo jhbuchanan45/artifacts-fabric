@@ -1,7 +1,7 @@
 package artifacts.common.init;
 
 import artifacts.Artifacts;
-import artifacts.common.extensions.DroppedItemEntityComponent;
+import artifacts.common.components.DroppedItemEntityComponent;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;

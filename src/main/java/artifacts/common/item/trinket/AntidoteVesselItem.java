@@ -2,8 +2,8 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.AntidoteVesselModel;
-import artifacts.common.extensions.StatusEffectInstanceExtensions;
-import artifacts.mixins.accessors.StatusEffectAccessor;
+import artifacts.mixin.extensions.StatusEffectInstanceExtensions;
+import artifacts.mixin.mixins.accessors.StatusEffectAccessor;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
