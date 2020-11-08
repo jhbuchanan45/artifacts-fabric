@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(DamageSource.class)
 public interface DamageSourceAccessor {
-	@Invoker
-	DamageSource callSetFire();
+	// TODO: Temproray fix for https://github.com/SpongePowered/Mixin/issues/430
+	@Invoker("setFire")
+	DamageSource artifacts$callSetFire();
 }
