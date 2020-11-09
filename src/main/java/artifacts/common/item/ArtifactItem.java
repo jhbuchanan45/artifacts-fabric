@@ -27,6 +27,7 @@ public abstract class ArtifactItem extends Item {
 
 	@Override
 	@Environment(EnvType.CLIENT)
+	// TODO: tooltips are really long, is it possible to wrap text?
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
 		tooltip.add(new TranslatableText(this.getTranslationKey() + ".tooltip").formatted(Formatting.GRAY));
 	}
