@@ -61,8 +61,6 @@ dependencies {
     modRuntime "curse.maven:iamverysmart:${project.iamverysmart_version}"
     modRuntime "curse.maven:okzoomer:${project.okzoomer_version}"
     modRuntime "com.github.florensie:auto-load:${project.autoload_version}"
-    modRuntime "curse.maven:compact_status_effects:${project.compact_status_effects_version}"
-    modRuntime "net.fabricmc:fabric-language-kotlin:${project.fabric_lang_kotlin_version}"
     modRuntime "curse.maven:hwyla:${project.hwyla_version}"
     modRuntime "curse.maven:cimtb:${project.cimtb_version}"
     modRuntime "me.zeroeightsix:fiber:${project.fiber_version}"

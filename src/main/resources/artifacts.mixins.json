@@ -45,7 +45,8 @@
     "item.umbrella.client.MixinBipedEntityModel",
     "item.umbrella.client.MixinLivingEntityRenderer",
     "statuseffect.client.MixinGameRenderer",
-    "statuseffect.client.MixinLivingEntity"
+    "statuseffect.client.MixinLivingEntity",
+    "statuseffect.client.MixinStatusEffectUtil"
   ],
   "injectors": {
     "defaultRequire": 1
