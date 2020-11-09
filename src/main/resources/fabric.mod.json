@@ -42,7 +42,9 @@
     "minecraft": ">=1.16.2",
     "trinkets": "*",
     "cardinal-components-base": ">=2.6.0",
-    "cardinal-components-entity": ">=2.6.0"
+    "cardinal-components-entity": ">=2.6.0",
+    "autoconfig1u": "*",
+    "cloth-config2": "*"
   },
   "suggests": {
     "modmenu": "*"
