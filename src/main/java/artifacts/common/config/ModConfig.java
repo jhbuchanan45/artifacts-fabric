@@ -8,8 +8,6 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 
 // TODO: test if config is still correct in-game
 // TODO: shorten descriptions, use tooltips/prefix text
-// TODO: fix log spam on modmenu screen
-@SuppressWarnings("InnerClassMayBeStatic")
 @Config(name = Artifacts.MODID)
 @Config.Gui.Background("minecraft:textures/block/mossy_cobblestone.png")
 public final class ModConfig extends PartitioningSerializer.GlobalData {
@@ -24,7 +22,7 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 	private ModConfig() { }
 
 	@Config(name = "general")
-	public final class General implements ConfigData {
+	public static final class General implements ConfigData {
 		@SuppressWarnings("unused")
 		@ConfigEntry.Gui.Excluded
 		public int configVersion = 0;
@@ -35,13 +33,13 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 	}
 
 	@Config(name = "worldgen")
-	public final class WorldGen implements ConfigData {
+	public static final class WorldGen implements ConfigData {
 		@ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
 		public Campsite campsite = new Campsite();
 
 		private WorldGen() { }
 
-		public final class Campsite {
+		public static final class Campsite {
 			@ConfigEntry.Gui.RequiresRestart
 			@ConfigEntry.Gui.Tooltip(count = 2)
 			@ConfigEntry.BoundedDiscrete(max = 100)
