@@ -6,7 +6,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public class DroppedItemEntityComponent implements AutoSyncedComponent {
-	private boolean wasDropped = false;
+	private boolean wasDropped;
 
 	public boolean getWasDropped() {
 		return wasDropped;

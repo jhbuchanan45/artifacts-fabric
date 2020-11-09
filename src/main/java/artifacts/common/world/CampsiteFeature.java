@@ -79,7 +79,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 		}
 		Collections.shuffle(positions);
 
-		if (random.nextFloat() < Artifacts.CONFIG.campsite.oreChance) {
+		if (random.nextInt(100) < Artifacts.CONFIG.worldgen.campsite.oreChance) {
 			generateOreVein(world, blockPos.down(), random);
 		}
 
@@ -113,7 +113,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 	}
 
 	public void generateContainer(StructureWorldAccess world, BlockPos pos, Random random) {
-		if (random.nextFloat() < Artifacts.CONFIG.campsite.mimicChance) {
+		if (random.nextInt(100) < Artifacts.CONFIG.worldgen.campsite.mimicChance) {
 			MimicEntity mimic = Entities.MIMIC.create(world.toServerWorld());
 			if (mimic != null) {
 				mimic.setDormant();
