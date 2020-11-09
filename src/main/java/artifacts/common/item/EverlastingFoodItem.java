@@ -17,7 +17,7 @@ public class EverlastingFoodItem extends ArtifactItem {
 		if (isFood()) {
 			entity.eatFood(world, stack.copy());
 			if (!world.isClient && entity instanceof PlayerEntity) {
-				((PlayerEntity) entity).getItemCooldownManager().set(this, Artifacts.CONFIG.items.everlastingFoodCooldown);
+				((PlayerEntity) entity).getItemCooldownManager().set(this, Artifacts.CONFIG.general.everlastingFoodCooldown);
 			}
 		}
 		return stack;

@@ -35,7 +35,7 @@ public class Features {
 	public static final ConfiguredFeature<?, ?> CAMPSITE_CONFIGURED_FEATURE = Registry.register(
 			BuiltinRegistries.CONFIGURED_FEATURE,
 			new Identifier(Artifacts.MODID, "campsite"),
-			CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).decorate(DECORATOR.configure(new ChanceDecoratorConfig((int) (1 / Artifacts.CONFIG.campsite.genChance))))
+			CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).decorate(DECORATOR.configure(new ChanceDecoratorConfig(Artifacts.CONFIG.worldgen.campsite.genChance)))
 	);
 
 	public static void register() {

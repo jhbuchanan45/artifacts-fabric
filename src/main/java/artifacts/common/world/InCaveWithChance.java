@@ -18,12 +18,11 @@ public class InCaveWithChance extends Decorator<ChanceDecoratorConfig> {
 
 	@Override
 	public Stream<BlockPos> getPositions(DecoratorContext context, Random random, ChanceDecoratorConfig config, BlockPos pos) {
-		if (random.nextFloat() < 1F / config.chance) {
+		if (random.nextInt(100) < config.chance) {
 			int x = random.nextInt(16);
 			int z = random.nextInt(16);
-			pos = new BlockPos(pos.getX() + x, Artifacts.CONFIG.campsite.minY, pos.getZ() + z);
-			while (pos.getY() <= Artifacts.CONFIG.campsite.maxY) {
-				// TODO: why is that isAir() deprecated in Forge?
+			pos = new BlockPos(pos.getX() + x, Artifacts.CONFIG.worldgen.campsite.minY, pos.getZ() + z);
+			while (pos.getY() <= Artifacts.CONFIG.worldgen.campsite.maxY) {
 				if (context.getBlockState(pos).isAir() && context.getBlockState(pos.down()).getMaterial().blocksMovement()) {
 					return Stream.of(pos);
 				}
