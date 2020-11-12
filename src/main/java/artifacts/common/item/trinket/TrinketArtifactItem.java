@@ -56,6 +56,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Override
 	public void onEquip(PlayerEntity player, ItemStack stack) {
+		// FIXME: global sound bad
 		player.world.playSound(null, new BlockPos(player.getPos()), this.getEquipSound(), SoundCategory.NEUTRAL, 1, 1);
 	}
 
