@@ -9,7 +9,6 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-// FIXME: Umbrella doesn't stop fall damage
 public class UmbrellaItem extends ArtifactItem {
 
 	public UmbrellaItem() {

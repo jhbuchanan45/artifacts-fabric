@@ -32,9 +32,11 @@ public abstract class MixinLivingEntity extends Entity {
 		boolean isFalling = this.getVelocity().y <= 0.0D;
 		boolean isBlocking = this.isUsingItem() && !this.getActiveItem().isEmpty() && this.getActiveItem().getUseAction() == UseAction.BLOCK;
 
+		// FIXME: blocking while holding two umbrellas
 		if (!isBlocking && isFalling && !this.hasStatusEffect(StatusEffects.SLOW_FALLING) && !isTouchingWater() &&
 				(this.getMainHandStack().getItem() == Items.UMBRELLA || this.getOffHandStack().getItem() == Items.UMBRELLA)) {
 			gravity -= 0.07;
+			this.fallDistance = 0;
 		}
 
 		return gravity;

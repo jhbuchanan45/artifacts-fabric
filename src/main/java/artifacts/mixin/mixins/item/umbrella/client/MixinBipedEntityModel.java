@@ -24,6 +24,7 @@ public abstract class MixinBipedEntityModel<T extends LivingEntity> {
 	@SuppressWarnings("UnresolvedMixinReference")
 	@Inject(method = "setAngles", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMainArm()Lnet/minecraft/util/Arm;"))
 	private void reduceHandSwing(T entity, float f, float g, float h, float i, float j, CallbackInfo info) {
+		// FIXME: pretty sure this is still bronk while blocking
 		if (!(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK)) {
 			// Check if umbrella is held in main or offhand
 			boolean isHoldingOffHand = entity.getOffHandStack().getItem() == Items.UMBRELLA;
