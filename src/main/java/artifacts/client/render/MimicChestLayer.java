@@ -19,7 +19,7 @@ import net.minecraft.client.util.math.Vector3f;
 public class MimicChestLayer extends FeatureRenderer<MimicEntity, MimicModel> {
 
 	private final MimicChestLayerModel model;
-	private boolean isChristmas = true;
+	private boolean isChristmas;
 
 	public MimicChestLayer(FeatureRendererContext<MimicEntity, MimicModel> entityRenderer) {
 		super(entityRenderer);
