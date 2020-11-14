@@ -2,11 +2,15 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.RunningShoesModel;
+import artifacts.common.events.LivingEntitySprintingCallback;
+import artifacts.common.init.Items;
 import artifacts.common.trinkets.Slots;
+import artifacts.common.trinkets.TrinketsHelper;
 import dev.emi.stepheightentityattribute.StepHeightEntityAttributeMain;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -27,16 +31,19 @@ public class RunningShoesItem extends TrinketArtifactItem {
 
 	public RunningShoesItem() {
 		super(new Item.Settings());
+		LivingEntitySprintingCallback.EVENT.register(RunningShoesItem::setModifiers);
 	}
 
-	// TODO: hook into sprinting method instead?
-	@Override
 	@SuppressWarnings("ConstantConditions")
-	public void tick(PlayerEntity player, ItemStack stack) {
-		EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
-		EntityAttributeInstance stepHeight = player.getAttributeInstance(StepHeightEntityAttributeMain.STEP_HEIGHT);
+	private static void setModifiers(LivingEntity entity, boolean sprinting) {
+		if (!TrinketsHelper.isEquipped(Items.RUNNING_SHOES, entity)) {
+			return;
+		}
 
-		if (player.isSprinting()) {
+		EntityAttributeInstance movementSpeed = entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+		EntityAttributeInstance stepHeight = entity.getAttributeInstance(StepHeightEntityAttributeMain.STEP_HEIGHT);
+
+		if (sprinting) {
 			addModifier(movementSpeed, SPEED_BOOST_MODIFIER);
 			addModifier(stepHeight, STEP_HEIGHT_MODIFIER);
 		} else {
@@ -55,13 +62,13 @@ public class RunningShoesItem extends TrinketArtifactItem {
 		removeModifier(stepHeight, STEP_HEIGHT_MODIFIER);
 	}
 
-	private void addModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
+	private static void addModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
 		if (!instance.hasModifier(modifier)) {
 			instance.addTemporaryModifier(modifier);
 		}
 	}
 
-	private void removeModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
+	private static void removeModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
 		if (instance.hasModifier(modifier)) {
 			instance.removeModifier(modifier);
 		}
