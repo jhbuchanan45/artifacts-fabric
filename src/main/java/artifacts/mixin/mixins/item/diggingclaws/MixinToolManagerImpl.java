@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 /**
  * Mixin to fabric-tool-attribute-api because it's ass
  */
+@SuppressWarnings("UnstableApiUsage")
 @Mixin(value = ToolManagerImpl.class, remap = false)
 public abstract class MixinToolManagerImpl {
 
