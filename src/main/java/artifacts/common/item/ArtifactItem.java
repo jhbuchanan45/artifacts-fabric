@@ -4,12 +4,12 @@ import artifacts.Artifacts;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.client.resource.language.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Language;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 
@@ -26,26 +26,13 @@ public abstract class ArtifactItem extends Item {
 		return Rarity.RARE;
 	}
 
-	/*
-	 * Note: if a language uses brackets style tooltips where en_us uses the short form, it will display en_us
-	 * Also, if a language has less lines then en_us, it will still add remaining en_us tooltips
-	 */
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-		String baseKey = this.getTranslationKey() + ".tooltip";
-		if (I18n.hasTranslation(baseKey)) {
-			tooltip.add(new TranslatableText(baseKey).formatted(Formatting.GRAY));
-			return;
-		}
+		String[] lines = Language.getInstance().get(this.getTranslationKey() + ".tooltip").split("\n");
 
-		for (int i = 0;; i++) {
-			String tooltipKey = baseKey + String.format("[%d]", i);
-			if (!I18n.hasTranslation(tooltipKey)) {
-				break;
-			}
-
-			tooltip.add(new TranslatableText(tooltipKey).formatted(Formatting.GRAY));
+		for (String line : lines) {
+			tooltip.add(new LiteralText(line).formatted(Formatting.GRAY));
 		}
 	}
 }
