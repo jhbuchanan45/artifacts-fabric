@@ -4,6 +4,7 @@ import artifacts.Artifacts;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -25,10 +26,26 @@ public abstract class ArtifactItem extends Item {
 		return Rarity.RARE;
 	}
 
+	/*
+	 * Note: if a language uses brackets style tooltips where en_us uses the short form, it will display en_us
+	 * Also, if a language has less lines then en_us, it will still add remaining en_us tooltips
+	 */
 	@Override
 	@Environment(EnvType.CLIENT)
-	// TODO: tooltips are really long, is it possible to wrap text?
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-		tooltip.add(new TranslatableText(this.getTranslationKey() + ".tooltip").formatted(Formatting.GRAY));
+		String baseKey = this.getTranslationKey() + ".tooltip";
+		if (I18n.hasTranslation(baseKey)) {
+			tooltip.add(new TranslatableText(baseKey).formatted(Formatting.GRAY));
+			return;
+		}
+
+		for (int i = 0;; i++) {
+			String tooltipKey = baseKey + String.format("[%d]", i);
+			if (!I18n.hasTranslation(tooltipKey)) {
+				break;
+			}
+
+			tooltip.add(new TranslatableText(tooltipKey).formatted(Formatting.GRAY));
+		}
 	}
 }

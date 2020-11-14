@@ -28,7 +28,7 @@
     "modmenu": [
       "artifacts.common.config.ModMenuConfig"
     ],
-    "cardinal-components-entity": [
+    "cardinal-components": [
       "artifacts.common.init.Components"
     ]
   },
@@ -41,8 +41,8 @@
     "fabric": ">=0.25.0",
     "minecraft": ">=1.16.2",
     "trinkets": "*",
-    "cardinal-components-base": ">=2.6.0",
-    "cardinal-components-entity": ">=2.6.0",
+    "cardinal-components-base": ">=2.7.5",
+    "cardinal-components-entity": ">=2.7.5",
     "autoconfig1u": "*",
     "cloth-config2": "*"
   },
