@@ -6,8 +6,6 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 
-// TODO: test if config is still correct in-game
-// TODO: shorten descriptions, use tooltips/prefix text
 @Config(name = Artifacts.MODID)
 @Config.Gui.Background("minecraft:textures/block/mossy_cobblestone.png")
 public final class ModConfig extends PartitioningSerializer.GlobalData {
@@ -26,7 +24,7 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 		@SuppressWarnings("unused")
 		@ConfigEntry.Gui.Excluded
 		public int configVersion = 0;
-		@ConfigEntry.Gui.Tooltip
+		@ConfigEntry.Gui.Tooltip(count = 2)
 		public int everlastingFoodCooldown = 300;
 
 		private General() { }
@@ -45,16 +43,20 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 			@ConfigEntry.BoundedDiscrete(max = 100)
 			public int genChance = 8;
 
+			@ConfigEntry.Gui.Tooltip(count = 2)
 			@ConfigEntry.BoundedDiscrete(max = 100)
 			public int mimicChance = 30;
 
+			@ConfigEntry.Gui.Tooltip(count = 2)
 			@ConfigEntry.BoundedDiscrete(max = 100)
 			public int oreChance = 25;
 
 			// TODO: this should probably be higher so we don't break any bedrock
+			@ConfigEntry.Gui.Tooltip
 			@ConfigEntry.BoundedDiscrete(max = 256)
 			public int minY = 0;
 
+			@ConfigEntry.Gui.Tooltip
 			@ConfigEntry.BoundedDiscrete(max = 256)
 			public int maxY = 45;
 
