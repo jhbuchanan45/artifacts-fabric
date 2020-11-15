@@ -1,6 +1,8 @@
 package artifacts.common.item;
 
+import artifacts.common.init.Items;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
@@ -34,5 +36,24 @@ public class UmbrellaItem extends ArtifactItem {
 		ItemStack itemstack = player.getStackInHand(hand);
 		player.setCurrentHand(hand);
 		return TypedActionResult.consume(itemstack);
+	}
+
+	public static HeldStatus getHeldStatusForHand(LivingEntity entity, Hand hand) {
+		if (entity.getStackInHand(hand).getItem() != Items.UMBRELLA) {
+			return HeldStatus.NONE;
+		}
+
+		if (entity.isUsingItem() && entity.getActiveHand() == hand && !entity.getActiveItem().isEmpty()
+				&& entity.getActiveItem().getUseAction() == UseAction.BLOCK) {
+			return HeldStatus.BLOCKING;
+		}
+
+		return HeldStatus.HELD_UP;
+	}
+
+	public enum HeldStatus {
+		NONE,
+		HELD_UP,
+		BLOCKING
 	}
 }

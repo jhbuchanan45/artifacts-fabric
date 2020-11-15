@@ -1,6 +1,7 @@
 package artifacts.mixin.mixins.item.umbrella.client;
 
 import artifacts.common.init.Items;
+import artifacts.common.item.UmbrellaItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -30,30 +31,19 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
 
 	@Inject(method = "render", at = @At("HEAD"))
 	private void renderUmbrella(T entity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo info) {
-		// Check if entity is not blocking with an item (shield)
 		if (this.model instanceof BipedEntityModel) {
 			//noinspection rawtypes
 			BipedEntityModel model = (BipedEntityModel) this.model;
 
-			boolean isBlocking = entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK;
+			boolean heldMainHand = UmbrellaItem.getHeldStatusForHand(entity, Hand.MAIN_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
+			boolean heldOffHand = UmbrellaItem.getHeldStatusForHand(entity, Hand.OFF_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
+			boolean rightHanded = MinecraftClient.getInstance().options.mainArm == Arm.RIGHT;
 
-			// Check if umbrella is held in main or offhand
-			boolean isHoldingMainHand = entity.getMainHandStack().getItem() == Items.UMBRELLA;
-			boolean isHoldingOffHand = entity.getOffHandStack().getItem() == Items.UMBRELLA;
-			boolean mainHandActive = entity.getActiveHand() == Hand.MAIN_HAND;
-			Arm mainArm = MinecraftClient.getInstance().options.mainArm;
-
-			// Handle right hand
-			boolean heldInRightHand = isHoldingMainHand && mainArm == Arm.RIGHT || isHoldingOffHand && mainArm == Arm.LEFT;
-			boolean rightHandActive = isBlocking && (mainHandActive && mainArm == Arm.RIGHT || !mainHandActive && mainArm == Arm.LEFT);
-			if (heldInRightHand && !rightHandActive) {
+			if ((heldMainHand && rightHanded) || (heldOffHand && !rightHanded)) {
 				model.rightArmPose = BipedEntityModel.ArmPose.THROW_SPEAR;
 			}
 
-			// Handle left hand
-			boolean heldInLeftHand = isHoldingMainHand && mainArm == Arm.LEFT || isHoldingOffHand && mainArm == Arm.RIGHT;
-			boolean leftHandActive = isBlocking && (mainHandActive && mainArm == Arm.LEFT || !mainHandActive && mainArm == Arm.RIGHT);
-			if (heldInLeftHand && !leftHandActive) {
+			if ((heldMainHand && !rightHanded) || (heldOffHand && rightHanded)) {
 				model.leftArmPose = BipedEntityModel.ArmPose.THROW_SPEAR;
 			}
 		}

@@ -1,13 +1,12 @@
 package artifacts.mixin.mixins.item.umbrella;
 
-import artifacts.common.init.Items;
+import artifacts.common.item.UmbrellaItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.UseAction;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,19 +21,14 @@ public abstract class MixinLivingEntity extends Entity {
 	}
 
 	@Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
-	@Shadow public abstract ItemStack getMainHandStack();
-	@Shadow public abstract ItemStack getOffHandStack();
-	@Shadow public abstract boolean isUsingItem();
-	@Shadow public abstract ItemStack getActiveItem();
 
 	@ModifyVariable(method = "travel", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/entity/LivingEntity;isTouchingWater()Z"))
 	private double changeGravity(double gravity) {
 		boolean isFalling = this.getVelocity().y <= 0.0D;
-		boolean isBlocking = this.isUsingItem() && !this.getActiveItem().isEmpty() && this.getActiveItem().getUseAction() == UseAction.BLOCK;
+		boolean heldMainHand = UmbrellaItem.getHeldStatusForHand((LivingEntity)(Object) this, Hand.MAIN_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
+		boolean heldOffHand = UmbrellaItem.getHeldStatusForHand((LivingEntity)(Object) this, Hand.OFF_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
 
-		// FIXME: blocking while holding two umbrellas
-		if (!isBlocking && isFalling && !this.hasStatusEffect(StatusEffects.SLOW_FALLING) && !isTouchingWater() &&
-				(this.getMainHandStack().getItem() == Items.UMBRELLA || this.getOffHandStack().getItem() == Items.UMBRELLA)) {
+		if ((heldMainHand || heldOffHand) && isFalling && !this.hasStatusEffect(StatusEffects.SLOW_FALLING) && !isTouchingWater()) {
 			gravity -= 0.07;
 			this.fallDistance = 0;
 		}

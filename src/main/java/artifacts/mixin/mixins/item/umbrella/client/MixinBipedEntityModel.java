@@ -1,11 +1,13 @@
 package artifacts.mixin.mixins.item.umbrella.client;
 
 import artifacts.common.init.Items;
+import artifacts.common.item.UmbrellaItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Arm;
+import net.minecraft.util.Hand;
 import net.minecraft.util.UseAction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -24,21 +26,16 @@ public abstract class MixinBipedEntityModel<T extends LivingEntity> {
 	@SuppressWarnings("UnresolvedMixinReference")
 	@Inject(method = "setAngles", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMainArm()Lnet/minecraft/util/Arm;"))
 	private void reduceHandSwing(T entity, float f, float g, float h, float i, float j, CallbackInfo info) {
-		// FIXME: pretty sure this is still bronk while blocking
-		if (!(entity.isUsingItem() && !entity.getActiveItem().isEmpty() && entity.getActiveItem().getItem().getUseAction(entity.getActiveItem()) == UseAction.BLOCK)) {
-			// Check if umbrella is held in main or offhand
-			boolean isHoldingOffHand = entity.getOffHandStack().getItem() == Items.UMBRELLA;
-			boolean isHoldingMainHand = entity.getMainHandStack().getItem() == Items.UMBRELLA;
-			Arm mainArm = MinecraftClient.getInstance().options.mainArm;
+		boolean heldMainHand = UmbrellaItem.getHeldStatusForHand(entity, Hand.MAIN_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
+		boolean heldOffHand = UmbrellaItem.getHeldStatusForHand(entity, Hand.OFF_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
+		boolean rightHanded = MinecraftClient.getInstance().options.mainArm == Arm.RIGHT;
 
-			// Handle right hand
-			if ((isHoldingMainHand && mainArm == Arm.RIGHT) || (isHoldingOffHand && mainArm == Arm.LEFT)) {
-				this.rightArm.pitch /= 8;
-			}
-			// Handle left hand
-			if ((isHoldingMainHand && mainArm == Arm.LEFT) || (isHoldingOffHand && mainArm == Arm.RIGHT)) {
-				this.leftArm.pitch /= 8;
-			}
+		if ((heldMainHand && rightHanded) || (heldOffHand && !rightHanded)) {
+			this.rightArm.pitch /= 8;
+		}
+
+		if ((heldMainHand && !rightHanded) || (heldOffHand && rightHanded)) {
+			this.leftArm.pitch /= 8;
 		}
 	}
 }
