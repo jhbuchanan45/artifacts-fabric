@@ -37,7 +37,14 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-		return Trinket.equipTrinket(player, hand);
+		TypedActionResult<ItemStack> actionResult = Trinket.equipTrinket(player, hand);
+
+		// Play right click equip sound
+		if (actionResult.getResult().isAccepted()) {
+			player.playSound(this.getEquipSound(), 1.0f, 1.0f);
+		}
+
+		return actionResult;
 	}
 
 	protected SoundEvent getEquipSound() {
@@ -52,11 +59,6 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	 */
 	public StatusEffectInstance getPermanentEffect() {
 		return null;
-	}
-
-	@Override
-	public void onEquip(PlayerEntity player, ItemStack stack) {
-		player.world.playSound(null, new BlockPos(player.getPos()), this.getEquipSound(), SoundCategory.NEUTRAL, 1, 1);
 	}
 
 	@Environment(EnvType.CLIENT)

@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "artifacts.mixins",
+  "package": "artifacts.mixin.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "accessors.DamageSourceAccessor",
@@ -46,7 +46,8 @@
     "item.umbrella.client.MixinBipedEntityModel",
     "item.umbrella.client.MixinLivingEntityRenderer",
     "statuseffect.client.MixinGameRenderer",
-    "statuseffect.client.MixinLivingEntity"
+    "statuseffect.client.MixinLivingEntity",
+    "statuseffect.client.MixinStatusEffectUtil"
   ],
   "injectors": {
     "defaultRequire": 1

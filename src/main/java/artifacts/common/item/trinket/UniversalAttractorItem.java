@@ -3,7 +3,7 @@ package artifacts.common.item.trinket;
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.UniversalAttractorModel;
 import artifacts.common.init.Components;
-import artifacts.mixins.accessors.ItemEntityAccessor;
+import artifacts.mixin.mixins.accessors.ItemEntityAccessor;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;

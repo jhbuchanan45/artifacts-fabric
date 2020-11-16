@@ -1,7 +1,7 @@
 package artifacts.common.init;
 
 import artifacts.common.toolhandler.DiggingClawsToolHandler;
-import artifacts.mixins.accessors.ToolManagerImplAccessor;
+import artifacts.mixin.mixins.accessors.ToolManagerImplAccessor;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;

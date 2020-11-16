@@ -7,7 +7,8 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
 public final class TrinketsHelper {
@@ -15,22 +16,31 @@ public final class TrinketsHelper {
 	private TrinketsHelper() {}
 
 	public static boolean isEquipped(Item item, LivingEntity entity) {
-		return entity instanceof PlayerEntity && TrinketsApi.getTrinketsInventory((PlayerEntity) entity)
-				.containsAny(Collections.singleton(item));
+		return entity instanceof PlayerEntity && TrinketsHelper.isEquipped(stack -> stack.getItem() == item, entity);
 	}
 
 	public static boolean isEquipped(Predicate<ItemStack> filter, LivingEntity entity) {
-		if (entity instanceof PlayerEntity) {
-			Inventory inventory = TrinketsApi.getTrinketsInventory((PlayerEntity) entity);
-			for (int i = 0; i < inventory.size(); i++) {
-				ItemStack stack = inventory.getStack(i);
-
-				if (!stack.isEmpty() && filter.test(stack)) {
-					return true;
-				}
+		for (ItemStack stack : TrinketsHelper.getAllEquipped(entity)) {
+			if (!stack.isEmpty() && filter.test(stack)) {
+				return true;
 			}
 		}
 
 		return false;
+	}
+
+	public static List<ItemStack> getAllEquipped(LivingEntity entity) {
+		List<ItemStack> stacks = new ArrayList<>();
+
+		if (entity instanceof PlayerEntity) {
+			Inventory inventory = TrinketsApi.getTrinketsInventory((PlayerEntity) entity);
+
+			for (int i = 0; i < inventory.size(); i++) {
+				ItemStack stack = inventory.getStack(i);
+				stacks.add(stack);
+			}
+		}
+
+		return stacks;
 	}
 }

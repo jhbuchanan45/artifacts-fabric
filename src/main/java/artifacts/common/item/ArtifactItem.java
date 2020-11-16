@@ -6,9 +6,10 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Language;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 
@@ -28,6 +29,10 @@ public abstract class ArtifactItem extends Item {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-		tooltip.add(new TranslatableText(this.getTranslationKey() + ".tooltip").formatted(Formatting.GRAY));
+		String[] lines = Language.getInstance().get(this.getTranslationKey() + ".tooltip").split("\n");
+
+		for (String line : lines) {
+			tooltip.add(new LiteralText(line).formatted(Formatting.GRAY));
+		}
 	}
 }
