@@ -29,7 +29,7 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 
 	@Override
 	// magnet logic from Botania, see https://github.com/Vazkii/Botania
-	public void tick(PlayerEntity player, ItemStack stack) {
+	public void effectTick(PlayerEntity player, ItemStack stack) {
 		Vec3d playerPos = player.getPos().add(0, 0.75, 0);
 
 		int range = 5;

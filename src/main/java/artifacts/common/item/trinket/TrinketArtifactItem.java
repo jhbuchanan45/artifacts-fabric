@@ -3,6 +3,8 @@ package artifacts.common.item.trinket;
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.common.init.Components;
 import artifacts.common.item.ArtifactItem;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import dev.emi.trinkets.api.Trinket;
 import dev.emi.trinkets.api.TrinketItem;
 import net.fabricmc.api.EnvType;
@@ -18,10 +20,11 @@ import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -30,10 +33,10 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.UUID;
 
 public abstract class TrinketArtifactItem extends ArtifactItem implements Trinket {
 
@@ -43,9 +46,30 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	@Override
+	public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+		if (effectsEnabled(stack)) {
+			return this.applyModifiers(group, slot, uuid, stack);
+		}
+		return HashMultimap.create();
+	}
+
+	public Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+		return HashMultimap.create();
+	}
+
+	@Override
+	public void tick(PlayerEntity player, ItemStack stack) {
+		if (effectsEnabled(stack)) {
+			effectTick(player, stack);
+		}
+	}
+
+	public void effectTick(PlayerEntity player, ItemStack stack) { }
+
+	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
 		super.appendTooltip(stack, world, tooltip, flags);
-		String key = Components.TRINKET_ENABLED.get(stack).get() ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
+		String key = effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
 		tooltip.add(new TranslatableText(key).formatted(Formatting.GOLD));
 	}
 
@@ -98,4 +122,8 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Environment(EnvType.CLIENT)
 	protected abstract BipedEntityModel<LivingEntity> getModel();
+
+	public static boolean effectsEnabled(ItemStack stack) {
+		return Components.TRINKET_ENABLED.get(stack).get();
+	}
 }
