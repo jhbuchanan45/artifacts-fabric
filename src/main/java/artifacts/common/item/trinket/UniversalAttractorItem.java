@@ -37,7 +37,7 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 		int pulled = 0;
 		for (ItemEntity item : items) {
 			boolean attractable = Components.DROPPED_ITEM_ENTITY.maybeGet(item).isPresent()
-					&& (!Components.DROPPED_ITEM_ENTITY.get(item).getWasDropped() || ((ItemEntityAccessor) item).getAge() > 100);
+					&& (!Components.DROPPED_ITEM_ENTITY.get(item).get() || ((ItemEntityAccessor) item).getAge() > 100);
 			if (attractable && item.isAlive() && !item.cannotPickup()) {
 				if (pulled++ > 200) {
 					break;

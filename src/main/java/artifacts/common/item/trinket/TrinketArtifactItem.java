@@ -1,12 +1,14 @@
 package artifacts.common.item.trinket;
 
 import artifacts.client.render.TrinketRenderHelper;
+import artifacts.common.init.Components;
 import artifacts.common.item.ArtifactItem;
 import dev.emi.trinkets.api.Trinket;
 import dev.emi.trinkets.api.TrinketItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -22,11 +24,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public abstract class TrinketArtifactItem extends ArtifactItem implements Trinket {
 
@@ -36,7 +43,21 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	@Override
+	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
+		super.appendTooltip(stack, world, tooltip, flags);
+		String key = Components.TRINKET_ENABLED.get(stack).get() ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
+		tooltip.add(new TranslatableText(key).formatted(Formatting.GOLD));
+	}
+
+	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+		// Toggle artifact effects when sneak right-clicking
+		if (player.isSneaking()) {
+			ItemStack stack = player.getStackInHand(hand);
+			Components.TRINKET_ENABLED.get(stack).invert();
+			return TypedActionResult.success(stack);
+		}
+
 		TypedActionResult<ItemStack> actionResult = Trinket.equipTrinket(player, hand);
 
 		// Play right click equip sound

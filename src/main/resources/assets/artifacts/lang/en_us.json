@@ -2,6 +2,8 @@
   "trinkets.slot.feet.shoes": "Shoes",
   "trinkets.slot.head.hat": "Hat",
   "trinkets.slot.offhand.gloves": "Gloves",
+  "artifacts.trinket.effectsenabled": "Effects Enabled",
+  "artifacts.trinket.effectsdisabled": "Effects Disabled",
 
   "itemGroup.artifacts.item_group": "Artifacts",
 
