@@ -33,11 +33,6 @@ public final class TrinketsHelper {
 	}
 
 	public static boolean isEquipped(Predicate<ItemStack> filter, LivingEntity entity, boolean ignoreEffectsDisabled) {
-		// PlayerEntity not currently supported by Trinkets
-		if (entity instanceof PlayerEntity) {
-			return false;
-		}
-
 		for (ItemStack stack : getAllEquipped(entity, ignoreEffectsDisabled)) {
 			if (filter.test(stack)) {
 				return true;
@@ -50,6 +45,7 @@ public final class TrinketsHelper {
 	public static List<ItemStack> getAllEquipped(LivingEntity entity, boolean ignoreEffectsDisabled) {
 		List<ItemStack> stacks = new ArrayList<>();
 
+		// LivingEntity not currently supported by Trinkets
 		if (entity instanceof PlayerEntity) {
 			Inventory inventory = TrinketsApi.getTrinketsInventory((PlayerEntity) entity);
 
