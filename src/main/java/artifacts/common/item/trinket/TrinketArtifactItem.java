@@ -10,6 +10,7 @@ import dev.emi.trinkets.api.TrinketItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
@@ -69,24 +70,29 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
 		super.appendTooltip(stack, world, tooltip, flags);
-		String key = effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
-		tooltip.add(new TranslatableText(key).formatted(Formatting.GOLD));
+		tooltip.add(new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(Formatting.GOLD));
 	}
 
 	@Override
-	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		// Toggle artifact effects when sneak right-clicking
-		if (player.isSneaking()) {
-			ItemStack stack = player.getStackInHand(hand);
+		if (user.isSneaking()) {
+			ItemStack stack = user.getStackInHand(hand);
 			Components.TRINKET_ENABLED.get(stack).invert();
+
+			// Show enabled/disabled message above hotbar
+			Formatting enabledColor = effectsEnabled(stack) ? Formatting.GREEN : Formatting.RED;
+			Text enabledText = new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(enabledColor);
+			MinecraftClient.getInstance().inGameHud.setOverlayMessage(enabledText, false);
+
 			return TypedActionResult.success(stack);
 		}
 
-		TypedActionResult<ItemStack> actionResult = Trinket.equipTrinket(player, hand);
+		TypedActionResult<ItemStack> actionResult = Trinket.equipTrinket(user, hand);
 
 		// Play right click equip sound
 		if (actionResult.getResult().isAccepted()) {
-			player.playSound(this.getEquipSound(), 1.0f, 1.0f);
+			user.playSound(this.getEquipSound(), 1.0f, 1.0f);
 		}
 
 		return actionResult;
@@ -125,5 +131,9 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	public static boolean effectsEnabled(ItemStack stack) {
 		return Components.TRINKET_ENABLED.get(stack).get();
+	}
+
+	public static String getEffectsEnabledLanguageKey(ItemStack stack) {
+		return effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
 	}
 }
