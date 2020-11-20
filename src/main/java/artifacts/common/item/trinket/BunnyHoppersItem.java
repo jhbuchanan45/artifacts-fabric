@@ -32,7 +32,7 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 	}
 
 	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
-		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, entity)) {
+		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, entity, true)) {
 			entity.playSound(SoundEvents.ENTITY_RABBIT_HURT, volume, pitch);
 		}
 	}

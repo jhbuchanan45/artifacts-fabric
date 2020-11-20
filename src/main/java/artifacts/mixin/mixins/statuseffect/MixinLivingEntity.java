@@ -1,6 +1,7 @@
 package artifacts.mixin.mixins.statuseffect;
 
 import artifacts.common.item.trinket.TrinketArtifactItem;
+import artifacts.common.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -31,20 +32,15 @@ public abstract class MixinLivingEntity extends Entity {
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void applyPermanentEffects(CallbackInfo info) {
 		//noinspection ConstantConditions
-		if (!this.world.isClient && this.age % 15 == 0 && (Object) this instanceof PlayerEntity) {
-			Inventory inventory = TrinketsApi.getTrinketsInventory((PlayerEntity)(Object) this);
+		if (!this.world.isClient && this.age % 15 == 0 && (Object) this instanceof LivingEntity) {
 
-			for (int i = 0; i < inventory.size(); i++) {
-				Item item = inventory.getStack(i).getItem();
+			TrinketsHelper.getAllEquipped((LivingEntity)(Object) this).forEach(stack -> {
+				StatusEffectInstance effect = ((TrinketArtifactItem) stack.getItem()).getPermanentEffect();
 
-				if (item instanceof TrinketArtifactItem) {
-					StatusEffectInstance effect = ((TrinketArtifactItem) item).getPermanentEffect();
-
-					if (effect != null) {
-						this.addStatusEffect(effect);
-					}
+				if (effect != null) {
+					this.addStatusEffect(effect);
 				}
-			}
+			});
 		}
 	}
 }

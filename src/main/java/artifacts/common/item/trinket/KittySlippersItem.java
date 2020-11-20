@@ -25,7 +25,7 @@ public class KittySlippersItem extends TrinketArtifactItem {
 	}
 
 	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
-		if (TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, entity)) {
+		if (TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, entity, true)) {
 			entity.playSound(SoundEvents.ENTITY_CAT_HURT, volume, pitch);
 		}
 	}
