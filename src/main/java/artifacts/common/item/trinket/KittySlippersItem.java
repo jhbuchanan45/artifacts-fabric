@@ -11,6 +11,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -48,5 +49,10 @@ public class KittySlippersItem extends TrinketArtifactItem {
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
 		return group.equals(SlotGroups.FEET) && slot.equals(Slots.SHOES);
+	}
+
+	@Override
+	protected SoundEvent getEquipSound() {
+		return SoundEvents.ENTITY_CAT_AMBIENT;
 	}
 }

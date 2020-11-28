@@ -48,7 +48,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	protected SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_ARMOR_EQUIP_LEATHER;
+		return SoundEvents.ITEM_ARMOR_EQUIP_GENERIC;
 	}
 
 	/**

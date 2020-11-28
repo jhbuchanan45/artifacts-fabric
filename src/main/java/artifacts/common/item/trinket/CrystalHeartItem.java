@@ -12,6 +12,8 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 import java.util.UUID;
@@ -70,5 +72,10 @@ public class CrystalHeartItem extends TrinketArtifactItem {
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
 		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
+	}
+
+	@Override
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 	}
 }

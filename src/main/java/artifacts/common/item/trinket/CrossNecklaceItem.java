@@ -7,6 +7,8 @@ import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class CrossNecklaceItem extends TrinketArtifactItem {
@@ -37,5 +39,10 @@ public class CrossNecklaceItem extends TrinketArtifactItem {
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
 		return group.equals(SlotGroups.CHEST) && slot.equals(Slots.NECKLACE);
+	}
+
+	@Override
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 	}
 }

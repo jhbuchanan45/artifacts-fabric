@@ -10,6 +10,8 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 import java.util.UUID;
@@ -59,5 +61,10 @@ public class FeralClawsItem extends GloveItem {
 			modelDefault = new ClawsModel(false);
 		}
 		return (ClawsModel) modelDefault;
+	}
+
+	@Override
+	protected SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE;
 	}
 }

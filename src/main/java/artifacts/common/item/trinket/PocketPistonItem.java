@@ -4,6 +4,8 @@ import artifacts.Artifacts;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class PocketPistonItem extends GloveItem {
@@ -25,5 +27,10 @@ public class PocketPistonItem extends GloveItem {
 	@Environment(EnvType.CLIENT)
 	protected Identifier getTexture() {
 		return TEXTURE_DEFAULT;
+	}
+
+	@Override
+	protected SoundEvent getEquipSound() {
+		return SoundEvents.BLOCK_PISTON_EXTEND;
 	}
 }
