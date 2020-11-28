@@ -15,6 +15,7 @@
     "event.MixinLivingEntities",
     "event.MixinLivingEntity",
     "item.bunnyhoppers.MixinLivingEntity",
+    "item.cloudinabottle.MixinLivingEntity",
     "item.crossnecklace.MixinLivingEntity",
     "item.diggingclaws.MixinPlayerEntity",
     "item.diggingclaws.MixinToolManagerImpl",

@@ -45,12 +45,6 @@ public class CloudInABottleItem extends TrinketArtifactItem {
         } else {
             player.addExhaustion(0.05F);
         }
-    }
-
-    public void onLivingFall(LivingFallEvent event) {
-        if (CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).isPresent()) {
-            event.setDistance(Math.max(0, event.getDistance() - 3));
-        }
     }*/
 
     @Override
