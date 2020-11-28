@@ -6,6 +6,8 @@ import artifacts.common.trinkets.Slots;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
@@ -14,7 +16,6 @@ import net.minecraft.util.Identifier;
 public class VillagerHatItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/villager_hat.png");
-	private Object model;
 
 	public VillagerHatItem() {
 		super(new Item.Settings());
@@ -27,11 +28,8 @@ public class VillagerHatItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected VillagerHatModel getModel() {
-		if (model == null) {
-			model = new VillagerHatModel();
-		}
-		return (VillagerHatModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new VillagerHatModel();
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.item.diggingclaws;
 
 import artifacts.common.init.Items;
-import artifacts.common.item.trinket.DiggingClawsItem;
+import artifacts.common.item.trinket.glove.DiggingClawsItem;
 import artifacts.common.trinkets.TrinketsHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;

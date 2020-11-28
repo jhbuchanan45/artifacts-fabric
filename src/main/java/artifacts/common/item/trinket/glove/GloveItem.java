@@ -1,7 +1,8 @@
-package artifacts.common.item.trinket;
+package artifacts.common.item.trinket.glove;
 
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.trinket.GloveModel;
+import artifacts.common.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
@@ -10,15 +11,16 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 
 public abstract class GloveItem extends TrinketArtifactItem {
 
-	protected Object modelDefault;
 	protected Object modelSlim;
 
 	public GloveItem(Settings settings) {
@@ -30,26 +32,28 @@ public abstract class GloveItem extends TrinketArtifactItem {
 		return entity instanceof AbstractClientPlayerEntity && ((AbstractClientPlayerEntity) entity).getModel().equals("slim");
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
-	protected GloveModel getModel() {
-		if (modelDefault == null) {
-			modelDefault = new GloveModel(false);
-		}
-		return (GloveModel) modelDefault;
+	protected GloveModel getModel(boolean smallArms) {
+		return (smallArms ? getSlimModel() : (GloveModel) getModel());
 	}
 
 	@Environment(EnvType.CLIENT)
-	protected GloveModel getSlimModel() {
+	protected final GloveModel getSlimModel() {
 		if (modelSlim == null) {
-			modelSlim = new GloveModel(true);
+			modelSlim = createModel(true);
 		}
 		return (GloveModel) modelSlim;
 	}
 
+	@Override
 	@Environment(EnvType.CLIENT)
-	protected GloveModel getModel(boolean smallArms) {
-		return (smallArms ? getSlimModel() : getModel());
+	protected final GloveModel createModel() {
+		return createModel(false);
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected GloveModel createModel(boolean smallArms) {
+		return new GloveModel(smallArms);
 	}
 
 	@Environment(EnvType.CLIENT)

@@ -7,6 +7,8 @@ import com.google.common.collect.Multimap;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -36,11 +38,8 @@ public class SteadfastSpikesItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected SteadfastSpikesModel getModel() {
-		if (model == null) {
-			model = new SteadfastSpikesModel();
-		}
-		return (SteadfastSpikesModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new SteadfastSpikesModel();
 	}
 
 	@Override

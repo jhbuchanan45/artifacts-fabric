@@ -1,7 +1,9 @@
-package artifacts.common.item.trinket;
+package artifacts.common.item.trinket.glove;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.ClawsModel;
+import artifacts.client.render.model.trinket.GloveModel;
+import artifacts.common.item.trinket.glove.GloveItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
@@ -23,6 +25,12 @@ public class DiggingClawsItem extends GloveItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
+	protected GloveModel createModel(boolean smallArms) {
+		return new ClawsModel(smallArms);
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
 	protected Identifier getTexture() {
 		return TEXTURE_DEFAULT;
 	}
@@ -31,23 +39,6 @@ public class DiggingClawsItem extends GloveItem {
 	@Environment(EnvType.CLIENT)
 	protected Identifier getSlimTexture() {
 		return TEXTURE_SLIM;
-	}
-
-	@Environment(EnvType.CLIENT)
-	protected ClawsModel getSlimModel() {
-		if (modelSlim == null) {
-			modelSlim = new ClawsModel(true);
-		}
-		return (ClawsModel) modelSlim;
-	}
-
-	@Override
-	@Environment(EnvType.CLIENT)
-	protected ClawsModel getModel() {
-		if (modelDefault == null) {
-			modelDefault = new ClawsModel(false);
-		}
-		return (ClawsModel) modelDefault;
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import artifacts.common.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -19,7 +20,6 @@ import net.minecraft.util.Identifier;
 public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/bunny_hoppers.png");
-	private Object model;
 
 	public BunnyHoppersItem() {
 		super(new Item.Settings());
@@ -39,11 +39,8 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected BunnyHoppersModel getModel() {
-		if (model == null) {
-			model = new BunnyHoppersModel();
-		}
-		return (BunnyHoppersModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new BunnyHoppersModel();
 	}
 
 	@Override

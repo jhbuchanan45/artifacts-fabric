@@ -1,4 +1,4 @@
-package artifacts.common.item.trinket;
+package artifacts.common.item.trinket.pendant;
 
 import artifacts.Artifacts;
 import artifacts.common.init.Items;

@@ -6,6 +6,8 @@ import artifacts.common.trinkets.Slots;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
@@ -27,11 +29,8 @@ public class SnorkelItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected SnorkelModel getModel() {
-		if (model == null) {
-			model = new SnorkelModel();
-		}
-		return (SnorkelModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new SnorkelModel();
 	}
 
 	@Override

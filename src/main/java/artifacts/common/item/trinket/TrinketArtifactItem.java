@@ -1,6 +1,7 @@
 package artifacts.common.item.trinket;
 
 import artifacts.client.render.TrinketRenderHelper;
+import artifacts.client.render.model.trinket.AntidoteVesselModel;
 import artifacts.common.init.Components;
 import artifacts.common.item.ArtifactItem;
 import com.google.common.collect.HashMultimap;
@@ -40,6 +41,8 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class TrinketArtifactItem extends ArtifactItem implements Trinket {
+
+	private Object model;
 
 	public TrinketArtifactItem(Settings settings) {
 		super(settings);
@@ -127,7 +130,17 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	protected abstract Identifier getTexture();
 
 	@Environment(EnvType.CLIENT)
-	protected abstract BipedEntityModel<LivingEntity> getModel();
+	protected BipedEntityModel<LivingEntity> getModel() {
+		if (model == null) {
+			model = createModel();
+		}
+
+		//noinspection unchecked
+		return (BipedEntityModel<LivingEntity>) model;
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected abstract BipedEntityModel<LivingEntity> createModel();
 
 	public static boolean effectsEnabled(ItemStack stack) {
 		return Components.TRINKET_ENABLED.get(stack).get();

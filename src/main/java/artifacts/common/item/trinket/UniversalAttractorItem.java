@@ -8,7 +8,9 @@ import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,7 +23,6 @@ import java.util.List;
 public class UniversalAttractorItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/universal_attractor.png");
-	private Object model;
 
 	public UniversalAttractorItem() {
 		super(new Item.Settings());
@@ -54,11 +55,8 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected UniversalAttractorModel getModel() {
-		if (model == null) {
-			model = new UniversalAttractorModel();
-		}
-		return (UniversalAttractorModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new UniversalAttractorModel();
 	}
 
 	@Override

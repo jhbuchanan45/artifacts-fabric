@@ -1,4 +1,4 @@
-package artifacts.common.item.trinket;
+package artifacts.common.item.trinket.glove;
 
 import artifacts.Artifacts;
 import artifacts.client.render.RenderTypes;

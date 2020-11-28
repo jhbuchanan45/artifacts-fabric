@@ -9,6 +9,7 @@ import artifacts.common.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
@@ -18,7 +19,6 @@ import net.minecraft.util.Identifier;
 public class KittySlippersItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/kitty_slippers.png");
-	private Object model;
 
 	public KittySlippersItem() {
 		super(new Item.Settings());
@@ -33,11 +33,8 @@ public class KittySlippersItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected KittySlippersModel getModel() {
-		if (model == null) {
-			model = new KittySlippersModel();
-		}
-		return (KittySlippersModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new KittySlippersModel();
 	}
 
 	@Override

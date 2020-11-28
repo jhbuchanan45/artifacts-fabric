@@ -5,6 +5,8 @@ import artifacts.client.render.model.trinket.WhoopeeCushionModel;
 import artifacts.common.init.SoundEvents;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
@@ -12,7 +14,6 @@ import net.minecraft.util.Identifier;
 public class WhoopeeCushionItem extends TrinketArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/whoopee_cushion.png");
-    private Object model;
 
     public WhoopeeCushionItem() {
         super(new Item.Settings());
@@ -25,14 +26,12 @@ public class WhoopeeCushionItem extends TrinketArtifactItem {
 
     @Override
     @Environment(EnvType.CLIENT)
-    protected WhoopeeCushionModel getModel() {
-        if (model == null) {
-            model = new WhoopeeCushionModel();
-        }
-        return (WhoopeeCushionModel) model;
+    protected BipedEntityModel<LivingEntity> createModel() {
+        return new WhoopeeCushionModel();
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     protected Identifier getTexture() {
         return TEXTURE;
     }

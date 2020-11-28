@@ -9,6 +9,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.network.PacketContext;
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -20,7 +22,6 @@ public class CloudInABottleItem extends TrinketArtifactItem {
 
     private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cloud_in_a_bottle.png");
     public static final Identifier C2S_DOUBLE_JUMPED_ID = new Identifier(Artifacts.MODID, "c2s_double_jumped");
-    private Object model;
 
     public CloudInABottleItem() {
         super(new Settings());
@@ -48,17 +49,15 @@ public class CloudInABottleItem extends TrinketArtifactItem {
     }
 
     @Override
-    protected Identifier getTexture() {
-        return TEXTURE;
+    @Environment(EnvType.CLIENT)
+    protected BipedEntityModel<LivingEntity> createModel() {
+        return new CloudInABottleModel();
     }
 
     @Override
     @Environment(EnvType.CLIENT)
-    protected CloudInABottleModel getModel() {
-        if (model == null) {
-            model = new CloudInABottleModel();
-        }
-        return (CloudInABottleModel) model;
+    protected Identifier getTexture() {
+        return TEXTURE;
     }
 
     @Override

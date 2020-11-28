@@ -7,6 +7,8 @@ import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
@@ -15,7 +17,6 @@ import net.minecraft.util.Identifier;
 public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/scarf_of_invisibility.png");
-	private Object model;
 
 	public ScarfOfInvisibilityItem() {
 		super(new Item.Settings());
@@ -27,12 +28,8 @@ public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	@Environment(EnvType.CLIENT)
-	protected ScarfModel getModel() {
-		if (model == null) {
-			model = new ScarfModel(RenderLayer::getEntityTranslucent);
-		}
-		return (ScarfModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new ScarfModel();
 	}
 
 	@Override

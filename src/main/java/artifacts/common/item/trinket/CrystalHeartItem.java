@@ -6,6 +6,8 @@ import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -23,7 +25,6 @@ public class CrystalHeartItem extends TrinketArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/crystal_heart.png");
 
 	private static final EntityAttributeModifier HEALTH_BONUS = new EntityAttributeModifier(UUID.fromString("99fa0537-90b9-481a-bc76-4650987faba3"), "artifacts:crystal_heart_health_bonus", 10, EntityAttributeModifier.Operation.ADDITION);
-	private Object model;
 
 	public CrystalHeartItem() {
 		super(new Item.Settings());
@@ -56,11 +57,8 @@ public class CrystalHeartItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected CrystalHeartModel getModel() {
-		if (model == null) {
-			model = new CrystalHeartModel();
-		}
-		return (CrystalHeartModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new CrystalHeartModel();
 	}
 
 	@Override

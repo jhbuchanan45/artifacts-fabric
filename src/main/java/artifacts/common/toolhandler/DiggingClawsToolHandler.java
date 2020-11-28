@@ -1,7 +1,7 @@
 package artifacts.common.toolhandler;
 
 import artifacts.common.init.Items;
-import artifacts.common.item.trinket.DiggingClawsItem;
+import artifacts.common.item.trinket.glove.DiggingClawsItem;
 import artifacts.common.trinkets.TrinketsHelper;
 import artifacts.mixin.mixins.accessors.ToolManagerImplEntryImplAccessor;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
