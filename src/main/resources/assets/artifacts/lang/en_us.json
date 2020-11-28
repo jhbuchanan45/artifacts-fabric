@@ -43,6 +43,8 @@
   "item.artifacts.bunny_hoppers": "Bunny Hoppers",
   "item.artifacts.crystal_heart": "Crystal Heart",
   "item.artifacts.villager_hat": "Villager Hat",
+  "item.artifacts.cloud_in_a_bottle": "Cloud in a Bottle",
+  "item.artifacts.whoopee_cushion": "Whoopee Cushion",
 
   "item.artifacts.snorkel.tooltip": "Allows the wearer to\nbreathe underwater",
   "item.artifacts.plastic_drinking_hat.tooltip": "Decreases the time it takes\nto drink drinkable items",
@@ -74,6 +76,8 @@
   "item.artifacts.bunny_hoppers.tooltip": "Increases the wearer's jump height\nand grants immunity to fall damage",
   "item.artifacts.crystal_heart.tooltip": "Increases the wearer's maximum health",
   "item.artifacts.villager_hat.tooltip": "Decreases trading prices and\nvillagers occasionally give\ngifts to the wearer",
+  "item.artifacts.cloud_in_a_bottle.tooltip": "Allows the wearer to double jump",
+  "item.artifacts.whoopee_cushion.tooltip": "Increases the wearer's flatulence",
 
   "text.autoconfig.artifacts.title": "Artifacts Configuration",
   "text.autoconfig.artifacts.category.general": "General",
