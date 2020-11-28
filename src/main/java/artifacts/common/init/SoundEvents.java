@@ -11,6 +11,7 @@ public class SoundEvents {
 	public static final SoundEvent MIMIC_DEATH = register("mimic.death");
 	public static final SoundEvent MIMIC_OPEN = register("mimic.open");
 	public static final SoundEvent MIMIC_CLOSE = register("mimic.close");
+	public static final SoundEvent FART = register("fart");
 
 	private static SoundEvent register(String name) {
 		Identifier id = new Identifier(Artifacts.MODID, name);
