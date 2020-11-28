@@ -18,8 +18,8 @@ public class BooleanComponent implements AutoSyncedComponent {
 		return bool;
 	}
 
-	public void set(boolean wasDropped) {
-		this.bool = wasDropped;
+	public void set(boolean bool) {
+		this.bool = bool;
 	}
 
 	public void invert() {
