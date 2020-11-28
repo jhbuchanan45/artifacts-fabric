@@ -1,5 +1,6 @@
 package artifacts.common.trinkets;
 
+import artifacts.common.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,12 +17,24 @@ public final class TrinketsHelper {
 	private TrinketsHelper() {}
 
 	public static boolean isEquipped(Item item, LivingEntity entity) {
-		return entity instanceof PlayerEntity && TrinketsHelper.isEquipped(stack -> stack.getItem() == item, entity);
+		return isEquipped(item, entity, false);
 	}
 
 	public static boolean isEquipped(Predicate<ItemStack> filter, LivingEntity entity) {
-		for (ItemStack stack : TrinketsHelper.getAllEquipped(entity)) {
-			if (!stack.isEmpty() && filter.test(stack)) {
+		return isEquipped(filter, entity, false);
+	}
+
+	public static List<ItemStack> getAllEquipped(LivingEntity entity) {
+		return getAllEquipped(entity, false);
+	}
+
+	public static boolean isEquipped(Item item, LivingEntity entity, boolean ignoreEffectsDisabled) {
+		return isEquipped(stack -> stack.getItem().equals(item), entity, ignoreEffectsDisabled);
+	}
+
+	public static boolean isEquipped(Predicate<ItemStack> filter, LivingEntity entity, boolean ignoreEffectsDisabled) {
+		for (ItemStack stack : getAllEquipped(entity, ignoreEffectsDisabled)) {
+			if (filter.test(stack)) {
 				return true;
 			}
 		}
@@ -29,15 +42,19 @@ public final class TrinketsHelper {
 		return false;
 	}
 
-	public static List<ItemStack> getAllEquipped(LivingEntity entity) {
+	public static List<ItemStack> getAllEquipped(LivingEntity entity, boolean ignoreEffectsDisabled) {
 		List<ItemStack> stacks = new ArrayList<>();
 
+		// LivingEntity not currently supported by Trinkets
 		if (entity instanceof PlayerEntity) {
 			Inventory inventory = TrinketsApi.getTrinketsInventory((PlayerEntity) entity);
 
 			for (int i = 0; i < inventory.size(); i++) {
 				ItemStack stack = inventory.getStack(i);
-				stacks.add(stack);
+
+				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem && TrinketArtifactItem.effectsEnabled(stack) || ignoreEffectsDisabled) {
+					stacks.add(stack);
+				}
 			}
 		}
 

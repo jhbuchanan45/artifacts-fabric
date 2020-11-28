@@ -43,6 +43,7 @@
     "trinkets": "*",
     "cardinal-components-base": ">=2.7.5",
     "cardinal-components-entity": ">=2.7.5",
+    "cardinal-components-item": ">=2.7.5",
     "autoconfig1u": "*",
     "cloth-config2": "*"
   },
@@ -52,7 +53,8 @@
 
   "custom": {
     "cardinal-components": [
-      "artifacts:dropped_item_entity"
+      "artifacts:dropped_item_entity",
+      "artifacts:trinket_enabled"
     ]
   }
 }

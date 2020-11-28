@@ -25,8 +25,8 @@ public class PowerGloveItem extends GloveItem {
 	}
 
 	@Override
-	public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
-		Multimap<EntityAttribute, EntityAttributeModifier> result = super.getTrinketModifiers(group, slot, uuid, stack);
+	public Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+		Multimap<EntityAttribute, EntityAttributeModifier> result = super.applyModifiers(group, slot, uuid, stack);
 		result.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER);
 		return result;
 	}

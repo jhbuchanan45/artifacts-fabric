@@ -21,13 +21,10 @@ public abstract class MixinStatusEffectUtil {
 
 		if (player != null && effect.isPermanent()) {
 			TrinketsHelper.getAllEquipped(player).forEach(stack -> {
+				StatusEffectInstance trinketEffect = ((TrinketArtifactItem) stack.getItem()).getPermanentEffect();
 
-				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem) {
-					StatusEffectInstance trinketEffect = ((TrinketArtifactItem) stack.getItem()).getPermanentEffect();
-
-					if (trinketEffect != null && trinketEffect.getEffectType() == effect.getEffectType()) {
-						info.setReturnValue(stack.getName().getString());
-					}
+				if (trinketEffect != null && trinketEffect.getEffectType() == effect.getEffectType()) {
+					info.setReturnValue(stack.getName().getString());
 				}
 			});
 		}
