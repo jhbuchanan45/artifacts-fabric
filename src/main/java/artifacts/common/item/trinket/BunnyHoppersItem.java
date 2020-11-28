@@ -2,6 +2,7 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.BunnyHoppersModel;
+import artifacts.common.events.HandleFallDamageCallback;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Items;
 import artifacts.common.trinkets.Slots;
@@ -14,6 +15,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 
 public class BunnyHoppersItem extends TrinketArtifactItem {
@@ -24,6 +26,7 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 	public BunnyHoppersItem() {
 		super(new Item.Settings());
 		PlayHurtSoundCallback.EVENT.register(BunnyHoppersItem::onPlayHurtSound);
+		HandleFallDamageCallback.EVENT.register(BunnyHoppersItem::onHandleFallDamage);
 	}
 
 	@Override
@@ -35,6 +38,14 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, entity)) {
 			entity.playSound(SoundEvents.ENTITY_RABBIT_HURT, volume, pitch);
 		}
+	}
+
+	private static ActionResult onHandleFallDamage(LivingEntity entity, float fallDistance, float damageMultiplier) {
+		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, entity)) {
+			return ActionResult.FAIL;
+		}
+
+		return ActionResult.PASS;
 	}
 
 	@Override

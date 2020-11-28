@@ -2,12 +2,17 @@ package artifacts.common.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.CloudInABottleModel;
+import artifacts.common.events.HandleFallDamageCallback;
+import artifacts.common.init.Items;
+import artifacts.common.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 
 public class CloudInABottleItem extends TrinketArtifactItem {
@@ -17,6 +22,15 @@ public class CloudInABottleItem extends TrinketArtifactItem {
 
     public CloudInABottleItem() {
         super(new Settings());
+        HandleFallDamageCallback.EVENT.register(CloudInABottleItem::onHandleFallDamage);
+    }
+
+    private static ActionResult onHandleFallDamage(LivingEntity entity, float fallDistance, float damageMultiplier) {
+        if (TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, entity)) {
+            return ActionResult.FAIL;
+        }
+
+        return ActionResult.PASS;
     }
 
 /*    public static void jump(PlayerEntity player) {
@@ -44,12 +58,6 @@ public class CloudInABottleItem extends TrinketArtifactItem {
             player.addExhaustion(0.2F);
         } else {
             player.addExhaustion(0.05F);
-        }
-    }
-
-    public void onLivingFall(LivingFallEvent event) {
-        if (CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).isPresent()) {
-            event.setDistance(Math.max(0, event.getDistance() - 3));
         }
     }*/
 
