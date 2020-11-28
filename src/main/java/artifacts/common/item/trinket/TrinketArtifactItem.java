@@ -1,7 +1,6 @@
 package artifacts.common.item.trinket;
 
 import artifacts.client.render.TrinketRenderHelper;
-import artifacts.client.render.model.trinket.AntidoteVesselModel;
 import artifacts.common.init.Components;
 import artifacts.common.item.ArtifactItem;
 import com.google.common.collect.HashMultimap;
@@ -29,6 +28,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
@@ -73,7 +73,9 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
 		super.appendTooltip(stack, world, tooltip, flags);
-		tooltip.add(new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(Formatting.GOLD));
+		MutableText enabled = new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(Formatting.GOLD);
+		Text togglekeybind = new TranslatableText("artifacts.trinket.togglekeybind").formatted(Formatting.GRAY);
+		tooltip.add(enabled.append(" ").append(togglekeybind));
 	}
 
 	@Override
