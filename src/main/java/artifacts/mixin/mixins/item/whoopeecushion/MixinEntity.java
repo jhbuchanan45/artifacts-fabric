@@ -1,6 +1,8 @@
 package artifacts.mixin.mixins.item.whoopeecushion;
 
+import artifacts.common.init.Items;
 import artifacts.common.init.SoundEvents;
+import artifacts.common.trinkets.TrinketsHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.SoundCategory;
@@ -17,7 +19,9 @@ public abstract class MixinEntity {
 		Entity entity = (Entity)(Object) this;
 
 		//noinspection ConstantConditions
-		if (sneaking && !entity.world.isClient() && entity instanceof LivingEntity && ((LivingEntity) entity).getRandom().nextInt(8) == 0) {
+		if (sneaking && !entity.world.isClient() && entity instanceof LivingEntity
+				&& TrinketsHelper.isEquipped(Items.WHOOPEE_CUSHION, (LivingEntity) entity)
+				&& ((LivingEntity) entity).getRandom().nextInt(8) == 0) {
 			entity.world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
 					SoundEvents.FART, SoundCategory.PLAYERS, 1,
 					0.9F + ((LivingEntity) entity).getRandom().nextFloat() * 0.2F);
