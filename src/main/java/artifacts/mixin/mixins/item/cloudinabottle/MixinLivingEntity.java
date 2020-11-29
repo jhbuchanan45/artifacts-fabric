@@ -35,6 +35,10 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
 
 	@Shadow protected abstract void jump();
 
+	@Shadow public abstract boolean isHoldingOntoLadder();
+
+	@Shadow public abstract boolean isClimbing();
+
 	public MixinLivingEntity(EntityType<?> type, World world) {
 		super(type, world);
 	}
@@ -48,16 +52,19 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
 		return fallDistance;
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "tickMovement", at = @At("HEAD"))
 	private void invokeDoubleJump(CallbackInfo info) {
+		LivingEntity self = (LivingEntity)(Object) this;
 		artifacts$jumpWasReleased |= !this.jumping;
 
-		if (this.isOnGround()) {
+		if (this.isOnGround() || this.isClimbing() && !this.isTouchingWater()) {
 			this.artifacts$hasDoubleJumped = false;
 		}
 
+		boolean flying = self instanceof PlayerEntity && ((PlayerEntity) self).abilities.flying;
 		if (this.jumping && this.artifacts$jumpWasReleased && !this.isOnGround() && !this.artifacts$hasDoubleJumped
-		&& TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, (LivingEntity)(Object) this)) {
+				&& !flying && TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, self)) {
 			this.artifacts$doubleJump();
 			ClientSidePacketRegistry.INSTANCE.sendToServer(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, new PacketByteBuf(Unpooled.buffer()));
 			this.artifacts$hasDoubleJumped = true;
