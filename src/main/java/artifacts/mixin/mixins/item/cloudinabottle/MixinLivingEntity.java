@@ -1,6 +1,5 @@
 package artifacts.mixin.mixins.item.cloudinabottle;
 
-import artifacts.Artifacts;
 import artifacts.common.init.Items;
 import artifacts.common.item.trinket.CloudInABottleItem;
 import artifacts.common.trinkets.TrinketsHelper;
@@ -20,7 +19,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity extends Entity implements LivingEntityExtensions {
@@ -34,8 +32,6 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
 	@Unique private boolean artifacts$hasDoubleJumped = false;
 
 	@Shadow protected abstract void jump();
-
-	@Shadow public abstract boolean isHoldingOntoLadder();
 
 	@Shadow public abstract boolean isClimbing();
 
@@ -58,13 +54,13 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
 		LivingEntity self = (LivingEntity)(Object) this;
 		artifacts$jumpWasReleased |= !this.jumping;
 
-		if (this.isOnGround() || this.isClimbing() && !this.isTouchingWater()) {
+		if ((this.isOnGround() || this.isClimbing()) && !this.isTouchingWater()) {
 			this.artifacts$hasDoubleJumped = false;
 		}
 
 		boolean flying = self instanceof PlayerEntity && ((PlayerEntity) self).abilities.flying;
-		if (this.jumping && this.artifacts$jumpWasReleased && !this.isOnGround() && !this.artifacts$hasDoubleJumped
-				&& !flying && TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, self)) {
+		if (this.jumping && this.artifacts$jumpWasReleased && !this.isTouchingWater() && !this.isOnGround()
+				&& !this.artifacts$hasDoubleJumped && !flying && TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, self)) {
 			this.artifacts$doubleJump();
 			ClientSidePacketRegistry.INSTANCE.sendToServer(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, new PacketByteBuf(Unpooled.buffer()));
 			this.artifacts$hasDoubleJumped = true;

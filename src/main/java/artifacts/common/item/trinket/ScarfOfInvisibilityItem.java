@@ -28,6 +28,7 @@ public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 	}
 
 	@Override
+	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
 		return new ScarfModel();
 	}
