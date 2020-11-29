@@ -85,10 +85,12 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 			ItemStack stack = user.getStackInHand(hand);
 			Components.TRINKET_ENABLED.get(stack).invert();
 
-			// Show enabled/disabled message above hotbar
-			Formatting enabledColor = effectsEnabled(stack) ? Formatting.GREEN : Formatting.RED;
-			Text enabledText = new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(enabledColor);
-			MinecraftClient.getInstance().inGameHud.setOverlayMessage(enabledText, false);
+			if (world.isClient()) {
+				// Show enabled/disabled message above hotbar
+				Formatting enabledColor = effectsEnabled(stack) ? Formatting.GREEN : Formatting.RED;
+				Text enabledText = new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(enabledColor);
+				MinecraftClient.getInstance().inGameHud.setOverlayMessage(enabledText, false);
+			}
 
 			return TypedActionResult.success(stack);
 		}
