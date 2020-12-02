@@ -22,8 +22,8 @@ public class ShockPendantItem extends PendantItem {
 	}
 
 	private static void applyEffect(LivingEntity user, Entity attacker, Random random) {
-		if (TrinketsHelper.isEquipped(Items.SHOCK_PENDANT, user) && attacker.world.isSkyVisible(attacker.getBlockPos())
-				&& random.nextFloat() < 0.25f) {
+		if (user != null && attacker != null && TrinketsHelper.isEquipped(Items.SHOCK_PENDANT, user)
+				&& attacker.world.isSkyVisible(attacker.getBlockPos()) && random.nextFloat() < 0.25f) {
 			LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(attacker.world);
 
 			if (lightning != null) {

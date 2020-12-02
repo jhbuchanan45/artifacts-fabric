@@ -19,7 +19,7 @@ public class ThornPendantItem extends PendantItem {
 	}
 
 	private static void applyEffects(LivingEntity user, Entity attacker, Random random) {
-		if (attacker != null && TrinketsHelper.isEquipped(Items.THORN_PENDANT, user) && random.nextFloat() < 0.5f) {
+		if (user != null && attacker != null && TrinketsHelper.isEquipped(Items.THORN_PENDANT, user) && random.nextFloat() < 0.5f) {
 			attacker.damage(DamageSource.thorns(user), 2 + random.nextInt(5));
 		}
 	}
