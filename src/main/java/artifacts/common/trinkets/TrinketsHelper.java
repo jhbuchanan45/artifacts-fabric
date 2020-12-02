@@ -52,7 +52,7 @@ public final class TrinketsHelper {
 			for (int i = 0; i < inventory.size(); i++) {
 				ItemStack stack = inventory.getStack(i);
 
-				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem && TrinketArtifactItem.effectsEnabled(stack) || ignoreEffectsDisabled) {
+				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem && (TrinketArtifactItem.effectsEnabled(stack) || ignoreEffectsDisabled)) {
 					stacks.add(stack);
 				}
 			}
