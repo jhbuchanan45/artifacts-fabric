@@ -4,9 +4,11 @@ import artifacts.Artifacts;
 import artifacts.client.render.RenderTypes;
 import artifacts.client.render.model.trinket.NightVisionGogglesModel;
 import artifacts.common.trinkets.Slots;
+import artifacts.mixin.mixins.accessors.GameRendererAccessor;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -18,7 +20,9 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public class NightVisionGogglesItem extends TrinketArtifactItem {
@@ -33,6 +37,20 @@ public class NightVisionGogglesItem extends TrinketArtifactItem {
 	@Override
 	public StatusEffectInstance getPermanentEffect() {
 		return new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20, 0, true, false);
+	}
+
+	@Override
+	public void onEquip(PlayerEntity player, ItemStack stack) {
+		if (player.world.isClient) {
+			((GameRendererAccessor) MinecraftClient.getInstance().gameRenderer).artifacts$callLoadShader(new Identifier("shaders/post/creeper.json"));
+		}
+	}
+
+	@Override
+	public void onUnequip(PlayerEntity player, ItemStack stack) {
+		if (player.world.isClient) {
+			MinecraftClient.getInstance().gameRenderer.disableShader();
+		}
 	}
 
 	@Override

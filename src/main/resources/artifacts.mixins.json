@@ -4,6 +4,7 @@
   "package": "artifacts.mixin.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "accessors.GameRendererAccessor",
     "accessors.DamageSourceAccessor",
     "accessors.ItemEntityAccessor",
     "accessors.ItemStackAccessor",
