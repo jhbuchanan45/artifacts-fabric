@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest an idea for this mod
+name: Feature request (Fabric specific)
+about: Suggest an idea specifically for the Fabric version of this mod (see below for general feature requests)
 title: ''
 labels: enhancement
 assignees: ''
