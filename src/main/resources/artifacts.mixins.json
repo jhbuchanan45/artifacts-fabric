@@ -20,6 +20,8 @@
     "item.diggingclaws.MixinPlayerEntity",
     "item.diggingclaws.MixinToolManagerImpl",
     "item.drinkinghat.MixinLivingEntity",
+    "item.everlastingfood.MixinAnimalEntity",
+    "item.everlastingfood.MixinWolfEntity",
     "item.firegauntlet.MixinEnchantmentHelper",
     "item.flippers.MixinLivingEntity",
     "item.kittyslippers.MixinCreeperEntity",
