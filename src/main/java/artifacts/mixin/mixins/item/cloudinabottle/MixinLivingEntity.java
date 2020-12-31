@@ -59,10 +59,12 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
 		}
 
 		boolean flying = self instanceof PlayerEntity && ((PlayerEntity) self).abilities.flying;
-		if (this.jumping && this.artifacts$jumpWasReleased && !this.isTouchingWater() && !this.isOnGround()
+		if (this.jumping && this.artifacts$jumpWasReleased && !this.isTouchingWater() && !this.isOnGround() && !this.hasVehicle()
 				&& !this.artifacts$hasDoubleJumped && !flying && TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, self)) {
 			this.artifacts$doubleJump();
-			ClientSidePacketRegistry.INSTANCE.sendToServer(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, new PacketByteBuf(Unpooled.buffer()));
+			if (this.world.isClient) {
+				ClientSidePacketRegistry.INSTANCE.sendToServer(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, new PacketByteBuf(Unpooled.buffer()));
+			}
 			this.artifacts$hasDoubleJumped = true;
 		}
 	}
