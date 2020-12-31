@@ -1,7 +1,5 @@
 {
-  "curios.identifier.feet": "Pies",
-  "curios.modifiers.feet": "Cuando se usa en los pies:",
-  "itemGroup.artifacts": "Artefactos",
+  "itemGroup.artifacts.item_group": "Artefactos",
   "artifacts.advancements.amateur_archaeologist.title": "Arqueólogo Amateur",
   "artifacts.advancements.amateur_archaeologist.description": "Encuentra un artefacto",
   "artifacts.advancements.chest_slayer.title": "Asesino de Cofres",
