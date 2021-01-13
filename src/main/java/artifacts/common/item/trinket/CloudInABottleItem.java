@@ -33,7 +33,7 @@ public class CloudInABottleItem extends TrinketArtifactItem {
             ServerPlayerEntity player = (ServerPlayerEntity) context.getPlayer();
             ((LivingEntityExtensions) player).artifacts$doubleJump();
 
-            // This part is server-side only
+            // Spawn particles
             for (int i = 0; i < 20; ++i) {
                 double motionX = player.getRandom().nextGaussian() * 0.02;
                 double motionY = player.getRandom().nextGaussian() * 0.02 + 0.20;

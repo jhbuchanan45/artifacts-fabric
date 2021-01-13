@@ -10,6 +10,7 @@ public interface LivingEntityExtensions {
 
 	/**
 	 * Makes the LivingEntity double jump
+	 * A double jump behaves slightly different from a normal jump (velocity, sprinting multiplier, particles & sound)
 	 */
 	void artifacts$doubleJump();
 }
