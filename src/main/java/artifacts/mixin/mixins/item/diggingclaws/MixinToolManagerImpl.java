@@ -7,7 +7,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -37,8 +36,9 @@ public abstract class MixinToolManagerImpl {
 	@Inject(method = "handleIsEffectiveOnIgnoresVanilla", at = @At(value = "TAIL"), cancellable = true)
 	private static void invokeNonToolsHandlers(BlockState state, ItemStack stack, LivingEntity user, boolean vanillaResult, CallbackInfoReturnable<Boolean> info) {
 		if (!info.getReturnValueZ()) {
-			ActionResult effective = ToolHandlers.NON_TOOLS_HANDLER.invoker().isEffectiveOn(null, state, stack, user);
-			if (effective.isAccepted()) info.setReturnValue(true);
+			// TODO: does cancelling at return still run other injectors?
+			info.setReturnValue(ToolHandlers.NON_TOOLS_HANDLER.invoker()
+					.isEffectiveOn(null, state, stack, user).isAccepted());
 		}
 	}
 }

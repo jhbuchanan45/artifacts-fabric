@@ -42,7 +42,7 @@ import java.util.UUID;
 
 public abstract class TrinketArtifactItem extends ArtifactItem implements Trinket {
 
-	private Object model;
+	private BipedEntityModel<LivingEntity> model;
 
 	public TrinketArtifactItem(Settings settings) {
 		super(settings);
@@ -57,7 +57,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		return HashMultimap.create();
 	}
 
-	public Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+	protected Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
 		return HashMultimap.create();
 	}
 
@@ -68,7 +68,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		}
 	}
 
-	public void effectTick(PlayerEntity player, ItemStack stack) { }
+	protected void effectTick(PlayerEntity player, ItemStack stack) { }
 
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
@@ -113,7 +113,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	 * Used to give a Trinket a permanent status effect while wearing it.
 	 * The StatusEffectInstance is applied every 15 ticks so a duration greater than that is required.
 	 *
-	 * @return The StatusEffectInstance to be applied
+	 * @return The {@link StatusEffectInstance} to be applied
 	 */
 	public StatusEffectInstance getPermanentEffect() {
 		return null;
@@ -135,12 +135,11 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> getModel() {
-		if (model == null) {
-			model = createModel();
+		if (this.model == null) {
+			this.model = createModel();
 		}
 
-		//noinspection unchecked
-		return (BipedEntityModel<LivingEntity>) model;
+		return this.model;
 	}
 
 	@Environment(EnvType.CLIENT)
@@ -150,7 +149,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		return Components.TRINKET_ENABLED.get(stack).get();
 	}
 
-	public static String getEffectsEnabledLanguageKey(ItemStack stack) {
+	private static String getEffectsEnabledLanguageKey(ItemStack stack) {
 		return effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
 	}
 }

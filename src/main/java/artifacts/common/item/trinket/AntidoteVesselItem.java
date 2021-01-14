@@ -26,7 +26,7 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	public void effectTick(PlayerEntity player, ItemStack stack) {
+	protected void effectTick(PlayerEntity player, ItemStack stack) {
 		// Reduce duration of all negative status effects to 80
 		player.getActiveStatusEffects().forEach((effect, instance) -> {
 			if (!effect.isInstant() && ((StatusEffectAccessor) effect).getType() != StatusEffectType.BENEFICIAL && instance.getDuration() > 80) {

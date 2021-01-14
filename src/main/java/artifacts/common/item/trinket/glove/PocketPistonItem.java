@@ -1,7 +1,6 @@
 package artifacts.common.item.trinket.glove;
 
 import artifacts.Artifacts;
-import artifacts.common.item.trinket.glove.GloveItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;

@@ -3,7 +3,6 @@ package artifacts.client.render;
 import artifacts.client.render.model.entity.MimicChestLayerModel;
 import artifacts.client.render.model.entity.MimicModel;
 import artifacts.common.entity.MimicEntity;
-import java.util.Calendar;
 import net.minecraft.block.enums.ChestType;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
@@ -15,6 +14,8 @@ import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
+
+import java.util.Calendar;
 
 public class MimicChestLayer extends FeatureRenderer<MimicEntity, MimicModel> {
 
