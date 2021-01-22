@@ -21,7 +21,7 @@ public class FlamePendantItem extends PendantItem {
 	}
 
 	private static void applyEffects(LivingEntity user, Entity attacker, Random random) {
-		if (user != null && attacker != null && TrinketsHelper.isEquipped(Items.FLAME_PENDANT, user)&& random.nextFloat() < 0.4f) {
+		if (user != null && attacker != null && TrinketsHelper.isEquipped(Items.FLAME_PENDANT, user) && random.nextFloat() < 0.4f) {
 			attacker.setOnFireFor(8);
 			//noinspection ConstantConditions
 			DamageSource setFireSource = ((DamageSourceAccessor) (new EntityDamageSource("onFire", user))).artifacts$callSetFire();

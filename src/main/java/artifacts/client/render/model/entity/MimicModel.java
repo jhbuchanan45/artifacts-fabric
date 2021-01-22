@@ -34,7 +34,8 @@ public class MimicModel extends EntityModel<MimicEntity> {
 	}
 
 	@Override
-	public void setAngles(MimicEntity mimic, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) { }
+	public void setAngles(MimicEntity mimic, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	}
 
 	@Override
 	public void animateModel(MimicEntity mimic, float limbAngle, float limbDistance, float tickDelta) {

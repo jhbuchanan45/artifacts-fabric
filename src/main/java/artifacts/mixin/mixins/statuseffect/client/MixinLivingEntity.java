@@ -21,7 +21,7 @@ public abstract class MixinLivingEntity {
 		//noinspection ConstantConditions
 		if ((Object) this instanceof LivingEntity) {
 
-			TrinketsHelper.getAllEquipped((LivingEntity)(Object) this).forEach(stack -> {
+			TrinketsHelper.getAllEquipped((LivingEntity) (Object) this).forEach(stack -> {
 				StatusEffectInstance trinketPermEffect = ((TrinketArtifactItem) stack.getItem()).getPermanentEffect();
 
 				if (trinketPermEffect != null && trinketPermEffect.getEffectType() == effect.getEffectType()) {

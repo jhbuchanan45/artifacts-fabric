@@ -16,7 +16,8 @@ import java.util.function.BiFunction;
 @Mixin(value = PlayerTrinketComponent.class, remap = false)
 public abstract class MixinPlayerTrinketComponent {
 
-	@Shadow public abstract Inventory getInventory();
+	@Shadow
+	public abstract Inventory getInventory();
 
 	/**
 	 * Prevent player from equipping two of the same Artifacts trinkets

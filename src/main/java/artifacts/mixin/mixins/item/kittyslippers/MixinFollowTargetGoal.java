@@ -21,8 +21,11 @@ import java.util.function.Predicate;
 @Mixin(FollowTargetGoal.class)
 public abstract class MixinFollowTargetGoal<T extends LivingEntity> extends TrackTargetGoal {
 
-	@Shadow @Final protected Class<T> targetClass;
-	@Unique private static final Predicate<LivingEntity> NOT_WEARING_KITTY_SLIPPERS = entity -> !TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, entity);
+	@Unique
+	private static final Predicate<LivingEntity> NOT_WEARING_KITTY_SLIPPERS = entity -> !TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, entity);
+	@Shadow
+	@Final
+	protected Class<T> targetClass;
 
 	public MixinFollowTargetGoal(MobEntity mob, boolean checkVisibility) {
 		super(mob, checkVisibility);

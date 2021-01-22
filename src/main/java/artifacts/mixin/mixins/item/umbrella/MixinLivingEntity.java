@@ -20,13 +20,14 @@ public abstract class MixinLivingEntity extends Entity {
 		super(type, world);
 	}
 
-	@Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
+	@Shadow
+	public abstract boolean hasStatusEffect(StatusEffect effect);
 
 	@ModifyVariable(method = "travel", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/entity/LivingEntity;isTouchingWater()Z"))
 	private double changeGravity(double gravity) {
 		boolean isFalling = this.getVelocity().y <= 0.0D;
-		boolean heldMainHand = UmbrellaItem.getHeldStatusForHand((LivingEntity)(Object) this, Hand.MAIN_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
-		boolean heldOffHand = UmbrellaItem.getHeldStatusForHand((LivingEntity)(Object) this, Hand.OFF_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
+		boolean heldMainHand = UmbrellaItem.getHeldStatusForHand((LivingEntity) (Object) this, Hand.MAIN_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
+		boolean heldOffHand = UmbrellaItem.getHeldStatusForHand((LivingEntity) (Object) this, Hand.OFF_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
 
 		if ((heldMainHand || heldOffHand) && isFalling && !this.hasStatusEffect(StatusEffects.SLOW_FALLING) && !isTouchingWater()) {
 			gravity -= 0.07;

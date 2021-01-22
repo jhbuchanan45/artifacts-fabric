@@ -24,21 +24,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity extends Entity implements LivingEntityExtensions {
 
-	@Shadow protected boolean jumping;
+	@Shadow
+	protected boolean jumping;
 	// Is entity double jumping in this tick
-	@Unique private boolean artifacts$isDoubleJumping = false;
+	@Unique
+	private boolean artifacts$isDoubleJumping = false;
 	// Has entity released jump key since last jump
-	@Unique private boolean artifacts$jumpWasReleased = false;
+	@Unique
+	private boolean artifacts$jumpWasReleased = false;
 	// Has entity double jumped during current airtime
-	@Unique private boolean artifacts$hasDoubleJumped = false;
-
-	@Shadow protected abstract void jump();
-
-	@Shadow public abstract boolean isClimbing();
+	@Unique
+	private boolean artifacts$hasDoubleJumped = false;
 
 	public MixinLivingEntity(EntityType<?> type, World world) {
 		super(type, world);
 	}
+
+	@Shadow
+	protected abstract void jump();
+
+	@Shadow
+	public abstract boolean isClimbing();
 
 	@Unique
 	@Override
@@ -68,7 +74,7 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
 	@ModifyVariable(method = "handleFallDamage", ordinal = 0, at = @At("HEAD"))
 	private float reduceFallDistance(float fallDistance) {
 		// FIXME: this probably also works if we didn't double jump, intended?
-		if (TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, (LivingEntity)(Object) this)) {
+		if (TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, (LivingEntity) (Object) this)) {
 			fallDistance = Math.max(0, fallDistance - 3);
 		}
 
@@ -78,7 +84,7 @@ public abstract class MixinLivingEntity extends Entity implements LivingEntityEx
 	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "tickMovement", at = @At("HEAD"))
 	private void invokeDoubleJump(CallbackInfo info) {
-		LivingEntity self = (LivingEntity)(Object) this;
+		LivingEntity self = (LivingEntity) (Object) this;
 		artifacts$jumpWasReleased |= !this.jumping;
 
 		if ((this.isOnGround() || this.isClimbing()) && !this.isTouchingWater()) {

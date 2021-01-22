@@ -16,11 +16,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity extends Entity {
 
-	@Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
-
 	public MixinLivingEntity(EntityType<?> type, World world) {
 		super(type, world);
 	}
+
+	@Shadow
+	public abstract boolean addStatusEffect(StatusEffectInstance effect);
 
 	/**
 	 * Applies permanent status effects added by trinkets every 15 ticks
@@ -30,7 +31,7 @@ public abstract class MixinLivingEntity extends Entity {
 		//noinspection ConstantConditions
 		if (!this.world.isClient && this.age % 15 == 0 && (Object) this instanceof LivingEntity) {
 
-			TrinketsHelper.getAllEquipped((LivingEntity)(Object) this).forEach(stack -> {
+			TrinketsHelper.getAllEquipped((LivingEntity) (Object) this).forEach(stack -> {
 				StatusEffectInstance effect = ((TrinketArtifactItem) stack.getItem()).getPermanentEffect();
 
 				if (effect != null) {

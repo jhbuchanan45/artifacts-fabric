@@ -52,16 +52,6 @@ public class RunningShoesItem extends TrinketArtifactItem {
 		}
 	}
 
-	@Override
-	@SuppressWarnings("ConstantConditions")
-	public void onUnequip(PlayerEntity player, ItemStack stack) {
-		EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
-		EntityAttributeInstance stepHeight = player.getAttributeInstance(StepHeightEntityAttributeMain.STEP_HEIGHT);
-
-		removeModifier(movementSpeed, SPEED_BOOST_MODIFIER);
-		removeModifier(stepHeight, STEP_HEIGHT_MODIFIER);
-	}
-
 	private static void addModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
 		if (!instance.hasModifier(modifier)) {
 			instance.addTemporaryModifier(modifier);
@@ -72,6 +62,16 @@ public class RunningShoesItem extends TrinketArtifactItem {
 		if (instance.hasModifier(modifier)) {
 			instance.removeModifier(modifier);
 		}
+	}
+
+	@Override
+	@SuppressWarnings("ConstantConditions")
+	public void onUnequip(PlayerEntity player, ItemStack stack) {
+		EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+		EntityAttributeInstance stepHeight = player.getAttributeInstance(StepHeightEntityAttributeMain.STEP_HEIGHT);
+
+		removeModifier(movementSpeed, SPEED_BOOST_MODIFIER);
+		removeModifier(stepHeight, STEP_HEIGHT_MODIFIER);
 	}
 
 	@Override

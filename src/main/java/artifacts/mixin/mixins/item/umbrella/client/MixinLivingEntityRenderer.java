@@ -21,7 +21,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntityRenderer.class)
 public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extends EntityModel<T>> extends EntityRenderer<T> {
 
-	@Shadow protected M model;
+	@Shadow
+	protected M model;
 
 	protected MixinLivingEntityRenderer(EntityRenderDispatcher dispatcher) {
 		super(dispatcher);

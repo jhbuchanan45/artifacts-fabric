@@ -35,7 +35,7 @@ public abstract class MixinLivingEntity implements LivingEntityExtensions {
 	@Unique
 	@Override
 	public double artifacts$getIncreasedSwimSpeed(double speed) {
-		return TrinketsHelper.isEquipped(Items.FLIPPERS, (LivingEntity)(Object) this)
+		return TrinketsHelper.isEquipped(Items.FLIPPERS, (LivingEntity) (Object) this)
 				? speed * FlippersItem.SWIM_SPEED_MULTIPLIER : speed;
 	}
 }

@@ -20,48 +20,48 @@ import net.minecraft.util.Identifier;
 
 public class CloudInABottleItem extends TrinketArtifactItem {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cloud_in_a_bottle.png");
-    public static final Identifier C2S_DOUBLE_JUMPED_ID = new Identifier(Artifacts.MODID, "c2s_double_jumped");
+	public static final Identifier C2S_DOUBLE_JUMPED_ID = new Identifier(Artifacts.MODID, "c2s_double_jumped");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cloud_in_a_bottle.png");
 
-    public CloudInABottleItem() {
-        super(new Settings());
-        ServerSidePacketRegistry.INSTANCE.register(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacket);
-    }
+	public CloudInABottleItem() {
+		super(new Settings());
+		ServerSidePacketRegistry.INSTANCE.register(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacket);
+	}
 
-    private static void handleDoubleJumpPacket(PacketContext context, PacketByteBuf clientPassedData) {
-        context.getTaskQueue().execute(() -> {
-            ServerPlayerEntity player = (ServerPlayerEntity) context.getPlayer();
-            ((LivingEntityExtensions) player).artifacts$doubleJump();
+	private static void handleDoubleJumpPacket(PacketContext context, PacketByteBuf clientPassedData) {
+		context.getTaskQueue().execute(() -> {
+			ServerPlayerEntity player = (ServerPlayerEntity) context.getPlayer();
+			((LivingEntityExtensions) player).artifacts$doubleJump();
 
-            // Spawn particles
-            for (int i = 0; i < 20; ++i) {
-                double motionX = player.getRandom().nextGaussian() * 0.02;
-                double motionY = player.getRandom().nextGaussian() * 0.02 + 0.20;
-                double motionZ = player.getRandom().nextGaussian() * 0.02;
-                player.getServerWorld().spawnParticles(ParticleTypes.POOF, player.getX(), player.getY(), player.getZ(), 1, motionX, motionY, motionZ, 0.15);
-            }
-        });
-    }
+			// Spawn particles
+			for (int i = 0; i < 20; ++i) {
+				double motionX = player.getRandom().nextGaussian() * 0.02;
+				double motionY = player.getRandom().nextGaussian() * 0.02 + 0.20;
+				double motionZ = player.getRandom().nextGaussian() * 0.02;
+				player.getServerWorld().spawnParticles(ParticleTypes.POOF, player.getX(), player.getY(), player.getZ(), 1, motionX, motionY, motionZ, 0.15);
+			}
+		});
+	}
 
-    @Override
-    protected SoundEvent getEquipSound() {
-        return SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH;
-    }
+	@Override
+	protected SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH;
+	}
 
-    @Override
-    @Environment(EnvType.CLIENT)
-    protected BipedEntityModel<LivingEntity> createModel() {
-        return new CloudInABottleModel();
-    }
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new CloudInABottleModel();
+	}
 
-    @Override
-    @Environment(EnvType.CLIENT)
-    protected Identifier getTexture() {
-        return TEXTURE;
-    }
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected Identifier getTexture() {
+		return TEXTURE;
+	}
 
-    @Override
-    public boolean canWearInSlot(String group, String slot) {
-        return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
-    }
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
+	}
 }

@@ -25,12 +25,12 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 	// Because these are mining level 2, used to check no/vanilla tools against vanilla blocks
 	// TODO: hardcoded, these are not affected by DiggingClawsItem.NEW_BASE_MINING_LEVEL
 	private final List<Item> vanillaItems = Arrays.asList(
-		net.minecraft.item.Items.IRON_AXE,
-		net.minecraft.item.Items.IRON_HOE,
-		net.minecraft.item.Items.IRON_PICKAXE,
-		net.minecraft.item.Items.IRON_SHOVEL,
-		net.minecraft.item.Items.IRON_SWORD,
-		net.minecraft.item.Items.SHEARS
+			net.minecraft.item.Items.IRON_AXE,
+			net.minecraft.item.Items.IRON_HOE,
+			net.minecraft.item.Items.IRON_PICKAXE,
+			net.minecraft.item.Items.IRON_SHOVEL,
+			net.minecraft.item.Items.IRON_SWORD,
+			net.minecraft.item.Items.SHEARS
 	);
 
 	@Override

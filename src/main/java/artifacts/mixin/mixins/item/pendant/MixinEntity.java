@@ -17,7 +17,7 @@ public abstract class MixinEntity {
 	@Inject(method = "onStruckByLightning", at = @At("HEAD"), cancellable = true)
 	private void lightningImmune(ServerWorld world, LightningEntity lightning, CallbackInfo info) {
 		//noinspection ConstantConditions
-		if ((Entity)(Object) this instanceof LivingEntity) {
+		if ((Entity) (Object) this instanceof LivingEntity) {
 			if (TrinketsHelper.isEquipped(Items.SHOCK_PENDANT, (LivingEntity) (Object) this)) {
 				info.cancel();
 			}

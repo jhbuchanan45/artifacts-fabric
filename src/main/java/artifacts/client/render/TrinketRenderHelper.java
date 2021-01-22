@@ -22,7 +22,7 @@ public final class TrinketRenderHelper {
 	 * @param livingEntity The wearer of the trinket
 	 */
 	public static void translateIfSneaking(final MatrixStack matrixStack,
-	                                       final LivingEntity livingEntity) {
+										   final LivingEntity livingEntity) {
 
 		if (livingEntity.isSneaking()) {
 			matrixStack.translate(0.0f, 0.2f, 0.0f);
@@ -37,7 +37,7 @@ public final class TrinketRenderHelper {
 	 * @param livingEntity The wearer of the trinket
 	 */
 	public static void rotateIfSneaking(final MatrixStack matrixStack,
-	                                    final LivingEntity livingEntity) {
+										final LivingEntity livingEntity) {
 
 		if (livingEntity.isSneaking()) {
 			matrixStack.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90.0F / (float) Math.PI));
@@ -81,7 +81,7 @@ public final class TrinketRenderHelper {
 	 */
 	@SafeVarargs
 	public static void followBodyRotations(final LivingEntity livingEntity,
-	                                       final BipedEntityModel<LivingEntity>... models) {
+										   final BipedEntityModel<LivingEntity>... models) {
 
 		EntityRenderer<? super LivingEntity> render = MinecraftClient.getInstance()
 				.getEntityRenderDispatcher().getRenderer(livingEntity);

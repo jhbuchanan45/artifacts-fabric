@@ -18,7 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AnimalEntity.class)
 public abstract class MixinAnimalEntity implements AnimalEntityExtensions {
 
-	@Shadow public abstract boolean isBreedingItem(ItemStack stack);
+	@Shadow
+	public abstract boolean isBreedingItem(ItemStack stack);
 
 	@Redirect(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/AnimalEntity;isBreedingItem(Lnet/minecraft/item/ItemStack;)Z"))
 	private boolean cooldownBreedingItem(AnimalEntity animalEntity, ItemStack stack, PlayerEntity player) {

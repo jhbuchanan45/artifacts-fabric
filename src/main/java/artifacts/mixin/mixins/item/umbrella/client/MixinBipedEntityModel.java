@@ -16,8 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(BipedEntityModel.class)
 public abstract class MixinBipedEntityModel<T extends LivingEntity> {
 
-	@Shadow public ModelPart rightArm;
-	@Shadow public ModelPart leftArm;
+	@Shadow
+	public ModelPart rightArm;
+	@Shadow
+	public ModelPart leftArm;
 
 	// Target is unresolved because method owner is a generic T
 	// Seems to work fine, but has failed to apply once or twice in dev (in a fresh runtime)

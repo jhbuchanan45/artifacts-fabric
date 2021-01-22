@@ -49,6 +49,14 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		DispenserBlock.registerBehavior(this, TrinketItem.TRINKET_DISPENSER_BEHAVIOR);
 	}
 
+	public static boolean effectsEnabled(ItemStack stack) {
+		return Components.TRINKET_ENABLED.get(stack).get();
+	}
+
+	private static String getEffectsEnabledLanguageKey(ItemStack stack) {
+		return effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
+	}
+
 	@Override
 	public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
 		if (effectsEnabled(stack)) {
@@ -68,7 +76,8 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		}
 	}
 
-	protected void effectTick(PlayerEntity player, ItemStack stack) { }
+	protected void effectTick(PlayerEntity player, ItemStack stack) {
+	}
 
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
@@ -121,7 +130,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Environment(EnvType.CLIENT)
 	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel,
-	                   AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
+					   AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
 		BipedEntityModel<LivingEntity> model = this.getModel();
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, animationProgress, headPitch);
 		model.animateModel(player, limbAngle, limbDistance, tickDelta);
@@ -144,12 +153,4 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Environment(EnvType.CLIENT)
 	protected abstract BipedEntityModel<LivingEntity> createModel();
-
-	public static boolean effectsEnabled(ItemStack stack) {
-		return Components.TRINKET_ENABLED.get(stack).get();
-	}
-
-	private static String getEffectsEnabledLanguageKey(ItemStack stack) {
-		return effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
-	}
 }

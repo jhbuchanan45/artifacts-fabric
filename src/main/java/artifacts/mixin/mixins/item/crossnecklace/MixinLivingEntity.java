@@ -16,7 +16,7 @@ public abstract class MixinLivingEntity {
 	 */
 	@ModifyConstant(method = "damage", constant = @Constant(intValue = 20, ordinal = 0))
 	private int longerInvulnerability(int original) {
-		if (TrinketsHelper.isEquipped(Items.CROSS_NECKLACE, (LivingEntity)(Object) this)) {
+		if (TrinketsHelper.isEquipped(Items.CROSS_NECKLACE, (LivingEntity) (Object) this)) {
 			// Invulnerability is determined by timeUntilRegen > 10 so we subtract this amount before applying our multiplier
 			return (int) ((original - 10) * CrossNecklaceItem.HURT_RESISTANCE_MULTIPLIER + 10);
 		}

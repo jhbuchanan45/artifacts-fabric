@@ -27,7 +27,8 @@ public class MimicChestLayerModel extends EntityModel<MimicEntity> {
 	}
 
 	@Override
-	public void setAngles(MimicEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) { }
+	public void setAngles(MimicEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+	}
 
 	@Override
 	public void animateModel(MimicEntity mimic, float limbAngle, float limbDistance, float tickDelta) {

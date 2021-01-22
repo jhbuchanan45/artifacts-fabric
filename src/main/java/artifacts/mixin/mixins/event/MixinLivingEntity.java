@@ -19,17 +19,19 @@ public abstract class MixinLivingEntity extends Entity {
 		super(type, world);
 	}
 
-    @Shadow protected abstract float getSoundVolume();
+	@Shadow
+	protected abstract float getSoundVolume();
 
-    @Shadow protected abstract float getSoundPitch();
+	@Shadow
+	protected abstract float getSoundPitch();
 
 	@Inject(method = "playHurtSound", at = @At("HEAD"))
 	private void onServerPlayHurtSound(CallbackInfo info) {
-		PlayHurtSoundCallback.EVENT.invoker().play((LivingEntity)(Object) this, this.getSoundVolume(), this.getSoundPitch());
+		PlayHurtSoundCallback.EVENT.invoker().play((LivingEntity) (Object) this, this.getSoundVolume(), this.getSoundPitch());
 	}
 
 	@Inject(method = "setSprinting", at = @At("TAIL"))
 	private void onSetSprinting(boolean sprinting, CallbackInfo info) {
-		LivingEntitySprintingCallback.EVENT.invoker().setSprinting((LivingEntity)(Object) this, sprinting);
+		LivingEntitySprintingCallback.EVENT.invoker().setSprinting((LivingEntity) (Object) this, sprinting);
 	}
 }

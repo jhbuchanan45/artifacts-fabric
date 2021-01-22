@@ -12,8 +12,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(TitleScreen.class)
 public class MixinTitleScreen {
 
-	@Shadow @Mutable @Final private boolean doBackgroundFade;
-	@Shadow @Mutable @Final private boolean isMinceraft;
+	@Shadow
+	@Mutable
+	@Final
+	private boolean doBackgroundFade;
+	@Shadow
+	@Mutable
+	@Final
+	private boolean isMinceraft;
 
 	@Inject(method = "<init>(Z)V", at = @At("TAIL"))
 	private void dontFade(CallbackInfo info) {

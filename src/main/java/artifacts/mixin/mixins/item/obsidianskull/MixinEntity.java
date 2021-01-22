@@ -17,8 +17,8 @@ public abstract class MixinEntity {
 	@Inject(method = "setOnFireFor", at = @At("HEAD"))
 	private void giveFireResistance(int seconds, CallbackInfo info) {
 		//noinspection ConstantConditions
-		if ((Entity)(Object) this instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity)(Object) this;
+		if ((Entity) (Object) this instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) (Object) this;
 
 			if (TrinketsHelper.isEquipped(Items.OBSIDIAN_SKULL, player) && !player.getItemCooldownManager().isCoolingDown(Items.OBSIDIAN_SKULL)) {
 				player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0, false, true));

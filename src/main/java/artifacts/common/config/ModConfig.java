@@ -17,7 +17,8 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 	@ConfigEntry.Gui.TransitiveObject
 	public WorldGen worldgen = new WorldGen();
 
-	private ModConfig() { }
+	private ModConfig() {
+	}
 
 	@Config(name = "general")
 	public static final class General implements ConfigData {
@@ -27,7 +28,8 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 		@ConfigEntry.Gui.Tooltip(count = 2)
 		public int everlastingFoodCooldown = 300;
 
-		private General() { }
+		private General() {
+		}
 	}
 
 	@Config(name = "worldgen")
@@ -35,7 +37,8 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 		@ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
 		public Campsite campsite = new Campsite();
 
-		private WorldGen() { }
+		private WorldGen() {
+		}
 
 		public static final class Campsite {
 			@ConfigEntry.Gui.RequiresRestart
@@ -60,7 +63,8 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 			@ConfigEntry.BoundedDiscrete(max = 256)
 			public int maxY = 45;
 
-			private Campsite() { }
+			private Campsite() {
+			}
 		}
 	}
 }

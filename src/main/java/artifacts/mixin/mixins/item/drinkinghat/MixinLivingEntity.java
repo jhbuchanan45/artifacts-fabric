@@ -15,13 +15,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity {
 
-	@Shadow protected int itemUseTimeLeft;
+	@Shadow
+	protected int itemUseTimeLeft;
 
-	@Shadow public abstract ItemStack getActiveItem();
+	@Shadow
+	public abstract ItemStack getActiveItem();
 
 	@Inject(method = "setCurrentHand", at = @At(value = "INVOKE_ASSIGN", shift = At.Shift.AFTER, target = "Lnet/minecraft/item/ItemStack;getMaxUseTime()I"))
 	private void decreaseDrinkingDuration(Hand hand, CallbackInfo info) {
-		if (TrinketsHelper.isEquipped(stack -> stack.getItem() instanceof DrinkingHatItem, (LivingEntity)(Object) this)) {
+		if (TrinketsHelper.isEquipped(stack -> stack.getItem() instanceof DrinkingHatItem, (LivingEntity) (Object) this)) {
 			if (this.getActiveItem().getUseAction() == UseAction.DRINK) {
 				this.itemUseTimeLeft /= 4;
 			}

@@ -24,14 +24,15 @@ import java.util.List;
 @Mixin(value = TrinketFeatureRenderer.class, remap = false)
 public abstract class MixinTrinketFeatureRenderer {
 
-	@Shadow private FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> context;
+	@Shadow
+	private FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> context;
 
 	// Remap must be on for @At target
 	@SuppressWarnings("DefaultAnnotationParam")
 	@Inject(method = "render", locals = LocalCapture.CAPTURE_FAILSOFT, at = @At(value = "INVOKE", remap = true, ordinal = 0, target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"))
 	private void extendedRender(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player,
-	                            float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw,
-	                            float headPitch, CallbackInfo info, TrinketComponent comp, List<String> names, int i, ItemStack stack) {
+								float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw,
+								float headPitch, CallbackInfo info, TrinketComponent comp, List<String> names, int i, ItemStack stack) {
 		if (stack.getItem() instanceof TrinketArtifactItem) {
 			// TODO: remove this push/pop in the future, left in for compat with old trinket versions
 			matrices.push();

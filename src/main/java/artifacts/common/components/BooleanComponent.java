@@ -7,8 +7,8 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 public class BooleanComponent implements AutoSyncedComponent {
 
-	private boolean bool;
 	private final String name;
+	private boolean bool;
 
 	public BooleanComponent(String name) {
 		this.name = name;

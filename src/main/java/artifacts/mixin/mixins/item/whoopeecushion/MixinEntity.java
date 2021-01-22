@@ -16,7 +16,7 @@ public abstract class MixinEntity {
 
 	@Inject(method = "setSneaking", at = @At("RETURN"))
 	private void playFartSound(boolean sneaking, CallbackInfo info) {
-		Entity entity = (Entity)(Object) this;
+		Entity entity = (Entity) (Object) this;
 
 		//noinspection ConstantConditions
 		if (sneaking && !entity.world.isClient() && entity instanceof LivingEntity

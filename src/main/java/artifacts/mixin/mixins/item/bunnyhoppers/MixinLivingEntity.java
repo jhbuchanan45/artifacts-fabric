@@ -13,7 +13,7 @@ public abstract class MixinLivingEntity {
 
 	@Inject(method = "handleFallDamage", cancellable = true, at = @At("HEAD"))
 	private void cancelFallDamage(float fallDistance, float damageMultiplier, CallbackInfoReturnable<Boolean> info) {
-		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, (LivingEntity)(Object) this)) {
+		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, (LivingEntity) (Object) this)) {
 			info.setReturnValue(false);
 		}
 	}

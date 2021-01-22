@@ -14,7 +14,8 @@ import java.util.function.Predicate;
 
 public final class TrinketsHelper {
 
-	private TrinketsHelper() {}
+	private TrinketsHelper() {
+	}
 
 	public static boolean isEquipped(Item item, LivingEntity entity) {
 		return isEquipped(item, entity, false);

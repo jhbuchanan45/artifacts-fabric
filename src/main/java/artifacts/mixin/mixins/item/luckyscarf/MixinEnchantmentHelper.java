@@ -19,7 +19,7 @@ public abstract class MixinEnchantmentHelper {
 	@Inject(method = "getLevel", at = @At("RETURN"), cancellable = true)
 	private static void increaseFortune(Enchantment enchantment, ItemStack stack, CallbackInfoReturnable<Integer> info) {
 		//noinspection ConstantConditions
-		LivingEntity holder = ((ItemStackAccessor)(Object) stack).getHolder() instanceof LivingEntity ? (LivingEntity) ((ItemStackAccessor)(Object) stack).getHolder() : null;
+		LivingEntity holder = ((ItemStackAccessor) (Object) stack).getHolder() instanceof LivingEntity ? (LivingEntity) ((ItemStackAccessor) (Object) stack).getHolder() : null;
 		if (enchantment == Enchantments.FORTUNE && TrinketsHelper.isEquipped(Items.LUCKY_SCARF, holder)) {
 			info.setReturnValue(info.getReturnValueI() + 1);
 		}
