@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "artifacts.mixin.mixins",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "artifacts.mixin.ArtifactsMixinPlugin",
   "mixins": [
     "accessors.DamageSourceAccessor",
     "accessors.ItemEntityAccessor",
@@ -11,6 +12,7 @@
     "accessors.ToolManagerImplAccessor",
     "accessors.ToolManagerImplEntryImplAccessor",
     "dev.MixinLootableContainerBlockEntity",
+    "dev.MixinTitleScreen",
     "event.MixinEnchantmentHelper",
     "event.MixinLivingEntities",
     "event.MixinLivingEntity",
