@@ -28,13 +28,13 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 	protected boolean jumping;
 	// Is entity double jumping in this tick
 	@Unique
-	private boolean artifacts$isDoubleJumping = false;
+	private boolean isDoubleJumping = false;
 	// Has entity released jump key since last jump
 	@Unique
-	private boolean artifacts$jumpWasReleased = false;
+	private boolean jumpWasReleased = false;
 	// Has entity double jumped during current airtime
 	@Unique
-	private boolean artifacts$hasDoubleJumped = false;
+	private boolean hasDoubleJumped = false;
 
 	public LivingEntityMixin(EntityType<?> type, World world) {
 		super(type, world);
@@ -51,7 +51,7 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 	public void artifacts$doubleJump() {
 		// Call the vanilla jump method
 		// We modify the behaviour of this method in multiple places if artifacts$isDoubleJumping is true
-		this.artifacts$isDoubleJumping = true;
+		this.isDoubleJumping = true;
 		this.jump();
 
 		// Play jump sound
@@ -68,7 +68,7 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 			ClientSidePacketRegistry.INSTANCE.sendToServer(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, new PacketByteBuf(Unpooled.buffer()));
 		}
 
-		this.artifacts$isDoubleJumping = false;
+		this.isDoubleJumping = false;
 	}
 
 	@ModifyVariable(method = "handleFallDamage", ordinal = 0, at = @At("HEAD"))
@@ -85,23 +85,23 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 	@Inject(method = "tickMovement", at = @At("HEAD"))
 	private void invokeDoubleJump(CallbackInfo info) {
 		LivingEntity self = (LivingEntity) (Object) this;
-		artifacts$jumpWasReleased |= !this.jumping;
+		jumpWasReleased |= !this.jumping;
 
 		if ((this.isOnGround() || this.isClimbing()) && !this.isTouchingWater()) {
-			this.artifacts$hasDoubleJumped = false;
+			this.hasDoubleJumped = false;
 		}
 
 		boolean flying = self instanceof PlayerEntity && ((PlayerEntity) self).abilities.flying;
-		if (this.jumping && this.artifacts$jumpWasReleased && !this.isTouchingWater() && !this.isOnGround() && !this.hasVehicle()
-				&& !this.artifacts$hasDoubleJumped && !flying && TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, self)) {
+		if (this.jumping && this.jumpWasReleased && !this.isTouchingWater() && !this.isOnGround() && !this.hasVehicle()
+				&& !this.hasDoubleJumped && !flying && TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, self)) {
 			this.artifacts$doubleJump();
-			this.artifacts$hasDoubleJumped = true;
+			this.hasDoubleJumped = true;
 		}
 	}
 
 	@Inject(method = "jump", at = @At("RETURN"))
 	private void setJumpReleased(CallbackInfo info) {
-		this.artifacts$jumpWasReleased = false;
+		this.jumpWasReleased = false;
 	}
 
 	// The next three injectors modify the behaviour of the vanilla jump
@@ -109,18 +109,18 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 
 	@Inject(method = "getJumpVelocity", cancellable = true, at = @At("HEAD"))
 	private void increaseBaseDoubleJumpVelocity(CallbackInfoReturnable<Float> info) {
-		if (this.artifacts$isDoubleJumping) {
+		if (this.isDoubleJumping) {
 			info.setReturnValue(0.5f);
 		}
 	}
 
 	@ModifyArg(method = "jump", index = 1, at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setVelocity(DDD)V"))
 	private double sprintingDoubleJumpUpwardVelocityMultiplier(double y) {
-		return this.artifacts$isDoubleJumping && this.isSprinting() ? y * 1.5 : y;
+		return this.isDoubleJumping && this.isSprinting() ? y * 1.5 : y;
 	}
 
 	@ModifyConstant(method = "jump", constant = @Constant(floatValue = 0.2f))
 	private float sprintingDoubleJumpHorizontalVelocityMultiplier(float multiplier) {
-		return this.artifacts$isDoubleJumping ? 0.65f : multiplier;
+		return this.isDoubleJumping ? 0.65f : multiplier;
 	}
 }
