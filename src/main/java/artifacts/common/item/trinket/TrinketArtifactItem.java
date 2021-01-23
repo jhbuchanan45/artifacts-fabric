@@ -1,5 +1,6 @@
 package artifacts.common.item.trinket;
 
+import artifacts.Artifacts;
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Components;
@@ -168,10 +169,12 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	protected abstract BipedEntityModel<LivingEntity> createModel();
 
 	private void playExtraHurtSound(LivingEntity entity, float volume, float pitch) {
-		SoundEvent hurtSound = getExtraHurtSound();
+		if (Artifacts.CONFIG.general.playExtraHurtSounds) {
+			SoundEvent hurtSound = getExtraHurtSound();
 
-		if (hurtSound != null && TrinketsHelper.isEquipped(this, entity, true)) {
-			entity.playSound(hurtSound, volume, pitch);
+			if (hurtSound != null && TrinketsHelper.isEquipped(this, entity, true)) {
+				entity.playSound(hurtSound, volume, pitch);
+			}
 		}
 	}
 }

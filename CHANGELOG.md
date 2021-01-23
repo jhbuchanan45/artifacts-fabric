@@ -6,10 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Config option to disable extra hurt sounds for Kitty Slippers and Bunny Hoppers
 - Dev: use mixin plugin to apply development mixins
 - Dev: automated builds and releases
 
 ### Changed
+- Tweaked loot tables
 - Updated French translations
 
 ### Fixed
