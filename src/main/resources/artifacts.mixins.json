@@ -37,6 +37,7 @@
     "item.superstitioushat.EnchantmentHelperMixin",
     "item.umbrella.LivingEntityMixin",
     "item.universalattractor.PlayerEntityMixin",
+    "item.waterwalking.FluidBlockMixin",
     "item.waterwalking.LivingEntityMixin",
     "item.whoopeecushion.EntityMixin",
     "statuseffect.LivingEntityMixin",

@@ -5,6 +5,8 @@ import artifacts.common.trinkets.TrinketsHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,9 +24,9 @@ public abstract class LivingEntityMixin extends Entity {
 	@Shadow public abstract void setSprinting(boolean sprinting);
 
 	@Inject(method = "canWalkOnFluid", at = @At("RETURN"), cancellable = true)
-	private void canSprintOnFluid(CallbackInfoReturnable<Boolean> info) {
+	private void canSprintOnFluid(Fluid fluid, CallbackInfoReturnable<Boolean> info) {
 		//noinspection ConstantConditions
-		if (TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, (LivingEntity)(Object) this) && this.isSprinting()) {
+		if (TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, (LivingEntity)(Object) this) && fluid.isIn(FluidTags.WATER)) {
 			info.setReturnValue(true);
 		}
 	}
