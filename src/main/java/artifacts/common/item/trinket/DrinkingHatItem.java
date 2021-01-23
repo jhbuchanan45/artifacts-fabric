@@ -5,6 +5,8 @@ import artifacts.common.trinkets.Slots;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -27,11 +29,8 @@ public class DrinkingHatItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected DrinkingHatModel getModel() {
-		if (model == null) {
-			model = new DrinkingHatModel();
-		}
-		return (DrinkingHatModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new DrinkingHatModel();
 	}
 
 	@Override

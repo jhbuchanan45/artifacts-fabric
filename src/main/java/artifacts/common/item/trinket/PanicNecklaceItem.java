@@ -22,7 +22,6 @@ import net.minecraft.util.Identifier;
 public class PanicNecklaceItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/panic_necklace.png");
-	private Object model;
 
 	public PanicNecklaceItem() {
 		super(new Item.Settings());
@@ -42,11 +41,8 @@ public class PanicNecklaceItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected BipedEntityModel<LivingEntity> getModel() {
-		if (model == null) {
-			model = new PanicNecklaceModel();
-		}
-		return (PanicNecklaceModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new PanicNecklaceModel();
 	}
 
 	@Override

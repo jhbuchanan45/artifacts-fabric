@@ -11,17 +11,17 @@ import net.minecraft.util.Identifier;
 
 public class MimicRenderer extends MobEntityRenderer<MimicEntity, MimicModel> {
 
-    private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/mimic.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/mimic.png");
 
-    public MimicRenderer(EntityRenderDispatcher manager) {
-        super(manager, new MimicModel(), 0.45F);
-        addFeature(new MimicChestLayer(this));
-    }
+	public MimicRenderer(EntityRenderDispatcher manager) {
+		super(manager, new MimicModel(), 0.45F);
+		addFeature(new MimicChestLayer(this));
+	}
 
-    @Override
-    public void render(MimicEntity mimic, float entityYaw, float partialTicks, MatrixStack matrixStack, VertexConsumerProvider buffer, int packedLight) {
-        super.render(mimic, entityYaw, partialTicks, matrixStack, buffer, packedLight);
-    }
+	@Override
+	public void render(MimicEntity mimic, float entityYaw, float partialTicks, MatrixStack matrixStack, VertexConsumerProvider buffer, int packedLight) {
+		super.render(mimic, entityYaw, partialTicks, matrixStack, buffer, packedLight);
+	}
 
 	@Override
 	public Identifier getTexture(MimicEntity entity) {

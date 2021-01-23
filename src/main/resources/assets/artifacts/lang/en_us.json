@@ -2,6 +2,9 @@
   "trinkets.slot.feet.shoes": "Shoes",
   "trinkets.slot.head.hat": "Hat",
   "trinkets.slot.offhand.gloves": "Gloves",
+  "artifacts.trinket.effectsenabled": "Effects Enabled",
+  "artifacts.trinket.effectsdisabled": "Effects Disabled",
+  "artifacts.trinket.togglekeybind": "(Sneak + Use)",
 
   "itemGroup.artifacts.item_group": "Artifacts",
 
@@ -43,6 +46,8 @@
   "item.artifacts.bunny_hoppers": "Bunny Hoppers",
   "item.artifacts.crystal_heart": "Crystal Heart",
   "item.artifacts.villager_hat": "Villager Hat",
+  "item.artifacts.cloud_in_a_bottle": "Cloud in a Bottle",
+  "item.artifacts.whoopee_cushion": "Whoopee Cushion",
 
   "item.artifacts.snorkel.tooltip": "Allows the wearer to\nbreathe underwater",
   "item.artifacts.plastic_drinking_hat.tooltip": "Decreases the time it takes\nto drink drinkable items",
@@ -74,12 +79,17 @@
   "item.artifacts.bunny_hoppers.tooltip": "Increases the wearer's jump height\nand grants immunity to fall damage",
   "item.artifacts.crystal_heart.tooltip": "Increases the wearer's maximum health",
   "item.artifacts.villager_hat.tooltip": "Decreases trading prices and\nvillagers occasionally give\ngifts to the wearer",
+  "item.artifacts.cloud_in_a_bottle.tooltip": "Allows the wearer to double jump",
+  "item.artifacts.whoopee_cushion.tooltip": "Increases the wearer's flatulence",
 
   "text.autoconfig.artifacts.title": "Artifacts Configuration",
   "text.autoconfig.artifacts.category.general": "General",
   "text.autoconfig.artifacts.option.general.everlastingFoodCooldown": "Everlasting foods cooldown",
   "text.autoconfig.artifacts.option.general.everlastingFoodCooldown.@Tooltip[0]": "Cooldown in ticks for the Everlasting",
   "text.autoconfig.artifacts.option.general.everlastingFoodCooldown.@Tooltip[1]": "Beef and Eternal Steak items",
+  "text.autoconfig.artifacts.option.general.playExtraHurtSounds": "Play extra hurt sounds",
+  "text.autoconfig.artifacts.option.general.playExtraHurtSounds.@Tooltip[0]": "Play animal hurt sounds when taking damage with",
+  "text.autoconfig.artifacts.option.general.playExtraHurtSounds.@Tooltip[1]": "the Kitty Slippers or Bunny Hoppers artifacts",
   "text.autoconfig.artifacts.category.worldgen": "World Gen",
   "text.autoconfig.artifacts.option.worldgen.campsite": "Underground Campsites",
   "text.autoconfig.artifacts.option.worldgen.campsite.genChance": "Generation frequency (per chunk)",

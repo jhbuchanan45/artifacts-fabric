@@ -24,6 +24,19 @@ public class UmbrellaItem extends ArtifactItem {
         return true;
     }*/
 
+	public static HeldStatus getHeldStatusForHand(LivingEntity entity, Hand hand) {
+		if (entity.getStackInHand(hand).getItem() != Items.UMBRELLA) {
+			return HeldStatus.NONE;
+		}
+
+		if (entity.isUsingItem() && entity.getActiveHand() == hand && !entity.getActiveItem().isEmpty()
+				&& entity.getActiveItem().getUseAction() == UseAction.BLOCK) {
+			return HeldStatus.BLOCKING;
+		}
+
+		return HeldStatus.HELD_UP;
+	}
+
 	public UseAction getUseAction(ItemStack stack) {
 		return UseAction.BLOCK;
 	}
@@ -36,19 +49,6 @@ public class UmbrellaItem extends ArtifactItem {
 		ItemStack itemstack = player.getStackInHand(hand);
 		player.setCurrentHand(hand);
 		return TypedActionResult.consume(itemstack);
-	}
-
-	public static HeldStatus getHeldStatusForHand(LivingEntity entity, Hand hand) {
-		if (entity.getStackInHand(hand).getItem() != Items.UMBRELLA) {
-			return HeldStatus.NONE;
-		}
-
-		if (entity.isUsingItem() && entity.getActiveHand() == hand && !entity.getActiveItem().isEmpty()
-				&& entity.getActiveItem().getUseAction() == UseAction.BLOCK) {
-			return HeldStatus.BLOCKING;
-		}
-
-		return HeldStatus.HELD_UP;
 	}
 
 	public enum HeldStatus {

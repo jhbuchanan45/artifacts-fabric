@@ -38,6 +38,7 @@ dependencies {
     }
     modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${cca_version}")
     modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${cca_version}")
+    modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-item:${cca_version}")
     modImplementation include("me.shedaniel.cloth:config-2:${project.cloth_config_version}")
     modImplementation include("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}")
     modImplementation("io.github.prospector:modmenu:${project.mod_menu_version}") {
@@ -50,17 +51,7 @@ dependencies {
 
     // Dev runtime
     testmodImplementation sourceSets.main.output
-    modRuntime "net.dblsaiko:winwonders:${project.window_wonders_version}-+"
-    modRuntime("com.github.SuperCoder7979:databreaker:${project.databreaker_version}") {
-        exclude module: "fabric-loader"
-    }
-    modRuntime "curse.maven:iamverysmart:${project.iamverysmart_version}"
-    modRuntime "curse.maven:okzoomer:${project.okzoomer_version}"
     modRuntime "com.github.florensie:auto-load:${project.autoload_version}"
-    modRuntime "curse.maven:hwyla:${project.hwyla_version}"
-    modRuntime "curse.maven:cimtb:${project.cimtb_version}"
-    modRuntime "me.zeroeightsix:fiber:${project.fiber_version}"
-    //modRuntime "curse.maven:rebindallkeys:${project.rebind_all_keys_version}"
 }
 
 processResources {

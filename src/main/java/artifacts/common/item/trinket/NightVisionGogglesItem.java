@@ -11,9 +11,11 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
@@ -23,7 +25,6 @@ public class NightVisionGogglesItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles.png");
 	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles_glow.png");
-	private Object model;
 
 	public NightVisionGogglesItem() {
 		super(new Item.Settings());
@@ -36,11 +37,8 @@ public class NightVisionGogglesItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected NightVisionGogglesModel getModel() {
-		if (model == null) {
-			model = new NightVisionGogglesModel();
-		}
-		return (NightVisionGogglesModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new NightVisionGogglesModel();
 	}
 
 	@Override

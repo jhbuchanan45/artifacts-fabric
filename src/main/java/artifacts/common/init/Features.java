@@ -19,6 +19,7 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 
 import java.util.function.Predicate;
 
+// TODO: Biome Modifications API is experimental, remove suppress warning when stable
 @SuppressWarnings("deprecation")
 public class Features {
 
@@ -35,7 +36,9 @@ public class Features {
 	public static final ConfiguredFeature<?, ?> CAMPSITE_CONFIGURED_FEATURE = Registry.register(
 			BuiltinRegistries.CONFIGURED_FEATURE,
 			new Identifier(Artifacts.MODID, "campsite"),
-			CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).decorate(DECORATOR.configure(new ChanceDecoratorConfig(Artifacts.CONFIG.worldgen.campsite.genChance)))
+			CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).decorate(DECORATOR.configure(
+					new ChanceDecoratorConfig(Artifacts.CONFIG.worldgen.campsite.genChance)
+			))
 	);
 
 	public static void register() {

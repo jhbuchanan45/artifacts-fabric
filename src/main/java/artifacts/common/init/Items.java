@@ -4,6 +4,10 @@ import artifacts.Artifacts;
 import artifacts.common.item.EverlastingFoodItem;
 import artifacts.common.item.UmbrellaItem;
 import artifacts.common.item.trinket.*;
+import artifacts.common.item.trinket.glove.*;
+import artifacts.common.item.trinket.pendant.FlamePendantItem;
+import artifacts.common.item.trinket.pendant.ShockPendantItem;
+import artifacts.common.item.trinket.pendant.ThornPendantItem;
 import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -17,6 +21,7 @@ public class Items {
 	// Misc
 	public static final Item MIMIC_SPAWN_EGG = register("mimic_spawn_egg", new SpawnEggItem(Entities.MIMIC, 0x805113, 0x212121, new Item.Settings().group(ItemGroup.MISC)));
 	public static final Item UMBRELLA = register("umbrella", new UmbrellaItem());
+	public static final Item WHOOPEE_CUSHION = register("whoopee_cushion", new WhoopeeCushionItem());
 
 	// Food
 	public static final Item EVERLASTING_BEEF = register("everlasting_beef", new EverlastingFoodItem(new Item.Settings().food(FoodComponents.BEEF)));
@@ -44,6 +49,7 @@ public class Items {
 	public static final Item ANTIDOTE_VESSEL = register("antidote_vessel", new AntidoteVesselItem());
 	public static final Item UNIVERSAL_ATTRACTOR = register("universal_attractor", new UniversalAttractorItem());
 	public static final Item CRYSTAL_HEART = register("crystal_heart", new CrystalHeartItem());
+	public static final Item CLOUD_IN_A_BOTTLE = register("cloud_in_a_bottle", new CloudInABottleItem());
 
 	// Hands
 	public static final Item DIGGING_CLAWS = register("digging_claws", new DiggingClawsItem());

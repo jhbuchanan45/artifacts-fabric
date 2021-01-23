@@ -8,7 +8,9 @@ import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,7 +23,6 @@ import java.util.List;
 public class UniversalAttractorItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/universal_attractor.png");
-	private Object model;
 
 	public UniversalAttractorItem() {
 		super(new Item.Settings());
@@ -29,7 +30,7 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 
 	@Override
 	// magnet logic from Botania, see https://github.com/Vazkii/Botania
-	public void tick(PlayerEntity player, ItemStack stack) {
+	protected void effectTick(PlayerEntity player, ItemStack stack) {
 		Vec3d playerPos = player.getPos().add(0, 0.75, 0);
 
 		int range = 5;
@@ -37,7 +38,7 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 		int pulled = 0;
 		for (ItemEntity item : items) {
 			boolean attractable = Components.DROPPED_ITEM_ENTITY.maybeGet(item).isPresent()
-					&& (!Components.DROPPED_ITEM_ENTITY.get(item).getWasDropped() || ((ItemEntityAccessor) item).getAge() > 100);
+					&& (!Components.DROPPED_ITEM_ENTITY.get(item).get() || ((ItemEntityAccessor) item).getAge() > 100);
 			if (attractable && item.isAlive() && !item.cannotPickup()) {
 				if (pulled++ > 200) {
 					break;
@@ -54,11 +55,8 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected UniversalAttractorModel getModel() {
-		if (model == null) {
-			model = new UniversalAttractorModel();
-		}
-		return (UniversalAttractorModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new UniversalAttractorModel();
 	}
 
 	@Override

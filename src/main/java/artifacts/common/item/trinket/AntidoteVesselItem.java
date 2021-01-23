@@ -8,6 +8,8 @@ import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -18,14 +20,13 @@ import net.minecraft.util.Identifier;
 public class AntidoteVesselItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/antidote_vessel.png");
-	private Object model;
 
 	public AntidoteVesselItem() {
 		super(new Settings());
 	}
 
 	@Override
-	public void tick(PlayerEntity player, ItemStack stack) {
+	protected void effectTick(PlayerEntity player, ItemStack stack) {
 		// Reduce duration of all negative status effects to 80
 		player.getActiveStatusEffects().forEach((effect, instance) -> {
 			if (!effect.isInstant() && ((StatusEffectAccessor) effect).getType() != StatusEffectType.BENEFICIAL && instance.getDuration() > 80) {
@@ -36,11 +37,8 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	protected AntidoteVesselModel getModel() {
-		if (model == null) {
-			model = new AntidoteVesselModel();
-		}
-		return (AntidoteVesselModel) model;
+	protected BipedEntityModel<LivingEntity> createModel() {
+		return new AntidoteVesselModel();
 	}
 
 	@Override

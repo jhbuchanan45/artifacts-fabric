@@ -43,7 +43,7 @@ public class MimicEntity extends MobEntity implements Monster {
 		return MobEntity.createMobAttributes()
 				.add(EntityAttributes.GENERIC_MAX_HEALTH, 60)
 				.add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16)
-				.add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.5)
+				.add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1)
 				.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
 				.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5);
 	}
@@ -134,10 +134,16 @@ public class MimicEntity extends MobEntity implements Monster {
 		if (source.getAttacker() instanceof PlayerEntity) {
 			setTarget((LivingEntity) source.getAttacker());
 		}
+
 		if (ticksInAir <= 0 && source.isProjectile() && !source.isUnblockable()) {
 			playSound(SoundEvents.MIMIC_HURT, getSoundVolume(), getSoundPitch());
 			return false;
 		}
+
+		if (isOnGround() && getRandom().nextBoolean() && getMoveControl() instanceof MimicMovementController) {
+			((MimicMovementController) getMoveControl()).setDirection(getRandom().nextInt(4) * 90, true);
+		}
+
 		return super.damage(source, amount);
 	}
 
@@ -180,15 +186,12 @@ public class MimicEntity extends MobEntity implements Monster {
 
 		@Override
 		public boolean canStart() {
-			LivingEntity livingEntity = mimic.getTarget();
+			LivingEntity target = mimic.getTarget();
 
-			if (livingEntity == null) {
-				return false;
-			} else if (!livingEntity.isAlive()) {
-				return false;
-			} else {
-				return !(livingEntity instanceof PlayerEntity) || !((PlayerEntity) livingEntity).abilities.invulnerable;
-			}
+			return target instanceof PlayerEntity
+					&& target.isAlive()
+					&& target.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL
+					&& !((PlayerEntity) target).abilities.invulnerable;
 		}
 
 		@Override
@@ -199,17 +202,13 @@ public class MimicEntity extends MobEntity implements Monster {
 
 		@Override
 		public boolean shouldContinue() {
-			LivingEntity livingEntity = mimic.getTarget();
+			LivingEntity target = mimic.getTarget();
 
-			if (livingEntity == null) {
-				return false;
-			} else if (!livingEntity.isAlive()) {
-				return false;
-			} else if (livingEntity instanceof PlayerEntity && ((PlayerEntity) livingEntity).abilities.invulnerable) {
-				return false;
-			} else {
-				return --timeRemaining > 0;
-			}
+			return target instanceof PlayerEntity
+					&& target.isAlive()
+					&& target.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL
+					&& !((PlayerEntity) target).abilities.invulnerable
+					&& --timeRemaining > 0;
 		}
 
 		@Override
@@ -315,9 +314,9 @@ public class MimicEntity extends MobEntity implements Monster {
 			jumpDelay = mimic.random.nextInt(320) + 640;
 		}
 
-		public void setDirection(float rotation, boolean isAggressive) {
+		public void setDirection(float rotation, boolean shouldJump) {
 			this.rotationDegrees = rotation;
-			if (isAggressive && jumpDelay > 10) {
+			if (shouldJump && jumpDelay > 10) {
 				jumpDelay = 10;
 			}
 		}
