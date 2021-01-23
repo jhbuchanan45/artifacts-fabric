@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.1] - 2020-01-23
+### Fixed
+- Dedicated server fails to start due to mixin not finding client-side only class
+
 ## [2.2.0] - 2021-01-23
 ### Added
 - Config option to disable extra hurt sounds for Kitty Slippers and Bunny Hoppers
@@ -96,3 +100,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2020-11-02
 ### Added
 - Initial release
+
+[Unreleased]: https://github.com/florensie/artifacts-fabric/compare/v2.2.1...HEAD
+[2.2.1]: https://github.com/florensie/artifacts-fabric/compare/v2.2.0...v2.2.1
+[2.2.0]: https://github.com/florensie/artifacts-fabric/releases/tag/v2.2.0

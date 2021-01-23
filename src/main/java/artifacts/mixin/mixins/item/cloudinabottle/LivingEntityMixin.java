@@ -4,6 +4,8 @@ import artifacts.common.init.Items;
 import artifacts.common.item.trinket.CloudInABottleItem;
 import artifacts.common.trinkets.TrinketsHelper;
 import artifacts.mixin.extensions.LivingEntityExtensions;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.entity.Entity;
@@ -64,10 +66,17 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 
 		// Send double jump packet to server if we're on the client
 		if (this.world.isClient) {
-			ClientPlayNetworking.send(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, PacketByteBufs.empty());
+			sendDoubleJumpPacket();
 		}
 
 		this.isDoubleJumping = false;
+	}
+
+	// This code is extracted because the mixin fails to apply with the usage of client-side only classes
+	@Unique
+	@Environment(EnvType.CLIENT)
+	private static void sendDoubleJumpPacket() {
+		ClientPlayNetworking.send(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, PacketByteBufs.empty());
 	}
 
 	@ModifyVariable(method = "handleFallDamage", ordinal = 0, at = @At("HEAD"))
