@@ -7,5 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Dev: use mixin plugin to apply development mixins
-- Dev: refactor/reformat code
 - Dev: automated builds and releases
+
+### Changed
+- Updated French translations
+
+### Fixed
+- Dev: use new fabric networking api
+- Dev: refactor/reformat code

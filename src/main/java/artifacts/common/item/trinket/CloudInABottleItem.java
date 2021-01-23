@@ -7,12 +7,14 @@ import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.network.PacketContext;
-import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -25,12 +27,11 @@ public class CloudInABottleItem extends TrinketArtifactItem {
 
 	public CloudInABottleItem() {
 		super(new Settings());
-		ServerSidePacketRegistry.INSTANCE.register(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacket);
+		ServerPlayNetworking.registerGlobalReceiver(C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacker);
 	}
 
-	private static void handleDoubleJumpPacket(PacketContext context, PacketByteBuf clientPassedData) {
-		context.getTaskQueue().execute(() -> {
-			ServerPlayerEntity player = (ServerPlayerEntity) context.getPlayer();
+	private static void handleDoubleJumpPacker(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+		server.execute(() -> {
 			((LivingEntityExtensions) player).artifacts$doubleJump();
 
 			// Spawn particles

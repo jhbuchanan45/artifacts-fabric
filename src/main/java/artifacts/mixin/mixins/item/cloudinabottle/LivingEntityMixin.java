@@ -4,13 +4,12 @@ import artifacts.common.init.Items;
 import artifacts.common.item.trinket.CloudInABottleItem;
 import artifacts.common.trinkets.TrinketsHelper;
 import artifacts.mixin.extensions.LivingEntityExtensions;
-import io.netty.buffer.Unpooled;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
@@ -65,7 +64,7 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 
 		// Send double jump packet to server if we're on the client
 		if (this.world.isClient) {
-			ClientSidePacketRegistry.INSTANCE.sendToServer(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, new PacketByteBuf(Unpooled.buffer()));
+			ClientPlayNetworking.send(CloudInABottleItem.C2S_DOUBLE_JUMPED_ID, PacketByteBufs.empty());
 		}
 
 		this.isDoubleJumping = false;
