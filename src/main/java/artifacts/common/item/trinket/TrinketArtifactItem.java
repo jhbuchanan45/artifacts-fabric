@@ -1,8 +1,10 @@
 package artifacts.common.item.trinket;
 
 import artifacts.client.render.TrinketRenderHelper;
+import artifacts.common.events.PlayHurtSoundCallback;
 import artifacts.common.init.Components;
 import artifacts.common.item.ArtifactItem;
+import artifacts.common.trinkets.TrinketsHelper;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import dev.emi.trinkets.api.Trinket;
@@ -47,6 +49,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	public TrinketArtifactItem(Settings settings) {
 		super(settings);
 		DispenserBlock.registerBehavior(this, TrinketItem.TRINKET_DISPENSER_BEHAVIOR);
+		PlayHurtSoundCallback.EVENT.register(this::playExtraHurtSound);
 	}
 
 	public static boolean effectsEnabled(ItemStack stack) {
@@ -114,15 +117,25 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		return actionResult;
 	}
 
+	/**
+	 * @return The {@link SoundEvent} to play when the artifact is right-click equipped
+	 */
 	protected SoundEvent getEquipSound() {
 		return SoundEvents.ITEM_ARMOR_EQUIP_GENERIC;
+	}
+
+	/**
+	 * @return An extra {@link SoundEvent} to play when an entity wearing this artifact is hurt
+	 */
+	protected SoundEvent getExtraHurtSound() {
+		return null;
 	}
 
 	/**
 	 * Used to give a Trinket a permanent status effect while wearing it.
 	 * The StatusEffectInstance is applied every 15 ticks so a duration greater than that is required.
 	 *
-	 * @return The {@link StatusEffectInstance} to be applied
+	 * @return The {@link StatusEffectInstance} to be applied while wearing this artifact
 	 */
 	public StatusEffectInstance getPermanentEffect() {
 		return null;
@@ -153,4 +166,12 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Environment(EnvType.CLIENT)
 	protected abstract BipedEntityModel<LivingEntity> createModel();
+
+	private void playExtraHurtSound(LivingEntity entity, float volume, float pitch) {
+		SoundEvent hurtSound = getExtraHurtSound();
+
+		if (hurtSound != null && TrinketsHelper.isEquipped(this, entity, true)) {
+			entity.playSound(hurtSound, volume, pitch);
+		}
+	}
 }

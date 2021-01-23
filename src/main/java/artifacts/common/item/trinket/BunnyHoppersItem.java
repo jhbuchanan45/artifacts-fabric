@@ -14,6 +14,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -23,18 +24,16 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 
 	public BunnyHoppersItem() {
 		super(new Item.Settings());
-		PlayHurtSoundCallback.EVENT.register(BunnyHoppersItem::onPlayHurtSound);
-	}
-
-	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
-		if (TrinketsHelper.isEquipped(Items.BUNNY_HOPPERS, entity, true)) {
-			entity.playSound(SoundEvents.ENTITY_RABBIT_HURT, volume, pitch);
-		}
 	}
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {
 		return new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 1, true, false);
+	}
+
+	@Override
+	protected SoundEvent getExtraHurtSound() {
+		return SoundEvents.ENTITY_RABBIT_HURT;
 	}
 
 	@Override

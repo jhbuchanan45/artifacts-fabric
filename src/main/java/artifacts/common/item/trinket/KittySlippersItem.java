@@ -22,13 +22,11 @@ public class KittySlippersItem extends TrinketArtifactItem {
 
 	public KittySlippersItem() {
 		super(new Item.Settings());
-		PlayHurtSoundCallback.EVENT.register(KittySlippersItem::onPlayHurtSound);
 	}
 
-	private static void onPlayHurtSound(LivingEntity entity, float volume, float pitch) {
-		if (TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, entity, true)) {
-			entity.playSound(SoundEvents.ENTITY_CAT_HURT, volume, pitch);
-		}
+	@Override
+	protected SoundEvent getExtraHurtSound() {
+		return SoundEvents.ENTITY_CAT_HURT;
 	}
 
 	@Override
