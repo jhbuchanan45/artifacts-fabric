@@ -37,14 +37,17 @@ public class UmbrellaItem extends ArtifactItem {
 		return HeldStatus.HELD_UP;
 	}
 
+	@Override
 	public UseAction getUseAction(ItemStack stack) {
 		return UseAction.BLOCK;
 	}
 
+	@Override
 	public int getMaxUseTime(ItemStack stack) {
 		return 72000;
 	}
 
+	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		ItemStack itemstack = player.getStackInHand(hand);
 		player.setCurrentHand(hand);
