@@ -37,6 +37,16 @@ public class UmbrellaItem extends ArtifactItem {
 		return HeldStatus.HELD_UP;
 	}
 
+	public static boolean isHeldUpInEitherHand(LivingEntity entity) {
+		for (Hand hand : Hand.values()) {
+			if (getHeldStatusForHand(entity, hand) == HeldStatus.HELD_UP) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	@Override
 	public UseAction getUseAction(ItemStack stack) {
 		return UseAction.BLOCK;

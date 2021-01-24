@@ -8,6 +8,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(StatusEffect.class)
 public interface StatusEffectAccessor {
 
-	@Accessor
+	@Accessor("type")
 	StatusEffectType getType();
 }
