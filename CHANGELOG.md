@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add Umbrella to Origin's shields tag
 - When the umbrella is held up (non-blocking), the player no longer gains effects from being rained on like extinguishing fire or Conduit Power
+- Modify Origin's `exposed_to_sun` condition the umbrella is held up
 
 ## [2.2.1] - 2020-01-23
 ### Fixed

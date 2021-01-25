@@ -49,6 +49,11 @@ dependencies {
         transitive = false
     }
 
+    // Compat
+    modCompileOnly("com.github.apace100:origins-fabric:v0.4.6") {
+        transitive = false
+    }
+
     // Dev runtime
     testmodImplementation sourceSets.main.output
     modRuntime "com.github.florensie:auto-load:${project.autoload_version}"

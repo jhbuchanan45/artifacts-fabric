@@ -11,6 +11,7 @@
     "accessors.StatusEffectAccessor",
     "accessors.ToolManagerImplAccessor",
     "accessors.ToolManagerImplEntryImplAccessor",
+    "compat.origins.ConditionFactoryMixin",
     "dev.LootableContainerBlockEntityMixin",
     "dev.TitleScreenMixin",
     "event.EnchantmentHelperMixin",
