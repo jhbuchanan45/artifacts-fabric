@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.item.kittyslippers;
 
-import artifacts.common.init.Items;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.init.Items;
+import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.FollowTargetGoal;

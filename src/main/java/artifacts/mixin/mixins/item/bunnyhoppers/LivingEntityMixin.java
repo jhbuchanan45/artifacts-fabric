@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.item.bunnyhoppers;
 
-import artifacts.common.init.Items;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.init.Items;
+import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

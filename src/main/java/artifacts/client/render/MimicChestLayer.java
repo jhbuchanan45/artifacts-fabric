@@ -2,7 +2,7 @@ package artifacts.client.render;
 
 import artifacts.client.render.model.entity.MimicChestLayerModel;
 import artifacts.client.render.model.entity.MimicModel;
-import artifacts.common.entity.MimicEntity;
+import artifacts.entity.MimicEntity;
 import net.minecraft.block.enums.ChestType;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;

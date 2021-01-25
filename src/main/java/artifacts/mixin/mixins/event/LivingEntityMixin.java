@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.event;
 
-import artifacts.common.events.LivingEntitySprintingCallback;
-import artifacts.common.events.PlayHurtSoundCallback;
+import artifacts.events.LivingEntitySprintingCallback;
+import artifacts.events.PlayHurtSoundCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

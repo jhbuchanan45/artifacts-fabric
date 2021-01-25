@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.item.pendant;
 
-import artifacts.common.init.Items;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.init.Items;
+import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;

@@ -1,6 +1,6 @@
 package artifacts.mixin.mixins.item.umbrella.client;
 
-import artifacts.common.item.UmbrellaItem;
+import artifacts.item.UmbrellaItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;

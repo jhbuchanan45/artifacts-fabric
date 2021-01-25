@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.item.firegauntlet;
 
-import artifacts.common.init.Items;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.init.Items;
+import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,6 +1,6 @@
 package artifacts.mixin.mixins.event.client;
 
-import artifacts.common.events.PlayHurtSoundCallback;
+import artifacts.events.PlayHurtSoundCallback;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

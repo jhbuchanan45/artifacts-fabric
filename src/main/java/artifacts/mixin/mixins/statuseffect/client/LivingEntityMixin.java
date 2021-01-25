@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.statuseffect.client;
 
-import artifacts.common.item.trinket.TrinketArtifactItem;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.item.trinket.TrinketArtifactItem;
+import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import org.spongepowered.asm.mixin.Mixin;

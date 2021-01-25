@@ -1,8 +1,8 @@
 package artifacts.mixin.mixins.item.cloudinabottle;
 
-import artifacts.common.init.Items;
-import artifacts.common.item.trinket.CloudInABottleItem;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.init.Items;
+import artifacts.item.trinket.CloudInABottleItem;
+import artifacts.trinkets.TrinketsHelper;
 import artifacts.mixin.extensions.LivingEntityExtensions;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -58,7 +58,7 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 		// Play jump sound
 		LivingEntity self = (LivingEntity) (Object) this;
 		SoundEvent jumpSound = TrinketsHelper.isEquipped(Items.WHOOPEE_CUSHION, self) ?
-				artifacts.common.init.SoundEvents.FART : SoundEvents.BLOCK_WOOL_FALL;
+				artifacts.init.SoundEvents.FART : SoundEvents.BLOCK_WOOL_FALL;
 		this.playSound(jumpSound, 1, 0.9F + self.getRandom().nextFloat() * 0.2F);
 
 		// Reset fall distance for fall damage

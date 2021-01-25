@@ -1,8 +1,8 @@
 package artifacts.mixin.mixins.item.flippers;
 
-import artifacts.common.init.Items;
-import artifacts.common.item.trinket.FlippersItem;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.init.Items;
+import artifacts.item.trinket.FlippersItem;
+import artifacts.trinkets.TrinketsHelper;
 import artifacts.mixin.extensions.LivingEntityExtensions;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;

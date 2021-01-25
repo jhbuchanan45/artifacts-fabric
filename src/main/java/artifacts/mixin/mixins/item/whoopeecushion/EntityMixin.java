@@ -1,8 +1,8 @@
 package artifacts.mixin.mixins.item.whoopeecushion;
 
-import artifacts.common.init.Items;
-import artifacts.common.init.SoundEvents;
-import artifacts.common.trinkets.TrinketsHelper;
+import artifacts.init.Items;
+import artifacts.init.SoundEvents;
+import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.SoundCategory;

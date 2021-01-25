@@ -2,7 +2,7 @@ package artifacts.client.render;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.entity.MimicModel;
-import artifacts.common.entity.MimicEntity;
+import artifacts.entity.MimicEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;

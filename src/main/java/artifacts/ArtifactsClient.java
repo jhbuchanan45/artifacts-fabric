@@ -1,8 +1,8 @@
 package artifacts;
 
 import artifacts.client.render.MimicRenderer;
-import artifacts.common.init.Entities;
-import artifacts.common.init.Items;
+import artifacts.init.Entities;
+import artifacts.init.Items;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,7 +10,6 @@ import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.util.Identifier;
 
-@SuppressWarnings("unused")
 @Environment(EnvType.CLIENT)
 public class ArtifactsClient implements ClientModInitializer {
 
@@ -20,8 +19,7 @@ public class ArtifactsClient implements ClientModInitializer {
 		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> new MimicRenderer(dispatcher));
 
 		// ModelPredicateProvider for rendering of umbrella blocking
-		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity) -> {
-			return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0;
-		});
+		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity)
+				-> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0);
 	}
 }

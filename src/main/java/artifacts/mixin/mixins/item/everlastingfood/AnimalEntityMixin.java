@@ -1,7 +1,7 @@
 package artifacts.mixin.mixins.item.everlastingfood;
 
 import artifacts.Artifacts;
-import artifacts.common.item.EverlastingFoodItem;
+import artifacts.item.EverlastingFoodItem;
 import artifacts.mixin.extensions.AnimalEntityExtensions;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;

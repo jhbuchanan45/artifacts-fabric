@@ -1,6 +1,6 @@
 package artifacts.mixin.mixins.trinkets;
 
-import artifacts.common.item.trinket.TrinketArtifactItem;
+import artifacts.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.TrinketFeatureRenderer;
 import dev.emi.trinkets.api.TrinketComponent;
 import net.minecraft.client.network.AbstractClientPlayerEntity;

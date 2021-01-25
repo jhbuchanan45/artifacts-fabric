@@ -1,7 +1,7 @@
 package artifacts;
 
-import artifacts.common.config.ModConfig;
-import artifacts.common.init.*;
+import artifacts.config.ModConfig;
+import artifacts.init.*;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketSlots;
@@ -39,9 +39,9 @@ public class Artifacts implements ModInitializer {
 				new Identifier("trinkets", "textures/item/empty_trinket_slot_belt.png"));
 		TrinketSlots.addSlot(SlotGroups.CHEST, Slots.NECKLACE,
 				new Identifier("trinkets", "textures/item/empty_trinket_slot_necklace.png"));
-		TrinketSlots.addSlot(SlotGroups.HEAD, artifacts.common.trinkets.Slots.HAT,
+		TrinketSlots.addSlot(SlotGroups.HEAD, artifacts.trinkets.Slots.HAT,
 				new Identifier(MODID, "textures/item/empty_trinket_slot_hat.png"));
-		TrinketSlots.addSlot(SlotGroups.FEET, artifacts.common.trinkets.Slots.SHOES,
+		TrinketSlots.addSlot(SlotGroups.FEET, artifacts.trinkets.Slots.SHOES,
 				new Identifier(MODID, "textures/item/empty_trinket_slot_shoes.png"));
 		TrinketSlots.addSlot(SlotGroups.HAND, Slots.GLOVES,
 				new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));

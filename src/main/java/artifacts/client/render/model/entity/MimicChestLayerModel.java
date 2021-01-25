@@ -1,6 +1,6 @@
 package artifacts.client.render.model.entity;
 
-import artifacts.common.entity.MimicEntity;
+import artifacts.entity.MimicEntity;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;

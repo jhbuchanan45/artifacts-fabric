@@ -1,6 +1,6 @@
 package artifacts.mixin.mixins.event;
 
-import artifacts.common.events.UserHurtCallback;
+import artifacts.events.UserHurtCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

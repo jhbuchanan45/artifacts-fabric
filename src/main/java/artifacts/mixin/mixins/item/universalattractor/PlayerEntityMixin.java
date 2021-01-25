@@ -1,6 +1,6 @@
 package artifacts.mixin.mixins.item.universalattractor;
 
-import artifacts.common.init.Components;
+import artifacts.init.Components;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
