@@ -26,10 +26,10 @@
       "artifacts.ArtifactsClient"
     ],
     "modmenu": [
-      "artifacts.common.config.ModMenuConfig"
+      "artifacts.config.ModMenuConfig"
     ],
     "cardinal-components": [
-      "artifacts.common.init.Components"
+      "artifacts.init.Components"
     ]
   },
   "mixins": [
