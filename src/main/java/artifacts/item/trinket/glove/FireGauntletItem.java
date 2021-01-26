@@ -40,7 +40,7 @@ public class FireGauntletItem extends GloveItem {
 	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel, AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
 		boolean smallArms = hasSmallArms(player);
 		boolean hand = slot.split(":")[0].equals(SlotGroups.HAND);
-		GloveModel model = getModel(smallArms);
+		GloveModel model = this.getModel(smallArms);
 
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
 		model.animateModel(player, limbAngle, limbDistance, tickDelta);

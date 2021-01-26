@@ -31,9 +31,9 @@ public class SteadfastSpikesItem extends TrinketArtifactItem {
 
 	@Override
 	protected Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
-		Multimap<EntityAttribute, EntityAttributeModifier> result = super.applyModifiers(group, slot, uuid, stack);
-		result.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER);
-		return result;
+		Multimap<EntityAttribute, EntityAttributeModifier> modifiers = super.applyModifiers(group, slot, uuid, stack);
+		modifiers.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER);
+		return modifiers;
 	}
 
 	@Override
