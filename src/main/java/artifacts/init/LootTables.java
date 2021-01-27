@@ -15,7 +15,7 @@ public class LootTables {
 	public static final Identifier MIMIC = new Identifier(Artifacts.MODID, "entities/mimic");
 	public static final Identifier CAMPSITE_CHEST = new Identifier(Artifacts.MODID, "chests/campsite_chest");
 
-	public static final List<Identifier> LOOT_TABLE_IDS = Arrays.asList(
+	public static final List<Identifier> INJECT_TABLE_IDS = Arrays.asList(
 			new Identifier("minecraft", "chests/village/village_armorer"),
 			new Identifier("minecraft", "chests/village/village_butcher"),
 			new Identifier("minecraft", "chests/village/village_tannery"),
@@ -44,19 +44,16 @@ public class LootTables {
 	);
 
 	public static void onLootTableLoad(Identifier id, FabricLootSupplierBuilder supplier) {
-		if (LOOT_TABLE_IDS.contains(id)) {
-			supplier.withPool(getInjectPool(id.getPath()));
+		if (INJECT_TABLE_IDS.contains(id)) {
+			supplier.pool(LootPool.builder().with(getInjectEntry(id.getPath())));
 		}
-	}
-
-	public static LootPool getInjectPool(String entryName) {
-		return LootPool.builder()
-				.with(getInjectEntry(entryName))
-				.build();
 	}
 
 	private static LootPoolEntry.Builder<?> getInjectEntry(String name) {
 		Identifier table = new Identifier(Artifacts.MODID, "inject/" + name);
 		return LootTableEntry.builder(table).weight(1);
+	}
+
+	private LootTables() {
 	}
 }

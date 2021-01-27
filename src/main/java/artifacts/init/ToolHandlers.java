@@ -15,4 +15,7 @@ public class ToolHandlers {
 	public static void register() {
 		NON_TOOLS_HANDLER.register(new DiggingClawsToolHandler());
 	}
+
+	private ToolHandlers() {
+	}
 }

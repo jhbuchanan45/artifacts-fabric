@@ -17,4 +17,7 @@ public class SoundEvents {
 		Identifier id = new Identifier(Artifacts.MODID, name);
 		return Registry.register(Registry.SOUND_EVENT, id, new SoundEvent(id));
 	}
+
+	private SoundEvents() {
+	}
 }

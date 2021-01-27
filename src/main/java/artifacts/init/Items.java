@@ -68,4 +68,7 @@ public class Items {
 	private static Item register(String name, Item item) {
 		return Registry.register(Registry.ITEM, new Identifier(Artifacts.MODID, name), item);
 	}
+
+	private Items() {
+	}
 }

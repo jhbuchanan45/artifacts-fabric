@@ -25,4 +25,7 @@ public class Entities {
 		// Register mob attributes
 		FabricDefaultAttributeRegistry.register(MIMIC, MimicEntity.createMobAttributes());
 	}
+
+	private Entities() {
+	}
 }

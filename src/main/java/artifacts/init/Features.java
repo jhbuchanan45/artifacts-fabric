@@ -47,4 +47,7 @@ public class Features {
 				BuiltinRegistries.CONFIGURED_FEATURE.getKey(CAMPSITE_CONFIGURED_FEATURE)
 						.orElseThrow(() -> new RuntimeException("Failed to get feature from registry")));
 	}
+
+	private Features() {
+	}
 }
