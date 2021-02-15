@@ -22,7 +22,7 @@ public abstract class ArtifactItem extends Item {
 	}
 
 	public ArtifactItem() {
-		super(new Settings());
+		this(new Settings());
 	}
 
 	@Override
