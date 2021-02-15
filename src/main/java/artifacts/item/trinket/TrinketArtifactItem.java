@@ -47,8 +47,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	private BipedEntityModel<LivingEntity> model;
 
-	public TrinketArtifactItem(Settings settings) {
-		super(settings);
+	public TrinketArtifactItem() {
 		DispenserBlock.registerBehavior(this, TrinketItem.TRINKET_DISPENSER_BEHAVIOR);
 		PlayHurtSoundCallback.EVENT.register(this::playExtraHurtSound);
 	}

@@ -18,10 +18,6 @@ public class DiggingClawsItem extends GloveItem {
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_default.png");
 
-	public DiggingClawsItem() {
-		super(new Item.Settings());
-	}
-
 	@Override
 	@Environment(EnvType.CLIENT)
 	protected GloveModel createModel(boolean smallArms) {

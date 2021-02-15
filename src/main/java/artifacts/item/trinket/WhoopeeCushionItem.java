@@ -7,17 +7,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 public class WhoopeeCushionItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/whoopee_cushion.png");
-
-	public WhoopeeCushionItem() {
-		super(new Item.Settings());
-	}
 
 	@Override
 	protected SoundEvent getEquipSound() {

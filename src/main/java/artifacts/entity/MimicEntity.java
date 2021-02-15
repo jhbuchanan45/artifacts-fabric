@@ -43,7 +43,7 @@ public class MimicEntity extends MobEntity implements Monster {
 		return MobEntity.createMobAttributes()
 				.add(EntityAttributes.GENERIC_MAX_HEALTH, 60)
 				.add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16)
-				.add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1)
+				.add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.8)
 				.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
 				.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5);
 	}

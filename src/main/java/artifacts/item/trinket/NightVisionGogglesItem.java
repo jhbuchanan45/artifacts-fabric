@@ -18,17 +18,12 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public class NightVisionGogglesItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles.png");
 	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles_glow.png");
-
-	public NightVisionGogglesItem() {
-		super(new Item.Settings());
-	}
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {

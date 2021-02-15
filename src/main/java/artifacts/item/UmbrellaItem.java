@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 public class UmbrellaItem extends ArtifactItem {
 
 	public UmbrellaItem() {
-		super(new Settings());
 		DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
 	}
 

@@ -12,7 +12,6 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Box;
@@ -23,10 +22,6 @@ import java.util.List;
 public class UniversalAttractorItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/universal_attractor.png");
-
-	public UniversalAttractorItem() {
-		super(new Item.Settings());
-	}
 
 	@Override
 	// magnet logic from Botania, see https://github.com/Vazkii/Botania

@@ -13,10 +13,6 @@ public class PocketPistonItem extends GloveItem {
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/pocket_piston_default.png");
 	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/pocket_piston_slim.png");
 
-	public PocketPistonItem() {
-		super(new Item.Settings());
-	}
-
 	@Override
 	@Environment(EnvType.CLIENT)
 	protected Identifier getSlimTexture() {

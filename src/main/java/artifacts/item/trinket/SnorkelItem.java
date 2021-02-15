@@ -10,17 +10,11 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public class SnorkelItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/snorkel.png");
-	private Object model;
-
-	public SnorkelItem() {
-		super(new Item.Settings());
-	}
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {

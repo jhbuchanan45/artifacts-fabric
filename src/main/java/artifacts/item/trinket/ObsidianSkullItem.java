@@ -8,7 +8,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -16,10 +15,6 @@ import net.minecraft.util.Identifier;
 public class ObsidianSkullItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/obsidian_skull.png");
-
-	public ObsidianSkullItem() {
-		super(new Item.Settings());
-	}
 
 	@Override
 	@Environment(EnvType.CLIENT)

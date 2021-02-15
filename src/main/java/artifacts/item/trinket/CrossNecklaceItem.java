@@ -8,7 +8,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -17,10 +16,6 @@ public class CrossNecklaceItem extends TrinketArtifactItem {
 
 	public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cross_necklace.png");
-
-	public CrossNecklaceItem() {
-		super(new Item.Settings());
-	}
 
 	@Override
 	@Environment(EnvType.CLIENT)

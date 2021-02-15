@@ -16,7 +16,6 @@ import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
@@ -30,7 +29,6 @@ public class RunningShoesItem extends TrinketArtifactItem {
 	private static final EntityAttributeModifier STEP_HEIGHT_MODIFIER = new EntityAttributeModifier(UUID.fromString("7e97cede-a343-411f-b465-14cdf6df3666"), "artifacts:running_shoes_step_height", .5, EntityAttributeModifier.Operation.ADDITION);
 
 	public RunningShoesItem() {
-		super(new Item.Settings());
 		LivingEntitySprintingCallback.EVENT.register(RunningShoesItem::setModifiers);
 	}
 

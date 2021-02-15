@@ -9,7 +9,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -19,7 +18,6 @@ public abstract class PendantItem extends TrinketArtifactItem {
 	private final Identifier texture;
 
 	public PendantItem(Identifier texture, UserAttackedCallback callback) {
-		super(new Item.Settings());
 		this.texture = texture;
 		UserAttackedCallback.EVENT.register(callback);
 	}
