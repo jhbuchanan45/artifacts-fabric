@@ -16,7 +16,7 @@ public abstract class LivingEntityMixin extends Entity {
 		super(type, world);
 	}
 
-	@Inject(method = "baseTick", at = @At(value = "INVOKE_ASSIGN", ordinal = 0, target = "Lnet/minecraft/entity/LivingEntity;setAir(I)V"))
+	@Inject(method = "baseTick", at = @At(value = "INVOKE", ordinal = 0, shift = At.Shift.AFTER, target = "Lnet/minecraft/entity/LivingEntity;setAir(I)V"))
 	private void airSwimTick(CallbackInfo info) {
 		if (this.getAir() == 0) {
 			// TODO
