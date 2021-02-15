@@ -35,6 +35,7 @@
     "item.obsidianskull.EntityMixin",
     "item.pendant.EntityMixin",
     "item.pocketpiston.EnchantmentHelperMixin",
+    "item.runningshoes.LivingEntityMixin",
     "item.superstitioushat.EnchantmentHelperMixin",
     "item.umbrella.EntityMixin",
     "item.umbrella.LivingEntityMixin",

@@ -25,6 +25,7 @@ import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -54,6 +55,18 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	public static boolean effectsEnabled(ItemStack stack) {
 		return Components.TRINKET_ENABLED.get(stack).get();
+	}
+
+	public static void addModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
+		if (!instance.hasModifier(modifier)) {
+			instance.addTemporaryModifier(modifier);
+		}
+	}
+
+	public static void removeModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
+		if (instance.hasModifier(modifier)) {
+			instance.removeModifier(modifier);
+		}
 	}
 
 	private static String getEffectsEnabledLanguageKey(ItemStack stack) {
