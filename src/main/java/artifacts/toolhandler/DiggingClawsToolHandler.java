@@ -22,14 +22,14 @@ import java.util.List;
 @SuppressWarnings("UnstableApiUsage")
 public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 
-	// Because these are mining level 2, used to check no/vanilla tools against vanilla blocks
-	// TODO: hardcoded, these are not affected by DiggingClawsItem.NEW_BASE_MINING_LEVEL
-	private final List<Item> vanillaItems = Arrays.asList(
-			net.minecraft.item.Items.IRON_AXE,
-			net.minecraft.item.Items.IRON_HOE,
-			net.minecraft.item.Items.IRON_PICKAXE,
-			net.minecraft.item.Items.IRON_SHOVEL,
-			net.minecraft.item.Items.IRON_SWORD,
+	// Because these are mining level 1, used to check no/vanilla tools against vanilla blocks
+	private static final int NEW_BASE_MINING_LEVEL = 1;
+	private static final List<Item> VANILLA_ITEMS = Arrays.asList(
+			net.minecraft.item.Items.STONE_AXE,
+			net.minecraft.item.Items.STONE_HOE,
+			net.minecraft.item.Items.STONE_PICKAXE,
+			net.minecraft.item.Items.STONE_SHOVEL,
+			net.minecraft.item.Items.STONE_SWORD,
 			net.minecraft.item.Items.SHEARS
 	);
 
@@ -45,12 +45,12 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 			// Problem: modded blocks can have different mining levels for different tools
 			// Solution: get the lowest miningLevel
 			int requiredMiningLevel = Arrays.stream(((ToolManagerImplEntryImplAccessor) entry).getTagLevels()).min().orElse(-1);
-			return requiredMiningLevel >= 0 && requiredMiningLevel <= DiggingClawsItem.NEW_BASE_MINING_LEVEL ? ActionResult.SUCCESS : ActionResult.PASS;
+			return requiredMiningLevel >= 0 && requiredMiningLevel <= DiggingClawsToolHandler.NEW_BASE_MINING_LEVEL ? ActionResult.SUCCESS : ActionResult.PASS;
 		}
 
 		// Vanilla block
-		for (Item tool : vanillaItems) {
-			// Success if any of the iron tools pass
+		for (Item tool : VANILLA_ITEMS) {
+			// Success if any of the stone tools pass
 			if (new ItemStack(tool).isEffectiveOn(state)) {
 				return ActionResult.SUCCESS;
 			}
