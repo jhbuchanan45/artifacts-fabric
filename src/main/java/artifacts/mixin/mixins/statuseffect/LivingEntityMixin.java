@@ -28,8 +28,7 @@ public abstract class LivingEntityMixin extends Entity {
 	 */
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void applyPermanentEffects(CallbackInfo info) {
-		//noinspection ConstantConditions
-		if (!this.world.isClient && this.age % 15 == 0 && (Object) this instanceof LivingEntity) {
+		if (!this.world.isClient && this.age % 15 == 0) {
 
 			TrinketsHelper.getAllEquipped((LivingEntity) (Object) this).forEach(stack -> {
 				StatusEffectInstance effect = ((TrinketArtifactItem) stack.getItem()).getPermanentEffect();

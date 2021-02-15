@@ -29,7 +29,6 @@
     "item.firegauntlet.EnchantmentHelperMixin",
     "item.flippers.LivingEntityMixin",
     "item.heliumflamingo.EntityMixin",
-    "item.heliumflamingo.InGameOverlayRendererMixin",
     "item.heliumflamingo.LivingEntityMixin",
     "item.kittyslippers.CreeperEntityMixin",
     "item.kittyslippers.followTargetGoalMixin",
@@ -54,6 +53,7 @@
   "client": [
     "event.client.LivingEntityMixin",
     "item.flippers.client.LivingEntityMixin",
+    "item.heliumflamingo.InGameOverlayRendererMixin",
     "item.umbrella.client.BipedEntityModelMixin",
     "item.umbrella.client.LivingEntityRendererMixin",
     "statuseffect.client.GameRendererMixin",

@@ -14,7 +14,6 @@ public abstract class InGameOverlayRendererMixin {
 
 	@Inject(method = "renderUnderwaterOverlay", at = @At(value = "HEAD"), cancellable = true)
 	private static void cancelRenderUnderwaterOverlay(MinecraftClient minecraftClient, MatrixStack matrixStack, CallbackInfo info) {
-		System.out.println("getInFluid() = " + ((EntityAccessor) minecraftClient.player).getInFluid());
 		if (minecraftClient.player != null && ((EntityAccessor) minecraftClient.player).getInFluid() == null) {
 			info.cancel();
 		}
