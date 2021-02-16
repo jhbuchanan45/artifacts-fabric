@@ -1,7 +1,5 @@
 {
-  "curios.identifier.feet": "脚饰",
-  "curios.modifiers.feet": "佩戴脚饰时：",
-  "itemGroup.artifacts": "奇异饰品",
+  "itemGroup.artifacts.item_group": "奇异饰品",
   "artifacts.advancements.amateur_archaeologist.title": "业余考古学者",
   "artifacts.advancements.amateur_archaeologist.description": "找到一件饰品",
   "artifacts.advancements.chest_slayer.title": "宝箱杀手",
