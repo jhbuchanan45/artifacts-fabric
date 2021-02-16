@@ -1,7 +1,7 @@
 package artifacts.item.trinket.pendant;
 
 import artifacts.client.render.model.trinket.PendantModel;
-import artifacts.events.UserAttackedCallback;
+import artifacts.events.LivingEntityAttackedCallback;
 import artifacts.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
@@ -17,9 +17,9 @@ public abstract class PendantItem extends TrinketArtifactItem {
 
 	private final Identifier texture;
 
-	public PendantItem(Identifier texture, UserAttackedCallback callback) {
+	public PendantItem(Identifier texture, LivingEntityAttackedCallback callback) {
 		this.texture = texture;
-		UserAttackedCallback.EVENT.register(callback);
+		LivingEntityAttackedCallback.EVENT.register(callback);
 	}
 
 	@Override

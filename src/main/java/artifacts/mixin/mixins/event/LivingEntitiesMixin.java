@@ -1,6 +1,6 @@
 package artifacts.mixin.mixins.event;
 
-import artifacts.events.UserHurtCallback;
+import artifacts.events.LivingEntityHurtCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -22,7 +22,7 @@ public abstract class LivingEntitiesMixin extends Entity {
 	@Inject(method = "applyDamage", at = @At("HEAD"))
 	private void onUserHurt(DamageSource source, float amount, CallbackInfo info) {
 		if (!this.isInvulnerableTo(source)) {
-			UserHurtCallback.EVENT.invoker().applyEffects((LivingEntity) (Object) this, source, amount);
+			LivingEntityHurtCallback.EVENT.invoker().hurt((LivingEntity) (Object) this, source, amount);
 		}
 	}
 }

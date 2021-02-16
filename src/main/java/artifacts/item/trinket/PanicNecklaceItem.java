@@ -2,7 +2,7 @@ package artifacts.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.PanicNecklaceModel;
-import artifacts.events.UserHurtCallback;
+import artifacts.events.LivingEntityHurtCallback;
 import artifacts.init.Items;
 import artifacts.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.SlotGroups;
@@ -23,7 +23,7 @@ public class PanicNecklaceItem extends TrinketArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/panic_necklace.png");
 
 	public PanicNecklaceItem() {
-		UserHurtCallback.EVENT.register(PanicNecklaceItem::applyEffects);
+		LivingEntityHurtCallback.EVENT.register(PanicNecklaceItem::applyEffects);
 	}
 
 	private static void applyEffects(LivingEntity user, DamageSource source, float amount) {

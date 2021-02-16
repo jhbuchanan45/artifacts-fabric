@@ -1,6 +1,6 @@
 package artifacts.mixin.mixins.event;
 
-import artifacts.events.UserAttackedCallback;
+import artifacts.events.LivingEntityAttackedCallback;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -14,6 +14,6 @@ public abstract class EnchantmentHelperMixin {
 
 	@Inject(method = "onUserDamaged", at = @At("HEAD"))
 	private static void onUserAttacked(LivingEntity entity, Entity attacker, CallbackInfo info) {
-		UserAttackedCallback.EVENT.invoker().applyEffects(entity, attacker, entity.getRandom());
+		LivingEntityAttackedCallback.EVENT.invoker().attack(entity, attacker, entity.getRandom());
 	}
 }

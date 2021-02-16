@@ -8,14 +8,14 @@ import net.minecraft.entity.damage.DamageSource;
 /**
  * Callback for applying Trinket effects when the wearer was hurt in general, same injection point as Forge's LivingHurtEvent
  */
-public interface UserHurtCallback {
+public interface LivingEntityHurtCallback {
 
-	Event<UserHurtCallback> EVENT = EventFactory.createArrayBacked(UserHurtCallback.class,
+	Event<LivingEntityHurtCallback> EVENT = EventFactory.createArrayBacked(LivingEntityHurtCallback.class,
 			(listeners) -> (user, source, amount) -> {
-				for (UserHurtCallback listener : listeners) {
-					listener.applyEffects(user, source, amount);
+				for (LivingEntityHurtCallback listener : listeners) {
+					listener.hurt(user, source, amount);
 				}
 			});
 
-	void applyEffects(LivingEntity user, DamageSource source, float amount);
+	void hurt(LivingEntity user, DamageSource source, float amount);
 }
