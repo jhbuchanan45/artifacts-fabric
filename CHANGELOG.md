@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Golden Hook artifact
 - Inventory icon for the Umbrella
 - Show gloves on first person arms (configurable)
-- Translations
+- Added translations
   - Chinese
   - Pirate Speak
 
@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dropped artifacts are now fire and lavaproof
 - Removed dependency on Auto Config
 - Cloth Config is no longer bundled
+- Updated translations
+  - Spanish
 
 ### Fixed
 - Everlasting foods consumed by other mods' autofeeders
