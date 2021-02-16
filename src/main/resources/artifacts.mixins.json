@@ -24,6 +24,7 @@
     "item.diggingclaws.ToolmanagerImplMixin",
     "item.drinkinghat.LivingEntityMixin",
     "item.everlastingfood.AnimalEntityMixin",
+    "item.everlastingfood.LivingEntityMixin",
     "item.everlastingfood.WolfEntityMixin",
     "item.firegauntlet.EnchantmentHelperMixin",
     "item.flippers.LivingEntityMixin",
