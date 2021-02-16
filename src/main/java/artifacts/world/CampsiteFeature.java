@@ -6,6 +6,7 @@ import artifacts.init.Entities;
 import artifacts.init.LootTables;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -132,10 +133,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 			} else {
 				this.setBlockState(world, pos, Blocks.BARREL.getDefaultState().with(BarrelBlock.FACING, Direction.random(random)));
 			}
-			BlockEntity container = world.getBlockEntity(pos);
-			if (container instanceof LootableContainerBlockEntity) {
-				((LootableContainerBlockEntity) container).setLootTable(LootTables.CAMPSITE_CHEST, random.nextLong());
-			}
+			LootableContainerBlockEntity.setLootTable(world, random, pos, LootTables.CAMPSITE_CHEST);
 		}
 	}
 

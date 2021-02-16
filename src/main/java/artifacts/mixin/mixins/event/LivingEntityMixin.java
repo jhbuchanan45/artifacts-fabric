@@ -1,6 +1,5 @@
 package artifacts.mixin.mixins.event;
 
-import artifacts.events.LivingEntitySprintingCallback;
 import artifacts.events.PlayHurtSoundCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -28,10 +27,5 @@ public abstract class LivingEntityMixin extends Entity {
 	@Inject(method = "playHurtSound", at = @At("HEAD"))
 	private void onServerPlayHurtSound(CallbackInfo info) {
 		PlayHurtSoundCallback.EVENT.invoker().play((LivingEntity) (Object) this, this.getSoundVolume(), this.getSoundPitch());
-	}
-
-	@Inject(method = "setSprinting", at = @At("TAIL"))
-	private void onSetSprinting(boolean sprinting, CallbackInfo info) {
-		LivingEntitySprintingCallback.EVENT.invoker().setSprinting((LivingEntity) (Object) this, sprinting);
 	}
 }

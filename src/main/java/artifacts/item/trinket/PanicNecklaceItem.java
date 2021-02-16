@@ -14,7 +14,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -24,7 +23,6 @@ public class PanicNecklaceItem extends TrinketArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/panic_necklace.png");
 
 	public PanicNecklaceItem() {
-		super(new Item.Settings());
 		UserHurtCallback.EVENT.register(PanicNecklaceItem::applyEffects);
 	}
 

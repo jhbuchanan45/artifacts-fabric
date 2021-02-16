@@ -21,10 +21,6 @@ public abstract class GloveItem extends TrinketArtifactItem {
 
 	protected Object modelSlim;
 
-	public GloveItem(Settings settings) {
-		super(settings);
-	}
-
 	@Environment(EnvType.CLIENT)
 	protected static boolean hasSmallArms(Entity entity) {
 		return entity instanceof AbstractClientPlayerEntity && ((AbstractClientPlayerEntity) entity).getModel().equals("slim");

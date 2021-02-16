@@ -10,16 +10,11 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/scarf_of_invisibility.png");
-
-	public ScarfOfInvisibilityItem() {
-		super(new Item.Settings());
-	}
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {

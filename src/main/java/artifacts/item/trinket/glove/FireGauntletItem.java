@@ -26,10 +26,6 @@ public class FireGauntletItem extends GloveItem {
 	private static final Identifier TEXTURE_DEFAULT_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_default_glow.png");
 	private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_slim_glow.png");
 
-	public FireGauntletItem() {
-		super(new Item.Settings());
-	}
-
 	@Override
 	protected SoundEvent getEquipSound() {
 		return SoundEvents.ITEM_ARMOR_EQUIP_IRON;

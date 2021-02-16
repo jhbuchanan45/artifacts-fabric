@@ -26,7 +26,6 @@ public class CloudInABottleItem extends TrinketArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cloud_in_a_bottle.png");
 
 	public CloudInABottleItem() {
-		super(new Settings());
 		ServerPlayNetworking.registerGlobalReceiver(C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacker);
 	}
 

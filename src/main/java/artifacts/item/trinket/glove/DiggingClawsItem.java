@@ -12,15 +12,10 @@ import net.minecraft.util.Identifier;
 
 public class DiggingClawsItem extends GloveItem {
 
-	public static final int NEW_BASE_MINING_LEVEL = 2;
-	public static final float MINING_SPEED_INCREASE = 4;
+	public static final float MINING_SPEED_INCREASE = 3.2f;
 
 	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_default.png");
-
-	public DiggingClawsItem() {
-		super(new Item.Settings());
-	}
+	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_slim.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

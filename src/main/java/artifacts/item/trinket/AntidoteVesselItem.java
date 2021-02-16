@@ -21,10 +21,6 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/antidote_vessel.png");
 
-	public AntidoteVesselItem() {
-		super(new Settings());
-	}
-
 	@Override
 	protected void effectTick(PlayerEntity player, ItemStack stack) {
 		// Reduce duration of all negative status effects to 80
