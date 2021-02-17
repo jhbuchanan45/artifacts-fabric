@@ -29,6 +29,7 @@
     "item.everlastingfood.WolfEntityMixin",
     "item.firegauntlet.EnchantmentHelperMixin",
     "item.flippers.LivingEntityMixin",
+    "item.heliumflamingo.ClientPlayerEntityMixin",
     "item.heliumflamingo.EntityMixin",
     "item.kittyslippers.CreeperEntityMixin",
     "item.kittyslippers.followTargetGoalMixin",
