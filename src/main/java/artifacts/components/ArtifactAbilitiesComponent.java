@@ -15,6 +15,18 @@ public class ArtifactAbilitiesComponent implements AutoSyncedComponent {
 		this.player = player;
 	}
 
+	public boolean isAirSwimming() {
+		return this.isAirSwimming;
+	}
+
+	public void toggleAirSwimming() {
+		this.isAirSwimming = !this.isAirSwimming;
+	}
+
+	public void setAirSwimming(boolean airSwimming) {
+		this.isAirSwimming = airSwimming;
+	}
+
 	@Override
 	public void readFromNbt(CompoundTag tag) {
 		this.isAirSwimming = tag.getBoolean("isAirSwimming");

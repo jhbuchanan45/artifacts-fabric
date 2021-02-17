@@ -21,7 +21,7 @@ public abstract class EntityMixin {
 	@Inject(method = "isTouchingWater", cancellable = true, at = @At("RETURN"))
 	private void isTouchingAir(CallbackInfoReturnable<Boolean> info) {
 		//noinspection ConstantConditions
-		if ((Object) this instanceof PlayerEntity && HeliumFlamingoItem.canFly((LivingEntity) (Object) this)) {
+		if ((Object) this instanceof PlayerEntity && HeliumFlamingoItem.isFlying((LivingEntity) (Object) this)) {
 			info.setReturnValue(true);
 		}
 	}
@@ -30,7 +30,7 @@ public abstract class EntityMixin {
 	private void isSubmergedInAir(Tag<Fluid> tag, CallbackInfoReturnable<Boolean> info) {
 		//noinspection ConstantConditions
 		if ((Object) this instanceof PlayerEntity && tag == FluidTags.WATER
-				&& HeliumFlamingoItem.canFly((LivingEntity) (Object) this)) {
+				&& HeliumFlamingoItem.isFlying((LivingEntity) (Object) this)) {
 			info.setReturnValue(true);
 		}
 	}
@@ -39,7 +39,7 @@ public abstract class EntityMixin {
 	private FluidState getFluidState(FluidState fluidState, Tag<Fluid> tag, double d) {
 		//noinspection ConstantConditions
 		return (Object) this instanceof PlayerEntity && tag == FluidTags.WATER
-				&& HeliumFlamingoItem.canFly((LivingEntity) (Object) this) ?
+				&& HeliumFlamingoItem.isFlying((LivingEntity) (Object) this) ?
 				Fluids.WATER.getDefaultState() : fluidState;
 	}
 }
