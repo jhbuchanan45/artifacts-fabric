@@ -1,6 +1,5 @@
 package artifacts.mixin.mixins.item.heliumflamingo;
 
-import artifacts.components.ArtifactAbilitiesComponent;
 import artifacts.init.Components;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -20,11 +19,10 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@Inject(method = "baseTick", at = @At(value = "INVOKE", ordinal = 0, shift = At.Shift.AFTER, target = "Lnet/minecraft/entity/LivingEntity;setAir(I)V"))
 	private void airSwimTick(CallbackInfo info) {
-		ArtifactAbilitiesComponent comp = Components.ARTIFACT_ABILITIES.get(this);
-
-		if (this.getAir() == 0 && comp.isAirSwimming()) {
-			comp.setAirSwimming(false);
-			this.fallDistance = 0;
-		}
+		Components.ARTIFACT_ABILITIES.maybeGet(this).ifPresent(comp -> {
+			if (this.getAir() == 0 && comp.isAirSwimming()) {
+				comp.stopAirSwimming();
+			}
+		});
 	}
 }

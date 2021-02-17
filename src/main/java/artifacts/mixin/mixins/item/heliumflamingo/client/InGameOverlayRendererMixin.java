@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class InGameOverlayRendererMixin {
 
 	@Inject(method = "renderUnderwaterOverlay", at = @At(value = "HEAD"), cancellable = true)
-	private static void cancelRenderUnderwaterOverlay(MinecraftClient minecraftClient, MatrixStack matrixStack, CallbackInfo info) {
+	private static void fixUnderwaterOverlay(MinecraftClient minecraftClient, MatrixStack matrixStack, CallbackInfo info) {
 		if (minecraftClient.player != null && ((EntityAccessor) minecraftClient.player).getInFluid() == null) {
 			info.cancel();
 		}

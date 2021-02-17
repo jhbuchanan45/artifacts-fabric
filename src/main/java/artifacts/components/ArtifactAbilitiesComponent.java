@@ -20,11 +20,20 @@ public class ArtifactAbilitiesComponent implements AutoSyncedComponent {
 	}
 
 	public void toggleAirSwimming() {
-		this.isAirSwimming = !this.isAirSwimming;
+		if (this.isAirSwimming) {
+			this.stopAirSwimming();
+		} else {
+			this.startAirSwimming();
+		}
 	}
 
-	public void setAirSwimming(boolean airSwimming) {
-		this.isAirSwimming = airSwimming;
+	public void startAirSwimming() {
+		this.isAirSwimming = true;
+	}
+
+	public void stopAirSwimming() {
+		this.player.fallDistance = 0;
+		this.isAirSwimming = false;
 	}
 
 	@Override
