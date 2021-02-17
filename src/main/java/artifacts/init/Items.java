@@ -24,8 +24,8 @@ public class Items {
 	public static final Item WHOOPEE_CUSHION = register("whoopee_cushion", new WhoopeeCushionItem());
 
 	// Food
-	public static final Item EVERLASTING_BEEF = register("everlasting_beef", new EverlastingFoodItem(new Item.Settings().food(FoodComponents.BEEF)));
-	public static final Item ETERNAL_STEAK = register("eternal_steak", new EverlastingFoodItem(new Item.Settings().food(FoodComponents.COOKED_BEEF)));
+	public static final Item EVERLASTING_BEEF = register("everlasting_beef", new EverlastingFoodItem(FoodComponents.BEEF));
+	public static final Item ETERNAL_STEAK = register("eternal_steak", new EverlastingFoodItem(FoodComponents.COOKED_BEEF));
 
 	// Head
 	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/trinket/plastic_drinking_hat.png")));
