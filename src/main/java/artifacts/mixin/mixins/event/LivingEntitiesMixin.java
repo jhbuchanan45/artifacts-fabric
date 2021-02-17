@@ -1,6 +1,8 @@
 package artifacts.mixin.mixins.event;
 
+import artifacts.events.LivingEntityDamagedCallback;
 import artifacts.events.LivingEntityHurtCallback;
+import jdk.internal.org.objectweb.asm.Opcodes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -20,9 +22,16 @@ public abstract class LivingEntitiesMixin extends Entity {
 	}
 
 	@Inject(method = "applyDamage", at = @At("HEAD"))
-	private void onUserHurt(DamageSource source, float amount, CallbackInfo info) {
+	private void onEntityHurt(DamageSource source, float amount, CallbackInfo info) {
 		if (!this.isInvulnerableTo(source)) {
 			LivingEntityHurtCallback.EVENT.invoker().hurt((LivingEntity) (Object) this, source, amount);
+		}
+	}
+
+	@Inject(method = "applyDamage", allow = 1, at = @At(value = "JUMP", opcode = Opcodes.IFNE))
+	private void onEntityDamaged(DamageSource source, float amount, CallbackInfo info) {
+		if (!this.isInvulnerableTo(source)) {
+			LivingEntityDamagedCallback.EVENT.invoker().damage((LivingEntity) (Object) this, source, amount);
 		}
 	}
 }
