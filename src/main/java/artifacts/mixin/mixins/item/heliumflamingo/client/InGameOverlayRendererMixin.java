@@ -1,4 +1,4 @@
-package artifacts.mixin.mixins.item.heliumflamingo;
+package artifacts.mixin.mixins.item.heliumflamingo.client;
 
 import artifacts.mixin.mixins.accessors.EntityAccessor;
 import net.minecraft.client.MinecraftClient;
