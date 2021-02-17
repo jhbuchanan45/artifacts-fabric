@@ -50,6 +50,7 @@ public class Items {
 	public static final Item UNIVERSAL_ATTRACTOR = register("universal_attractor", new UniversalAttractorItem());
 	public static final Item CRYSTAL_HEART = register("crystal_heart", new CrystalHeartItem());
 	public static final Item CLOUD_IN_A_BOTTLE = register("cloud_in_a_bottle", new CloudInABottleItem());
+	public static final Item HELIUM_FLAMINGO = register("helium_flamingo", new HeliumFlamingoItem());
 
 	// Hands
 	public static final Item DIGGING_CLAWS = register("digging_claws", new DiggingClawsItem());

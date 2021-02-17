@@ -5,16 +5,12 @@
   "artifacts.trinket.effectsenabled": "Effects Enabled",
   "artifacts.trinket.effectsdisabled": "Effects Disabled",
   "artifacts.trinket.togglekeybind": "(Sneak + Use)",
-
   "itemGroup.artifacts.item_group": "Artifacts",
-
   "artifacts.advancements.amateur_archaeologist.title": "Amateur Archaeologist",
   "artifacts.advancements.amateur_archaeologist.description": "Find an Artifact",
   "artifacts.advancements.chest_slayer.title": "Chest Slayer",
   "artifacts.advancements.chest_slayer.description": "Kill a Mimic",
-
   "entity.artifacts.mimic": "Mimic",
-
   "item.artifacts.mimic_spawn_egg": "Mimic Spawn Egg",
   "item.artifacts.snorkel": "Snorkel",
   "item.artifacts.plastic_drinking_hat": "Plastic Drinking Hat",
@@ -49,7 +45,7 @@
   "item.artifacts.cloud_in_a_bottle": "Cloud in a Bottle",
   "item.artifacts.whoopee_cushion": "Whoopee Cushion",
   "item.artifacts.vampiric_glove": "Vampiric Glove",
-
+  "item.artifacts.helium_flamingo": "Helium Flamingo",
   "item.artifacts.snorkel.tooltip": "Allows the wearer to\nbreathe underwater",
   "item.artifacts.plastic_drinking_hat.tooltip": "Decreases the time it takes\nto drink drinkable items",
   "item.artifacts.novelty_drinking_hat.tooltip": "'Hey! I'm #1, and I let\ngravity do my drinking!'\nDecreases the time it takes\nto drink drinkable items",
@@ -83,7 +79,7 @@
   "item.artifacts.cloud_in_a_bottle.tooltip": "Allows the wearer to double jump",
   "item.artifacts.whoopee_cushion.tooltip": "Increases the wearer's flatulence",
   "item.artifacts.vampiric_glove.tooltip": "Causes the wearer's melee\n attacks to absorb health",
-
+  "item.artifacts.helium_flamingo.tooltip": "Allows the wearer to swim in the\n air for a limited period of time",
   "text.autoconfig.artifacts.title": "Artifacts Configuration",
   "text.autoconfig.artifacts.category.general": "General",
   "text.autoconfig.artifacts.option.general.everlastingFoodCooldown": "Everlasting foods cooldown",
