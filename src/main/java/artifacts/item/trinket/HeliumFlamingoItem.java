@@ -2,6 +2,8 @@ package artifacts.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.HeliumFlamingoModel;
+import artifacts.init.Items;
+import artifacts.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -32,5 +34,9 @@ public class HeliumFlamingoItem extends TrinketArtifactItem {
 	@Override
 	protected SoundInfo getEquipSound() {
 		return new SoundInfo(SoundEvents.ENTITY_ITEM_PICKUP, 1f, 0.7f);
+	}
+
+	public static boolean canFly(LivingEntity entity) {
+		return TrinketsHelper.isEquipped(Items.HELIUM_FLAMINGO, entity) && entity.getAir() > 0;
 	}
 }

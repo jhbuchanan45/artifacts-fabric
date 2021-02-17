@@ -1,6 +1,8 @@
 package artifacts.mixin.mixins.item.heliumflamingo;
 
+import artifacts.item.trinket.HeliumFlamingoItem;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
@@ -19,7 +21,7 @@ public abstract class EntityMixin {
 	@Inject(method = "isTouchingWater", cancellable = true, at = @At("RETURN"))
 	private void isTouchingAir(CallbackInfoReturnable<Boolean> info) {
 		//noinspection ConstantConditions
-		if ((Object) this instanceof PlayerEntity) {
+		if ((Object) this instanceof PlayerEntity && HeliumFlamingoItem.canFly((LivingEntity) (Object) this)) {
 			info.setReturnValue(true);
 		}
 	}
@@ -27,7 +29,8 @@ public abstract class EntityMixin {
 	@Inject(method = "isSubmergedIn", cancellable = true, at = @At("RETURN"))
 	private void isSubmergedInAir(Tag<Fluid> tag, CallbackInfoReturnable<Boolean> info) {
 		//noinspection ConstantConditions
-		if ((Object) this instanceof PlayerEntity && tag == FluidTags.WATER) {
+		if ((Object) this instanceof PlayerEntity && tag == FluidTags.WATER
+				&& HeliumFlamingoItem.canFly((LivingEntity) (Object) this)) {
 			info.setReturnValue(true);
 		}
 	}
@@ -35,7 +38,8 @@ public abstract class EntityMixin {
 	@ModifyVariable(method = "updateMovementInFluid", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"))
 	private FluidState getFluidState(FluidState fluidState, Tag<Fluid> tag, double d) {
 		//noinspection ConstantConditions
-		return (Object) this instanceof PlayerEntity && tag == FluidTags.WATER ?
+		return (Object) this instanceof PlayerEntity && tag == FluidTags.WATER
+				&& HeliumFlamingoItem.canFly((LivingEntity) (Object) this) ?
 				Fluids.WATER.getDefaultState() : fluidState;
 	}
 }

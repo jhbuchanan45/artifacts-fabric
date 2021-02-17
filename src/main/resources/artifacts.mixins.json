@@ -30,7 +30,6 @@
     "item.firegauntlet.EnchantmentHelperMixin",
     "item.flippers.LivingEntityMixin",
     "item.heliumflamingo.EntityMixin",
-    "item.heliumflamingo.LivingEntityMixin",
     "item.kittyslippers.CreeperEntityMixin",
     "item.kittyslippers.followTargetGoalMixin",
     "item.kittyslippers.RevengeGoalMixin",
