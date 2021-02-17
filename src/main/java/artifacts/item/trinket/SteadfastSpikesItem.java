@@ -21,12 +21,13 @@ public class SteadfastSpikesItem extends TrinketArtifactItem {
 
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/steadfast_spikes.png");
 
-	private static final EntityAttributeModifier KNOCKBACK_RESISTANCE_MODIFIER = new EntityAttributeModifier(UUID.fromString("2aa3958f-49f5-47ba-a707-a4679ad7ff17"), "artifacts:steadfast_spikes_knockback_resistance", 1, EntityAttributeModifier.Operation.ADDITION);
-
 	@Override
 	protected Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
 		Multimap<EntityAttribute, EntityAttributeModifier> modifiers = super.applyModifiers(group, slot, uuid, stack);
-		modifiers.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER);
+		EntityAttributeModifier modifier = new EntityAttributeModifier(uuid,
+				new Identifier(Artifacts.MODID, "artifacts:steadfast_spikes_knockback_resistance").toString(),
+				1, EntityAttributeModifier.Operation.ADDITION);
+		modifiers.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, modifier);
 		return modifiers;
 	}
 
