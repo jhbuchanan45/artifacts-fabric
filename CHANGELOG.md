@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Vampiric glove
+- Chinese translations
+- Pirate translations
+
+### Changed
+- Slightly reduced Mimic knockback resistance
+- Reduced digging claws mining level
+- Slightly reduced digging claws mining speed
+
+### Fixed
+- Everlasting foods consumed by other mods' autofeeders
+- The wrong texture for claws with slim hands was used
 
 ## [2.3.0] - 2020-01-25
 ### Added
@@ -29,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dev: use new fabric networking api
 - Dev: refactor/reformat code
 
-## [2.1.0] - 2020-12-31
+## 2.1.0 - 2020-12-31
 ### Added
 - Spanish translations
 
@@ -37,16 +50,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Eternal foods get consumed when fed to wolves/dogs
 - A dedicated server disconnect when using the cloud in a bottle in a boat
 
-## [2.0.2] - 2020-12-02
+## 2.0.2 - 2020-12-02
 ### Fixed
 - Crash when using the pendants
 
-## [2.0.1] - 2020-11-29
+## 2.0.1 - 2020-11-29
 ## Fixed
 - Server side crash when toggling artifact effects
 - Whoopee Cushion effect always active
 
-## [2.0.0] - 2020-11-29
+## 2.0.0 - 2020-11-29
 ### Added
 - Whoopee Cushion artifact
 - Cloud in a Bottle artifact
@@ -60,11 +73,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Mimics no longer spawn on peaceful
 - Fixed a log warning
 
-## [1.1.1] - 2020-11-21
+## 1.1.1 - 2020-11-21
 ### Fixed
 - Attempt to fix a bug related to the thorn pendant and shulkers
 
-## [1.1.0] - 2020-11-15
+## 1.1.0 - 2020-11-15
 ### Added
 - Status effect cards now tell you which artifact they're from
 
@@ -81,29 +94,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unexpected behavior when holding two Umbrellas
 - Sometimes Running Shoes do not immediately speed you up, making the FoV increase look weird
 
-## [1.0.4] - 2020-11-09
+## 1.0.4 - 2020-11-09
 ### Fixes
 - Incompatibility crash due to bug in Mixin library
 
-## [1.0.3] - 2020-11-07
+## 1.0.3 - 2020-11-07
 ### Changes
 - Update Russian translations
 
 ### Fixes
 - Universal attractor only works on dropped items
 
-## [1.0.2] - 2020-11-04
+## 1.0.2 - 2020-11-04
 ### Fixes
 - Crash when using the Universal Attractor on a server
 
-## [1.0.1] - 2020-11-03
+## 1.0.1 - 2020-11-03
 ### Changes
 - Don't include Trinkets in jar file
 
 ### Fixes
 - Several small hotfixes
 
-## [1.0.0] - 2020-11-02
+## 1.0.0 - 2020-11-02
 ### Added
 - Initial release
 
