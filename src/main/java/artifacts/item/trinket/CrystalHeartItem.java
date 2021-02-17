@@ -13,7 +13,6 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -68,7 +67,7 @@ public class CrystalHeartItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	public SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
+	public SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND);
 	}
 }

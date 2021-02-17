@@ -13,7 +13,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -44,8 +43,8 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	public SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_BOTTLE_FILL;
+	public SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_BOTTLE_FILL);
 	}
 
 	@Override

@@ -8,7 +8,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -35,7 +34,7 @@ public class CrossNecklaceItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	public SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
+	public SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND);
 	}
 }

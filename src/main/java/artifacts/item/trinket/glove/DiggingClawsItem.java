@@ -5,8 +5,6 @@ import artifacts.client.render.model.trinket.ClawsModel;
 import artifacts.client.render.model.trinket.GloveModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.item.Item;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -36,7 +34,7 @@ public class DiggingClawsItem extends GloveItem {
 	}
 
 	@Override
-	protected SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE;
+	protected SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 	}
 }

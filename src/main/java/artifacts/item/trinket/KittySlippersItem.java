@@ -39,7 +39,7 @@ public class KittySlippersItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	protected SoundEvent getEquipSound() {
-		return SoundEvents.ENTITY_CAT_AMBIENT;
+	protected SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ENTITY_CAT_AMBIENT);
 	}
 }

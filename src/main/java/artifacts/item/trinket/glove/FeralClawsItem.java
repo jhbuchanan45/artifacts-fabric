@@ -9,9 +9,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -51,7 +49,7 @@ public class FeralClawsItem extends GloveItem {
 	}
 
 	@Override
-	protected SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE;
+	protected SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 	}
 }

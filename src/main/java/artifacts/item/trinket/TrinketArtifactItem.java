@@ -124,7 +124,8 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 		// Play right click equip sound
 		if (actionResult.getResult().isAccepted()) {
-			user.playSound(this.getEquipSound(), 1.0f, 1.0f);
+			SoundInfo sound = this.getEquipSound();
+			user.playSound(sound.getSoundEvent(), sound.getVolume(), sound.getPitch());
 		}
 
 		return actionResult;
@@ -133,8 +134,8 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	/**
 	 * @return The {@link SoundEvent} to play when the artifact is right-click equipped
 	 */
-	protected SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_ARMOR_EQUIP_GENERIC;
+	protected SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC);
 	}
 
 	/**
@@ -187,6 +188,35 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 			if (hurtSound != null && TrinketsHelper.isEquipped(this, entity, true)) {
 				entity.playSound(hurtSound, volume, pitch);
 			}
+		}
+	}
+
+	// From Curios
+	public static final class SoundInfo {
+		final SoundEvent soundEvent;
+		final float volume;
+		final float pitch;
+
+		public SoundInfo(SoundEvent soundEvent) {
+			this(soundEvent, 1f, 1f);
+		}
+
+		public SoundInfo(SoundEvent soundEvent, float volume, float pitch) {
+			this.soundEvent = soundEvent;
+			this.volume = volume;
+			this.pitch = pitch;
+		}
+
+		public SoundEvent getSoundEvent() {
+			return this.soundEvent;
+		}
+
+		public float getVolume() {
+			return this.volume;
+		}
+
+		public float getPitch() {
+			return this.pitch;
 		}
 	}
 }

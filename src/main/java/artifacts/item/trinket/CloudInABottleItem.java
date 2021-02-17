@@ -16,7 +16,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -44,8 +43,8 @@ public class CloudInABottleItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	protected SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH;
+	protected SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH);
 	}
 
 	@Override

@@ -7,7 +7,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -20,8 +19,8 @@ public class DrinkingHatItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	protected SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_BOTTLE_FILL;
+	protected SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_BOTTLE_FILL);
 	}
 
 	@Override

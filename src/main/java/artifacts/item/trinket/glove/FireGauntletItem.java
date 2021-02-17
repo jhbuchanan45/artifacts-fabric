@@ -14,8 +14,6 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.item.Item;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -27,8 +25,8 @@ public class FireGauntletItem extends GloveItem {
 	private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_slim_glow.png");
 
 	@Override
-	protected SoundEvent getEquipSound() {
-		return SoundEvents.ITEM_ARMOR_EQUIP_IRON;
+	protected SoundInfo getEquipSound() {
+		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_IRON);
 	}
 
 	@Override
