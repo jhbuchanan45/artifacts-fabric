@@ -48,6 +48,7 @@
   "item.artifacts.villager_hat": "Villager Hat",
   "item.artifacts.cloud_in_a_bottle": "Cloud in a Bottle",
   "item.artifacts.whoopee_cushion": "Whoopee Cushion",
+  "item.artifacts.vampiric_glove": "Vampiric Glove",
 
   "item.artifacts.snorkel.tooltip": "Allows the wearer to\nbreathe underwater",
   "item.artifacts.plastic_drinking_hat.tooltip": "Decreases the time it takes\nto drink drinkable items",
@@ -81,6 +82,7 @@
   "item.artifacts.villager_hat.tooltip": "Decreases trading prices and\nvillagers occasionally give\ngifts to the wearer",
   "item.artifacts.cloud_in_a_bottle.tooltip": "Allows the wearer to double jump",
   "item.artifacts.whoopee_cushion.tooltip": "Increases the wearer's flatulence",
+  "item.artifacts.vampiric_glove.tooltip": "Causes the wearer's melee\n attacks to absorb health",
 
   "text.autoconfig.artifacts.title": "Artifacts Configuration",
   "text.autoconfig.artifacts.category.general": "General",

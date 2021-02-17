@@ -57,6 +57,7 @@ public class Items {
 	public static final Item POWER_GLOVE = register("power_glove", new PowerGloveItem());
 	public static final Item FIRE_GAUNTLET = register("fire_gauntlet", new FireGauntletItem());
 	public static final Item POCKET_PISTON = register("pocket_piston", new PocketPistonItem());
+	public static final Item VAMPIRIC_GLOVE = register("vampiric_glove", new VampiricGloveItem());
 
 	// Feet
 	public static final Item BUNNY_HOPPERS = register("bunny_hoppers", new BunnyHoppersItem());
