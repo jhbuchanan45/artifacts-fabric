@@ -50,7 +50,10 @@ public class Items {
 	public static final Item UNIVERSAL_ATTRACTOR = register("universal_attractor", new UniversalAttractorItem());
 	public static final Item CRYSTAL_HEART = register("crystal_heart", new CrystalHeartItem());
 	public static final Item CLOUD_IN_A_BOTTLE = register("cloud_in_a_bottle", new CloudInABottleItem());
-	public static final Item HELIUM_FLAMINGO = register("helium_flamingo", new HeliumFlamingoItem());
+	// TODO: non-functional and disabled
+	// Non-registered item left here to prevent unresolved references
+	// public static final Item HELIUM_FLAMINGO = register("helium_flamingo", new HeliumFlamingoItem());
+	public static final Item HELIUM_FLAMINGO = new HeliumFlamingoItem();
 
 	// Hands
 	public static final Item DIGGING_CLAWS = register("digging_claws", new DiggingClawsItem());
