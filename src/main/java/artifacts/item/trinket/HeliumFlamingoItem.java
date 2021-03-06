@@ -7,6 +7,8 @@ import artifacts.init.Items;
 import artifacts.trinkets.TrinketsHelper;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,6 +21,7 @@ public class HeliumFlamingoItem extends TrinketArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/helium_flamingo.png");
 
 	@Override
+	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
 		return new HeliumFlamingoModel();
 	}

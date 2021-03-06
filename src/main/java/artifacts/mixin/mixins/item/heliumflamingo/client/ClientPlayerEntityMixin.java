@@ -2,7 +2,6 @@ package artifacts.mixin.mixins.item.heliumflamingo.client;
 
 import artifacts.init.Components;
 import artifacts.init.Items;
-import artifacts.item.trinket.HeliumFlamingoItem;
 import artifacts.trinkets.TrinketsHelper;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.input.Input;
@@ -37,13 +36,6 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 			} else {
 				Components.ARTIFACT_ABILITIES.get(this).toggleAirSwimming();
 			}
-		}
-	}
-
-	@Inject(method = "move", at = @At("TAIL"))
-	private void stopAirSwimmingOnGround(CallbackInfo info) {
-		if (this.isOnGround() && HeliumFlamingoItem.isFlying(this)) {
-			Components.ARTIFACT_ABILITIES.get(this).stopAirSwimming();
 		}
 	}
 }
