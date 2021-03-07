@@ -5,7 +5,7 @@
   ],
   "textures": {
     "particle": "block/oak_log",
-    "umbrella": "artifacts:item/umbrella"
+    "umbrella": "artifacts:item/umbrella_in_hand"
   },
   "elements": [
     {
