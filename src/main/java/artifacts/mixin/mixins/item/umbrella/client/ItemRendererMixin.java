@@ -33,9 +33,4 @@ public abstract class ItemRendererMixin {
 		return stack.getItem() == Items.UMBRELLA && shouldUseIcon
 				? this.models.getModelManager().getModel(UmbrellaItem.UMBRELLA_ICON_MODEL) : model;
 	}
-
-	@ModifyVariable(method = "renderGuiItemModel", at = @At(value = "STORE", ordinal = 0))
-	private boolean fixUmbrellaGuiDepthLighting(boolean original, ItemStack stack) {
-		return original || stack.getItem() == Items.UMBRELLA;
-	}
 }
