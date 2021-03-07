@@ -15,7 +15,7 @@ public abstract class ModelLoaderMixin {
 	@Shadow protected abstract void addModel(ModelIdentifier modelId);
 
 	@Inject(method = "<init>", at = @At(value = "INVOKE_STRING", shift = At.Shift.AFTER, target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V", args = {"ldc=special"}))
-	private void addUmbrellaIconModel(CallbackInfo info) {
+	private void addUmbrellaHeldModel(CallbackInfo info) {
 		this.addModel(UmbrellaItem.UMBRELLA_HELD_MODEL);
 	}
 }
