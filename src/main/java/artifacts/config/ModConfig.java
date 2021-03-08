@@ -1,10 +1,10 @@
 package artifacts.config;
 
 import artifacts.Artifacts;
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
-import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 
 @Config(name = Artifacts.MODID)
 @Config.Gui.Background("minecraft:textures/block/mossy_cobblestone.png")

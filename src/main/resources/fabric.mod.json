@@ -44,8 +44,7 @@
     "cardinal-components-base": ">=2.7.5",
     "cardinal-components-entity": ">=2.7.5",
     "cardinal-components-item": ">=2.7.5",
-    "autoconfig1u": "*",
-    "cloth-config2": "*",
+    "cloth-config2": ">=4.9",
     "step-height-entity-attribute": "*"
   },
   "suggests": {
