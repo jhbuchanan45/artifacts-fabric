@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Slightly reduced Mimic knockback resistance
 - Reduced digging claws mining level
 - Slightly reduced digging claws mining speed
+- Removed dependency on Auto Config
+- Cloth Config is no longer bundled
 
 ### Fixed
 - Everlasting foods consumed by other mods' autofeeders
