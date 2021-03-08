@@ -53,6 +53,7 @@
     "trinkets.TrinketSlotMixin"
   ],
   "client": [
+    "client.render.PlayerEntityRendererMixin",
     "dev.item.heliumflamingo.client.ClientPlayerEntityMixin",
     "dev.item.heliumflamingo.client.InGameOverlayRendererMixin",
     "event.client.LivingEntityMixin",

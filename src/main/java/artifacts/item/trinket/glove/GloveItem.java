@@ -7,6 +7,7 @@ import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -15,11 +16,17 @@ import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 
 public abstract class GloveItem extends TrinketArtifactItem {
 
 	protected Object modelSlim;
+
+	@Override
+	public boolean canWearInSlot(String group, String slot) {
+		return (group.equals(SlotGroups.HAND) || group.equals(SlotGroups.OFFHAND)) && slot.equals(Slots.GLOVES);
+	}
 
 	@Environment(EnvType.CLIENT)
 	protected static boolean hasSmallArms(Entity entity) {
@@ -72,8 +79,25 @@ public abstract class GloveItem extends TrinketArtifactItem {
 		model.renderHand(hand, matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return (group.equals(SlotGroups.HAND) || group.equals(SlotGroups.OFFHAND)) && slot.equals(Slots.GLOVES);
+	@Environment(EnvType.CLIENT)
+	public void renderArm(MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, Arm arm, boolean glint) {
+		if (!player.isSpectator()) {
+			boolean smallArms = hasSmallArms(player);
+			GloveModel model = getModel(smallArms);
+
+			ModelPart armPart = arm == Arm.LEFT ? model.leftArm : model.rightArm;
+			ModelPart sleevePart = arm == Arm.LEFT ? model.leftSleeve : model.rightSleeve;
+
+			model.setVisible(false);
+			armPart.visible = sleevePart.visible = true;
+
+			model.sneaking = false;
+			model.handSwingProgress = model.leaningPitch = 0;
+			model.setAngles(player, 0, 0, 0, 0, 0);
+			armPart.pitch = sleevePart.pitch = 0;
+
+			armPart.render(matrixStack, ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, glint), light, OverlayTexture.DEFAULT_UV);
+			sleevePart.render(matrixStack, ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, glint), light, OverlayTexture.DEFAULT_UV);
+		}
 	}
 }
