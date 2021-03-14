@@ -162,6 +162,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, animationProgress, headPitch);
 		model.animateModel(player, limbAngle, limbDistance, tickDelta);
 		TrinketRenderHelper.followBodyRotations(player, model);
+		// TODO: stack.hasGlint()
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(this.getTexture()), false, false);
 		model.render(matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}

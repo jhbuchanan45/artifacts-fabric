@@ -80,7 +80,7 @@ public abstract class GloveItem extends TrinketArtifactItem {
 	}
 
 	@Environment(EnvType.CLIENT)
-	public void renderArm(MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, Arm arm, boolean glint) {
+	public void renderArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, Arm arm, boolean glint) {
 		if (!player.isSpectator()) {
 			boolean smallArms = hasSmallArms(player);
 			GloveModel model = getModel(smallArms);
@@ -96,8 +96,8 @@ public abstract class GloveItem extends TrinketArtifactItem {
 			model.setAngles(player, 0, 0, 0, 0, 0);
 			armPart.pitch = sleevePart.pitch = 0;
 
-			armPart.render(matrixStack, ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, glint), light, OverlayTexture.DEFAULT_UV);
-			sleevePart.render(matrixStack, ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, glint), light, OverlayTexture.DEFAULT_UV);
+			armPart.render(matrices, ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, glint), light, OverlayTexture.DEFAULT_UV);
+			sleevePart.render(matrices, ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, glint), light, OverlayTexture.DEFAULT_UV);
 		}
 	}
 }
