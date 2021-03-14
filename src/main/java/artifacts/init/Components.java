@@ -23,14 +23,15 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 	public static final ComponentKey<TrinketEnabledComponent> TRINKET_ENABLED =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "trinket_enabled"),
 					TrinketEnabledComponent.class);
-	public static final ComponentKey<ArtifactAbilitiesComponent> ARTIFACT_ABILITIES =
+	/*public static final ComponentKey<ArtifactAbilitiesComponent> ARTIFACT_ABILITIES =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "artifact_abilities"),
-					ArtifactAbilitiesComponent.class);
+					ArtifactAbilitiesComponent.class);*/
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
 		registry.registerFor(ItemEntity.class, DROPPED_ITEM_ENTITY, entity -> new BooleanComponent("wasDropped"));
-		registry.registerForPlayers(ARTIFACT_ABILITIES, ArtifactAbilitiesComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
+		// TODO: disabled for now (Helium Flamingo)
+		// registry.registerForPlayers(ARTIFACT_ABILITIES, ArtifactAbilitiesComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
 	}
 
 	@Override

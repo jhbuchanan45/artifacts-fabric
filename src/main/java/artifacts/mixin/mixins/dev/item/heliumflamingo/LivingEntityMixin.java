@@ -22,17 +22,17 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@Inject(method = "baseTick", at = @At(value = "INVOKE", ordinal = 0, shift = At.Shift.AFTER, target = "Lnet/minecraft/entity/LivingEntity;setAir(I)V"))
 	private void airSwimTick(CallbackInfo info) {
-		Components.ARTIFACT_ABILITIES.maybeGet(this).ifPresent(comp -> {
+		/*Components.ARTIFACT_ABILITIES.maybeGet(this).ifPresent(comp -> {
 			if (this.getAir() == 0 && comp.isAirSwimming()) {
 				comp.stopAirSwimming();
 			}
-		});
+		});*/
 	}
 
 	@Inject(method = "fall", at = @At("HEAD"))
 	private void stopAirSwimmingOnGround(double heightDifference, boolean onGround, BlockState landedState, BlockPos landedPosition, CallbackInfo info) {
-  		if (onGround && HeliumFlamingoItem.isFlying((LivingEntity) (Object) this)) {
+  		/*if (onGround && HeliumFlamingoItem.isFlying((LivingEntity) (Object) this)) {
 		    Components.ARTIFACT_ABILITIES.get(this).stopAirSwimming();
-		}
+		}*/
 	}
 }
