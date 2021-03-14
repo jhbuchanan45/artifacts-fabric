@@ -1,12 +1,9 @@
 package artifacts.item.trinket.glove;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.trinket.GloveModel;
 import artifacts.events.LivingEntityDamagedCallback;
 import artifacts.init.Items;
 import artifacts.trinkets.TrinketsHelper;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;

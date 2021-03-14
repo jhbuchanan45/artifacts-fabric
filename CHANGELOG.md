@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Vampiric Glove
+- Golden Hook
 - Inventory icon for the Umbrella
 - Show gloves on first person arms (configurable)
 - Translations
