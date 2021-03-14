@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show gloves on first person arms (configurable)
 - Added translations
   - Chinese
+  - German
   - Pirate Speak
 
 ### Changed
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reduced Digging Claws mining level
 - Slightly reduced Digging Claws mining speed
 - Dropped artifacts are now fire and lavaproof
+- Tweaks to loot generation
 - Removed dependency on Auto Config
 - Cloth Config is no longer bundled
 - Slight changes to some textures and models

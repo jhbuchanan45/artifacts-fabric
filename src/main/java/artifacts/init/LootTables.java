@@ -25,6 +25,8 @@ public class LootTables {
 			new Identifier("minecraft", "chests/village/village_desert_house"),
 			new Identifier("minecraft", "chests/village/village_plains_house"),
 			new Identifier("minecraft", "chests/village/village_savanna_house"),
+			new Identifier("minecraft", "chests/village/village_snowy_house"),
+			new Identifier("minecraft", "chests/village/village_taiga_house"),
 			new Identifier("minecraft", "chests/abandoned_mineshaft"),
 			new Identifier("minecraft", "chests/bastion_hoglin_stable"),
 			new Identifier("minecraft", "chests/bastion_treasure"),
