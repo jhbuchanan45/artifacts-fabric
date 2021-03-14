@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Vampiric Glove
 - Inventory icon for the Umbrella
-- Show gloves on first person arms
+- Show gloves on first person arms (configurable)
 - Translations
   - Chinese
   - Pirate Speak
