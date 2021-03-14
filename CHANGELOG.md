@@ -6,8 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Vampiric Glove
-- Golden Hook
+- Vampiric Glove artifact
+- Golden Hook artifact
 - Inventory icon for the Umbrella
 - Show gloves on first person arms (configurable)
 - Translations
@@ -16,8 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Slightly reduced Mimic knockback resistance
-- Reduced digging claws mining level
-- Slightly reduced digging claws mining speed
+- Reduced Digging Claws mining level
+- Slightly reduced Digging Claws mining speed
+- Dropped artifacts are now fire and lavaproof
 - Removed dependency on Auto Config
 - Cloth Config is no longer bundled
 

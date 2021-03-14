@@ -18,7 +18,7 @@ import java.util.List;
 public abstract class ArtifactItem extends Item {
 
 	public ArtifactItem(Settings settings) {
-		super(settings.maxCount(1).group(Artifacts.ITEM_GROUP).rarity(Rarity.RARE));
+		super(settings.maxCount(1).group(Artifacts.ITEM_GROUP).rarity(Rarity.RARE).fireproof());
 	}
 
 	public ArtifactItem() {
