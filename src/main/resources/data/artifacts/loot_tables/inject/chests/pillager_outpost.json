@@ -5,48 +5,48 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:panic_necklace",
-          "weight": 5
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "artifacts:panic_necklace"
         },
         {
-          "type": "item",
-          "name": "artifacts:pocket_piston",
-          "weight": 5
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "artifacts:pocket_piston"
         },
         {
-          "type": "item",
-          "name": "artifacts:steadfast_spikes",
-          "weight": 5
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "artifacts:steadfast_spikes"
         },
         {
-          "type": "item",
-          "name": "artifacts:power_glove",
-          "weight": 5
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "artifacts:power_glove"
         },
         {
-          "type": "item",
-          "name": "artifacts:cross_necklace",
-          "weight": 5
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "artifacts:cross_necklace"
         },
         {
-          "type": "item",
-          "name": "artifacts:scarf_of_invisibility",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:scarf_of_invisibility"
         },
         {
-          "type": "item",
-          "name": "artifacts:crystal_heart",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:crystal_heart"
         },
         {
-          "type": "item",
-          "name": "artifacts:cloud_in_a_bottle",
-          "weight": 8
+          "type": "minecraft:item",
+          "weight": 8,
+          "name": "artifacts:cloud_in_a_bottle"
         },
         {
-          "type": "empty",
-          "weight": 60
+          "type": "minecraft:empty",
+          "weight": 59
         }
       ]
     }

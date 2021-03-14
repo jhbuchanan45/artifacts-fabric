@@ -5,52 +5,52 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:snorkel",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:snorkel"
         },
         {
-          "type": "item",
-          "name": "artifacts:flippers",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:flippers"
         },
         {
-          "type": "item",
-          "name": "artifacts:scarf_of_invisibility",
-          "weight": 2
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "artifacts:scarf_of_invisibility"
         },
         {
-          "type": "item",
-          "name": "artifacts:steadfast_spikes",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:steadfast_spikes"
         },
         {
-          "type": "item",
-          "name": "artifacts:universal_attractor",
-          "weight": 2
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "artifacts:universal_attractor"
         },
         {
-          "type": "item",
-          "name": "artifacts:feral_claws",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:feral_claws"
         },
         {
-          "type": "item",
-          "name": "artifacts:night_vision_goggles",
-          "weight": 2
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "artifacts:night_vision_goggles"
         },
         {
-          "type": "item",
-          "name": "artifacts:obsidian_skull",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:obsidian_skull"
         },
         {
-          "type": "item",
-          "name": "artifacts:running_shoes",
-          "weight": 2
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "artifacts:running_shoes"
         },
         {
-          "type": "empty",
+          "type": "minecraft:empty",
           "weight": 75
         }
       ]

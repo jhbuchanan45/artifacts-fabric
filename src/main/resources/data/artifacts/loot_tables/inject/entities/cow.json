@@ -1,22 +1,33 @@
 {
+  "type": "minecraft:entity",
   "pools": [
     {
       "name": "main",
-      "rolls": 1,
+      "rolls": 1.0,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:everlasting_beef",
-          "weight": 1
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:furnace_smelt",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "predicate": {
+                    "flags": {
+                      "is_on_fire": true
+                    }
+                  },
+                  "entity": "this"
+                }
+              ]
+            }
+          ],
+          "name": "artifacts:everlasting_beef"
         },
         {
-          "type": "empty",
+          "type": "minecraft:empty",
           "weight": 999
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:killed_by_player"
         }
       ]
     }

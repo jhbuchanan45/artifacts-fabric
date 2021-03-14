@@ -5,28 +5,28 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:everlasting_beef",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:everlasting_beef"
         },
         {
-          "type": "item",
-          "name": "artifacts:bunny_hoppers",
-          "weight": 7
+          "type": "minecraft:item",
+          "weight": 7,
+          "name": "artifacts:bunny_hoppers"
         },
         {
-          "type": "item",
-          "name": "artifacts:flame_pendant",
-          "weight": 8
+          "type": "minecraft:item",
+          "weight": 8,
+          "name": "artifacts:flame_pendant"
         },
         {
-          "type": "loot_table",
-          "name": "artifacts:artifact",
-          "weight": 7
+          "type": "minecraft:loot_table",
+          "weight": 7,
+          "name": "artifacts:artifact"
         },
         {
-          "type": "empty",
-          "weight": 85
+          "type": "minecraft:empty",
+          "weight": 75
         }
       ]
     }

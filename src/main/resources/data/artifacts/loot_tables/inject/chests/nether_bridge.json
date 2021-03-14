@@ -5,37 +5,36 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:plastic_drinking_hat",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:plastic_drinking_hat"
         },
         {
-          "type": "item",
-          "name": "artifacts:novelty_drinking_hat",
-          "weight": 1
+          "type": "minecraft:item",
+          "name": "artifacts:novelty_drinking_hat"
         },
         {
-          "type": "item",
-          "name": "artifacts:cross_necklace",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:cross_necklace"
         },
         {
-          "type": "item",
-          "name": "artifacts:night_vision_goggles",
-          "weight": 2
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "artifacts:night_vision_goggles"
         },
         {
-          "type": "item",
-          "name": "artifacts:pocket_piston",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:pocket_piston"
         },
         {
-          "type": "item",
-          "name": "artifacts:running_shoes",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:running_shoes"
         },
         {
-          "type": "empty",
+          "type": "minecraft:empty",
           "weight": 85
         }
       ]

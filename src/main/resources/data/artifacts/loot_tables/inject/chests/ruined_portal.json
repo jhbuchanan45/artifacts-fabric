@@ -5,42 +5,42 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:night_vision_goggles",
-          "weight": 2
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "artifacts:night_vision_goggles"
         },
         {
-          "type": "item",
-          "name": "artifacts:thorn_pendant",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:thorn_pendant"
         },
         {
-          "type": "item",
-          "name": "artifacts:fire_gauntlet",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:fire_gauntlet"
         },
         {
-          "type": "item",
-          "name": "artifacts:power_glove",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:power_glove"
         },
         {
-          "type": "item",
-          "name": "artifacts:universal_attractor",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:universal_attractor"
         },
         {
-          "type": "item",
-          "name": "artifacts:obsidian_skull",
-          "weight": 3
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "artifacts:obsidian_skull"
         },
         {
-          "type": "item",
-          "name": "artifacts:lucky_scarf",
-          "weight": 2
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "artifacts:lucky_scarf"
         },
         {
-          "type": "empty",
+          "type": "minecraft:empty",
           "weight": 80
         }
       ]

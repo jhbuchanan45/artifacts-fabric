@@ -5,37 +5,37 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:power_glove",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:power_glove"
         },
         {
-          "type": "item",
-          "name": "artifacts:antidote_vessel",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:antidote_vessel"
         },
         {
-          "type": "item",
-          "name": "artifacts:superstitious_hat",
-          "weight": 7
+          "type": "minecraft:item",
+          "weight": 7,
+          "name": "artifacts:superstitious_hat"
         },
         {
-          "type": "item",
-          "name": "artifacts:lucky_scarf",
-          "weight": 6
+          "type": "minecraft:item",
+          "weight": 6,
+          "name": "artifacts:lucky_scarf"
         },
         {
-          "type": "item",
-          "name": "artifacts:universal_attractor",
-          "weight": 4
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "artifacts:universal_attractor"
         },
         {
-          "type": "loot_table",
-          "name": "artifacts:artifact",
-          "weight": 10
+          "type": "minecraft:loot_table",
+          "weight": 10,
+          "name": "artifacts:artifact"
         },
         {
-          "type": "empty",
+          "type": "minecraft:empty",
           "weight": 65
         }
       ]

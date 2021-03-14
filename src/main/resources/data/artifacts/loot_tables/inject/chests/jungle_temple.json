@@ -5,17 +5,17 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "artifacts:kitty_slippers",
-          "weight": 15
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "artifacts:kitty_slippers"
         },
         {
-          "type": "item",
-          "name": "artifacts:bunny_hoppers",
-          "weight": 5
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "artifacts:bunny_hoppers"
         },
         {
-          "type": "empty",
+          "type": "minecraft:empty",
           "weight": 80
         }
       ]
