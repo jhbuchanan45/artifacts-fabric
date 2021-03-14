@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Everlasting foods consumed by other mods' autofeeders
 - The wrong texture for claws with slim hands was used
+- Scarf of invisibility was no longer transparent
 
 ## [2.3.0] - 2020-01-25
 ### Added
