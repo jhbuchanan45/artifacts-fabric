@@ -25,8 +25,8 @@ public class VampiricGloveItem extends GloveItem {
 		if (source.getAttacker() instanceof LivingEntity) {
 			Entity src = source.getSource();
 			LivingEntity attacker = (LivingEntity) source.getAttacker();
-
-			if (src == attacker && amount > 4 && TrinketsHelper.isEquipped(Items.VAMPIRIC_GLOVE, attacker)) {
+			float damageDealt = Math.min(amount, entity.getHealth());
+			if (src == attacker && damageDealt > 4 && TrinketsHelper.isEquipped(Items.VAMPIRIC_GLOVE, attacker)) {
 				attacker.heal(Math.min(2, amount / 4));
 			}
 		}
