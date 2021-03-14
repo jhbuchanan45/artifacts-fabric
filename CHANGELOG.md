@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed dependency on Auto Config
 - Cloth Config is no longer bundled
 - Slight changes to some textures and models
+- Slightly reduced forward velocity on 2nd jump with Cloud in a Bottle
 - Updated translations
   - Spanish
 

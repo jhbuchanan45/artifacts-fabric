@@ -129,6 +129,6 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 
 	@ModifyConstant(method = "jump", constant = @Constant(floatValue = 0.2f))
 	private float sprintingDoubleJumpHorizontalVelocityMultiplier(float multiplier) {
-		return this.isDoubleJumping ? 0.65f : multiplier;
+		return this.isDoubleJumping ? 0.5f : multiplier;
 	}
 }
