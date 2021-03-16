@@ -29,7 +29,9 @@ public abstract class ArtifactItem extends Item {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-		appendToolTipLines(tooltip, this.getTranslationKey() + ".tooltip");
+		if (Artifacts.CONFIG.general.showTooltips) {
+			appendToolTipLines(tooltip, this.getTranslationKey() + ".tooltip");
+		}
 	}
 
 	public Text getREITooltip() {

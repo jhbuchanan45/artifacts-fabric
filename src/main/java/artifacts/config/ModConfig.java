@@ -31,6 +31,8 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 		public boolean playExtraHurtSounds = true;
 		@ConfigEntry.Gui.Tooltip(count = 2)
 		public boolean showFirstPersonGloves = true;
+		@ConfigEntry.Gui.Tooltip(count = 2)
+		public boolean showTooltips = true;
 
 		private General() {
 		}

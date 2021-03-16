@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Inventory icon for the Umbrella
 - Show gloves on first person arms (configurable)
 - Show artifact information in REI
+- Config option to disable tooltips
 - Added translations
   - Chinese
   - German

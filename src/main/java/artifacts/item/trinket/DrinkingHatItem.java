@@ -1,5 +1,6 @@
 package artifacts.item.trinket;
 
+import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.DrinkingHatModel;
 import artifacts.init.Items;
 import artifacts.trinkets.Slots;
@@ -27,8 +28,10 @@ public class DrinkingHatItem extends TrinketArtifactItem {
 
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-		if (this != Items.PLASTIC_DRINKING_HAT) {
-			appendToolTipLines(tooltip, Items.PLASTIC_DRINKING_HAT.getTranslationKey() + ".tooltip");
+		if (Artifacts.CONFIG.general.showTooltips) {
+			if (this != Items.PLASTIC_DRINKING_HAT) {
+				appendToolTipLines(tooltip, Items.PLASTIC_DRINKING_HAT.getTranslationKey() + ".tooltip");
+			}
 		}
 		super.appendTooltip(stack, world, tooltip, flags);
 	}
