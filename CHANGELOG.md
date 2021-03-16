@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Golden Hook artifact
 - Inventory icon for the Umbrella
 - Show gloves on first person arms (configurable)
+- Show artifact information in REI
 - Added translations
   - Chinese
   - German

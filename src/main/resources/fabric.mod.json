@@ -26,10 +26,13 @@
       "artifacts.ArtifactsClient"
     ],
     "modmenu": [
-      "artifacts.config.ModMenuConfig"
+      "artifacts.integrations.ModMenuConfig"
     ],
     "cardinal-components": [
       "artifacts.init.Components"
+    ],
+    "rei_plugins": [
+      "artifacts.integrations.REIPlugin"
     ]
   },
   "mixins": [

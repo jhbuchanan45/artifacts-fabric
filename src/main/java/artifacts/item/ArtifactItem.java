@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Language;
 import net.minecraft.util.Rarity;
@@ -29,6 +30,10 @@ public abstract class ArtifactItem extends Item {
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
 		appendToolTipLines(tooltip, this.getTranslationKey() + ".tooltip");
+	}
+
+	public Text getREITooltip() {
+		return new LiteralText(Language.getInstance().get(this.getTranslationKey() + ".tooltip").replace("\n", " "));
 	}
 
 	public static void appendToolTipLines(List<Text> tooltip, String translKey) {
