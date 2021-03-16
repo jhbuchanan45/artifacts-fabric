@@ -28,7 +28,11 @@ public abstract class ArtifactItem extends Item {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-		String[] lines = Language.getInstance().get(this.getTranslationKey() + ".tooltip").split("\n");
+		appendToolTipLines(tooltip, this.getTranslationKey() + ".tooltip");
+	}
+
+	public static void appendToolTipLines(List<Text> tooltip, String translKey) {
+		String[] lines = Language.getInstance().get(translKey).split("\n");
 
 		for (String line : lines) {
 			tooltip.add(new LiteralText(line).formatted(Formatting.GRAY));
