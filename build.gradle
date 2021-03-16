@@ -50,7 +50,7 @@ dependencies {
     modImplementation "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
 
     // Compat
-    modCompileOnly("com.github.apace100:origins-fabric:v0.4.6") {
+    modCompileOnly("com.github.apace100:origins-fabric:v${project.origins_version}") {
         transitive = false
     }
 

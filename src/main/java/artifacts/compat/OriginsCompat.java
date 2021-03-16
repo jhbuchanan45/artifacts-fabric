@@ -7,7 +7,7 @@ import io.github.apace100.origins.power.factory.condition.ConditionFactory;
 import io.github.apace100.origins.registry.ModRegistries;
 import io.github.apace100.origins.util.SerializableData;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 
 import java.util.function.BiFunction;
@@ -16,19 +16,19 @@ public class OriginsCompat implements Runnable {
 
 	@Override
 	public void run() {
-		RegistryEntryAddedCallback.event(ModRegistries.PLAYER_CONDITION).register(OriginsCompat::playerConditionAdded);
+		RegistryEntryAddedCallback.event(ModRegistries.ENTITY_CONDITION).register(OriginsCompat::playerConditionAdded);
 	}
 
-	private static void playerConditionAdded(int rawId, Identifier id, ConditionFactory<PlayerEntity> conditionFactory) {
+	private static void playerConditionAdded(int rawId, Identifier id, ConditionFactory<LivingEntity> conditionFactory) {
 		// Held-up umbrella blocks origins:exposed_to_sun condition
 		if (conditionFactory.getSerializerId().equals(new Identifier(Origins.MODID, "exposed_to_sun"))) {
 			//noinspection unchecked
-			ConditionFactoryAccessor<PlayerEntity> conditionAccess = (ConditionFactoryAccessor<PlayerEntity>) conditionFactory;
-			BiFunction<SerializableData.Instance, PlayerEntity, Boolean> origCondition = conditionAccess.getCondition();
+			ConditionFactoryAccessor<LivingEntity> conditionAccess = (ConditionFactoryAccessor<LivingEntity>) conditionFactory;
+			BiFunction<SerializableData.Instance, LivingEntity, Boolean> origCondition = conditionAccess.getCondition();
 
 			// Wrapper around original condition
-			conditionAccess.setCondition((instance, player) -> origCondition.apply(instance, player)
-					&& !UmbrellaItem.isHeldUpInEitherHand(player));
+			conditionAccess.setCondition((instance, entity) -> origCondition.apply(instance, entity)
+					&& !UmbrellaItem.isHeldUpInEitherHand(entity));
 		}
 	}
 }
