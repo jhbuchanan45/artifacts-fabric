@@ -55,7 +55,7 @@
     "cardinal-components": [
       "artifacts:dropped_item_entity",
       "artifacts:trinket_enabled",
-      "artifacts:artifact_abilities"
+      "artifacts:entity_kill_tracker"
     ]
   }
 }
