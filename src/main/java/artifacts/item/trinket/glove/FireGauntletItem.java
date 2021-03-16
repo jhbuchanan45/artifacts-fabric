@@ -46,6 +46,7 @@ public class FireGauntletItem extends GloveItem {
 	}
 
 	@Override
+	@Environment(EnvType.CLIENT)
 	public void renderArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, Arm arm, boolean glint) {
 		if (!player.isSpectator()) {
 			super.renderArm(matrices, vertexConsumers, light, player, arm, glint);
