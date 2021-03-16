@@ -1,25 +1,17 @@
 package artifacts.item;
 
-import artifacts.Artifacts;
 import artifacts.init.Items;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class UmbrellaItem extends ArtifactItem {
-
-	public static final ModelIdentifier UMBRELLA_HELD_MODEL = new ModelIdentifier(
-			new Identifier(Artifacts.MODID, "umbrella_in_hand"), "inventory");
-	public static final ModelIdentifier UMBRELLA_ICON_MODEL = new ModelIdentifier(
-			new Identifier(Artifacts.MODID, "umbrella"), "inventory");
 
 	public UmbrellaItem() {
 		DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
