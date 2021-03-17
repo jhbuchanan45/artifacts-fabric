@@ -22,4 +22,5 @@ Please provide details about the game environment, either by crash report/logs o
  - Minecraft: [version]
  - Fabric API: [version]
  - Artifacts: [version]
-- [other relevant mods...]
+ - Trinkets: [version]
+ - [other relevant mods...]
