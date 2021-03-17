@@ -1,11 +1,15 @@
 package artifacts.client.render;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.util.Identifier;
 import org.lwjgl.opengl.GL11;
 
+
+@Environment(EnvType.CLIENT)
 public abstract class RenderTypes extends RenderLayer {
 
 	private RenderTypes(String name, VertexFormat fmt, int glMode, int size, boolean doCrumbling, boolean depthSorting, Runnable onEnable, Runnable onDisable) {
