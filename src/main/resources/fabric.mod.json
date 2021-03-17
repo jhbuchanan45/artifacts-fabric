@@ -53,6 +53,9 @@
   "suggests": {
     "modmenu": "*"
   },
+  "breaks": {
+    "origins": "<=0.5.2"
+  },
 
   "custom": {
     "cardinal-components": [
