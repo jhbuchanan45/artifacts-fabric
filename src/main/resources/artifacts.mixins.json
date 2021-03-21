@@ -63,7 +63,6 @@
     "item.umbrella.client.BipedEntityModelMixin",
     "item.umbrella.client.ItemRendererMixin",
     "item.umbrella.client.LivingEntityRendererMixin",
-    "item.umbrella.client.ModelLoaderMixin",
     "statuseffect.client.GameRendererMixin",
     "statuseffect.client.LivingEntityMixin",
     "statuseffect.client.StatusEffectUtilMixin"
