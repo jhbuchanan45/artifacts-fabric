@@ -44,4 +44,4 @@ jobs:
           display_name: ${{ steps.changelog_reader.outputs.version }} for Minecraft 1.16.3-1.16.5
           game_versions: 1.16.3,1.16.4,1.16.5,fabric
           release_type: release
-          relations: fabric-api:requiredDependency,trinkets-fabric:requiredDependency,cardinal-components:embeddedLibrary,auto-config-updated-api:embeddedLibrary,cloth-config:embeddedLibrary,modmenu:optionalDependency
+          relations: fabric-api:requiredDependency,trinkets-fabric:requiredDependency,cardinal-components:embeddedLibrary,cloth-config:requiredDependency,modmenu:optionalDependency
