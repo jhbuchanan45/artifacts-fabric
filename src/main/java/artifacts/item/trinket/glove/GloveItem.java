@@ -35,7 +35,7 @@ public abstract class GloveItem extends TrinketArtifactItem {
 
 	@Environment(EnvType.CLIENT)
 	protected GloveModel getModel(boolean smallArms) {
-		return (smallArms ? getSlimModel() : (GloveModel) getModel());
+		return smallArms ? getSlimModel() : (GloveModel) getModel();
 	}
 
 	@Environment(EnvType.CLIENT)

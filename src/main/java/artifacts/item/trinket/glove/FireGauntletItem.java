@@ -1,8 +1,7 @@
 package artifacts.item.trinket.glove;
 
 import artifacts.Artifacts;
-import artifacts.client.render.RenderTypes;
-import artifacts.client.render.TrinketRenderHelper;
+import artifacts.client.render.RenderLayer;
 import artifacts.client.render.model.trinket.GloveModel;
 import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
@@ -41,7 +40,7 @@ public class FireGauntletItem extends GloveItem {
 		GloveModel model = this.getModel(smallArms);
 
 		// The glow effect is achieved by rendering the glow texture unlit
-		VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderTypes.unlit(getGlowTexture(smallArms)), false, false);
+		VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderLayer.unlit(getGlowTexture(smallArms)), false, false);
 		model.renderHand(hand, matrices, vertexConsumer, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}
 
@@ -58,7 +57,7 @@ public class FireGauntletItem extends GloveItem {
 			ModelPart sleevePart = arm == Arm.LEFT ? model.leftSleeve : model.rightSleeve;
 
 			// Also render the glowy bit
-			VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderTypes.unlit(getGlowTexture(smallArms)), false, false);
+			VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderLayer.unlit(getGlowTexture(smallArms)), false, false);
 			armPart.render(matrices, vertexConsumer, 0xF000F0, OverlayTexture.DEFAULT_UV);
 			sleevePart.render(matrices, vertexConsumer, 0xF000F0, OverlayTexture.DEFAULT_UV);
 		}

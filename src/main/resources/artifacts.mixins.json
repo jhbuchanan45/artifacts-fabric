@@ -61,7 +61,6 @@
     "event.client.LivingEntityMixin",
     "item.flippers.client.LivingEntityMixin",
     "item.umbrella.client.BipedEntityModelMixin",
-    "item.umbrella.client.ItemRendererMixin",
     "item.umbrella.client.LivingEntityRendererMixin",
     "statuseffect.client.GameRendererMixin",
     "statuseffect.client.LivingEntityMixin",

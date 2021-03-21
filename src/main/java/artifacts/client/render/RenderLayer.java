@@ -2,7 +2,6 @@ package artifacts.client.render;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.util.Identifier;
@@ -10,14 +9,14 @@ import org.lwjgl.opengl.GL11;
 
 
 @Environment(EnvType.CLIENT)
-public abstract class RenderTypes extends RenderLayer {
+public abstract class RenderLayer extends net.minecraft.client.render.RenderLayer {
 
-	private RenderTypes(String name, VertexFormat fmt, int glMode, int size, boolean doCrumbling, boolean depthSorting, Runnable onEnable, Runnable onDisable) {
+	private RenderLayer(String name, VertexFormat fmt, int glMode, int size, boolean doCrumbling, boolean depthSorting, Runnable onEnable, Runnable onDisable) {
 		super(name, fmt, glMode, size, doCrumbling, depthSorting, onEnable, onDisable);
 		throw new IllegalStateException();
 	}
 
-	public static RenderLayer unlit(Identifier textureLocation) {
+	public static net.minecraft.client.render.RenderLayer unlit(Identifier textureLocation) {
 		MultiPhaseParameters renderState = MultiPhaseParameters.builder()
 				.texture(new Texture(textureLocation, false, false))
 				.transparency(NO_TRANSPARENCY)

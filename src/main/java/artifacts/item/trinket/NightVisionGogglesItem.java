@@ -1,7 +1,7 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.RenderTypes;
+import artifacts.client.render.RenderLayer;
 import artifacts.client.render.model.trinket.NightVisionGogglesModel;
 import artifacts.trinkets.Slots;
 import dev.emi.trinkets.api.SlotGroups;
@@ -45,7 +45,7 @@ public class NightVisionGogglesItem extends TrinketArtifactItem {
 	@Override
 	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel, AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
 		super.render(slot, matrices, vertexConsumers, light, playerModel, player, limbAngle, limbDistance, tickDelta, animationProgress, headYaw, headPitch);
-		VertexConsumer buffer = ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderTypes.unlit(TEXTURE_GLOW), false, false);
+		VertexConsumer buffer = ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderLayer.unlit(TEXTURE_GLOW), false, false);
 		getModel().render(matrices, buffer, 0xF000F0, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}
 
