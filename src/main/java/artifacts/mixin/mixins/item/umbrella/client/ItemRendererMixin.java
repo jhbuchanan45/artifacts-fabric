@@ -16,7 +16,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(ItemRenderer.class)
+// Priority is higher so we can inject into canvas' renderItem overwrite
+@Mixin(value = ItemRenderer.class, priority = 1500)
 public abstract class ItemRendererMixin {
 
 	@Shadow @Final private ItemModels models;
@@ -33,7 +34,7 @@ public abstract class ItemRendererMixin {
 	}
 
 	@ModifyVariable(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V",
-			argsOnly = true, at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "Lnet/minecraft/client/util/math/MatrixStack;push()V"))
+			argsOnly = true, at = @At(value = "HEAD"))
 	private BakedModel setUmbrellaIconModel(BakedModel model, ItemStack stack, ModelTransformation.Mode renderMode) {
 		boolean shouldUseIcon = renderMode == ModelTransformation.Mode.GUI ||
 								renderMode == ModelTransformation.Mode.GROUND ||
