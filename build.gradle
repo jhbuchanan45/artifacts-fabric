@@ -69,10 +69,6 @@ dependencies {
     // Dev runtime
     testmodImplementation sourceSets.main.output
     modRuntime "com.github.florensie:auto-load:${project.autoload_version}"
-    modRuntime("grondag:canvas-mc116:1.0.+") {
-        exclude group: "io.github.prospector", module: "modmenu"
-        exclude group: "me.shedaniel.cloth"
-    }
 }
 
 processResources {

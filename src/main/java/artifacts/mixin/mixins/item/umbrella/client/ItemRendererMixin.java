@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 // Priority is higher so we can inject into canvas' renderItem overwrite
+// TODO: rewrite this using FabricBakedModel if/when RenderContext gets the transform mode
 @Mixin(value = ItemRenderer.class, priority = 1500)
 public abstract class ItemRendererMixin {
 
