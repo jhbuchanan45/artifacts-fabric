@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Haema: Don't burn when you're holding up an Umbrella
 - Canvas: Added bloom effect for Fire Gauntlet and Night Vision Goggles 
 
 ### Fixed

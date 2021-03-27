@@ -65,6 +65,9 @@ dependencies {
     modCompileOnly("com.github.apace100:origins-fabric:v${project.origins_version}") {
         transitive = false
     }
+    modCompileOnly("com.github.williambl:haema:v${project.haema_version}") {
+        transitive = false
+    }
 
     // Dev runtime
     testmodImplementation sourceSets.main.output

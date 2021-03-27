@@ -1,5 +1,6 @@
 package artifacts;
 
+import artifacts.compat.HaemaCompat;
 import artifacts.compat.OriginsCompat;
 import artifacts.config.ModConfig;
 import artifacts.init.*;
@@ -36,6 +37,7 @@ public class Artifacts implements ModInitializer {
 	public static ModConfig CONFIG;
 	private static final Map<String, Runnable> COMPAT_HANDLERS = Collections.unmodifiableMap(new HashMap<String, Runnable>() {{
 		put("origins", new OriginsCompat());
+		put("haema", new HaemaCompat());
 	}});
 
 	@Override
