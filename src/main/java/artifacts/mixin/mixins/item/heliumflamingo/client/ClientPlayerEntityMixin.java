@@ -1,4 +1,4 @@
-package artifacts.mixin.mixins.dev.item.heliumflamingo.client;
+package artifacts.mixin.mixins.item.heliumflamingo.client;
 
 import artifacts.init.Components;
 import artifacts.init.Items;
@@ -33,9 +33,9 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 				&& TrinketsHelper.isEquipped(Items.HELIUM_FLAMINGO, this)) {
 			if (this.abilityResyncCountdown == 0) {
 				this.abilityResyncCountdown = 7;
-			} /*else {
+			} else {
 				Components.ARTIFACT_ABILITIES.get(this).toggleAirSwimming();
-			}*/
+			}
 		}
 	}
 }

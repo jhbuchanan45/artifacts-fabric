@@ -1,8 +1,8 @@
 package artifacts.init;
 
 import artifacts.Artifacts;
-import artifacts.components.BooleanComponent;
 import artifacts.components.ArtifactAbilitiesComponent;
+import artifacts.components.BooleanComponent;
 import artifacts.components.EntityKillTrackerComponent;
 import artifacts.components.TrinketEnabledComponent;
 import artifacts.item.trinket.TrinketArtifactItem;
@@ -24,9 +24,9 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 	public static final ComponentKey<TrinketEnabledComponent> TRINKET_ENABLED =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "trinket_enabled"),
 					TrinketEnabledComponent.class);
-	/*public static final ComponentKey<ArtifactAbilitiesComponent> ARTIFACT_ABILITIES =
+	public static final ComponentKey<ArtifactAbilitiesComponent> ARTIFACT_ABILITIES =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "artifact_abilities"),
-					ArtifactAbilitiesComponent.class);*/
+					ArtifactAbilitiesComponent.class);
 	public static final ComponentKey<EntityKillTrackerComponent> ENTITY_KILL_TRACKER =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "entity_kill_tracker"),
 					EntityKillTrackerComponent.class);
@@ -34,8 +34,7 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
 		registry.registerFor(ItemEntity.class, DROPPED_ITEM_ENTITY, entity -> new BooleanComponent("wasDropped"));
-		// TODO: disabled for now (Helium Flamingo)
-		// registry.registerForPlayers(ARTIFACT_ABILITIES, ArtifactAbilitiesComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
+		registry.registerForPlayers(ARTIFACT_ABILITIES, ArtifactAbilitiesComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
 		registry.registerForPlayers(ENTITY_KILL_TRACKER, entity -> new EntityKillTrackerComponent(), RespawnCopyStrategy.LOSSLESS_ONLY);
 	}
 

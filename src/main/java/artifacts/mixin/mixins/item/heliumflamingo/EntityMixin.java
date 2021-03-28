@@ -1,4 +1,4 @@
-package artifacts.mixin.mixins.dev.item.heliumflamingo;
+package artifacts.mixin.mixins.item.heliumflamingo;
 
 import artifacts.item.trinket.HeliumFlamingoItem;
 import net.minecraft.entity.Entity;

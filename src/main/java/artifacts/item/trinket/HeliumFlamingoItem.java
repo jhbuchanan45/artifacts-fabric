@@ -43,7 +43,7 @@ public class HeliumFlamingoItem extends TrinketArtifactItem {
 
 	public static boolean isFlying(LivingEntity entity) {
 		return TrinketsHelper.isEquipped(Items.HELIUM_FLAMINGO, entity)
-				&& entity instanceof PlayerEntity;
-				//&& Components.ARTIFACT_ABILITIES.get((PlayerEntity) entity).isAirSwimming();
+				&& entity instanceof PlayerEntity
+				&& Components.ARTIFACT_ABILITIES.get((PlayerEntity) entity).isAirSwimming();
 	}
 }
