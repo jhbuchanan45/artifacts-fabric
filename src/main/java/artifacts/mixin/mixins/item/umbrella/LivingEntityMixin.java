@@ -23,7 +23,7 @@ public abstract class LivingEntityMixin extends Entity {
 	@Shadow
 	public abstract boolean hasStatusEffect(StatusEffect effect);
 
-	@ModifyVariable(method = "travel", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/entity/LivingEntity;isTouchingWater()Z"))
+	@ModifyVariable(method = "travel", ordinal = 0, name = "d", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"))
 	private double changeGravity(double gravity) {
 		boolean isFalling = this.getVelocity().y <= 0.0D;
 		boolean heldMainHand = UmbrellaItem.getHeldStatusForHand((LivingEntity) (Object) this, Hand.MAIN_HAND) == UmbrellaItem.HeldStatus.HELD_UP;

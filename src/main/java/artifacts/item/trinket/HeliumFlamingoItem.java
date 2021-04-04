@@ -5,6 +5,7 @@ import artifacts.client.render.model.trinket.HeliumFlamingoModel;
 import artifacts.init.Components;
 import artifacts.init.Items;
 import artifacts.trinkets.TrinketsHelper;
+import be.florens.expandability.api.fabric.PlayerSwimCallback;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
@@ -13,12 +14,22 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 
 
 public class HeliumFlamingoItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/curio/helium_flamingo.png");
+	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/helium_flamingo.png");
+
+	public HeliumFlamingoItem() {
+		super();
+		PlayerSwimCallback.EVENT.register(HeliumFlamingoItem::onPlayerSwim);
+	}
+
+	private static ActionResult onPlayerSwim(PlayerEntity player) {
+		return TrinketsHelper.isEquipped(Items.HELIUM_FLAMINGO, player) ? ActionResult.SUCCESS : ActionResult.PASS;
+	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
