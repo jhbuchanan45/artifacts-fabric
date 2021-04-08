@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2021-04-08
+### Changed
+- You can now equip multiple of the same artifacts (eg. 2 power gloves)
+  - In most cases this will not amplify the effects over just one
+
+### Fixed
+- There is a slight chance a desync issue with other trinkets was fixed
+  - See here for details: https://github.com/emilyalexandra/trinkets/issues/68
+
 ## [3.1.0] - 2021-03-27
 ### Added
 - Haema: Don't burn when you're holding up an Umbrella

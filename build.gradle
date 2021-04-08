@@ -8,19 +8,8 @@ repositories {
     maven { url = "https://maven.terraformersmc.com" }
     maven { url = "https://maven.shedaniel.me/" }
     maven { url = "https://www.cursemaven.com" }
-    maven {
-        name = "dblsaiko"
-        url = "https://maven.dblsaiko.net/"
-    }
-    maven {
-        name = "Cotton"
-        url = "http://server.bbkr.space:8081/artifactory/libs-release/"
-    }
-    // Leave this as lowest priority
-    maven {
-        name = "JitPack"
-        url = "https://jitpack.io"
-    }
+    maven { url = "https://maven.florens.be" }
+    maven { url = "https://jitpack.io" } // Leave this as lowest priority
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -71,7 +60,7 @@ dependencies {
 
     // Dev runtime
     testmodImplementation sourceSets.main.output
-    modRuntime "com.github.florensie:auto-load:${project.autoload_version}"
+    modRuntime "be.florens:autoload-fabric:${project.autoload_version}"
 }
 
 processResources {
