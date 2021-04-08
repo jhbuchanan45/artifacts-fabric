@@ -62,6 +62,9 @@
       "artifacts:dropped_item_entity",
       "artifacts:trinket_enabled",
       "artifacts:entity_kill_tracker"
-    ]
+    ],
+    "vanguard": {
+      "curse-project-id": "401236"
+    }
   }
 }
