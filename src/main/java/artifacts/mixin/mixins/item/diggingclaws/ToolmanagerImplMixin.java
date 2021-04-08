@@ -36,7 +36,6 @@ public abstract class ToolmanagerImplMixin {
 	@Inject(method = "handleIsEffectiveOnIgnoresVanilla", at = @At(value = "TAIL"), cancellable = true)
 	private static void invokeNonToolsHandlers(BlockState state, ItemStack stack, LivingEntity user, boolean vanillaResult, CallbackInfoReturnable<Boolean> info) {
 		if (!info.getReturnValueZ()) {
-			// TODO: does cancelling at return still run other injectors?
 			info.setReturnValue(ToolHandlers.NON_TOOLS_HANDLER.invoker()
 					.isEffectiveOn(null, state, stack, user).isAccepted());
 		}
