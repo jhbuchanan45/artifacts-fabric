@@ -4,11 +4,11 @@ import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public class TrinketEnabledComponent extends BooleanComponent {
+public class ArtifactEnabledComponent extends BooleanComponent {
 
 	private final ItemStack stack;
 
-	public TrinketEnabledComponent(ItemStack stack) {
+	public ArtifactEnabledComponent(ItemStack stack) {
 		super("isEnabled");
 		this.stack = stack;
 		this.set(true);

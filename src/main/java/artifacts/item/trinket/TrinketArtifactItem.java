@@ -54,7 +54,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	public static boolean effectsEnabled(ItemStack stack) {
-		return Components.TRINKET_ENABLED.get(stack).get();
+		return Components.ARTIFACT_ENABLED.get(stack).get();
 	}
 
 	public static void addModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
@@ -108,7 +108,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		// Toggle artifact effects when sneak right-clicking
 		if (user.isSneaking()) {
 			ItemStack stack = user.getStackInHand(hand);
-			Components.TRINKET_ENABLED.get(stack).invert();
+			Components.ARTIFACT_ENABLED.get(stack).invert();
 
 			if (world.isClient()) {
 				// Show enabled/disabled message above hotbar
