@@ -2,9 +2,9 @@ package artifacts.init;
 
 import artifacts.Artifacts;
 import artifacts.components.ArtifactAbilitiesComponent;
+import artifacts.components.ArtifactEnabledComponent;
 import artifacts.components.BooleanComponent;
 import artifacts.components.EntityKillTrackerComponent;
-import artifacts.components.TrinketEnabledComponent;
 import artifacts.item.trinket.TrinketArtifactItem;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
@@ -21,9 +21,9 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 	public static final ComponentKey<BooleanComponent> DROPPED_ITEM_ENTITY =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "dropped_item_entity"),
 					BooleanComponent.class);
-	public static final ComponentKey<TrinketEnabledComponent> TRINKET_ENABLED =
-			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "trinket_enabled"),
-					TrinketEnabledComponent.class);
+	public static final ComponentKey<ArtifactEnabledComponent> ARTIFACT_ENABLED =
+			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "trinket_enabled"), // TODO: can this id be changed?
+					ArtifactEnabledComponent.class);
 	public static final ComponentKey<ArtifactAbilitiesComponent> ARTIFACT_ABILITIES =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "artifact_abilities"),
 					ArtifactAbilitiesComponent.class);
@@ -40,6 +40,6 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 
 	@Override
 	public void registerItemComponentFactories(ItemComponentFactoryRegistry registry) {
-		registry.registerFor(item -> item instanceof TrinketArtifactItem, TRINKET_ENABLED, TrinketEnabledComponent::new);
+		registry.registerFor(item -> item instanceof TrinketArtifactItem, ARTIFACT_ENABLED, ArtifactEnabledComponent::new);
 	}
 }

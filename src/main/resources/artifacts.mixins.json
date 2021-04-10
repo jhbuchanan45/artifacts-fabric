@@ -47,10 +47,6 @@
     "item.whoopeecushion.EntityMixin",
     "statuseffect.LivingEntityMixin",
     "statuseffect.StatusEffectInstanceMixin",
-    "trinkets.PlayerEntityMixin",
-    "trinkets.PlayerTrinketComponentMixin",
-    "trinkets.TrinketFeatureRendererMixin",
-    "trinkets.TrinketSlotMixin",
     "util.DefaultedRegistryMixin"
   ],
   "client": [
