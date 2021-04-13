@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - In most cases this will not amplify the effects over just one
 
 ### Fixed
-- There is a slight chance a desync issue with other trinkets was fixed
+- ~~There is a slight chance a desync issue with other trinkets was fixed~~
   - See here for details: https://github.com/emilyalexandra/trinkets/issues/68
 
 ## [3.1.0] - 2021-03-27
