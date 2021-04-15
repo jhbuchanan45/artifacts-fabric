@@ -1,5 +1,6 @@
 package artifacts;
 
+import artifacts.client.render.ArtifactFeatureRenderer;
 import artifacts.client.render.MimicRenderer;
 import artifacts.init.Entities;
 import artifacts.init.Items;
@@ -8,7 +9,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
 
@@ -29,5 +32,11 @@ public class ArtifactsClient implements ClientModInitializer {
 		// ModelPredicateProvider for rendering of umbrella blocking
 		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity)
 				-> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0);
+
+		LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper) -> {
+			if (entityRenderer instanceof PlayerEntityRenderer) {
+				registrationHelper.register(new ArtifactFeatureRenderer((PlayerEntityRenderer) entityRenderer));
+			}
+		});
 	}
 }

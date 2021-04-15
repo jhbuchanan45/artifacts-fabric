@@ -1,59 +1,54 @@
 package artifacts.components;
 
+import dev.onyxstudios.cca.api.v3.component.Component;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
+import dev.onyxstudios.cca.api.v3.entity.PlayerComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 
-public class ArtifactAbilitiesComponent implements AutoSyncedComponent {
+import java.util.HashMap;
+import java.util.Map;
 
+@SuppressWarnings("UnstableApiUsage")
+public class ArtifactAbilitiesComponent implements PlayerComponent<Component>, AutoSyncedComponent {
+
+	private final Map<Identifier, Boolean> abilities = new HashMap<>();
 	private final PlayerEntity player;
-	private boolean isAirSwimming;
 
 	public ArtifactAbilitiesComponent(PlayerEntity player) {
 		this.player = player;
 	}
 
-	public boolean isAirSwimming() {
-		return this.isAirSwimming;
+	public boolean getAbility(Identifier ability) {
+		return this.abilities.get(ability);
 	}
 
-	public void toggleAirSwimming() {
-		if (this.isAirSwimming) {
-			this.stopAirSwimming();
-		} else {
-			this.startAirSwimming();
-		}
+	public void setAbility(Identifier id, boolean value) {
+		this.abilities.put(id, value);
 	}
 
-	public void startAirSwimming() {
-		this.isAirSwimming = true;
-	}
-
-	public void stopAirSwimming() {
-		this.player.fallDistance = 0;
-		this.isAirSwimming = false;
+	public void toggleAbility(Identifier id) {
+		this.abilities.put(id, !this.abilities.get(id));
 	}
 
 	@Override
 	public void readFromNbt(CompoundTag tag) {
-		this.isAirSwimming = tag.getBoolean("isAirSwimming");
+		CompoundTag booleanTags = tag.getCompound("artifactAbilities");
+		for (String id : booleanTags.getKeys()) {
+			this.abilities.put(new Identifier(id), booleanTags.getBoolean(id));
+		}
 	}
 
 	@Override
 	public void writeToNbt(CompoundTag tag) {
-		tag.putBoolean("isAirSwimming", this.isAirSwimming);
-	}
+		CompoundTag booleanTags = new CompoundTag();
+		this.abilities.forEach((id, value) -> {
+			booleanTags.putBoolean(id.toString(), value);
+		});
 
-	@Override
-	public void applySyncPacket(PacketByteBuf buf) {
-		this.isAirSwimming = buf.readBoolean();
-	}
-
-	@Override
-	public void writeSyncPacket(PacketByteBuf buf, ServerPlayerEntity recipient) {
-		buf.writeBoolean(this.isAirSwimming);
+		tag.put("artifactAbilities", booleanTags);
 	}
 
 	@Override

@@ -25,10 +25,10 @@ public class CloudInABottleItem extends TrinketArtifactItem {
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cloud_in_a_bottle.png");
 
 	public CloudInABottleItem() {
-		ServerPlayNetworking.registerGlobalReceiver(C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacker);
+		ServerPlayNetworking.registerGlobalReceiver(C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacket);
 	}
 
-	private static void handleDoubleJumpPacker(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+	private static void handleDoubleJumpPacket(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
 		server.execute(() -> {
 			((LivingEntityExtensions) player).artifacts$doubleJump();
 

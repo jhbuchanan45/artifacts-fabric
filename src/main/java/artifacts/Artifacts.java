@@ -85,4 +85,8 @@ public class Artifacts implements ModInitializer {
 		ToolHandlers.register();
 		LOGGER.info("[Artifacts] Finished initialization");
 	}
+
+	public static Identifier id(String path) {
+		return new Identifier(MODID, path);
+	}
 }

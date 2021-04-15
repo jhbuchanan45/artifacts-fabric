@@ -10,9 +10,15 @@ import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayNetworkHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
@@ -20,15 +26,25 @@ import net.minecraft.util.Identifier;
 
 public class HeliumFlamingoItem extends TrinketArtifactItem {
 
+	public static final Identifier C2S_AIR_SWIMMING_ID = Artifacts.id("c2s_air_swimming");
 	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/helium_flamingo.png");
 
 	public HeliumFlamingoItem() {
 		super();
 		PlayerSwimCallback.EVENT.register(HeliumFlamingoItem::onPlayerSwim);
+		ServerPlayNetworking.registerGlobalReceiver(C2S_AIR_SWIMMING_ID, HeliumFlamingoItem::handleAirSwimmingPacket);
 	}
 
 	private static ActionResult onPlayerSwim(PlayerEntity player) {
 		return TrinketsHelper.isEquipped(Items.HELIUM_FLAMINGO, player) ? ActionResult.SUCCESS : ActionResult.PASS;
+	}
+
+	private static void handleAirSwimmingPacket(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+		boolean enabled = buf.readBoolean();
+
+		server.execute(() -> {
+			Components.ARTIFACT_ABILITIES.get(player).setAbility(Artifacts.id("air_swimming"), enabled);
+		});
 	}
 
 	@Override
