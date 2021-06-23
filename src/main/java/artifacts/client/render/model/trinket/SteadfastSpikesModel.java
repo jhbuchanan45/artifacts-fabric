@@ -26,7 +26,7 @@ public class SteadfastSpikesModel extends PlayerEntityModel<LivingEntity> {
 		setVisible(false);
 		leftLeg.visible = true;
 		rightLeg.visible = true;
-		leftPantLeg.visible = true;
-		rightPantLeg.visible = true;
+		leftPants.visible = true;
+		rightPants.visible = true;
 	}
 }

@@ -16,7 +16,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
@@ -49,7 +49,7 @@ public class MimicEntity extends MobEntity implements Monster {
 	}
 
 	@Override
-	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, CompoundTag entityTag) {
+	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityTag) {
 		if (getMoveControl() instanceof MimicMovementController) {
 			((MimicMovementController) moveControl).setDirection(random.nextInt(4) * 90, false);
 		}
@@ -77,15 +77,15 @@ public class MimicEntity extends MobEntity implements Monster {
 	}
 
 	@Override
-	public void writeCustomDataToTag(CompoundTag compound) {
-		super.writeCustomDataToTag(compound);
+	public void writeCustomDataToNbt(NbtCompound compound) {
+		super.writeCustomDataToNbt(compound);
 		compound.putInt("ticksInAir", ticksInAir);
 		compound.putBoolean("isDormant", isDormant);
 	}
 
 	@Override
-	public void readCustomDataFromTag(CompoundTag compound) {
-		super.readCustomDataFromTag(compound);
+	public void readCustomDataFromNbt(NbtCompound compound) {
+		super.readCustomDataFromNbt(compound);
 		ticksInAir = compound.getInt("ticksInAir");
 		isDormant = compound.getBoolean("isDormant");
 	}
@@ -328,7 +328,7 @@ public class MimicEntity extends MobEntity implements Monster {
 
 		@Override
 		public void tick() {
-			mimic.headYaw = mimic.bodyYaw = mimic.yaw = changeAngle(mimic.yaw, rotationDegrees, 90);
+			mimic.headYaw = mimic.bodyYaw = mimic.yaw = wrapDegrees(mimic.yaw, rotationDegrees, 90);
 
 			if (state != State.MOVE_TO) {
 				mimic.setForwardSpeed(0);

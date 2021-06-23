@@ -14,18 +14,18 @@ public class PendantModel extends BipedEntityModel<LivingEntity> {
 
 		setVisible(false);
 
-		torso = new ModelPart(this, 0, 0);
+		body = new ModelPart(this, 0, 0);
 		ModelPart gem = new ModelPart(this, 50, 0);
 
-		torso.addCuboid(-(2 * 8) / 2F, -1 / 2F, -(2 * 4 + 1) / 2F, 2 * 8, 2 * 12 + 1, 2 * 4 + 1);
+		body.addCuboid(-(2 * 8) / 2F, -1 / 2F, -(2 * 4 + 1) / 2F, 2 * 8, 2 * 12 + 1, 2 * 4 + 1);
 		gem.addCuboid(-1, 4.5F, -5, 2, 2, 1);
 
-		torso.addChild(gem);
+		body.addChild(gem);
 	}
 
 	@Override
 	public void render(MatrixStack matrixStack, VertexConsumer buffer, int light, int overlay, float red, float green, float blue, float alpha) {
 		matrixStack.scale(0.5F, 0.5F, 0.5F);
-		torso.render(matrixStack, buffer, light, overlay, red, green, blue, alpha);
+		body.render(matrixStack, buffer, light, overlay, red, green, blue, alpha);
 	}
 }

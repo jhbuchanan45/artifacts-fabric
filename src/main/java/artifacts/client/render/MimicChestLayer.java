@@ -15,7 +15,7 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.util.math.Vector3f;
+import net.minecraft.util.math.Vec3f;
 
 import java.util.Calendar;
 
@@ -41,7 +41,7 @@ public class MimicChestLayer extends FeatureRenderer<MimicEntity, MimicModel> {
 		if (!mimic.isInvisible()) {
 			matrices.push();
 
-			matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(180));
+			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(180));
 			matrices.translate(-0.5, -1.5, -0.5);
 
 			getContextModel().copyStateTo(model);

@@ -17,8 +17,8 @@ public class GloveModel extends PlayerEntityModel<LivingEntity> {
 
 	public void renderHand(boolean mainHand, MatrixStack matrices, VertexConsumer vertexConsumers, int light, int overlay, float red, float green, float blue, float alpha) {
 		boolean isRightArm = (MinecraftClient.getInstance().options.mainArm == Arm.LEFT) != mainHand;
-		rightSleeve.copyPositionAndRotation(rightArm);
-		leftSleeve.copyPositionAndRotation(leftArm);
+		rightSleeve.copyTransform(rightArm);
+		leftSleeve.copyTransform(leftArm);
 		leftArm.visible = !isRightArm;
 		leftSleeve.visible = !isRightArm;
 		rightArm.visible = isRightArm;

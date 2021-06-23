@@ -4,12 +4,13 @@ import artifacts.item.trinket.TrinketArtifactItem;
 import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Optional;
 
 @Mixin(GameRenderer.class)
 public abstract class GameRendererMixin {
@@ -20,13 +21,11 @@ public abstract class GameRendererMixin {
 	@Inject(method = "getNightVisionStrength", at = @At("RETURN"), cancellable = true)
 	private static void cancelNightVisionFadeEffect(LivingEntity entity, float tickDelta, CallbackInfoReturnable<Float> info) {
 		if (info.getReturnValueF() != 1f) {
-			TrinketsHelper.getAllEquipped(entity).forEach(stack -> {
-				StatusEffectInstance effect = ((TrinketArtifactItem) stack.getItem()).getPermanentEffect();
-
-				if (effect != null && effect.getEffectType() == StatusEffects.NIGHT_VISION) {
-					info.setReturnValue(1.0f);
-				}
-			});
+			TrinketsHelper.getAllEquipped(entity).stream()
+					.map(stack -> Optional.ofNullable(((TrinketArtifactItem) stack.getItem()).getPermanentEffect()))
+					.filter(effect -> effect.isPresent() && effect.get().getEffectType() == StatusEffects.NIGHT_VISION)
+					.findAny()
+					.ifPresent(effect -> info.setReturnValue(1.0f));
 		}
 	}
 }

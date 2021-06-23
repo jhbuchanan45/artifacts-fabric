@@ -5,15 +5,15 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
-import net.minecraft.block.MaterialColor;
+import net.minecraft.block.MapColor;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ArtifactsTest implements ModInitializer {
 
-	public static final Block LVL2_BLOCK = new Block(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.WOOD).burnable().build()).requiresTool().breakByTool(FabricToolTags.AXES, 2).strength(3));
-	public static final Block LVL3_BLOCK = new Block(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.WOOD).burnable().build()).requiresTool().breakByTool(FabricToolTags.AXES, 3).strength(3));
+	public static final Block LVL2_BLOCK = new Block(FabricBlockSettings.of(new FabricMaterialBuilder(MapColor.OAK_TAN).burnable().build()).requiresTool().breakByTool(FabricToolTags.AXES, 2).strength(3));
+	public static final Block LVL3_BLOCK = new Block(FabricBlockSettings.of(new FabricMaterialBuilder(MapColor.OAK_TAN).burnable().build()).requiresTool().breakByTool(FabricToolTags.AXES, 3).strength(3));
 	private static final String MOD_ID = "artifacts-testmod";
 	public static ToolItem LVL1_PICKAXE = new CustomPickaxeItem(ToolMaterials.STONE, 1, -2.8F, new Item.Settings().group(Artifacts.ITEM_GROUP));
 

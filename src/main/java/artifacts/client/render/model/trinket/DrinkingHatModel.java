@@ -13,7 +13,7 @@ public class DrinkingHatModel extends BipedEntityModel<LivingEntity> {
 
 		setVisible(false);
 		head.visible = true;
-		helmet.visible = true;
+		hat.visible = true;
 
 		hatShade = new ModelPart(this, 0, 52);
 		ModelPart straw = new ModelPart(this, 0, 50);

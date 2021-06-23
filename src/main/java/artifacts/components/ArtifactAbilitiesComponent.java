@@ -4,7 +4,7 @@ import dev.onyxstudios.cca.api.v3.component.Component;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import dev.onyxstudios.cca.api.v3.entity.PlayerComponent;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
@@ -34,16 +34,16 @@ public class ArtifactAbilitiesComponent implements PlayerComponent<Component>, A
 	}
 
 	@Override
-	public void readFromNbt(CompoundTag tag) {
-		CompoundTag booleanTags = tag.getCompound("artifactAbilities");
+	public void readFromNbt(NbtCompound tag) {
+		NbtCompound booleanTags = tag.getCompound("artifactAbilities");
 		for (String id : booleanTags.getKeys()) {
 			this.abilities.put(new Identifier(id), booleanTags.getBoolean(id));
 		}
 	}
 
 	@Override
-	public void writeToNbt(CompoundTag tag) {
-		CompoundTag booleanTags = new CompoundTag();
+	public void writeToNbt(NbtCompound tag) {
+		NbtCompound booleanTags = new NbtCompound();
 		this.abilities.forEach((id, value) -> {
 			booleanTags.putBoolean(id.toString(), value);
 		});

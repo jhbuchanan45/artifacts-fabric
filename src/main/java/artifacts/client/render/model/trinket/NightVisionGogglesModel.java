@@ -11,7 +11,7 @@ public class NightVisionGogglesModel extends BipedEntityModel<LivingEntity> {
 
 		setVisible(false);
 		head.visible = true;
-		helmet.visible = true;
+		hat.visible = true;
 
 		ModelPart goggles = new ModelPart(this, 0, 37);
 		ModelPart eyeLeft = new ModelPart(this, 0, 32);

@@ -26,7 +26,7 @@ public abstract class LivingEntityMixin extends Entity {
 		super(type, world);
 	}
 
-	@ModifyVariable(method = "dropXp", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/LivingEntity;getCurrentExperience(Lnet/minecraft/entity/player/PlayerEntity;)I"))
+	@ModifyVariable(method = "dropXp", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/LivingEntity;getXpToDrop(Lnet/minecraft/entity/player/PlayerEntity;)I"))
 	private int modifyXp(int originalXp) {
 		if (!TrinketsHelper.isEquipped(Items.GOLDEN_HOOK, this.attackingPlayer)) {
 			return originalXp;

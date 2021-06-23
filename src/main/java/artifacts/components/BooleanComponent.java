@@ -1,7 +1,7 @@
 package artifacts.components;
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 
@@ -37,7 +37,7 @@ public class BooleanComponent implements AutoSyncedComponent {
 	}
 
 	@Override
-	public void readFromNbt(CompoundTag tag) {
+	public void readFromNbt(NbtCompound tag) {
 		if (tag.contains(this.name)) {
 			this.bool = tag.getBoolean(this.name);
 		} else {
@@ -46,7 +46,7 @@ public class BooleanComponent implements AutoSyncedComponent {
 	}
 
 	@Override
-	public void writeToNbt(CompoundTag tag) {
+	public void writeToNbt(NbtCompound tag) {
 		tag.putBoolean(this.name, this.bool);
 	}
 

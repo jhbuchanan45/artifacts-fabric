@@ -5,8 +5,6 @@ import artifacts.entity.MimicEntity;
 import artifacts.init.Entities;
 import artifacts.init.LootTables;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -118,7 +116,7 @@ public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 			MimicEntity mimic = Entities.MIMIC.create(world.toServerWorld());
 			if (mimic != null) {
 				mimic.setDormant();
-				mimic.updatePosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+				mimic.setPosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
 				world.spawnEntity(mimic);
 			}
 		} else {

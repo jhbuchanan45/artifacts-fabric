@@ -5,9 +5,9 @@ import com.google.common.collect.EvictingQueue;
 import dev.onyxstudios.cca.api.v3.component.Component;
 import dev.onyxstudios.cca.api.v3.entity.PlayerComponent;
 import net.minecraft.entity.EntityType;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.StringTag;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -35,7 +35,7 @@ public class EntityKillTrackerComponent implements PlayerComponent<Component> {
 	}
 
 	@Override
-	public void readFromNbt(CompoundTag tag) {
+	public void readFromNbt(NbtCompound tag) {
 		if (tag.contains("lastKilledEntities")) {
 			this.lastKilledEntityTypes = tag.getList("lastKilledEnitties", 8).stream()
 					.map(entityTypeId -> Registry.ENTITY_TYPE.getOrEmpty(new Identifier(entityTypeId.asString())))
@@ -46,13 +46,13 @@ public class EntityKillTrackerComponent implements PlayerComponent<Component> {
 	}
 
 	@Override
-	public void writeToNbt(CompoundTag tag) {
+	public void writeToNbt(NbtCompound tag) {
 		//noinspection unchecked
 		tag.put("lastKilledEntities", this.lastKilledEntityTypes.stream()
 				.map(((DefaultedRegistryExtensions<EntityType<?>>) Registry.ENTITY_TYPE)::artifacts$getIdOrEmpty)
 				.filter(Optional::isPresent)
 				.map(Object::toString)
-				.map(StringTag::of)
-				.collect(Collectors.toCollection(ListTag::new)));
+				.map(NbtString::of)
+				.collect(Collectors.toCollection(NbtList::new)));
 	}
 }
