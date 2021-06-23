@@ -12,7 +12,7 @@ public class SnorkelModel extends BipedEntityModel<LivingEntity> {
 
 		setVisible(false);
 		head.visible = true;
-		helmet.visible = true;
+		hat.visible = true;
 
 		ModelPart snorkelMouthPiece = new ModelPart(this, 0, 46);
 		ModelPart snorkelTube = new ModelPart(this, 0, 32);

@@ -24,14 +24,14 @@ public class ScarfModel extends BipedEntityModel<LivingEntity> {
 		super(renderType, 0.5F, 0, 64, 32);
 		bipedCape = new ModelPart(this, 32, 0);
 		bipedCape.addCuboid(-5, 0, 0, 5, 12, 2);
-		torso = new ModelPart(this, 0, 16);
-		torso.addCuboid(-6.01F, -2, -4, 12, 6, 8);
+		body = new ModelPart(this, 0, 16);
+		body.addCuboid(-6.01F, -2, -4, 12, 6, 8);
 	}
 
 	@Override
 	public void setAngles(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		super.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-		bipedCape.copyPositionAndRotation(torso);
+		bipedCape.copyTransform(body);
 		bipedCape.pivotZ += 1.99F;
 	}
 
@@ -63,7 +63,7 @@ public class ScarfModel extends BipedEntityModel<LivingEntity> {
 	@Override
 	public void render(MatrixStack matrixStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		bipedCape.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
-		torso.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+		body.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 		head.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }

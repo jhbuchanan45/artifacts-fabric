@@ -1,9 +1,8 @@
 package artifacts.toolhandler;
 
 import artifacts.init.Items;
-import artifacts.item.trinket.glove.DiggingClawsItem;
-import artifacts.trinkets.TrinketsHelper;
 import artifacts.mixin.mixins.accessors.ToolManagerImplEntryImplAccessor;
+import artifacts.trinkets.TrinketsHelper;
 import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
@@ -51,7 +50,7 @@ public class DiggingClawsToolHandler implements ToolManagerImpl.ToolHandler {
 		// Vanilla block
 		for (Item tool : VANILLA_ITEMS) {
 			// Success if any of the stone tools pass
-			if (new ItemStack(tool).isEffectiveOn(state)) {
+			if (new ItemStack(tool).isSuitableFor(state)) {
 				return ActionResult.SUCCESS;
 			}
 		}

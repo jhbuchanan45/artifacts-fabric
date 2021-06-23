@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface ItemEntityAccessor {
 
 	@Accessor
-	int getAge();
+	int getItemAge();
 }

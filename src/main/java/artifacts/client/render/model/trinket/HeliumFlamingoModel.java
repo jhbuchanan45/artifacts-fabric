@@ -8,7 +8,7 @@ public class HeliumFlamingoModel extends BipedEntityModel<LivingEntity> {
 
 	public HeliumFlamingoModel() {
 		super(0, 0, 64, 64);
-		torso = new ModelPart(this);
+		body = new ModelPart(this);
 
 		ModelPart bone = new ModelPart(this);
 		bone.setPivot(0, 0, 0);
@@ -19,9 +19,9 @@ public class HeliumFlamingoModel extends BipedEntityModel<LivingEntity> {
 		bone.setTextureOffset(36, 8).addCuboid(-4, 9, -7, 8, 4, 4);
 		bone.setTextureOffset(0, 36).addCuboid(-2, 1, -9, 4, 11, 4);
 
-		torso.addChild(bone);
+		body.addChild(bone);
 
 		setVisible(false);
-		torso.visible = true;
+		body.visible = true;
 	}
 }

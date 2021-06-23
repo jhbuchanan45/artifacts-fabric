@@ -30,7 +30,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 	/**
 	 * Sets the holder on the itemstack to check
 	 */
-	@Inject(method = "isUsingEffectiveTool", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isEffectiveOn(Lnet/minecraft/block/BlockState;)Z"))
+	@Inject(method = "canHarvest", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isSuitableFor(Lnet/minecraft/block/BlockState;)Z"))
 	private void setItemStackHolder(BlockState block, CallbackInfoReturnable<Boolean> info) {
 		this.inventory.getMainHandStack().setHolder(this);
 	}

@@ -13,12 +13,12 @@ public class CloudInABottleModel extends BipedEntityModel<LivingEntity> {
 	public CloudInABottleModel() {
 		super(RenderLayer::getEntityTranslucent, 0.5F, 0, 32, 32);
 
-		torso = new ModelPart(this, 0, 0);
+		body = new ModelPart(this, 0, 0);
 		ModelPart jar = new ModelPart(this, 0, 16);
 		ModelPart lid = new ModelPart(this, 0, 25);
 		cloud = new ModelPart(this).setTextureOffset(8, 25);
 
-		torso.addCuboid(-4, 0, -2, 8, 12, 4, 0.5F);
+		body.addCuboid(-4, 0, -2, 8, 12, 4, 0.5F);
 
 		jar.addCuboid(-2, 0, -2, 4, 5, 4);
 		lid.addCuboid(-1, -1, -1, 2, 1, 2);
@@ -29,10 +29,10 @@ public class CloudInABottleModel extends BipedEntityModel<LivingEntity> {
 
 		jar.addChild(lid);
 		jar.addChild(cloud);
-		torso.addChild(jar);
+		body.addChild(jar);
 
 		setVisible(false);
-		torso.visible = true;
+		body.visible = true;
 	}
 
 	@Override
