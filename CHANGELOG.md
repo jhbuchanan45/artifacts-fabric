@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Helium Flamingo artifact
 
+### Changed
+- Updated translations
+  - Chinese
+  - Russian
+
 ## [3.2.1] - 2021-05-10
 ### Fixed
 - Updated Cardinal Components API (fixes crash on start)
