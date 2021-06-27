@@ -8,9 +8,9 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class MimicChestLayerModel extends EntityModel<MimicEntity> {
 
-	protected ModelPart bottom;
-	protected ModelPart lid;
-	protected ModelPart latch;
+	protected final ModelPart bottom;
+	protected final ModelPart lid;
+	protected final ModelPart latch;
 
 	public MimicChestLayerModel() {
 		bottom = new ModelPart(64, 64, 0, 19);

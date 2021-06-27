@@ -65,7 +65,7 @@ public class Artifacts implements ModInitializer {
 		LootTableLoadingCallback.EVENT.register((resourceManager, manager, id, supplier, setter) -> LootTables.onLootTableLoad(id, supplier));
 
 		// Force loading init classes
-		// Entities is loaded by items, loottables can load lazily (no registration)
+		// Entities is loaded by items, loot tables can load lazily (no registration)
 		Items.ANTIDOTE_VESSEL.toString();
 		SoundEvents.MIMIC_CLOSE.toString();
 		Features.register();

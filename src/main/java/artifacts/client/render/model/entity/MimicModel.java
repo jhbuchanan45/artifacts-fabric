@@ -8,10 +8,10 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class MimicModel extends EntityModel<MimicEntity> {
 
-	protected ModelPart upperTeeth;
-	protected ModelPart lowerTeeth;
-	protected ModelPart upperMouthOverlay;
-	protected ModelPart lowerMouthOverlay;
+	protected final ModelPart upperTeeth;
+	protected final ModelPart lowerTeeth;
+	protected final ModelPart upperMouthOverlay;
+	protected final ModelPart lowerMouthOverlay;
 
 	public MimicModel() {
 		textureWidth = 64;
