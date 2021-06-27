@@ -5,12 +5,12 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public class BooleanComponent implements AutoSyncedComponent {
+public class SyncedBooleanComponent implements AutoSyncedComponent {
 
 	private final String name;
 	private boolean bool;
 
-	public BooleanComponent(String name) {
+	public SyncedBooleanComponent(String name) {
 		this.name = name;
 	}
 
@@ -54,8 +54,8 @@ public class BooleanComponent implements AutoSyncedComponent {
 	public boolean equals(Object obj) {
 		if (obj == this) {
 			return true;
-		} else if (obj instanceof BooleanComponent) {
-			return this.get() == ((BooleanComponent) obj).get();
+		} else if (obj instanceof SyncedBooleanComponent) {
+			return this.get() == ((SyncedBooleanComponent) obj).get();
 		}
 		return false;
 	}

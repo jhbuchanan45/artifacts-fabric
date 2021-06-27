@@ -1,5 +1,6 @@
 package artifacts.trinkets;
 
+import artifacts.init.Components;
 import artifacts.item.trinket.TrinketArtifactItem;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.LivingEntity;
@@ -53,7 +54,8 @@ public final class TrinketsHelper {
 			for (int i = 0; i < inventory.size(); i++) {
 				ItemStack stack = inventory.getStack(i);
 
-				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem && (TrinketArtifactItem.effectsEnabled(stack) || ignoreEffectsDisabled)) {
+				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem
+						&& (Components.ARTIFACT_ENABLED.get(stack).get() || ignoreEffectsDisabled)) {
 					stacks.add(stack);
 				}
 			}

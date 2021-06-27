@@ -1,23 +1,21 @@
 package artifacts.components;
 
 import dev.onyxstudios.cca.api.v3.component.Component;
-import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import dev.onyxstudios.cca.api.v3.entity.PlayerComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("UnstableApiUsage")
-public class ArtifactAbilitiesComponent implements PlayerComponent<Component>, AutoSyncedComponent {
+public class SwimAbilityComponent implements PlayerComponent<Component> {
 
 	private final Map<Identifier, Boolean> abilities = new HashMap<>();
 	private final PlayerEntity player;
 
-	public ArtifactAbilitiesComponent(PlayerEntity player) {
+	public SwimAbilityComponent(PlayerEntity player) {
 		this.player = player;
 	}
 
@@ -49,10 +47,5 @@ public class ArtifactAbilitiesComponent implements PlayerComponent<Component>, A
 		});
 
 		tag.put("artifactAbilities", booleanTags);
-	}
-
-	@Override
-	public boolean shouldSyncWith(ServerPlayerEntity player) {
-		return player.getUuid().equals(this.player.getUuid());
 	}
 }

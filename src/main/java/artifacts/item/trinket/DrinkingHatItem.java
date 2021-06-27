@@ -29,8 +29,9 @@ public class DrinkingHatItem extends TrinketArtifactItem {
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
 		if (Artifacts.CONFIG.general.showTooltips) {
-			if (this != Items.PLASTIC_DRINKING_HAT) {
-				appendToolTipLines(tooltip, Items.PLASTIC_DRINKING_HAT.getTranslationKey() + ".tooltip");
+			if (this == Items.NOVELTY_DRINKING_HAT) {
+				// Novelty drinking hat description is the same as plastic, but with an extra line appended
+				appendTooltipDescription(tooltip, Items.PLASTIC_DRINKING_HAT.getTranslationKey() + ".tooltip");
 			}
 		}
 		super.appendTooltip(stack, world, tooltip, flags);

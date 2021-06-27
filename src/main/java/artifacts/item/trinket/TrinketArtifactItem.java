@@ -53,56 +53,6 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		PlayHurtSoundCallback.EVENT.register(this::playExtraHurtSound);
 	}
 
-	public static boolean effectsEnabled(ItemStack stack) {
-		return Components.ARTIFACT_ENABLED.get(stack).get();
-	}
-
-	public static void addModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
-		if (!instance.hasModifier(modifier)) {
-			instance.addTemporaryModifier(modifier);
-		}
-	}
-
-	public static void removeModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
-		if (instance.hasModifier(modifier)) {
-			instance.removeModifier(modifier);
-		}
-	}
-
-	private static String getEffectsEnabledLanguageKey(ItemStack stack) {
-		return effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
-	}
-
-	@Override
-	public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
-		if (effectsEnabled(stack)) {
-			return this.applyModifiers(group, slot, uuid, stack);
-		}
-		return HashMultimap.create();
-	}
-
-	protected Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
-		return HashMultimap.create();
-	}
-
-	@Override
-	public void tick(PlayerEntity player, ItemStack stack) {
-		if (effectsEnabled(stack)) {
-			effectTick(player, stack);
-		}
-	}
-
-	protected void effectTick(PlayerEntity player, ItemStack stack) {
-	}
-
-	@Override
-	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
-		super.appendTooltip(stack, world, tooltip, flags);
-		MutableText enabled = new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(Formatting.GOLD);
-		Text togglekeybind = new TranslatableText("artifacts.trinket.togglekeybind").formatted(Formatting.GRAY);
-		tooltip.add(enabled.append(" ").append(togglekeybind));
-	}
-
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		// Toggle artifact effects when sneak right-clicking
@@ -129,6 +79,36 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		}
 
 		return actionResult;
+	}
+
+	@Override
+	public final void tick(PlayerEntity player, ItemStack stack) {
+		if (effectsEnabled(stack)) {
+			effectTick(player, stack);
+		}
+	}
+
+	protected void effectTick(PlayerEntity player, ItemStack stack) {
+	}
+
+	@Override
+	public final Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+		if (effectsEnabled(stack)) {
+			return this.applyModifiers(group, slot, uuid, stack);
+		}
+		return HashMultimap.create();
+	}
+
+	protected Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
+		return HashMultimap.create();
+	}
+
+	@Override
+	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
+		super.appendTooltip(stack, world, tooltip, flags);
+		MutableText enabled = new TranslatableText(getEffectsEnabledLanguageKey(stack)).formatted(Formatting.GOLD);
+		Text togglekeybind = new TranslatableText("artifacts.trinket.togglekeybind").formatted(Formatting.GRAY);
+		tooltip.add(enabled.append(" ").append(togglekeybind));
 	}
 
 	/**
@@ -192,8 +172,28 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		}
 	}
 
+	private static boolean effectsEnabled(ItemStack stack) {
+		return Components.ARTIFACT_ENABLED.get(stack).get();
+	}
+
+	public static void addModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
+		if (!instance.hasModifier(modifier)) {
+			instance.addTemporaryModifier(modifier);
+		}
+	}
+
+	public static void removeModifier(EntityAttributeInstance instance, EntityAttributeModifier modifier) {
+		if (instance.hasModifier(modifier)) {
+			instance.removeModifier(modifier);
+		}
+	}
+
+	private static String getEffectsEnabledLanguageKey(ItemStack stack) {
+		return effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
+	}
+
 	// From Curios
-	public static final class SoundInfo {
+	protected static final class SoundInfo {
 		final SoundEvent soundEvent;
 		final float volume;
 		final float pitch;

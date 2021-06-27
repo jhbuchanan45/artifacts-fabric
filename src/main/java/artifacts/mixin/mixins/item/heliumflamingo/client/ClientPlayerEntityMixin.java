@@ -51,7 +51,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 		if (this.client.options.keySprint.isPressed() && !this.isTogglingFlying && !this.sprintKeyWasDown
 				&& !this.abilities.flying && !this.hasVehicle() && !this.isClimbing() && !this.onGround &&
 				!this.isFallFlying() && !this.isTouchingWater() && !this.hasStatusEffect(StatusEffects.LEVITATION)) {
-			Components.ARTIFACT_ABILITIES.get(this).setAbility(Artifacts.id("air_swimming"), true);
+			Components.SWIM_ABILITIES.get(this).setAbility(Artifacts.id("air_swimming"), true);
 
 			PacketByteBuf startAirSwimmingPacket = PacketByteBufs.create();
 			startAirSwimmingPacket.writeBoolean(true);

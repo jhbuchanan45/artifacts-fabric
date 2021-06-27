@@ -8,7 +8,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Language;
 import net.minecraft.util.Rarity;
@@ -30,7 +29,7 @@ public abstract class ArtifactItem extends Item {
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext flags) {
 		if (Artifacts.CONFIG.general.showTooltips) {
-			appendToolTipLines(tooltip, this.getTranslationKey() + ".tooltip");
+			appendTooltipDescription(tooltip, this.getTranslationKey() + ".tooltip");
 		}
 	}
 
@@ -38,11 +37,16 @@ public abstract class ArtifactItem extends Item {
 		return new LiteralText(Language.getInstance().get(this.getTranslationKey() + ".tooltip").replace("\n", " "));
 	}
 
-	public static void appendToolTipLines(List<Text> tooltip, String translKey) {
-		String[] lines = Language.getInstance().get(translKey).split("\n");
+	protected void appendTooltipDescription(List<Text> tooltip, String translKey) {
+		// FIXME: this will break with missing arguments
+		String[] lines = String.format(Language.getInstance().get(translKey), getTooltipDescriptionArguments()).split("\n");
 
 		for (String line : lines) {
 			tooltip.add(new LiteralText(line).formatted(Formatting.GRAY));
 		}
+	}
+
+	protected Object[] getTooltipDescriptionArguments() {
+		return new Object[0];
 	}
 }

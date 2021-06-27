@@ -4,7 +4,7 @@ import artifacts.trinkets.TrinketsHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public class ArtifactEnabledComponent extends BooleanComponent {
+public class ArtifactEnabledComponent extends SyncedBooleanComponent {
 
 	private final ItemStack stack;
 

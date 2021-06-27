@@ -4,6 +4,7 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.HeliumFlamingoModel;
 import artifacts.init.Components;
 import artifacts.init.Items;
+import artifacts.init.SoundEvents;
 import artifacts.trinkets.TrinketsHelper;
 import be.florens.expandability.api.fabric.PlayerSwimCallback;
 import dev.emi.trinkets.api.SlotGroups;
@@ -12,6 +13,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,9 +21,9 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Language;
 
 
 public class HeliumFlamingoItem extends TrinketArtifactItem {
@@ -43,7 +45,7 @@ public class HeliumFlamingoItem extends TrinketArtifactItem {
 		boolean enabled = buf.readBoolean();
 
 		server.execute(() -> {
-			Components.ARTIFACT_ABILITIES.get(player).setAbility(Artifacts.id("air_swimming"), enabled);
+			Components.SWIM_ABILITIES.get(player).setAbility(Artifacts.id("air_swimming"), enabled);
 		});
 	}
 
@@ -65,12 +67,18 @@ public class HeliumFlamingoItem extends TrinketArtifactItem {
 
 	@Override
 	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ENTITY_ITEM_PICKUP, 1f, 0.7f);
+		return new SoundInfo(SoundEvents.POP, 1f, 0.7f);
 	}
 
-	public static boolean isFlying(LivingEntity entity) {
+	@Override
+	protected Object[] getTooltipDescriptionArguments() {
+		String translationKey = MinecraftClient.getInstance().options.keySprint.getBoundKeyTranslationKey();
+		return new Object[] {Language.getInstance().get(translationKey)};
+	}
+
+/*	public static boolean isFlying(LivingEntity entity) {
 		return TrinketsHelper.isEquipped(Items.HELIUM_FLAMINGO, entity)
 				&& entity instanceof PlayerEntity
-				&& Components.ARTIFACT_ABILITIES.get((PlayerEntity) entity).isAirSwimming();
-	}
+				&& Components.SWIM_ABILITIES.get((PlayerEntity) entity).isAirSwimming();
+	}*/
 }

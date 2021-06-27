@@ -1,10 +1,10 @@
 package artifacts.init;
 
 import artifacts.Artifacts;
-import artifacts.components.ArtifactAbilitiesComponent;
 import artifacts.components.ArtifactEnabledComponent;
-import artifacts.components.BooleanComponent;
 import artifacts.components.EntityKillTrackerComponent;
+import artifacts.components.SwimAbilityComponent;
+import artifacts.components.SyncedBooleanComponent;
 import artifacts.item.trinket.TrinketArtifactItem;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
@@ -18,23 +18,23 @@ import net.minecraft.util.Identifier;
 
 public class Components implements EntityComponentInitializer, ItemComponentInitializer {
 
-	public static final ComponentKey<BooleanComponent> DROPPED_ITEM_ENTITY =
+	public static final ComponentKey<SyncedBooleanComponent> DROPPED_ITEM_ENTITY =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "dropped_item_entity"),
-					BooleanComponent.class);
+					SyncedBooleanComponent.class);
 	public static final ComponentKey<ArtifactEnabledComponent> ARTIFACT_ENABLED =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "trinket_enabled"), // TODO: can this id be changed?
 					ArtifactEnabledComponent.class);
-	public static final ComponentKey<ArtifactAbilitiesComponent> ARTIFACT_ABILITIES =
-			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "artifact_abilities"),
-					ArtifactAbilitiesComponent.class);
+	public static final ComponentKey<SwimAbilityComponent> SWIM_ABILITIES =
+			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "swim_abilities"),
+					SwimAbilityComponent.class);
 	public static final ComponentKey<EntityKillTrackerComponent> ENTITY_KILL_TRACKER =
 			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "entity_kill_tracker"),
 					EntityKillTrackerComponent.class);
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-		registry.registerFor(ItemEntity.class, DROPPED_ITEM_ENTITY, entity -> new BooleanComponent("wasDropped"));
-		registry.registerForPlayers(ARTIFACT_ABILITIES, ArtifactAbilitiesComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
+		registry.registerFor(ItemEntity.class, DROPPED_ITEM_ENTITY, entity -> new SyncedBooleanComponent("wasDropped"));
+		registry.registerForPlayers(SWIM_ABILITIES, SwimAbilityComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
 		registry.registerForPlayers(ENTITY_KILL_TRACKER, entity -> new EntityKillTrackerComponent(), RespawnCopyStrategy.LOSSLESS_ONLY);
 	}
 
