@@ -1,51 +1,61 @@
 package artifacts.components;
 
+import artifacts.item.trinket.HeliumFlamingoItem;
 import dev.onyxstudios.cca.api.v3.component.Component;
 import dev.onyxstudios.cca.api.v3.entity.PlayerComponent;
-import net.minecraft.entity.player.PlayerEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.util.Identifier;
-
-import java.util.HashMap;
-import java.util.Map;
+import net.minecraft.network.PacketByteBuf;
 
 @SuppressWarnings("UnstableApiUsage")
 public class SwimAbilityComponent implements PlayerComponent<Component> {
 
-	private final Map<Identifier, Boolean> abilities = new HashMap<>();
-	private final PlayerEntity player;
+	private boolean shouldSwim;
+	private boolean shouldSink;
 
-	public SwimAbilityComponent(PlayerEntity player) {
-		this.player = player;
+	public boolean isSwimming() {
+		return shouldSwim;
 	}
 
-	public boolean getAbility(Identifier ability) {
-		return this.abilities.get(ability);
+	public boolean isSinking() {
+		return shouldSink;
 	}
 
-	public void setAbility(Identifier id, boolean value) {
-		this.abilities.put(id, value);
+	public void setSwimming(boolean shouldSwim) {
+		this.shouldSwim = shouldSwim;
 	}
 
-	public void toggleAbility(Identifier id) {
-		this.abilities.put(id, !this.abilities.get(id));
+	public void setSinking(boolean shouldSink) {
+		this.shouldSink = shouldSink;
 	}
 
 	@Override
 	public void readFromNbt(NbtCompound tag) {
-		NbtCompound booleanTags = tag.getCompound("artifactAbilities");
-		for (String id : booleanTags.getKeys()) {
-			this.abilities.put(new Identifier(id), booleanTags.getBoolean(id));
-		}
+		this.setSwimming(tag.getBoolean("ShouldSwim"));
+		this.setSinking(tag.getBoolean("ShouldSink"));
 	}
 
 	@Override
 	public void writeToNbt(NbtCompound tag) {
-		NbtCompound booleanTags = new NbtCompound();
-		this.abilities.forEach((id, value) -> {
-			booleanTags.putBoolean(id.toString(), value);
-		});
-
-		tag.put("artifactAbilities", booleanTags);
+		tag.putBoolean("ShouldSwim", this.isSwimming());
+		tag.putBoolean("ShouldSink", this.isSinking());
 	}
+
+	@Environment(EnvType.CLIENT)
+	public void syncSwimming() {
+		PacketByteBuf byteBuf = PacketByteBufs.create();
+		byteBuf.writeBoolean(this.isSwimming());
+		ClientPlayNetworking.send(HeliumFlamingoItem.C2S_AIR_SWIMMING_ID, byteBuf);
+	}
+
+	// TODO
+	/*@Environment(EnvType.CLIENT)
+	public void syncSinking() {
+		PacketByteBuf byteBuf = PacketByteBufs.create();
+		byteBuf.writeBoolean(this.isSinking());
+		ClientPlayNetworking.send(HeliumFlamingoItem.C2S_AIR_SWIMMING_ID, byteBuf);
+	}*/
 }

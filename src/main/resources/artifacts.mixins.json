@@ -6,7 +6,6 @@
   "plugin": "artifacts.mixin.ArtifactsMixinPlugin",
   "mixins": [
     "accessors.DamageSourceAccessor",
-    "accessors.EntityAccessor",
     "accessors.ItemEntityAccessor",
     "accessors.ItemStackAccessor",
     "accessors.StatusEffectAccessor",
@@ -30,7 +29,7 @@
     "item.firegauntlet.EnchantmentHelperMixin",
     "item.flippers.LivingEntityMixin",
     "item.goldenhook.LivingEntityMixin",
-    "item.heliumflamingo.LivingEntityMixin",
+    "item.heliumflamingo.PlayerEntityMixin",
     "item.kittyslippers.CreeperEntityMixin",
     "item.kittyslippers.FollowTargetGoalMixin",
     "item.kittyslippers.RevengeGoalMixin",

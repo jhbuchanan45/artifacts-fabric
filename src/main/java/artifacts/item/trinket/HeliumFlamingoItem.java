@@ -2,10 +2,9 @@ package artifacts.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.HeliumFlamingoModel;
+import artifacts.components.SwimAbilityComponent;
 import artifacts.init.Components;
-import artifacts.init.Items;
 import artifacts.init.SoundEvents;
-import artifacts.trinkets.TrinketsHelper;
 import be.florens.expandability.api.fabric.PlayerSwimCallback;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
@@ -38,15 +37,18 @@ public class HeliumFlamingoItem extends TrinketArtifactItem {
 	}
 
 	private static ActionResult onPlayerSwim(PlayerEntity player) {
-		return TrinketsHelper.isEquipped(Items.HELIUM_FLAMINGO, player) ? ActionResult.SUCCESS : ActionResult.PASS;
+		SwimAbilityComponent swimAbilities = Components.SWIM_ABILITIES.get(player);
+
+		if (swimAbilities.isSwimming()) {
+			return ActionResult.SUCCESS;
+		}
+
+		return ActionResult.PASS;
 	}
 
 	private static void handleAirSwimmingPacket(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-		boolean enabled = buf.readBoolean();
-
-		server.execute(() -> {
-			Components.SWIM_ABILITIES.get(player).setAbility(Artifacts.id("air_swimming"), enabled);
-		});
+		boolean shouldSwim = buf.readBoolean();
+		server.execute(() -> Components.SWIM_ABILITIES.get(player).setSwimming(shouldSwim));
 	}
 
 	@Override
