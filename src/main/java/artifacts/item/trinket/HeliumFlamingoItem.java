@@ -28,7 +28,7 @@ import net.minecraft.util.Language;
 public class HeliumFlamingoItem extends TrinketArtifactItem {
 
 	public static final Identifier C2S_AIR_SWIMMING_ID = Artifacts.id("c2s_air_swimming");
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/helium_flamingo.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/helium_flamingo.png");
 
 	public HeliumFlamingoItem() {
 		super();

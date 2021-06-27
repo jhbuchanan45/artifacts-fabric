@@ -37,11 +37,11 @@ public abstract class PlayerEntityMixin {
 				}*/
 
 				// TODO: config
-				/*if (!self.abilities.invulnerable && ModConfig.server.heliumFlamingo.airSupplyDrainRate.get() > 0) {
+				if (!self.abilities.invulnerable /*&& ModConfig.server.heliumFlamingo.airSupplyDrainRate.get() > 0*/) {
 					// compensate for bonus air
 					int airSupply = self.getAir() - 4;
-					self.setAir(airSupply - ModConfig.server.heliumFlamingo.airSupplyDrainRate.get());
-				}*/
+					self.setAir(airSupply - 2 /*ModConfig.server.heliumFlamingo.airSupplyDrainRate.get()*/);
+				}
 			}
 		}
 	}

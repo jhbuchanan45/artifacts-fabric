@@ -53,6 +53,7 @@
     "event.client.LivingEntityMixin",
     "item.flippers.client.LivingEntityMixin",
     "item.heliumflamingo.client.ClientPlayerEntityMixin",
+    "item.heliumflamingo.client.InGameHudMixin",
     "item.umbrella.client.BipedEntityModelMixin",
     "item.umbrella.client.ItemRendererMixin",
     "item.umbrella.client.LivingEntityRendererMixin",
