@@ -12,7 +12,6 @@ import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 @SuppressWarnings("unused")
@@ -28,8 +27,8 @@ public class Items {
 	public static final Item ETERNAL_STEAK = register("eternal_steak", new EverlastingFoodItem(FoodComponents.COOKED_BEEF));
 
 	// Head
-	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/trinket/plastic_drinking_hat.png")));
-	public static final Item NOVELTY_DRINKING_HAT = register("novelty_drinking_hat", new DrinkingHatItem(new Identifier(Artifacts.MODID, "textures/entity/trinket/novelty_drinking_hat.png")));
+	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem(Artifacts.id("textures/entity/trinket/plastic_drinking_hat.png")));
+	public static final Item NOVELTY_DRINKING_HAT = register("novelty_drinking_hat", new DrinkingHatItem(Artifacts.id("textures/entity/trinket/novelty_drinking_hat.png")));
 	public static final Item SNORKEL = register("snorkel", new SnorkelItem());
 	public static final Item NIGHT_VISION_GOGGLES = register("night_vision_goggles", new NightVisionGogglesItem());
 	public static final Item VILLAGER_HAT = register("villager_hat", new VillagerHatItem());
@@ -69,7 +68,7 @@ public class Items {
 	public static final Item FLIPPERS = register("flippers", new FlippersItem());
 
 	private static Item register(String name, Item item) {
-		return Registry.register(Registry.ITEM, new Identifier(Artifacts.MODID, name), item);
+		return Registry.register(Registry.ITEM, Artifacts.id(name), item);
 	}
 
 	private Items() {

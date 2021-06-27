@@ -6,7 +6,6 @@ import artifacts.world.InCaveWithChance;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.GenerationStep;
@@ -25,17 +24,17 @@ public class Features {
 
 	public static final Feature<DefaultFeatureConfig> CAMPSITE_FEATURE = Registry.register(
 			Registry.FEATURE,
-			new Identifier(Artifacts.MODID, "campsite"),
+			Artifacts.id("campsite"),
 			new CampsiteFeature()
 	);
 	public static final Decorator<ChanceDecoratorConfig> DECORATOR = Registry.register(
 			Registry.DECORATOR,
-			new Identifier(Artifacts.MODID, "incavewithchance"),
+			Artifacts.id("incavewithchance"),
 			new InCaveWithChance(ChanceDecoratorConfig.CODEC)
 	);
 	public static final ConfiguredFeature<?, ?> CAMPSITE_CONFIGURED_FEATURE = Registry.register(
 			BuiltinRegistries.CONFIGURED_FEATURE,
-			new Identifier(Artifacts.MODID, "campsite"),
+			Artifacts.id("campsite"),
 			CAMPSITE_FEATURE.configure(FeatureConfig.DEFAULT).decorate(DECORATOR.configure(
 					new ChanceDecoratorConfig(Artifacts.CONFIG.worldgen.campsite.genChance)
 			))

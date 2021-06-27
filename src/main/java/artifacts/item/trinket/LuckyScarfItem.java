@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class LuckyScarfItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/lucky_scarf.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/lucky_scarf.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

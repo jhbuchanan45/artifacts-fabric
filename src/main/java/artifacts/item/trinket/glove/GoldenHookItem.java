@@ -9,8 +9,8 @@ import net.minecraft.util.Identifier;
 
 public class GoldenHookItem extends GloveItem {
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/golden_hook_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/golden_hook_slim.png");
+	private static final Identifier TEXTURE_DEFAULT = Artifacts.id("textures/entity/trinket/golden_hook_default.png");
+	private static final Identifier TEXTURE_SLIM = Artifacts.id("textures/entity/trinket/golden_hook_slim.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

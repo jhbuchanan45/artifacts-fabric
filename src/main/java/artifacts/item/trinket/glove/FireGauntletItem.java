@@ -20,10 +20,10 @@ import net.minecraft.util.Identifier;
 
 public class FireGauntletItem extends GloveItem {
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_slim.png");
-	private static final Identifier TEXTURE_DEFAULT_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_default_glow.png");
-	private static final Identifier TEXTURE_SLIM_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/fire_gauntlet_slim_glow.png");
+	private static final Identifier TEXTURE_DEFAULT = Artifacts.id("textures/entity/trinket/fire_gauntlet_default.png");
+	private static final Identifier TEXTURE_SLIM = Artifacts.id("textures/entity/trinket/fire_gauntlet_slim.png");
+	private static final Identifier TEXTURE_DEFAULT_GLOW = Artifacts.id("textures/entity/trinket/fire_gauntlet_default_glow.png");
+	private static final Identifier TEXTURE_SLIM_GLOW = Artifacts.id("textures/entity/trinket/fire_gauntlet_slim_glow.png");
 
 	@Override
 	protected SoundInfo getEquipSound() {

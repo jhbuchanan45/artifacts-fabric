@@ -20,9 +20,10 @@ import java.util.UUID;
 
 public class CrystalHeartItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/crystal_heart.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/crystal_heart.png");
 
-	private static final EntityAttributeModifier HEALTH_BONUS = new EntityAttributeModifier(UUID.fromString("99fa0537-90b9-481a-bc76-4650987faba3"), "artifacts:crystal_heart_health_bonus", 10, EntityAttributeModifier.Operation.ADDITION);
+	private static final EntityAttributeModifier HEALTH_BONUS = new EntityAttributeModifier(UUID.fromString("99fa0537-90b9-481a-bc76-4650987faba3"),
+			"artifacts:crystal_heart_health_bonus", 10, EntityAttributeModifier.Operation.ADDITION);
 
 	@Override
 	public void onEquip(PlayerEntity player, ItemStack stack) {

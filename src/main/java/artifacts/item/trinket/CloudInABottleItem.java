@@ -21,8 +21,8 @@ import net.minecraft.util.Identifier;
 
 public class CloudInABottleItem extends TrinketArtifactItem {
 
-	public static final Identifier C2S_DOUBLE_JUMPED_ID = new Identifier(Artifacts.MODID, "c2s_double_jumped");
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cloud_in_a_bottle.png");
+	public static final Identifier C2S_DOUBLE_JUMPED_ID = Artifacts.id("c2s_double_jumped");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/cloud_in_a_bottle.png");
 
 	public CloudInABottleItem() {
 		ServerPlayNetworking.registerGlobalReceiver(C2S_DOUBLE_JUMPED_ID, CloudInABottleItem::handleDoubleJumpPacket);

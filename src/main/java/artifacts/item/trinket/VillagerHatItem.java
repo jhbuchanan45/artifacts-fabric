@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class VillagerHatItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/villager_hat.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/villager_hat.png");
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {

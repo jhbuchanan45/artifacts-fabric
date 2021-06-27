@@ -21,7 +21,7 @@ import java.util.List;
 
 public class UniversalAttractorItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/universal_attractor.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/universal_attractor.png");
 
 	@Override
 	// magnet logic from Botania, see https://github.com/Vazkii/Botania

@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class SnorkelItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/snorkel.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/snorkel.png");
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {

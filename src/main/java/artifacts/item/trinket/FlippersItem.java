@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 public class FlippersItem extends TrinketArtifactItem {
 
 	public static final int SWIM_SPEED_MULTIPLIER = 2;
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/flippers.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/flippers.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

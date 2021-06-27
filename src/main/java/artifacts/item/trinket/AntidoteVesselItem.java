@@ -18,7 +18,7 @@ import net.minecraft.util.Identifier;
 
 public class AntidoteVesselItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/antidote_vessel.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/antidote_vessel.png");
 
 	@Override
 	protected void effectTick(PlayerEntity player, ItemStack stack) {

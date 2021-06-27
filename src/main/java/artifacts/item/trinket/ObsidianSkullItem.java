@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class ObsidianSkullItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/obsidian_skull.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/obsidian_skull.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

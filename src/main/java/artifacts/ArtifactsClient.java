@@ -18,8 +18,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class ArtifactsClient implements ClientModInitializer {
 
-	private static final ModelIdentifier UMBRELLA_HELD_MODEL = new ModelIdentifier(
-			new Identifier(Artifacts.MODID, "umbrella_in_hand"), "inventory");
+	private static final ModelIdentifier UMBRELLA_HELD_MODEL = new ModelIdentifier(Artifacts.id("umbrella_in_hand"), "inventory");
 
 	@Override
 	public void onInitializeClient() {

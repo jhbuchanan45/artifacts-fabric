@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class ShockPendantItem extends PendantItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/shock_pendant.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/shock_pendant.png");
 
 	public ShockPendantItem() {
 		super(TEXTURE, ShockPendantItem::applyEffect);

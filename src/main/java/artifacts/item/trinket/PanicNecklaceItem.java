@@ -19,7 +19,7 @@ import net.minecraft.util.Identifier;
 
 public class PanicNecklaceItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/panic_necklace.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/panic_necklace.png");
 
 	public PanicNecklaceItem() {
 		LivingEntityHurtCallback.EVENT.register(PanicNecklaceItem::applyEffects);

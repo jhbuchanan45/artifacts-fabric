@@ -16,7 +16,7 @@ import net.minecraft.util.Identifier;
 
 public class BunnyHoppersItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/bunny_hoppers.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/bunny_hoppers.png");
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {

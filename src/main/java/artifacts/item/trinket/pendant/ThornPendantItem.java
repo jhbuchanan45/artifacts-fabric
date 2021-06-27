@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class ThornPendantItem extends PendantItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/thorn_pendant.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/thorn_pendant.png");
 
 	public ThornPendantItem() {
 		super(TEXTURE, ThornPendantItem::applyEffects);

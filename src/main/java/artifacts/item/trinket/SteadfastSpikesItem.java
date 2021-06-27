@@ -19,13 +19,13 @@ import java.util.UUID;
 
 public class SteadfastSpikesItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/steadfast_spikes.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/steadfast_spikes.png");
 
 	@Override
 	protected Multimap<EntityAttribute, EntityAttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
 		Multimap<EntityAttribute, EntityAttributeModifier> modifiers = super.applyModifiers(group, slot, uuid, stack);
 		EntityAttributeModifier modifier = new EntityAttributeModifier(uuid,
-				new Identifier(Artifacts.MODID, "steadfast_spikes_knockback_resistance").toString(),
+				Artifacts.id("steadfast_spikes_knockback_resistance").toString(),
 				1, EntityAttributeModifier.Operation.ADDITION);
 		modifiers.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, modifier);
 		return modifiers;

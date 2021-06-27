@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 
 public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/scarf_of_invisibility.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/scarf_of_invisibility.png");
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {

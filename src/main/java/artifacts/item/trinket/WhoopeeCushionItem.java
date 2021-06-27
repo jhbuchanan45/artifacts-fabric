@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class WhoopeeCushionItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/whoopee_cushion.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/whoopee_cushion.png");
 
 	@Override
 	protected SoundInfo getEquipSound() {

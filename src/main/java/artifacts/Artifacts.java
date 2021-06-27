@@ -31,7 +31,7 @@ public class Artifacts implements ModInitializer {
 	public static final String MODID = "artifacts";
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
 	public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
-			new Identifier(MODID, "item_group"),
+			id("item_group"),
 			() -> new ItemStack(Items.BUNNY_HOPPERS)
 	);
 	public static ModConfig CONFIG;
@@ -53,9 +53,9 @@ public class Artifacts implements ModInitializer {
 		TrinketSlots.addSlot(SlotGroups.CHEST, Slots.NECKLACE,
 				new Identifier("trinkets", "textures/item/empty_trinket_slot_necklace.png"));
 		TrinketSlots.addSlot(SlotGroups.HEAD, artifacts.trinkets.Slots.HAT,
-				new Identifier(MODID, "textures/item/empty_trinket_slot_hat.png"));
+				id("textures/item/empty_trinket_slot_hat.png"));
 		TrinketSlots.addSlot(SlotGroups.FEET, artifacts.trinkets.Slots.SHOES,
-				new Identifier(MODID, "textures/item/empty_trinket_slot_shoes.png"));
+				id("textures/item/empty_trinket_slot_shoes.png"));
 		TrinketSlots.addSlot(SlotGroups.HAND, Slots.GLOVES,
 				new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
 		TrinketSlots.addSlot(SlotGroups.OFFHAND, Slots.GLOVES,

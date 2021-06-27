@@ -12,8 +12,8 @@ public class DiggingClawsItem extends GloveItem {
 
 	public static final float MINING_SPEED_INCREASE = 3.2f;
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/digging_claws_slim.png");
+	private static final Identifier TEXTURE_DEFAULT = Artifacts.id("textures/entity/trinket/digging_claws_default.png");
+	private static final Identifier TEXTURE_SLIM = Artifacts.id("textures/entity/trinket/digging_claws_slim.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

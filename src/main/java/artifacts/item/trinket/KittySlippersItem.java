@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class KittySlippersItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/kitty_slippers.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/kitty_slippers.png");
 
 	@Override
 	protected SoundEvent getExtraHurtSound() {

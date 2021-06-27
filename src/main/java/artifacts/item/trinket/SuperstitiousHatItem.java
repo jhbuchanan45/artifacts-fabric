@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class SuperstitiousHatItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/superstitious_hat.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/superstitious_hat.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

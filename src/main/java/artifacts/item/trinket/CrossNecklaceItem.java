@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 public class CrossNecklaceItem extends TrinketArtifactItem {
 
 	public static final double HURT_RESISTANCE_MULTIPLIER = 3; // Hurt invuln is multiplied by this factor
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/cross_necklace.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/cross_necklace.png");
 
 	@Override
 	@Environment(EnvType.CLIENT)

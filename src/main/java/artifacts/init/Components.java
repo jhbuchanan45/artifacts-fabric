@@ -14,22 +14,17 @@ import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.util.Identifier;
 
 public class Components implements EntityComponentInitializer, ItemComponentInitializer {
 
 	public static final ComponentKey<SyncedBooleanComponent> DROPPED_ITEM_ENTITY =
-			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "dropped_item_entity"),
-					SyncedBooleanComponent.class);
-	public static final ComponentKey<ArtifactEnabledComponent> ARTIFACT_ENABLED =
-			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "trinket_enabled"), // TODO: can this id be changed?
-					ArtifactEnabledComponent.class);
+			ComponentRegistryV3.INSTANCE.getOrCreate(Artifacts.id("dropped_item_entity"), SyncedBooleanComponent.class);
+	public static final ComponentKey<ArtifactEnabledComponent> ARTIFACT_ENABLED = // TODO: can this id be changed?
+			ComponentRegistryV3.INSTANCE.getOrCreate(Artifacts.id("trinket_enabled"), ArtifactEnabledComponent.class);
 	public static final ComponentKey<SwimAbilityComponent> SWIM_ABILITIES =
-			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "swim_abilities"),
-					SwimAbilityComponent.class);
+			ComponentRegistryV3.INSTANCE.getOrCreate(Artifacts.id("swim_abilities"), SwimAbilityComponent.class);
 	public static final ComponentKey<EntityKillTrackerComponent> ENTITY_KILL_TRACKER =
-			ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(Artifacts.MODID, "entity_kill_tracker"),
-					EntityKillTrackerComponent.class);
+			ComponentRegistryV3.INSTANCE.getOrCreate(Artifacts.id("entity_kill_tracker"), EntityKillTrackerComponent.class);
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {

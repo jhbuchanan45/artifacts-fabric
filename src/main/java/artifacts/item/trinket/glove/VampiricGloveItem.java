@@ -11,8 +11,8 @@ import net.minecraft.util.Identifier;
 
 public class VampiricGloveItem extends GloveItem {
 
-	private static final Identifier TEXTURE_DEFAULT = new Identifier(Artifacts.MODID, "textures/entity/trinket/vampiric_glove_default.png");
-	private static final Identifier TEXTURE_SLIM = new Identifier(Artifacts.MODID, "textures/entity/trinket/vampiric_glove_slim.png");
+	private static final Identifier TEXTURE_DEFAULT = Artifacts.id("textures/entity/trinket/vampiric_glove_default.png");
+	private static final Identifier TEXTURE_SLIM = Artifacts.id("textures/entity/trinket/vampiric_glove_slim.png");
 
 	public VampiricGloveItem() {
 		LivingEntityDamagedCallback.EVENT.register(VampiricGloveItem::onLivingDamage);

@@ -14,7 +14,7 @@ import net.minecraft.util.registry.Registry;
 public class REIPlugin implements REIPluginV0 {
 	@Override
 	public Identifier getPluginIdentifier() {
-		return new Identifier(Artifacts.MODID, "rei_plugin");
+		return Artifacts.id("rei_plugin");
 	}
 
 	@Override

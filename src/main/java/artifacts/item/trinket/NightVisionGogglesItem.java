@@ -22,8 +22,8 @@ import net.minecraft.util.Identifier;
 
 public class NightVisionGogglesItem extends TrinketArtifactItem {
 
-	private static final Identifier TEXTURE = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles.png");
-	private static final Identifier TEXTURE_GLOW = new Identifier(Artifacts.MODID, "textures/entity/trinket/night_vision_goggles_glow.png");
+	private static final Identifier TEXTURE = Artifacts.id("textures/entity/trinket/night_vision_goggles.png");
+	private static final Identifier TEXTURE_GLOW = Artifacts.id("textures/entity/trinket/night_vision_goggles_glow.png");
 
 	@Override
 	public StatusEffectInstance getPermanentEffect() {
