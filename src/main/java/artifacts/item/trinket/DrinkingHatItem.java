@@ -38,7 +38,7 @@ public class DrinkingHatItem extends TrinketArtifactItem {
 
 	@Override
 	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER);
+		return new SoundInfo(SoundEvents.ITEM_BOTTLE_FILL);
 	}
 
 	@Override

@@ -193,7 +193,7 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	}
 
 	// From Curios
-	public static final class SoundInfo {
+	protected static final class SoundInfo {
 		final SoundEvent soundEvent;
 		final float volume;
 		final float pitch;
