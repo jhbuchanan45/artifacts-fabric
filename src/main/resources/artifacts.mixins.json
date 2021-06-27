@@ -33,7 +33,7 @@
     "item.flippers.LivingEntityMixin",
     "item.goldenhook.LivingEntityMixin",
     "item.kittyslippers.CreeperEntityMixin",
-    "item.kittyslippers.followTargetGoalMixin",
+    "item.kittyslippers.FollowTargetGoalMixin",
     "item.kittyslippers.RevengeGoalMixin",
     "item.luckyscarf.EnchantmentHelperMixin",
     "item.luckyscarf.ServerPlayerInteractionManagerMixin",

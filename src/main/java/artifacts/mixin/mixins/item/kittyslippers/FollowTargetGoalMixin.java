@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import java.util.function.Predicate;
 
 @Mixin(FollowTargetGoal.class)
-public abstract class followTargetGoalMixin<T extends LivingEntity> extends TrackTargetGoal {
+public abstract class FollowTargetGoalMixin<T extends LivingEntity> extends TrackTargetGoal {
 
 	@Unique
 	private static final Predicate<LivingEntity> NOT_WEARING_KITTY_SLIPPERS = entity -> !TrinketsHelper.isEquipped(Items.KITTY_SLIPPERS, entity);
@@ -27,7 +27,7 @@ public abstract class followTargetGoalMixin<T extends LivingEntity> extends Trac
 	@Final
 	protected Class<T> targetClass;
 
-	public followTargetGoalMixin(MobEntity mob, boolean checkVisibility) {
+	public FollowTargetGoalMixin(MobEntity mob, boolean checkVisibility) {
 		super(mob, checkVisibility);
 	}
 
