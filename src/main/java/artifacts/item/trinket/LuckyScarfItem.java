@@ -2,8 +2,6 @@ package artifacts.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.ScarfModel;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -28,6 +26,6 @@ public class LuckyScarfItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.CHEST) && slot.equals(Slots.NECKLACE);
+		return group.equals("chest") && slot.equals(Slots.NECKLACE);
 	}
 }

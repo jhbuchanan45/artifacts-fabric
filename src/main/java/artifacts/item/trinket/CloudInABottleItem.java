@@ -3,8 +3,6 @@ package artifacts.item.trinket;
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.CloudInABottleModel;
 import artifacts.mixin.extensions.LivingEntityExtensions;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -61,6 +59,6 @@ public class CloudInABottleItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
+		return group.equals("legs") && slot.equals("belt");
 	}
 }

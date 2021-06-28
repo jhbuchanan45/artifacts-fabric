@@ -6,8 +6,8 @@ import artifacts.components.SwimAbilityComponent;
 import artifacts.init.Components;
 import artifacts.init.SoundEvents;
 import be.florens.expandability.api.fabric.PlayerSwimCallback;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
+import artifacts.init.Items;
+import artifacts.trinkets.TrinketsHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -64,7 +64,7 @@ public class HeliumFlamingoItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
+		return group.equals("legs") && slot.equals("belt");
 	}
 
 	@Override

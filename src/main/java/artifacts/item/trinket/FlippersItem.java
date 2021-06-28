@@ -2,8 +2,6 @@ package artifacts.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.FlippersModel;
-import artifacts.trinkets.Slots;
-import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -29,6 +27,6 @@ public class FlippersItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.FEET) && slot.equals(Slots.SHOES);
+		return group.equals("feet") && slot.equals(Slots.SHOES);
 	}
 }

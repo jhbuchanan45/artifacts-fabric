@@ -2,8 +2,6 @@ package artifacts.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.SnorkelModel;
-import artifacts.trinkets.Slots;
-import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -35,6 +33,6 @@ public class SnorkelItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.HEAD) && slot.equals(Slots.HAT);
+		return group.equals("head") && slot.equals(Slots.HAT);
 	}
 }

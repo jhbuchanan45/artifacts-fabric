@@ -4,9 +4,6 @@ import artifacts.compat.HaemaCompat;
 import artifacts.compat.OriginsCompat;
 import artifacts.config.ModConfig;
 import artifacts.init.*;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
-import dev.emi.trinkets.api.TrinketSlots;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
@@ -48,18 +45,18 @@ public class Artifacts implements ModInitializer {
 				PartitioningSerializer.wrap(Toml4jConfigSerializer::new)).getConfig();
 
 		// Trinkets setup
-		TrinketSlots.addSlot(SlotGroups.LEGS, Slots.BELT,
-				new Identifier("trinkets", "textures/item/empty_trinket_slot_belt.png"));
-		TrinketSlots.addSlot(SlotGroups.CHEST, Slots.NECKLACE,
-				new Identifier("trinkets", "textures/item/empty_trinket_slot_necklace.png"));
-		TrinketSlots.addSlot(SlotGroups.HEAD, artifacts.trinkets.Slots.HAT,
-				id("textures/item/empty_trinket_slot_hat.png"));
-		TrinketSlots.addSlot(SlotGroups.FEET, artifacts.trinkets.Slots.SHOES,
-				id("textures/item/empty_trinket_slot_shoes.png"));
-		TrinketSlots.addSlot(SlotGroups.HAND, Slots.GLOVES,
-				new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
-		TrinketSlots.addSlot(SlotGroups.OFFHAND, Slots.GLOVES,
-				new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
+		// TrinketSlots.addSlot("legs", "belt",
+		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_belt.png"));
+		// TrinketSlots.addSlot("chest", "necklace",
+		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_necklace.png"));
+		// TrinketSlots.addSlot("head", artifacts.trinkets.Slots.HAT,
+		// 		new Identifier(MODID, "textures/item/empty_trinket_slot_hat.png"));
+		// TrinketSlots.addSlot("feet", artifacts.trinkets.Slots.SHOES,
+		// 		new Identifier(MODID, "textures/item/empty_trinket_slot_shoes.png"));
+		// TrinketSlots.addSlot("hand", "gloves",
+		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
+		// TrinketSlots.addSlot("offhand", "gloves",
+		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
 
 		// Loot table setup
 		LootTableLoadingCallback.EVENT.register((resourceManager, manager, id, supplier, setter) -> LootTables.onLootTableLoad(id, supplier));

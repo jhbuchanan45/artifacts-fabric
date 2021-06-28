@@ -5,8 +5,6 @@ import artifacts.client.render.model.trinket.PanicNecklaceModel;
 import artifacts.events.LivingEntityHurtCallback;
 import artifacts.init.Items;
 import artifacts.trinkets.TrinketsHelper;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -50,6 +48,6 @@ public class PanicNecklaceItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.CHEST) && slot.equals(Slots.NECKLACE);
+		return group.equals("chest") && slot.equals(Slots.NECKLACE);
 	}
 }

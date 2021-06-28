@@ -3,8 +3,6 @@ package artifacts.item.trinket.pendant;
 import artifacts.client.render.model.trinket.PendantModel;
 import artifacts.events.LivingEntityAttackedCallback;
 import artifacts.item.trinket.TrinketArtifactItem;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -40,6 +38,6 @@ public abstract class PendantItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.CHEST) && slot.equals(Slots.NECKLACE);
+		return group.equals("chest") && slot.equals(Slots.NECKLACE);
 	}
 }

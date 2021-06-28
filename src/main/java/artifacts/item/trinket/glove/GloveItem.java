@@ -3,8 +3,6 @@ package artifacts.item.trinket.glove;
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.trinket.GloveModel;
 import artifacts.item.trinket.TrinketArtifactItem;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
@@ -25,7 +23,7 @@ public abstract class GloveItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return (group.equals(SlotGroups.HAND) || group.equals(SlotGroups.OFFHAND)) && slot.equals(Slots.GLOVES);
+		return (group.equals("hand") || group.equals("offhand")) && slot.equals(Slots.GLOVES);
 	}
 
 	@Environment(EnvType.CLIENT)
@@ -69,7 +67,7 @@ public abstract class GloveItem extends TrinketArtifactItem {
 	@Environment(EnvType.CLIENT)
 	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel, AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
 		boolean smallArms = hasSmallArms(player);
-		boolean hand = slot.split(":")[0].equals(SlotGroups.HAND);
+		boolean hand = slot.split(":")[0].equals("hand");
 		GloveModel model = this.getModel(smallArms);
 
 		model.setAngles(player, limbAngle, limbDistance, animationProgress, headYaw, headPitch);

@@ -4,8 +4,6 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.AntidoteVesselModel;
 import artifacts.mixin.extensions.StatusEffectInstanceExtensions;
 import artifacts.mixin.mixins.accessors.StatusEffectAccessor;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -49,6 +47,6 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 
 	@Override
 	public boolean canWearInSlot(String group, String slot) {
-		return group.equals(SlotGroups.LEGS) && slot.equals(Slots.BELT);
+		return group.equals("legs") && slot.equals("belt");
 	}
 }

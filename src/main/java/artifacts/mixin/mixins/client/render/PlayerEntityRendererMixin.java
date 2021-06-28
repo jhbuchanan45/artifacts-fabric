@@ -2,8 +2,6 @@ package artifacts.mixin.mixins.client.render;
 
 import artifacts.Artifacts;
 import artifacts.item.trinket.glove.GloveItem;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -44,7 +42,7 @@ public abstract class PlayerEntityRendererMixin {
 			return null;
 		}
 
-		String slotGroup = hand == Hand.MAIN_HAND ? SlotGroups.HAND : SlotGroups.OFFHAND;
+		String slotGroup = hand == Hand.MAIN_HAND ? "hand" : "offhand";
 		ItemStack stack = TrinketsApi.getTrinketComponent(player).getStack(slotGroup, Slots.GLOVES);
 
 		if (stack.getItem() instanceof GloveItem) {

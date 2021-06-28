@@ -3,7 +3,6 @@ package artifacts.item.trinket.glove;
 import artifacts.Artifacts;
 import artifacts.client.render.RenderLayer;
 import artifacts.client.render.model.trinket.GloveModel;
-import dev.emi.trinkets.api.SlotGroups;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
@@ -36,7 +35,7 @@ public class FireGauntletItem extends GloveItem {
 		super.render(slot, matrices, vertexConsumers, light, playerModel, player, limbAngle, limbDistance, tickDelta,animationProgress, headYaw, headPitch);
 
 		boolean smallArms = hasSmallArms(player);
-		boolean hand = slot.split(":")[0].equals(SlotGroups.HAND);
+		boolean hand = slot.split(":")[0].equals("hand");
 		GloveModel model = this.getModel(smallArms);
 
 		// The glow effect is achieved by rendering the glow texture unlit

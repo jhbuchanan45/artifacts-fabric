@@ -9,7 +9,7 @@ import artifacts.trinkets.TrinketsHelper;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import dev.emi.trinkets.api.Trinket;
-import dev.emi.trinkets.api.TrinketItem;
+import dev.emi.trinkets.api.client.TrinketRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.DispenserBlock;
@@ -44,12 +44,14 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class TrinketArtifactItem extends ArtifactItem implements Trinket {
+public abstract class TrinketArtifactItem extends ArtifactItem implements TrinketRenderer, Trinket {
 
 	private BipedEntityModel<LivingEntity> model;
 
 	public TrinketArtifactItem() {
-		DispenserBlock.registerBehavior(this, TrinketItem.TRINKET_DISPENSER_BEHAVIOR);
+		// No equivalent exists in Trinket 3.0.0
+		// TODO - Revisit Dispenser behaviour to ensure prior behaviour is followed
+		// DispenserBlock.registerBehavior(this, TrinketItem.TRINKET_DISPENSER_BEHAVIOR);
 		PlayHurtSoundCallback.EVENT.register(this::playExtraHurtSound);
 	}
 
