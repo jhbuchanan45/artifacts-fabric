@@ -6,9 +6,25 @@ plugins {
 repositories {
     maven { url = "https://maven.terraformersmc.com" }
     maven { url = "https://maven.shedaniel.me/" }
-    maven { url = "https://www.cursemaven.com" }
-    maven { url = "https://maven.florens.be" }
-    maven { url = "https://jitpack.io" } // Leave this as lowest priority
+    maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
+    maven {
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        url = "https://maven.florens.be"
+        content {
+            includeGroup "be.florens"
+        }
+    }
+    maven { // Leave this as lowest priority
+        url = "https://jitpack.io"
+        content {
+            includeGroupByRegex "com.github.*"
+        }
+    }
 }
 
 sourceCompatibility = JavaVersion.VERSION_16
@@ -48,13 +64,15 @@ dependencies {
     modImplementation include("com.github.emilyploszaj:step-height-entity-attribute:${project.step_height_attr_version}") {
         transitive = false
     }
-    modImplementation "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
+    // modImplementation "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
+    modImplementation "curse.maven:rei-310111:3366299"
 
     // Compat
     modCompileOnly("com.github.apace100:origins-fabric:v${project.origins_version}") {
         transitive = false
     }
-    modCompileOnly("com.github.williambl:haema:v${project.haema_version}") {
+    //modCompileOnly("com.github.williambl:haema:v${project.haema_version}") {
+    modCompileOnly("curse.maven:haema-391257:3366752") {
         transitive = false
     }
 
@@ -80,23 +98,11 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    // ensure that the encoding is set to UTF-8, no matter what the system default is
-    // this fixes some edge cases with special characters not displaying correctly
-    // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
-    // If Javadoc is generated, this must be specified in that task too.
     it.options.encoding = "UTF-8"
-
-    // The Minecraft launcher currently installs Java 8 for users, so your mod probably wants to target Java 8 too
-    // JDK 9 introduced a new way of specifying this that will make sure no newer classes or methods are used.
-    // We'll use that if it's available, but otherwise we'll use the older option.
-
     it.options.release = 16
 }
 
 java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
     withSourcesJar()
 }
 
