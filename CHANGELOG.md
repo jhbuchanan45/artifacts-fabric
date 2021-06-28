@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Helium Flamingo artifact
 
 ### Changed
+- Tweaked loot tables
 - Updated translations
   - Chinese
   - Russian
