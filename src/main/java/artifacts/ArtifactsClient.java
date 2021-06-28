@@ -23,16 +23,16 @@ public class ArtifactsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		// Mimic EntityRenderer
-		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> new MimicRenderer(dispatcher));
+		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (context) -> new MimicRenderer(context));
 
 		// Held Umbrella model
 		ModelLoadingRegistry.INSTANCE.registerModelProvider((manager, out) -> out.accept(UMBRELLA_HELD_MODEL));
 
 		// ModelPredicateProvider for rendering of umbrella blocking
-		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity)
+		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new Identifier("blocking"), (stack, world, entity, seed)
 				-> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1 : 0);
 
-		LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper) -> {
+		LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
 			if (entityRenderer instanceof PlayerEntityRenderer) {
 				registrationHelper.register(new ArtifactFeatureRenderer((PlayerEntityRenderer) entityRenderer));
 			}

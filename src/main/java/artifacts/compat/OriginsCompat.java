@@ -3,9 +3,9 @@ package artifacts.compat;
 import artifacts.item.UmbrellaItem;
 import artifacts.mixin.mixins.compat.origins.ConditionFactoryAccessor;
 import io.github.apace100.origins.Origins;
-import io.github.apace100.origins.power.factory.condition.ConditionFactory;
-import io.github.apace100.origins.registry.ModRegistries;
-import io.github.apace100.origins.util.SerializableData;
+import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
+import io.github.apace100.apoli.registry.ApoliRegistries;
+import io.github.apace100.calio.data.SerializableData;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
@@ -16,7 +16,7 @@ public class OriginsCompat implements Runnable {
 
 	@Override
 	public void run() {
-		RegistryEntryAddedCallback.event(ModRegistries.ENTITY_CONDITION).register(OriginsCompat::playerConditionAdded);
+		RegistryEntryAddedCallback.event(ApoliRegistries.ENTITY_CONDITION).register(OriginsCompat::playerConditionAdded);
 	}
 
 	private static void playerConditionAdded(int rawId, Identifier id, ConditionFactory<LivingEntity> conditionFactory) {

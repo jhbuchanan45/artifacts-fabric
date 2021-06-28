@@ -17,7 +17,7 @@ public class ArtifactEnabledComponent extends SyncedBooleanComponent {
 	@Override
 	public boolean shouldSyncWith(ServerPlayerEntity player) {
 		// Only sync if stack is in inventory or trinkets inventory
-		return player.inventory.contains(stack)
+		return player.getInventory().contains(stack)
 				|| TrinketsHelper.isEquipped((ItemStack equippedStack) -> equippedStack.equals(stack), player);
 	}
 }

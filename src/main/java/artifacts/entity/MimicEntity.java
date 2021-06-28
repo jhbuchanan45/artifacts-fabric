@@ -119,7 +119,7 @@ public class MimicEntity extends MobEntity implements Monster {
 				&& squaredDistanceTo(player.getBoundingBox().getCenter().subtract(0, getBoundingBox().getYLength() / 2, 0)) < 1
 				&& player.damage(DamageSource.mob(this), (float) getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getValue())) {
 			attackCooldown = 20;
-			dealDamage(this, player);
+			applyDamageEffects(this, player);
 		}
 	}
 
@@ -191,7 +191,7 @@ public class MimicEntity extends MobEntity implements Monster {
 			return target instanceof PlayerEntity
 					&& target.isAlive()
 					&& target.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL
-					&& !((PlayerEntity) target).abilities.invulnerable;
+					&& !((PlayerEntity) target).getAbilities().invulnerable;
 		}
 
 		@Override
@@ -207,7 +207,7 @@ public class MimicEntity extends MobEntity implements Monster {
 			return target instanceof PlayerEntity
 					&& target.isAlive()
 					&& target.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL
-					&& !((PlayerEntity) target).abilities.invulnerable
+					&& !((PlayerEntity) target).getAbilities().invulnerable
 					&& --timeRemaining > 0;
 		}
 
@@ -216,7 +216,7 @@ public class MimicEntity extends MobEntity implements Monster {
 			super.tick();
 			if (mimic.getTarget() != null && mimic.getMoveControl() instanceof MimicMovementController) {
 				mimic.lookAtEntity(mimic.getTarget(), 10, 10);
-				((MimicMovementController) mimic.getMoveControl()).setDirection(mimic.yaw, true);
+				((MimicMovementController) mimic.getMoveControl()).setDirection(mimic.getYaw(), true);
 			}
 		}
 	}
@@ -242,7 +242,7 @@ public class MimicEntity extends MobEntity implements Monster {
 			if (--nextRandomizeTime <= 0) {
 				nextRandomizeTime = 480 + mimic.getRandom().nextInt(320);
 				if (mimic.isDormant) {
-					chosenDegrees = Math.round(mimic.yaw / 90) * 90;
+					chosenDegrees = Math.round(mimic.getYaw() / 90) * 90;
 				} else {
 					chosenDegrees = mimic.getRandom().nextInt(4) * 90;
 				}
@@ -310,7 +310,7 @@ public class MimicEntity extends MobEntity implements Monster {
 		public MimicMovementController(MimicEntity mimic) {
 			super(mimic);
 			this.mimic = mimic;
-			rotationDegrees = 180 * mimic.yaw / (float) Math.PI;
+			rotationDegrees = 180 * mimic.getYaw() / (float) Math.PI;
 			jumpDelay = mimic.random.nextInt(320) + 640;
 		}
 
@@ -328,7 +328,9 @@ public class MimicEntity extends MobEntity implements Monster {
 
 		@Override
 		public void tick() {
-			mimic.headYaw = mimic.bodyYaw = mimic.yaw = wrapDegrees(mimic.yaw, rotationDegrees, 90);
+			float newYaw = wrapDegrees(mimic.getYaw(), rotationDegrees, 90);
+			mimic.headYaw = mimic.bodyYaw = newYaw;
+			mimic.setYaw(newYaw);
 
 			if (state != State.MOVE_TO) {
 				mimic.setForwardSpeed(0);

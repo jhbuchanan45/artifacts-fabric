@@ -8,7 +8,8 @@ import artifacts.item.ArtifactItem;
 import artifacts.trinkets.TrinketsHelper;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import dev.emi.trinkets.api.Trinket;
+import dev.emi.trinkets.TrinketSlot;
+import dev.emi.trinkets.api.*;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -40,6 +41,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 import java.util.List;
 import java.util.UUID;
@@ -57,9 +59,8 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-		// Toggle artifact effects when sneak right-clicking
+		ItemStack stack = user.getStackInHand(hand);
 		if (user.isSneaking()) {
-			ItemStack stack = user.getStackInHand(hand);
 			Components.ARTIFACT_ENABLED.get(stack).invert();
 
 			if (world.isClient()) {
@@ -72,15 +73,39 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 			return TypedActionResult.success(stack);
 		}
 
-		TypedActionResult<ItemStack> actionResult = Trinket.equipTrinket(user, hand);
-
-		// Play right click equip sound
-		if (actionResult.getResult().isAccepted()) {
-			SoundInfo sound = this.getEquipSound();
-			user.playSound(sound.getSoundEvent(), sound.getVolume(), sound.getPitch());
+		if (equipItem(user, stack)) {
+			return TypedActionResult.success(stack, world.isClient());
 		}
 
-		return actionResult;
+		return super.use(world, user, hand);
+	}
+
+	public static boolean equipItem(PlayerEntity user, ItemStack stack) {
+		var optional = TrinketsApi.getTrinketComponent(user);
+		if (optional.isPresent()) {
+			TrinketComponent comp = optional.get();
+			for (var group : comp.getInventory().values()) {
+				for (TrinketInventory inv : group.values()) {
+					for (int i = 0; i < inv.size(); i++) {
+						if (inv.getStack(i).isEmpty()) {
+							SlotReference ref = new SlotReference(inv, i);
+							if (TrinketSlot.canInsert(stack, ref, user)) {
+								ItemStack newStack = stack.copy();
+								inv.setStack(i, newStack);
+								SoundEvent soundEvent = stack.getEquipSound();
+								if (!stack.isEmpty() && soundEvent != null) {
+									user.emitGameEvent(GameEvent.EQUIP);
+									user.playSound(soundEvent, 1.0F, 1.0F);
+								}
+								stack.setCount(0);
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	@Override

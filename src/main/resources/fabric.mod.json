@@ -32,7 +32,7 @@
       "artifacts.init.Components"
     ],
     "rei_plugins": [
-      "artifacts.integrations.REIPlugin"
+      "artifacts.integrations.REIPluginArtifact"
     ]
   },
   "mixins": [
