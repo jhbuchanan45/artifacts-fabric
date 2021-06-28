@@ -37,7 +37,7 @@ public class EntityKillTrackerComponent implements PlayerComponent<Component> {
 	@Override
 	public void readFromNbt(NbtCompound tag) {
 		if (tag.contains("lastKilledEntities")) {
-			this.lastKilledEntityTypes = tag.getList("lastKilledEnitties", 8).stream()
+			this.lastKilledEntityTypes = tag.getList("lastKilledEntities", 8).stream()
 					.map(entityTypeId -> Registry.ENTITY_TYPE.getOrEmpty(new Identifier(entityTypeId.asString())))
 					.filter(Optional::isPresent)
 					.map(Optional::get)
@@ -50,9 +50,9 @@ public class EntityKillTrackerComponent implements PlayerComponent<Component> {
 		//noinspection unchecked
 		tag.put("lastKilledEntities", this.lastKilledEntityTypes.stream()
 				.map(((DefaultedRegistryExtensions<EntityType<?>>) Registry.ENTITY_TYPE)::artifacts$getIdOrEmpty)
+				//.flatMap(Optional::stream) TODO: Java 9+
 				.filter(Optional::isPresent)
-				.map(Object::toString)
-				.map(NbtString::of)
+				.map(identifier -> NbtString.of(identifier.get().toString()))
 				.collect(Collectors.toCollection(NbtList::new)));
 	}
 }

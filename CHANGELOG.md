@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated translations
   - Chinese
   - Russian
+  
+### Fixed
+- Fix XP bonus not decreasing when killing entities of the same type with the Golden Hook
 
 ## [3.2.1] - 2021-05-10
 ### Fixed
@@ -114,7 +117,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Crash when using the pendants
 
 ## 2.0.1 - 2020-11-29
-## Fixed
+### Fixed
 - Server side crash when toggling artifact effects
 - Whoopee Cushion effect always active
 
