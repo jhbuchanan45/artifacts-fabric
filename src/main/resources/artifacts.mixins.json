@@ -17,6 +17,7 @@
     "event.EnchantmentHelperMixin",
     "event.LivingEntitiesMixin",
     "event.LivingEntityMixin",
+    "item.aquadashers.PlayerEntityMixin",
     "item.bunnyhoppers.LivingEntityMixin",
     "item.cloudinabottle.LivingEntityMixin",
     "item.crossnecklace.LivingEntityMixin",

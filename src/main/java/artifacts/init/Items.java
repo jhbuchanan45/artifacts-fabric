@@ -61,6 +61,7 @@ public class Items {
 	public static final Item GOLDEN_HOOK = register("golden_hook", new GoldenHookItem());
 
 	// Feet
+	public static final Item AQUA_DASHERS = register("aqua_dashers", new AquaDashersItem());
 	public static final Item BUNNY_HOPPERS = register("bunny_hoppers", new BunnyHoppersItem());
 	public static final Item KITTY_SLIPPERS = register("kitty_slippers", new KittySlippersItem());
 	public static final Item RUNNING_SHOES = register("running_shoes", new RunningShoesItem());

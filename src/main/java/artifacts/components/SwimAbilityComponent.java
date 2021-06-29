@@ -15,6 +15,7 @@ public class SwimAbilityComponent implements PlayerComponent<Component> {
 
 	private boolean shouldSwim;
 	private boolean shouldSink;
+	private boolean hasTouchedWater;
 
 	public boolean isSwimming() {
 		return shouldSwim;
@@ -24,12 +25,20 @@ public class SwimAbilityComponent implements PlayerComponent<Component> {
 		return shouldSink;
 	}
 
+	public boolean isWet() {
+		return hasTouchedWater;
+	}
+
 	public void setSwimming(boolean shouldSwim) {
 		this.shouldSwim = shouldSwim;
 	}
 
 	public void setSinking(boolean shouldSink) {
 		this.shouldSink = shouldSink;
+	}
+
+	public void setWet(boolean hasTouchedWater) {
+		this.hasTouchedWater = hasTouchedWater;
 	}
 
 	@Override

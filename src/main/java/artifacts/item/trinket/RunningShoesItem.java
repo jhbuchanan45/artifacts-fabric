@@ -1,7 +1,7 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
-import artifacts.client.render.model.trinket.RunningShoesModel;
+import artifacts.client.render.model.trinket.ShoesModel;
 import artifacts.trinkets.Slots;
 import dev.emi.stepheightentityattribute.StepHeightEntityAttributeMain;
 import dev.emi.trinkets.api.SlotGroups;
@@ -40,7 +40,7 @@ public class RunningShoesItem extends TrinketArtifactItem {
 	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new RunningShoesModel();
+		return new ShoesModel(0.5F);
 	}
 
 	@Override
