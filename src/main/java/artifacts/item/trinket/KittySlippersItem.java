@@ -1,9 +1,11 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
+import artifacts.client.render.model.trinket.HeliumFlamingoModel;
 import artifacts.client.render.model.trinket.KittySlippersModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.SoundEvent;
@@ -19,10 +21,14 @@ public class KittySlippersItem extends TrinketArtifactItem {
 		return SoundEvents.ENTITY_CAT_HURT;
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new KittySlippersModel();
+		return createModel(KittySlippersModel.getTexturedModelData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new KittySlippersModel(root);
 	}
 
 	@Override
@@ -32,12 +38,7 @@ public class KittySlippersItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("feet") && slot.equals(Slots.SHOES);
-	}
-
-	@Override
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ENTITY_CAT_AMBIENT);
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ENTITY_CAT_AMBIENT;
 	}
 }

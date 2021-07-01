@@ -1,6 +1,7 @@
 package artifacts.client.render.model.trinket;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
@@ -8,11 +9,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Arm;
 
 public class GloveModel extends PlayerEntityModel<LivingEntity> {
-
-	public GloveModel(boolean smallArms) {
-		super(0.5F, smallArms);
+	public GloveModel(ModelPart root, boolean smallArms) {
+		super(root, smallArms);
 
 		setVisible(false);
+	}
+
+	public static ModelData getTexturedModelData(Dilation dilation, boolean smallArms) {
+		return PlayerEntityModel.getTexturedModelData(dilation, smallArms);
 	}
 
 	public void renderHand(boolean mainHand, MatrixStack matrices, VertexConsumer vertexConsumers, int light, int overlay, float red, float green, float blue, float alpha) {

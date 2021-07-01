@@ -1,11 +1,13 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
+import artifacts.client.render.model.trinket.SuperstitiousHatModel;
 import artifacts.client.render.model.trinket.UniversalAttractorModel;
 import artifacts.init.Components;
 import artifacts.mixin.mixins.accessors.ItemEntityAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -46,10 +48,14 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 		}
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new UniversalAttractorModel();
+		return createModel(UniversalAttractorModel.getTexturedGloveData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new UniversalAttractorModel(root);
 	}
 
 	@Override
@@ -58,8 +64,4 @@ public class UniversalAttractorItem extends TrinketArtifactItem {
 		return TEXTURE;
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("legs") && slot.equals("belt");
-	}
 }

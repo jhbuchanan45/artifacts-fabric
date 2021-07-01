@@ -3,28 +3,30 @@ package artifacts.item.trinket.glove;
 import artifacts.client.render.TrinketRenderHelper;
 import artifacts.client.render.model.trinket.GloveModel;
 import artifacts.item.trinket.TrinketArtifactItem;
+import dev.emi.trinkets.api.SlotReference;
+import dev.emi.trinkets.api.client.TrinketRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 
 public abstract class GloveItem extends TrinketArtifactItem {
 
 	protected Object modelSlim;
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return (group.equals("hand") || group.equals("offhand")) && slot.equals(Slots.GLOVES);
-	}
 
 	@Environment(EnvType.CLIENT)
 	protected static boolean hasSmallArms(Entity entity) {
@@ -52,7 +54,12 @@ public abstract class GloveItem extends TrinketArtifactItem {
 
 	@Environment(EnvType.CLIENT)
 	protected GloveModel createModel(boolean smallArms) {
-		return new GloveModel(smallArms);
+		return createModel(TexturedModelData.of(GloveModel.getTexturedModelData(new Dilation(0.5F), smallArms), 64, 64).createModel(), smallArms);
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected GloveModel createModel(ModelPart root, boolean smallArms) {
+		return new GloveModel(root, smallArms);
 	}
 
 	@Environment(EnvType.CLIENT)
@@ -65,14 +72,14 @@ public abstract class GloveItem extends TrinketArtifactItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel, AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-		boolean smallArms = hasSmallArms(player);
-		boolean hand = slot.split(":")[0].equals("hand");
+	public void render(ItemStack stack, SlotReference slotReference, EntityModel<? extends LivingEntity> contextModel, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, LivingEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
+		boolean smallArms = hasSmallArms(entity);
+		boolean hand = slotReference.inventory().getSlotType().getGroup().equals("hand");
 		GloveModel model = this.getModel(smallArms);
 
-		model.setAngles(player, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
-		model.animateModel(player, limbAngle, limbDistance, tickDelta);
-		TrinketRenderHelper.followBodyRotations(player, model);
+		model.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
+		model.animateModel(entity, limbAngle, limbDistance, tickDelta);
+		TrinketRenderer.followBodyRotations(entity, model);
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(getTexture(smallArms)), false, false);
 		model.renderHand(hand, matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 	}

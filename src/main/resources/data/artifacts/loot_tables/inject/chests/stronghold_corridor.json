@@ -27,10 +27,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "artifacts:aqua_dashers"
-        },
-        {
-          "type": "minecraft:item",
           "name": "artifacts:helium_flamingo"
         }
       ],

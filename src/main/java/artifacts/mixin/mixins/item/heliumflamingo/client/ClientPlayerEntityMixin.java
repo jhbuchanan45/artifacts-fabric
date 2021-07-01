@@ -42,13 +42,13 @@ public abstract class ClientPlayerEntityMixin {
 					&& !self.isOnGround()
 					&& (!self.isTouchingWater() || swimAbilities.isSinking())
 					&& !self.isFallFlying()
-					&& !self.abilities.flying
+					&& !self.getAbilities().flying
 					&& !self.hasVehicle())) {
 				swimAbilities.setSwimming(true);
 				swimAbilities.syncSwimming();
 				hasTouchedGround = false;
 			}
-		} else if (self.abilities.flying) {
+		} else if (self.getAbilities().flying) {
 			swimAbilities.setSwimming(false);
 			swimAbilities.syncSwimming();
 			hasTouchedGround = true;

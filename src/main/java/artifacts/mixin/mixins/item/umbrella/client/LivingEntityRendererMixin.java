@@ -5,6 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -24,8 +25,8 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
 	@Shadow
 	protected M model;
 
-	protected LivingEntityRendererMixin(EntityRenderDispatcher dispatcher) {
-		super(dispatcher);
+	protected LivingEntityRendererMixin(EntityRendererFactory.Context ctx, M model, float shadowRadius) {
+		super(ctx);
 	}
 
 	@Inject(method = "render", at = @At("HEAD"))

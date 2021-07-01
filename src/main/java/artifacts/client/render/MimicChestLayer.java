@@ -28,7 +28,7 @@ public class MimicChestLayer extends FeatureRenderer<MimicEntity, MimicModel> {
 	public MimicChestLayer(FeatureRendererContext<MimicEntity, MimicModel> entityRenderer) {
 		super(entityRenderer);
 
-		model = new MimicChestLayerModel();
+		model = new MimicChestLayerModel(MimicChestLayerModel.getTexturedModelData().createModel());
 
 		Calendar calendar = Calendar.getInstance();
 		if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.DATE) >= 24 && calendar.get(Calendar.DATE) <= 26) {

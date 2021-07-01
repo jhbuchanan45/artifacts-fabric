@@ -5,6 +5,8 @@ import artifacts.client.render.model.trinket.GloveModel;
 import artifacts.client.render.model.trinket.GoldenHookModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.Dilation;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.util.Identifier;
 
 public class GoldenHookItem extends GloveItem {
@@ -15,7 +17,13 @@ public class GoldenHookItem extends GloveItem {
 	@Override
 	@Environment(EnvType.CLIENT)
 	protected GloveModel createModel(boolean smallArms) {
-		return new GoldenHookModel(smallArms);
+		return createModel(GoldenHookModel.getTexturedGloveData(Dilation.NONE, smallArms).createModel(), smallArms);
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected GloveModel createModel(ModelPart root, boolean smallArms) {
+		return new GoldenHookModel(root, smallArms);
 	}
 
 	@Override

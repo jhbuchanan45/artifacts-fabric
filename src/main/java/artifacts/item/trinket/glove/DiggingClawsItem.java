@@ -3,8 +3,12 @@ package artifacts.item.trinket.glove;
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.ClawsModel;
 import artifacts.client.render.model.trinket.GloveModel;
+import artifacts.item.trinket.TrinketArtifactItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.Dilation;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -18,7 +22,13 @@ public class DiggingClawsItem extends GloveItem {
 	@Override
 	@Environment(EnvType.CLIENT)
 	protected GloveModel createModel(boolean smallArms) {
-		return new ClawsModel(smallArms);
+		return createModel(ClawsModel.getTexturedGloveData(Dilation.NONE, smallArms).createModel(), smallArms);
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	protected GloveModel createModel(ModelPart root, boolean smallArms) {
+		return new ClawsModel(root, smallArms);
 	}
 
 	@Override
@@ -34,7 +44,7 @@ public class DiggingClawsItem extends GloveItem {
 	}
 
 	@Override
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE;
 	}
 }

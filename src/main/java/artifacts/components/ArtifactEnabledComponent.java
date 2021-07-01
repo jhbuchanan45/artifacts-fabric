@@ -20,4 +20,5 @@ public class ArtifactEnabledComponent extends SyncedBooleanComponent {
 		return player.getInventory().contains(stack)
 				|| TrinketsHelper.isEquipped((ItemStack equippedStack) -> equippedStack.equals(stack), player);
 	}
+
 }

@@ -4,6 +4,7 @@ import artifacts.client.render.ArtifactFeatureRenderer;
 import artifacts.client.render.MimicRenderer;
 import artifacts.init.Entities;
 import artifacts.init.Items;
+import dev.emi.trinkets.TrinketFeatureRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

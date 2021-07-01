@@ -21,6 +21,7 @@ import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -46,7 +47,7 @@ import net.minecraft.world.event.GameEvent;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class TrinketArtifactItem extends ArtifactItem implements TrinketRenderer, Trinket {
+public abstract class TrinketArtifactItem extends ArtifactItem implements Trinket, TrinketRenderer {
 
 	private BipedEntityModel<LivingEntity> model;
 
@@ -108,7 +109,6 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		return false;
 	}
 
-	@Override
 	public final void tick(PlayerEntity player, ItemStack stack) {
 		if (effectsEnabled(stack)) {
 			effectTick(player, stack);
@@ -118,7 +118,6 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	protected void effectTick(PlayerEntity player, ItemStack stack) {
 	}
 
-	@Override
 	public final Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
 		if (effectsEnabled(stack)) {
 			return this.applyModifiers(group, slot, uuid, stack);
@@ -141,8 +140,8 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 	/**
 	 * @return The {@link SoundEvent} to play when the artifact is right-click equipped
 	 */
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC);
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_GENERIC;
 	}
 
 	/**
@@ -162,13 +161,13 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		return null;
 	}
 
+	@Override
 	@Environment(EnvType.CLIENT)
-	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel,
-					   AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
+	public void render(ItemStack stack, SlotReference slotReference, EntityModel<? extends LivingEntity> contextModel, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, LivingEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
 		BipedEntityModel<LivingEntity> model = this.getModel();
-		model.setAngles(player, limbAngle, limbDistance, animationProgress, animationProgress, headPitch);
-		model.animateModel(player, limbAngle, limbDistance, tickDelta);
-		TrinketRenderHelper.followBodyRotations(player, model);
+		model.setAngles(entity, limbAngle, limbDistance, animationProgress, animationProgress, headPitch);
+		model.animateModel(entity, limbAngle, limbDistance, tickDelta);
+		TrinketRenderer.followBodyRotations(entity, model);
 		// TODO: stack.hasGlint()
 		VertexConsumer vertexBuilder = ItemRenderer.getItemGlintConsumer(vertexConsumers, model.getLayer(this.getTexture()), false, false);
 		model.render(matrices, vertexBuilder, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
@@ -219,32 +218,4 @@ public abstract class TrinketArtifactItem extends ArtifactItem implements Trinke
 		return effectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
 	}
 
-	// From Curios
-	protected static final class SoundInfo {
-		final SoundEvent soundEvent;
-		final float volume;
-		final float pitch;
-
-		public SoundInfo(SoundEvent soundEvent) {
-			this(soundEvent, 1f, 1f);
-		}
-
-		public SoundInfo(SoundEvent soundEvent, float volume, float pitch) {
-			this.soundEvent = soundEvent;
-			this.volume = volume;
-			this.pitch = pitch;
-		}
-
-		public SoundEvent getSoundEvent() {
-			return this.soundEvent;
-		}
-
-		public float getVolume() {
-			return this.volume;
-		}
-
-		public float getPitch() {
-			return this.pitch;
-		}
-	}
 }

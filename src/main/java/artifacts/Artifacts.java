@@ -44,19 +44,7 @@ public class Artifacts implements ModInitializer {
 		Artifacts.CONFIG = AutoConfig.register(ModConfig.class,
 				PartitioningSerializer.wrap(Toml4jConfigSerializer::new)).getConfig();
 
-		// Trinkets setup
-		// TrinketSlots.addSlot("legs", "belt",
-		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_belt.png"));
-		// TrinketSlots.addSlot("chest", "necklace",
-		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_necklace.png"));
-		// TrinketSlots.addSlot("head", artifacts.trinkets.Slots.HAT,
-		// 		new Identifier(MODID, "textures/item/empty_trinket_slot_hat.png"));
-		// TrinketSlots.addSlot("feet", artifacts.trinkets.Slots.SHOES,
-		// 		new Identifier(MODID, "textures/item/empty_trinket_slot_shoes.png"));
-		// TrinketSlots.addSlot("hand", "gloves",
-		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
-		// TrinketSlots.addSlot("offhand", "gloves",
-		// 		new Identifier("trinkets", "textures/item/empty_trinket_slot_gloves.png"));
+		// Trinkets setup now in resources/data/trinkets
 
 		// Loot table setup
 		LootTableLoadingCallback.EVENT.register((resourceManager, manager, id, supplier, setter) -> LootTables.onLootTableLoad(id, supplier));

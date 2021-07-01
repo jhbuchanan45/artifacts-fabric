@@ -4,6 +4,7 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.BunnyHoppersModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -26,10 +27,14 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 		return SoundEvents.ENTITY_RABBIT_HURT;
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new BunnyHoppersModel();
+		return new BunnyHoppersModel(BunnyHoppersModel.getTexturedModelData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new BunnyHoppersModel(root);
 	}
 
 	@Override
@@ -38,8 +43,4 @@ public class BunnyHoppersItem extends TrinketArtifactItem {
 		return TEXTURE;
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("feet") && slot.equals(Slots.SHOES);
-	}
 }

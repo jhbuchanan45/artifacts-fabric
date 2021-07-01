@@ -3,6 +3,8 @@ package artifacts.item.trinket.glove;
 import artifacts.Artifacts;
 import artifacts.client.render.RenderLayer;
 import artifacts.client.render.model.trinket.GloveModel;
+import artifacts.item.trinket.TrinketArtifactItem;
+import dev.emi.trinkets.api.SlotReference;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
@@ -10,9 +12,13 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
@@ -25,17 +31,17 @@ public class FireGauntletItem extends GloveItem {
 	private static final Identifier TEXTURE_SLIM_GLOW = Artifacts.id("textures/entity/trinket/fire_gauntlet_slim_glow.png");
 
 	@Override
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_IRON);
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_ARMOR_EQUIP_IRON;
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void render(String slot, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel<AbstractClientPlayerEntity> playerModel, AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-		super.render(slot, matrices, vertexConsumers, light, playerModel, player, limbAngle, limbDistance, tickDelta,animationProgress, headYaw, headPitch);
+	public void render(ItemStack stack, SlotReference slotReference, EntityModel<? extends LivingEntity> contextModel, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, LivingEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
+		super.render(stack, slotReference, contextModel, matrices, vertexConsumers, light, entity, limbAngle, limbDistance, tickDelta, animationProgress, headYaw, headPitch);
 
-		boolean smallArms = hasSmallArms(player);
-		boolean hand = slot.split(":")[0].equals("hand");
+		boolean smallArms = hasSmallArms(entity);
+		boolean hand = slotReference.inventory().getSlotType().getGroup().equals("hand");
 		GloveModel model = this.getModel(smallArms);
 
 		// The glow effect is achieved by rendering the glow texture unlit

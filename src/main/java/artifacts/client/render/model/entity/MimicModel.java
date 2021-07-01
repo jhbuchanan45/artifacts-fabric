@@ -1,8 +1,9 @@
 package artifacts.client.render.model.entity;
 
 import artifacts.entity.MimicEntity;
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -13,24 +14,28 @@ public class MimicModel extends EntityModel<MimicEntity> {
 	protected final ModelPart upperMouthOverlay;
 	protected final ModelPart lowerMouthOverlay;
 
-	public MimicModel() {
-		textureWidth = 64;
-		textureHeight = 32;
+	public MimicModel(ModelPart root) {
+		upperTeeth = root.getChild("upper_teeth");
+		lowerTeeth = root.getChild("lower_teeth");
+		upperMouthOverlay = root.getChild("upper_mouth_overlay");
+		lowerMouthOverlay = root.getChild("lower_mouth_overlay");
+	}
 
-		upperTeeth = new ModelPart(this, 0, 0);
-		lowerTeeth = new ModelPart(this, 0, 15);
-		upperMouthOverlay = new ModelPart(this, 24, 0);
-		lowerMouthOverlay = new ModelPart(this, 36, 15);
+	public static TexturedModelData getTexturedModelData() {
+		ModelData modelData = new ModelData();
+		ModelPartData root = modelData.getRoot();
 
-		upperTeeth.addCuboid(-6, 0, -13, 12, 3, 12);
-		lowerTeeth.addCuboid(-6, -4, -13, 12, 3, 12);
-		upperMouthOverlay.addCuboid(-6, 0, -13, 12, 0, 12, 0.02F);
-		lowerMouthOverlay.addCuboid(-6, -1, -13, 12, 0, 12, 0.02F);
+		ModelPartBuilder upperTeeth = ModelPartBuilder.create().uv(0, 0).cuboid(-6, 0, -13, 12, 3, 12);
+		ModelPartBuilder lowerTeeth = ModelPartBuilder.create().uv(0, 15).cuboid(-6, -4, -13, 12, 3, 12);
+		ModelPartBuilder upperMouthOverlay = ModelPartBuilder.create().uv(24, 0).cuboid(-6, 0, -13, 12, 0, 12, new Dilation( 0.02F));
+		ModelPartBuilder lowerMouthOverlay = ModelPartBuilder.create().uv(36, 15).cuboid(-6, -1, -13, 12, 0, 12, new Dilation( 0.02F));
 
-		upperTeeth.setPivot(0, 15, 7);
-		lowerTeeth.setPivot(0, 15, 7);
-		upperMouthOverlay.setPivot(0, 15, 7);
-		lowerMouthOverlay.setPivot(0, 15, 7);
+		root.addChild("upper_teeth", upperTeeth, ModelTransform.pivot(0, 15, 7));
+		root.addChild("lower_teeth", lowerTeeth, ModelTransform.pivot(0, 15, 7));
+		root.addChild("upper_mouth_overlay", upperMouthOverlay, ModelTransform.pivot(0, 15, 7));
+		root.addChild("lower_mouth_overlay", lowerMouthOverlay, ModelTransform.pivot(0, 15, 7));
+
+		return TexturedModelData.of(modelData, 64, 32);
 	}
 
 	@Override

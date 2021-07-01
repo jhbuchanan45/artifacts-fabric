@@ -1,10 +1,13 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
+import artifacts.client.render.model.trinket.NightVisionGogglesModel;
 import artifacts.client.render.model.trinket.RunningShoesModel;
 import dev.emi.stepheightentityattribute.StepHeightEntityAttributeMain;
+import dev.emi.trinkets.api.SlotReference;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
@@ -27,7 +30,7 @@ public class RunningShoesItem extends TrinketArtifactItem {
 
 	@Override
 	@SuppressWarnings("ConstantConditions")
-	public void onUnequip(PlayerEntity player, ItemStack stack) {
+	public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity player) {
 		EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
 		EntityAttributeInstance stepHeight = player.getAttributeInstance(StepHeightEntityAttributeMain.STEP_HEIGHT);
 
@@ -35,10 +38,14 @@ public class RunningShoesItem extends TrinketArtifactItem {
 		removeModifier(stepHeight, STEP_HEIGHT_MODIFIER);
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new RunningShoesModel();
+		return createModel(RunningShoesModel.getTexturedGloveData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new RunningShoesModel(root);
 	}
 
 	@Override
@@ -47,8 +54,4 @@ public class RunningShoesItem extends TrinketArtifactItem {
 		return TEXTURE;
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("feet") && slot.equals(Slots.SHOES);
-	}
 }

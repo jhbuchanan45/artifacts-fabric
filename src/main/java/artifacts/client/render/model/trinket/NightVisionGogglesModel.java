@@ -1,28 +1,32 @@
 package artifacts.client.render.model.trinket;
 
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 
 public class NightVisionGogglesModel extends BipedEntityModel<LivingEntity> {
 
-	public NightVisionGogglesModel() {
-		super(0.5F, 0, 64, 64);
+	public NightVisionGogglesModel(ModelPart root) {
+		super(root);
 
 		setVisible(false);
 		head.visible = true;
 		hat.visible = true;
+	}
 
-		ModelPart goggles = new ModelPart(this, 0, 37);
-		ModelPart eyeLeft = new ModelPart(this, 0, 32);
-		ModelPart eyeRight = new ModelPart(this, 10, 32);
+	public static TexturedModelData getTexturedModelData() {
+		ModelData modelData = BipedEntityModel.getModelData(new Dilation(0.5F), 0);
+		ModelPartData root = modelData.getRoot();
 
-		goggles.addCuboid(-4, -6, -5 + 0.05F, 8, 4, 1);
-		eyeLeft.addCuboid(1.5F, -5, -8 + 0.05F, 2, 2, 3);
-		eyeRight.addCuboid(-3.5F, -5, -8 + 0.05F, 2, 2, 3);
+		ModelPartBuilder goggles = ModelPartBuilder.create().uv(0, 37).cuboid(-4, -6, -5 + 0.05F, 8, 4, 1);
+		ModelPartBuilder eyeLeft = ModelPartBuilder.create().uv(0, 32).cuboid(1.5F, -5, -8 + 0.05F, 2, 2, 3);
+		ModelPartBuilder eyeRight = ModelPartBuilder.create().uv(10, 32).cuboid(-3.5F, -5, -8 + 0.05F, 2, 2, 3);
 
-		head.addChild(goggles);
-		head.addChild(eyeLeft);
-		head.addChild(eyeRight);
+		ModelPartData headData = root.getChild("head");
+		headData.addChild("goggles", goggles, ModelTransform.NONE);
+		headData.addChild("eyeLeft", eyeLeft, ModelTransform.NONE);
+		headData.addChild("eyeRight", eyeRight, ModelTransform.NONE);
+
+		return TexturedModelData.of(modelData, 64, 64);
 	}
 }

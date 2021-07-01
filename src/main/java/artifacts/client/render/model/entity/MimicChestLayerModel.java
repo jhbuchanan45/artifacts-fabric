@@ -1,7 +1,7 @@
 package artifacts.client.render.model.entity;
 
 import artifacts.entity.MimicEntity;
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
@@ -12,18 +12,25 @@ public class MimicChestLayerModel extends EntityModel<MimicEntity> {
 	protected final ModelPart lid;
 	protected final ModelPart latch;
 
-	public MimicChestLayerModel() {
-		bottom = new ModelPart(64, 64, 0, 19);
-		lid = new ModelPart(64, 64, 0, 0);
-		latch = new ModelPart(64, 64, 0, 0);
+	public MimicChestLayerModel(ModelPart root) {
+		bottom = root.getChild("bottom");
+		lid = root.getChild("lid");
+		latch = root.getChild("latch");
+	}
 
-		bottom.addCuboid(1, -9, 0, 14, 10, 14);
-		lid.addCuboid(1, 0, 0, 14, 5, 14);
-		latch.addCuboid(7, -1, 15, 2, 4, 1);
+	public static TexturedModelData getTexturedModelData() {
+		ModelData modelData = new ModelData();
+		ModelPartData root = modelData.getRoot();
 
-		bottom.setPivot(0, 9, 1);
-		lid.setPivot(0, 9, 1);
-		latch.setPivot(0, 8, 0);
+		ModelPartBuilder bottom = ModelPartBuilder.create().uv(0, 19).cuboid(1, -9, 0, 14, 10, 14);
+		ModelPartBuilder lid = ModelPartBuilder.create().uv(0, 0).cuboid(1, 0, 0, 14, 5, 14);
+		ModelPartBuilder latch = ModelPartBuilder.create().uv(0, 0).cuboid(7, -1, 15, 2, 4, 1);
+
+		root.addChild("bottom", bottom, ModelTransform.pivot(0, 9, 1));
+		root.addChild("lid", lid, ModelTransform.pivot(0, 9, 1));
+		root.addChild("latch", latch, ModelTransform.pivot(0, 8, 0));
+
+		return TexturedModelData.of(modelData, 64, 64);
 	}
 
 	@Override

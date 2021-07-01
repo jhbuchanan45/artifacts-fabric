@@ -1,25 +1,29 @@
 package artifacts.client.render.model.trinket;
 
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 
 public class GoldenHookModel extends GloveModel {
 	
-	public GoldenHookModel(boolean smallArms) {
-		super(smallArms);
+	public GoldenHookModel(ModelPart root, boolean smallArms) {
+		super(root, smallArms);
+	}
 
-		ModelPart hookRight = new ModelPart(this, 0, 0);
-		ModelPart hookLeft = new ModelPart(this, 0, 9);
-		ModelPart hookBaseRight = new ModelPart(this, 0, 6);
-		ModelPart hookBaseLeft = new ModelPart(this, 0, 15);
+	public static TexturedModelData getTexturedGloveData(Dilation dilation, boolean smallArms) {
+		ModelData modelData = GloveModel.getTexturedModelData(dilation, smallArms);
+		ModelPartData root = modelData.getRoot();
+		ModelPartData rightArm = root.getChild("right_arm");
+		ModelPartData leftArm = root.getChild("left_arm");
 
-		hookRight.addCuboid(smallArms ? -3 : -3.5F, 12, -0.5F, 5, 5, 1);
-		hookLeft.addCuboid(smallArms ? -2 : -1.5F, 12, -0.5F, 5, 5, 1);
-		hookBaseRight.addCuboid(smallArms ? -1 : -1.5F, 10, -0.5F, 1, 2, 1);
-		hookBaseLeft.addCuboid(smallArms ? 0 : 0.5F, 10, -0.5F, 1, 2, 1);
+		ModelPartBuilder hookRight = ModelPartBuilder.create().uv(0, 0).cuboid(smallArms ? -3 : -3.5F, 12, -0.5F, 5, 5, 1);
+		ModelPartBuilder hookBaseRight = ModelPartBuilder.create().uv(0, 0).cuboid(smallArms ? -3 : -3.5F, 12, -0.5F, 5, 5, 1);
+		ModelPartBuilder hookLeft = ModelPartBuilder.create().uv(0, 0).cuboid(smallArms ? -3 : -3.5F, 12, -0.5F, 5, 5, 1);
+		ModelPartBuilder hookBaseLeft = ModelPartBuilder.create().uv(0, 0).cuboid(smallArms ? -3 : -3.5F, 12, -0.5F, 5, 5, 1);
 
-		rightArm.addChild(hookRight);
-		leftArm.addChild(hookLeft);
-		rightArm.addChild(hookBaseRight);
-		leftArm.addChild(hookBaseLeft);
+		rightArm.addChild("hook_right", hookRight, ModelTransform.NONE);
+		rightArm.addChild("hook_base_right", hookBaseRight, ModelTransform.NONE);
+		leftArm.addChild("hook_left", hookLeft, ModelTransform.NONE);
+		leftArm.addChild("hook_base_left", hookBaseLeft, ModelTransform.NONE);
+
+		return TexturedModelData.of(modelData, 64, 64);
 	}
 }

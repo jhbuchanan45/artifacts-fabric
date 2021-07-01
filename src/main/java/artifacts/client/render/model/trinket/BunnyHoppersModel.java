@@ -1,57 +1,50 @@
 package artifacts.client.render.model.trinket;
 
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 
 public class BunnyHoppersModel extends BipedEntityModel<LivingEntity> {
 
-	public BunnyHoppersModel() {
-		super(0.51F);
-		ModelPart head1 = new ModelPart(this, 0, 0);
-		ModelPart head2 = new ModelPart(this, 32, 0);
-		ModelPart earLeft1 = new ModelPart(this, 20, 0);
-		ModelPart earLeft2 = new ModelPart(this, 52, 0);
-		ModelPart earRight1 = new ModelPart(this, 26, 0);
-		ModelPart earRight2 = new ModelPart(this, 58, 0);
-		ModelPart bipedLeftLegwear = new ModelPart(this, 16, 16);
-		ModelPart bipedRightLegwear = new ModelPart(this, 48, 16);
-		ModelPart nose1 = new ModelPart(this, 0, 9);
-		ModelPart nose2 = new ModelPart(this, 32, 9);
-		ModelPart tail1 = new ModelPart(this, 20, 6);
-		ModelPart tail2 = new ModelPart(this, 52, 6);
-
-		head1.addCuboid(-2.5F, 8.51F, -7.01F, 5, 4, 5);
-		head2.addCuboid(-2.5F, 8.51F, -7, 5, 4, 5);
-		earRight1.addCuboid(1.15F, 3.51F, -3.01F, 2, 5, 1);
-		earRight2.addCuboid(1.15F, 3.51F, -3, 2, 5, 1);
-		earRight1.yaw = 0.2617994F;
-		earRight2.yaw = 0.2617994F;
-		earLeft1.addCuboid(-3.15F, 3.51F, -3.01F, 2, 5, 1);
-		earLeft2.addCuboid(-3.15F, 3.51F, -3, 2, 5, 1);
-		earLeft1.yaw = -0.2617994F;
-		earLeft2.yaw = -0.2617994F;
-		bipedLeftLegwear.addCuboid(-2, 0, -2, 4, 12, 4, 0.75F);
-		bipedRightLegwear.addCuboid(-2, 0, -2, 4, 12, 4, 0.75F);
-		nose1.addCuboid(-0.5F, 10, -7.5F, 1, 1, 1);
-		nose2.addCuboid(-0.5F, 10, -7.5F, 1, 1, 1);
-		tail1.addCuboid(-1, 9, 2, 2, 2, 2);
-		tail2.addCuboid(-1, 9, 2, 2, 2, 2);
-
-		leftLeg.addChild(head1);
-		rightLeg.addChild(head2);
-		leftLeg.addChild(earRight1);
-		rightLeg.addChild(earRight2);
-		leftLeg.addChild(earLeft1);
-		rightLeg.addChild(earLeft2);
-		leftLeg.addChild(bipedLeftLegwear);
-		rightLeg.addChild(bipedRightLegwear);
-		leftLeg.addChild(nose1);
-		rightLeg.addChild(nose2);
-		leftLeg.addChild(tail1);
-		rightLeg.addChild(tail2);
+	public BunnyHoppersModel(ModelPart root) {
+		super(root);
 
 		setVisible(false);
 		leftLeg.visible = rightLeg.visible = true;
+	}
+
+	public static TexturedModelData getTexturedModelData() {
+		ModelData modelData = BipedEntityModel.getModelData(new Dilation(0.51F), 0);
+		ModelPartData root = modelData.getRoot();
+		ModelPartData leftLeg = root.getChild("left_leg");
+		ModelPartData rightLeg = root.getChild("right_leg");
+
+		ModelPartBuilder head1 = ModelPartBuilder.create().uv(0, 0).cuboid(-2.5F, 8.51F, -7.01F, 5, 4, 5);
+		ModelPartBuilder head2 = ModelPartBuilder.create().uv(32, 0).cuboid(-2.5F, 8.51F, -7, 5, 4, 5);
+		ModelPartBuilder earLeft1 = ModelPartBuilder.create().uv(20, 0).cuboid(1.15F, 3.51F, -3.01F, 2, 5, 1);
+		ModelPartBuilder earLeft2 = ModelPartBuilder.create().uv(52, 0).cuboid(1.15F, 3.51F, -3, 2, 5, 1);
+		ModelPartBuilder earRight1 = ModelPartBuilder.create().uv(26, 0).cuboid(-3.15F, 3.51F, -3.01F, 2, 5, 1);
+		ModelPartBuilder earRight2 = ModelPartBuilder.create().uv(58, 0).cuboid(-3.15F, 3.51F, -3, 2, 5, 1);
+		ModelPartBuilder bipedLeftLegwear = ModelPartBuilder.create().uv(16, 16).cuboid(-2, 0, -2, 4, 12, 4, new Dilation(0.75F));
+		ModelPartBuilder bipedRightLegwear = ModelPartBuilder.create().uv(48, 16).cuboid(-2, 0, -2, 4, 12, 4, new Dilation(0.75F));
+		ModelPartBuilder nose1 = ModelPartBuilder.create().uv(0, 9).cuboid(-0.5F, 10, -7.5F, 1, 1, 1);
+		ModelPartBuilder nose2 = ModelPartBuilder.create().uv(32, 9).cuboid(-0.5F, 10, -7.5F, 1, 1, 1);
+		ModelPartBuilder tail1 = ModelPartBuilder.create().uv(20, 6).cuboid(-1, 9, 2, 2, 2, 2);
+		ModelPartBuilder tail2 = ModelPartBuilder.create().uv(52, 6).cuboid(-1, 9, 2, 2, 2, 2);
+
+		leftLeg.addChild("head1", head1, ModelTransform.NONE);
+		rightLeg.addChild("head2", head2, ModelTransform.NONE);
+		leftLeg.addChild("ear_right1", earRight1, ModelTransform.rotation(0, 0.2617994F, 0));
+		rightLeg.addChild("ear_right2", earRight2, ModelTransform.rotation(0, 0.2617994F, 0));
+		leftLeg.addChild("ear_left1", earLeft1, ModelTransform.rotation(0, -0.2617994F, 0));
+		rightLeg.addChild("ear_left2", earLeft2, ModelTransform.rotation(0, -0.2617994F, 0));
+		leftLeg.addChild("biped_left_legwear", bipedLeftLegwear, ModelTransform.NONE);
+		rightLeg.addChild("biped_right_legwear", bipedRightLegwear, ModelTransform.NONE);
+		leftLeg.addChild("nose1", nose1, ModelTransform.NONE);
+		rightLeg.addChild("nose2", nose2, ModelTransform.NONE);
+		leftLeg.addChild("tail1", tail1, ModelTransform.NONE);
+		rightLeg.addChild("tail2", tail2, ModelTransform.NONE);
+
+		return TexturedModelData.of(modelData, 64, 32);
 	}
 }

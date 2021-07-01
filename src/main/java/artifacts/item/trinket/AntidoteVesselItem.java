@@ -2,15 +2,20 @@ package artifacts.item.trinket;
 
 import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.AntidoteVesselModel;
+import artifacts.client.render.model.trinket.PendantModel;
 import artifacts.mixin.extensions.StatusEffectInstanceExtensions;
 import artifacts.mixin.mixins.accessors.StatusEffectAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.Dilation;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -28,10 +33,14 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 		});
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new AntidoteVesselModel();
+		return new AntidoteVesselModel(AntidoteVesselModel.getTexturedModelData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new AntidoteVesselModel(root);
 	}
 
 	@Override
@@ -41,12 +50,7 @@ public class AntidoteVesselItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	public SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ITEM_BOTTLE_FILL);
-	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("legs") && slot.equals("belt");
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_BOTTLE_FILL;
 	}
 }

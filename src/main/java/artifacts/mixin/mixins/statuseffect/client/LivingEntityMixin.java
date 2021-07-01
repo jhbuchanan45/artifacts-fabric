@@ -2,6 +2,7 @@ package artifacts.mixin.mixins.statuseffect.client;
 
 import artifacts.item.trinket.TrinketArtifactItem;
 import artifacts.trinkets.TrinketsHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,8 +17,8 @@ public abstract class LivingEntityMixin {
 	 * Show the effect as permanent, which normally only happens if the duration is >= 32767
 	 * Doing it here makes sure it is set to permanent everytime the server sent an update packet
 	 */
-	@Inject(method = "applyStatusEffect", at = @At("HEAD"))
-	private void showStatusEffectPermanent(StatusEffectInstance effect, CallbackInfo info) {
+	@Inject(method = "setStatusEffect", at = @At("HEAD"))
+	private void showStatusEffectPermanent(StatusEffectInstance effect, Entity source, CallbackInfo info) {
 		//noinspection ConstantConditions
 		if ((Object) this instanceof LivingEntity) {
 

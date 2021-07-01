@@ -2,6 +2,7 @@ package artifacts.trinkets;
 
 import artifacts.init.Components;
 import artifacts.item.trinket.TrinketArtifactItem;
+import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +12,7 @@ import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 public final class TrinketsHelper {
@@ -49,15 +51,17 @@ public final class TrinketsHelper {
 
 		// LivingEntity not currently supported by Trinkets
 		if (entity instanceof PlayerEntity) {
-			Inventory inventory = TrinketsApi.getTrinketsInventory((PlayerEntity) entity);
+			Optional<TrinketComponent> maybeComponent = TrinketsApi.getTrinketComponent(entity);
 
-			for (int i = 0; i < inventory.size(); i++) {
-				ItemStack stack = inventory.getStack(i);
+			if (maybeComponent.isPresent()) {
+				TrinketComponent tComponent = maybeComponent.get();
 
-				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem
-						&& (Components.ARTIFACT_ENABLED.get(stack).get() || ignoreEffectsDisabled)) {
-					stacks.add(stack);
-				}
+				tComponent.getAllEquipped().forEach(pair -> {
+					if (pair.getRight().getItem() instanceof TrinketArtifactItem &&
+							(Components.ARTIFACT_ENABLED.get(pair.getRight()).get() || ignoreEffectsDisabled)) {
+
+					}
+				});
 			}
 		}
 

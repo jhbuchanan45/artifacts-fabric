@@ -1,6 +1,6 @@
 package artifacts.client.render.model.trinket;
 
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -16,16 +16,26 @@ public class ScarfModel extends BipedEntityModel<LivingEntity> {
 
 	private final ModelPart bipedCape;
 
-	public ScarfModel() {
-		this(RenderLayer::getEntityCutoutNoCull);
+	public ScarfModel(ModelPart root) {
+		this(root, RenderLayer::getEntityCutoutNoCull);
 	}
 
-	public ScarfModel(Function<Identifier, RenderLayer> renderType) {
-		super(renderType, 0.5F, 0, 64, 32);
-		bipedCape = new ModelPart(this, 32, 0);
-		bipedCape.addCuboid(-5, 0, 0, 5, 12, 2);
-		body = new ModelPart(this, 0, 16);
-		body.addCuboid(-6.01F, -2, -4, 12, 6, 8);
+	public ScarfModel(ModelPart root, Function<Identifier, RenderLayer> renderType) {
+		super(root, renderType);
+		bipedCape = root.getChild("biped_cape");
+	}
+
+	public static TexturedModelData getTexturedModelData() {
+		ModelData modelData = BipedEntityModel.getModelData(new Dilation(0.5F), 0);
+		ModelPartData root = modelData.getRoot();
+
+		ModelPartBuilder body = ModelPartBuilder.create().uv(0, 16).cuboid(-6.01F, -2, -4, 12, 6, 8);
+		ModelPartBuilder bipedCape = ModelPartBuilder.create().uv(32, 0).cuboid(-5, 0, 0, 5, 12, 2);
+
+		root.addChild("body", body, ModelTransform.NONE);
+		root.addChild("biped_cape", bipedCape, ModelTransform.NONE);
+
+		return TexturedModelData.of(modelData, 64, 32);
 	}
 
 	@Override

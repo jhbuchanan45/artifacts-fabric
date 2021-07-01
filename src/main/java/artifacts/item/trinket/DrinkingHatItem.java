@@ -1,14 +1,17 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
+import artifacts.client.render.model.trinket.CrystalHeartModel;
 import artifacts.client.render.model.trinket.DrinkingHatModel;
 import artifacts.init.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -36,24 +39,23 @@ public class DrinkingHatItem extends TrinketArtifactItem {
 	}
 
 	@Override
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ITEM_BOTTLE_FILL);
+	public SoundEvent getEquipSound() {
+		return SoundEvents.ITEM_BOTTLE_FILL;
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new DrinkingHatModel();
+		return createModel(DrinkingHatModel.getTexturedModelData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new DrinkingHatModel(root);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
 	protected Identifier getTexture() {
 		return texture;
-	}
-
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("head") && slot.equals(Slots.HAT);
 	}
 }

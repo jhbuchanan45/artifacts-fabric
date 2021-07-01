@@ -4,6 +4,7 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.SnorkelModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -19,10 +20,14 @@ public class SnorkelItem extends TrinketArtifactItem {
 		return new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0, true, false);
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new SnorkelModel();
+		return createModel(SnorkelModel.getTexturedGloveData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new SnorkelModel(root);
 	}
 
 	@Override
@@ -31,8 +36,4 @@ public class SnorkelItem extends TrinketArtifactItem {
 		return TEXTURE;
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("head") && slot.equals(Slots.HAT);
-	}
 }

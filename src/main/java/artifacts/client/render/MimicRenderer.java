@@ -14,7 +14,7 @@ public class MimicRenderer extends MobEntityRenderer<MimicEntity, MimicModel> {
 	private static final Identifier TEXTURE = Artifacts.id("textures/entity/mimic.png");
 
 	public MimicRenderer(EntityRendererFactory.Context factoryCtx) {
-		super(factoryCtx, new MimicModel(), 0.45F);
+		super(factoryCtx, new MimicModel(MimicModel.getTexturedModelData().createModel()), 0.45F);
 		addFeature(new MimicChestLayer(this));
 	}
 

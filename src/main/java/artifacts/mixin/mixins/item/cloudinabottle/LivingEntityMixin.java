@@ -99,7 +99,7 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityEx
 			this.hasDoubleJumped = false;
 		}
 
-		boolean flying = self instanceof PlayerEntity && ((PlayerEntity) self).abilities.flying;
+		boolean flying = self instanceof PlayerEntity && ((PlayerEntity) self).getAbilities().flying;
 		if (this.jumping && this.jumpWasReleased && !this.isTouchingWater() && !this.isOnGround() && !this.hasVehicle()
 				&& !this.hasDoubleJumped && !flying && TrinketsHelper.isEquipped(Items.CLOUD_IN_A_BOTTLE, self)) {
 			this.artifacts$doubleJump();

@@ -1,9 +1,11 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
+import artifacts.client.render.model.trinket.SuperstitiousHatModel;
 import artifacts.client.render.model.trinket.VillagerHatModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -19,10 +21,14 @@ public class VillagerHatItem extends TrinketArtifactItem {
 		return new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 20, 1, true, false);
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new VillagerHatModel();
+		return createModel(VillagerHatModel.getTexturedGloveData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new VillagerHatModel(root);
 	}
 
 	@Override
@@ -31,8 +37,4 @@ public class VillagerHatItem extends TrinketArtifactItem {
 		return TEXTURE;
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("head") && slot.equals(Slots.HAT);
-	}
 }

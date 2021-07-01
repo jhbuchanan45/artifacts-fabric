@@ -4,6 +4,7 @@ import artifacts.Artifacts;
 import artifacts.client.render.model.trinket.ScarfModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
@@ -20,10 +21,14 @@ public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 		return new StatusEffectInstance(StatusEffects.INVISIBILITY, 20, 0, true, false);
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new ScarfModel(RenderLayer::getEntityTranslucent);
+		return createModel(ScarfModel.getTexturedModelData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new ScarfModel(root, RenderLayer::getEntityTranslucent);
 	}
 
 	@Override
@@ -32,8 +37,4 @@ public class ScarfOfInvisibilityItem extends TrinketArtifactItem {
 		return TEXTURE;
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("chest") && slot.equals(Slots.NECKLACE);
-	}
 }

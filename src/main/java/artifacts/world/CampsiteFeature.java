@@ -7,12 +7,15 @@ import artifacts.init.LootTables;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.tag.BlockTags;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
@@ -23,51 +26,65 @@ import java.util.Random;
 
 public class CampsiteFeature extends Feature<DefaultFeatureConfig> {
 
-	public static final BlockStateProvider CRAFTING_STATION_PROVIDER = new WeightedBlockStateProvider()
-			.addState(Blocks.CRAFTING_TABLE.getDefaultState(), 5)
-			.addState(Blocks.FURNACE.getDefaultState().with(FurnaceBlock.LIT, false), 5)
-			.addState(Blocks.BLAST_FURNACE.getDefaultState().with(BlastFurnaceBlock.LIT, false), 5)
-			.addState(Blocks.SMOKER.getDefaultState().with(SmokerBlock.LIT, false), 5)
-			.addState(Blocks.SMITHING_TABLE.getDefaultState(), 5)
-			.addState(Blocks.FLETCHING_TABLE.getDefaultState(), 5)
-			.addState(Blocks.CARTOGRAPHY_TABLE.getDefaultState(), 5)
-			.addState(Blocks.ANVIL.getDefaultState(), 2)
-			.addState(Blocks.CHIPPED_ANVIL.getDefaultState(), 2)
-			.addState(Blocks.DAMAGED_ANVIL.getDefaultState(), 1);
+	public static final BlockStateProvider CRAFTING_STATION_PROVIDER = new WeightedBlockStateProvider(
+			DataPool.<BlockState>builder()
+			.add(Blocks.CRAFTING_TABLE.getDefaultState(), 5)
+			.add(Blocks.FURNACE.getDefaultState().with(FurnaceBlock.LIT, false), 5)
+			.add(Blocks.BLAST_FURNACE.getDefaultState().with(BlastFurnaceBlock.LIT, false), 5)
+			.add(Blocks.SMOKER.getDefaultState().with(SmokerBlock.LIT, false), 5)
+			.add(Blocks.SMITHING_TABLE.getDefaultState(), 5)
+			.add(Blocks.FLETCHING_TABLE.getDefaultState(), 5)
+			.add(Blocks.CARTOGRAPHY_TABLE.getDefaultState(), 5)
+			.add(Blocks.ANVIL.getDefaultState(), 2)
+			.add(Blocks.CHIPPED_ANVIL.getDefaultState(), 2)
+			.add(Blocks.DAMAGED_ANVIL.getDefaultState(), 1)
+	);
 
-	public static final BlockStateProvider DECORATION_PROVIDER = new WeightedBlockStateProvider()
-			.addState(Blocks.LANTERN.getDefaultState(), 5)
-			.addState(Blocks.TORCH.getDefaultState(), 3)
-			.addState(Blocks.REDSTONE_TORCH.getDefaultState(), 3)
-			.addState(Blocks.CAKE.getDefaultState(), 1)
-			.addState(Blocks.BREWING_STAND.getDefaultState(), 4);
+	public static final BlockStateProvider DECORATION_PROVIDER = new WeightedBlockStateProvider(
+			DataPool.<BlockState>builder()
+			.add(Blocks.LANTERN.getDefaultState(), 5)
+			.add(Blocks.TORCH.getDefaultState(), 3)
+			.add(Blocks.REDSTONE_TORCH.getDefaultState(), 3)
+			.add(Blocks.CAKE.getDefaultState(), 1)
+			.add(Blocks.BREWING_STAND.getDefaultState(), 4)
+	);
 
-	public static final BlockStateProvider ORE_PROVIDER = new WeightedBlockStateProvider()
-			.addState(Blocks.IRON_ORE.getDefaultState(), 6)
-			.addState(Blocks.REDSTONE_ORE.getDefaultState(), 6)
-			.addState(Blocks.LAPIS_ORE.getDefaultState(), 6)
-			.addState(Blocks.GOLD_ORE.getDefaultState(), 4)
-			.addState(Blocks.DIAMOND_ORE.getDefaultState(), 2)
-			.addState(Blocks.EMERALD_ORE.getDefaultState(), 1);
+	public static final BlockStateProvider ORE_PROVIDER = new WeightedBlockStateProvider(
+			DataPool.<BlockState>builder()
+			.add(Blocks.IRON_ORE.getDefaultState(), 6)
+			.add(Blocks.REDSTONE_ORE.getDefaultState(), 6)
+			.add(Blocks.LAPIS_ORE.getDefaultState(), 6)
+			.add(Blocks.GOLD_ORE.getDefaultState(), 4)
+			.add(Blocks.DIAMOND_ORE.getDefaultState(), 2)
+			.add(Blocks.EMERALD_ORE.getDefaultState(), 1)
+	);
 
-	public static final BlockStateProvider CAMPFIRE_PROVIDER = new WeightedBlockStateProvider()
-			.addState(Blocks.CAMPFIRE.getDefaultState().with(CampfireBlock.LIT, false), 12)
-			.addState(Blocks.CAMPFIRE.getDefaultState().with(CampfireBlock.LIT, true), 3)
-			.addState(Blocks.SOUL_CAMPFIRE.getDefaultState().with(CampfireBlock.LIT, true), 1);
+	public static final BlockStateProvider CAMPFIRE_PROVIDER = new WeightedBlockStateProvider(
+			DataPool.<BlockState>builder()
+			.add(Blocks.CAMPFIRE.getDefaultState().with(CampfireBlock.LIT, false), 12)
+			.add(Blocks.CAMPFIRE.getDefaultState().with(CampfireBlock.LIT, true), 3)
+			.add(Blocks.SOUL_CAMPFIRE.getDefaultState().with(CampfireBlock.LIT, true), 1)
+		);
 
-	public static final BlockStateProvider LANTERN_PROVIDER = new WeightedBlockStateProvider()
-			.addState(Blocks.LANTERN.getDefaultState().with(LanternBlock.HANGING, true), 6)
-			.addState(Blocks.SOUL_LANTERN.getDefaultState().with(LanternBlock.HANGING, true), 2)
-			.addState(Blocks.END_ROD.getDefaultState().with(EndRodBlock.FACING, Direction.DOWN), 1)
-			.addState(Blocks.SHROOMLIGHT.getDefaultState(), 1)
-			.addState(Blocks.GLOWSTONE.getDefaultState(), 1);
+	public static final BlockStateProvider LANTERN_PROVIDER = new WeightedBlockStateProvider(
+			DataPool.<BlockState>builder()
+			.add(Blocks.LANTERN.getDefaultState().with(LanternBlock.HANGING, true), 6)
+			.add(Blocks.SOUL_LANTERN.getDefaultState().with(LanternBlock.HANGING, true), 2)
+			.add(Blocks.END_ROD.getDefaultState().with(EndRodBlock.FACING, Direction.DOWN), 1)
+			.add(Blocks.SHROOMLIGHT.getDefaultState(), 1)
+			.add(Blocks.GLOWSTONE.getDefaultState(), 1)
+	);
 
 	public CampsiteFeature() {
 		super(DefaultFeatureConfig.CODEC);
 	}
 
 	@Override
-	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos blockPos, DefaultFeatureConfig featureConfig) {
+	public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+		BlockPos blockPos = context.getOrigin();
+		StructureWorldAccess world = context.getWorld();
+		Random random = context.getRandom();
+
 		List<BlockPos> positions = new ArrayList<>();
 		BlockPos.stream(blockPos.add(-3, 0, -3), blockPos.add(3, 0, 3)).forEach((pos -> positions.add(pos.toImmutable())));
 		positions.remove(blockPos);

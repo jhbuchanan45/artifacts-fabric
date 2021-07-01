@@ -1,8 +1,10 @@
 package artifacts.item.trinket.glove;
 
 import artifacts.Artifacts;
+import artifacts.item.trinket.TrinketArtifactItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
@@ -24,7 +26,7 @@ public class PocketPistonItem extends GloveItem {
 	}
 
 	@Override
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.BLOCK_PISTON_EXTEND);
+	public SoundEvent getEquipSound() {
+		return SoundEvents.BLOCK_PISTON_EXTEND;
 	}
 }

@@ -1,10 +1,15 @@
 package artifacts.item.trinket;
 
 import artifacts.Artifacts;
+import artifacts.client.render.model.trinket.ClawsModel;
+import artifacts.client.render.model.trinket.GloveModel;
+import artifacts.client.render.model.trinket.SnorkelModel;
 import artifacts.client.render.model.trinket.SteadfastSpikesModel;
 import com.google.common.collect.Multimap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.Dilation;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -29,10 +34,14 @@ public class SteadfastSpikesItem extends TrinketArtifactItem {
 		return modifiers;
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return new SteadfastSpikesModel();
+		return createModel(SteadfastSpikesModel.getTexturedGloveData().createModel());
+	}
+
+	@Environment(EnvType.CLIENT)
+	protected BipedEntityModel<LivingEntity> createModel(ModelPart root) {
+		return new SteadfastSpikesModel(root, false);
 	}
 
 	@Override
@@ -41,8 +50,4 @@ public class SteadfastSpikesItem extends TrinketArtifactItem {
 		return TEXTURE;
 	}
 
-	@Override
-	public boolean canWearInSlot(String group, String slot) {
-		return group.equals("feet") && slot.equals("shoes");
-	}
 }
