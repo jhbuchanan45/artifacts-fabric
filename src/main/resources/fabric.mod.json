@@ -9,6 +9,9 @@
     "ochotonida",
     "Florens"
   ],
+  "contributors": [
+    "jhbuchanan45"
+  ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/artifacts",
     "sources": "https://github.com/florensie/artifacts",
@@ -44,7 +47,7 @@
     "fabric": ">=0.28.0",
     "minecraft": ">=1.17",
     "java": ">=16",
-    "trinkets": "*",
+    "trinkets": ">=3.0.0",
     "cardinal-components-base": ">=2.7.5",
     "cardinal-components-entity": ">=2.7.5",
     "cardinal-components-item": ">=2.7.5",
