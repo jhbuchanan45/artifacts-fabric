@@ -21,7 +21,7 @@ public abstract class LivingEntityMixin implements LivingEntityExtensions {
 
 	// This is a big method so I feel more comfortable with a slice than an ordinal
 	// big method, big annotation, big fun
-	@ModifyArg(method = "travel", index = 0, allow = 1,
+	@ModifyArg(method = "travel", index = -1, allow = 1,
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;updateVelocity(FLnet/minecraft/util/math/Vec3d;)V"),
 			slice = @Slice(
 					from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isTouchingWater()Z"),
