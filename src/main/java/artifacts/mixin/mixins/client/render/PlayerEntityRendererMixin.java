@@ -2,9 +2,7 @@ package artifacts.mixin.mixins.client.render;
 
 import artifacts.Artifacts;
 import artifacts.item.trinket.glove.GloveItem;
-import dev.emi.trinkets.api.SlotReference;
-import dev.emi.trinkets.api.TrinketComponent;
-import dev.emi.trinkets.api.TrinketsApi;
+import dev.emi.trinkets.api.*;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
@@ -20,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Mixin(PlayerEntityRenderer.class)
@@ -48,15 +47,24 @@ public abstract class PlayerEntityRendererMixin {
 		}
 
 		String slotGroup = hand == Hand.MAIN_HAND ? "hand" : "offhand";
-		Optional<TrinketComponent> maybeComponent = TrinketsApi.getTrinketComponent(player);
+		TrinketComponent component = TrinketsApi.getTrinketComponent(player).orElseThrow();
 
-		if (maybeComponent.isPresent()) {
-			ItemStack item = maybeComponent.get().getInventory().get(slotGroup).get("glove").getStack(0);
+		Map<String, TrinketInventory> sGroup = component.getInventory().get(slotGroup);
+		if (sGroup == null) {
+			return null;
+		}
+		TrinketInventory inv = sGroup.get("glove");
+		if (inv == null) {
+			return null;
+		}
 
-			if (item.getItem() instanceof GloveItem) {
-				return (GloveItem) item.getItem();
+		for (int slotNo = 0; slotNo < inv.size(); slotNo++){
+			Item item = inv.getStack(slotNo).getItem();
+			if (item instanceof GloveItem) {
+				return (GloveItem) item;
 			}
 		}
+
 		return null;
 	}
 }

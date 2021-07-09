@@ -36,7 +36,7 @@ public class SteadfastSpikesItem extends TrinketArtifactItem {
 
 	@Environment(EnvType.CLIENT)
 	protected BipedEntityModel<LivingEntity> createModel() {
-		return createModel(SteadfastSpikesModel.getTexturedGloveData().createModel());
+		return createModel(SteadfastSpikesModel.getTexturedModelData().createModel());
 	}
 
 	@Environment(EnvType.CLIENT)

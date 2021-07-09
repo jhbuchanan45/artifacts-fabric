@@ -4,6 +4,7 @@ plugins {
 }
 
 repositories {
+    mavenLocal()
     maven { url = "https://maven.terraformersmc.com" }
     maven { url = "https://maven.shedaniel.me/" }
     maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
@@ -65,8 +66,8 @@ dependencies {
     modImplementation include("com.github.emilyploszaj:step-height-entity-attribute:${project.step_height_attr_version}") {
         transitive = false
     }
-    // modImplementation "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
-    modImplementation "curse.maven:rei-310111:3366299"
+//     modImplementation "me.shedaniel:rei:${project.rei_version}"
+    modImplementation "curse.maven:rei-310111:3381485"
 
     // Compat
     modCompileOnly("com.github.apace100:origins-fabric:v${project.origins_version}") {
@@ -78,8 +79,8 @@ dependencies {
     modCompileOnly("com.github.apace100:calio:v${project.calio_version}") {
         transitive = false
     }
-    //modCompileOnly("com.github.williambl:haema:v${project.haema_version}") {
-    modCompileOnly("curse.maven:haema-391257:3366752") {
+//    modCompileOnly("com.github.williambl:haema:${project.haema_version}") {
+    modCompileOnly("curse.maven:haema-391257:3380616") {
         transitive = false
     }
 

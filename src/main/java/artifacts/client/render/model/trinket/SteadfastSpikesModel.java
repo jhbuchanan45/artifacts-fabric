@@ -18,8 +18,8 @@ public class SteadfastSpikesModel extends PlayerEntityModel<LivingEntity> {
 		rightPants.visible = true;
 	}
 
-	public static TexturedModelData getTexturedGloveData() {
-		ModelData modelData = BipedEntityModel.getModelData(new Dilation(0.5F), 0);
+	public static TexturedModelData getTexturedModelData() {
+		ModelData modelData = PlayerEntityModel.getTexturedModelData(new Dilation(0.5F), false);
 		ModelPartData root = modelData.getRoot();
 
 		ModelPartBuilder clawLeft1 = ModelPartBuilder.create().uv(32, 0).cuboid(-1.5F, 9, -7, 1, 3, 5);
