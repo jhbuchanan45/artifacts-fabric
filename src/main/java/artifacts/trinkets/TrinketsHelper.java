@@ -59,7 +59,7 @@ public final class TrinketsHelper {
 				tComponent.getAllEquipped().forEach(pair -> {
 					if (pair.getRight().getItem() instanceof TrinketArtifactItem &&
 							(Components.ARTIFACT_ENABLED.get(pair.getRight()).get() || ignoreEffectsDisabled)) {
-
+							stacks.add(pair.getRight());
 					}
 				});
 			}
