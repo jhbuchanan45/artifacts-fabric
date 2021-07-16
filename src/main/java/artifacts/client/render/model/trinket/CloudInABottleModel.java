@@ -12,7 +12,7 @@ public class CloudInABottleModel extends BipedEntityModel<LivingEntity> {
 
 	public CloudInABottleModel(ModelPart root) {
 		super(root, RenderLayer::getEntityTranslucent);
-		cloud = root.getChild("cloud");
+		cloud = root.getChild("body").getChild("jar").getChild("cloud");
 
 		setVisible(false);
 		body.visible = true;
